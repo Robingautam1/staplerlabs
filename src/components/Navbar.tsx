@@ -45,7 +45,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
-            <StaplerLogo className="w-8 h-8 rounded-lg" animate={false} />
+            <StaplerLogo className="w-8 h-8 rounded-lg" hoverAnimate={true} />
             <span className="font-display font-bold text-lg tracking-tight text-cream">
               StaplerLabs
             </span>

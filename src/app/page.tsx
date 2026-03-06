@@ -120,7 +120,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 2.2 }}
           >
             <div className="flex items-center gap-3 border border-gray-mid/40 rounded-full px-5 py-2 bg-gray-dark/40 backdrop-blur-sm">
-              <StaplerLogo className="w-7 h-7 rounded-lg" animate={true} />
+              <StaplerLogo className="w-7 h-7 rounded-lg" animate={true} hoverAnimate={true} />
               <span className="text-sm text-cream/60 font-medium">
                 The agency that holds everything together
               </span>
@@ -142,7 +142,7 @@ export default function HomePage() {
           {/* Subheadline */}
           <motion.p
             className="mt-7 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed font-normal"
-            style={{ color: "#ABABAB" }}
+            style={{ color: "#B8B8B8" }}
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.7 }}
@@ -185,7 +185,7 @@ export default function HomePage() {
               "3-day avg. launch time",
               "Zero client chasing",
             ].map((t, i) => (
-              <span key={i} className="flex items-center gap-2 text-sm" style={{ color: "#666" }}>
+              <span key={i} className="flex items-center gap-2 text-sm" style={{ color: "#8A8A8A" }}>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <circle cx="7" cy="7" r="6" stroke="#FFD000" strokeWidth="1.5" opacity="0.5" />
                   <path d="M4.5 7 L6.2 8.7 L9.5 5.3" stroke="#FFD000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -239,7 +239,7 @@ export default function HomePage() {
                     <p className="text-[11px] font-mono uppercase tracking-[0.15em] mb-3" style={{ color: "#555" }}>
                       What they say
                     </p>
-                    <p className="italic text-[15px] leading-relaxed" style={{ color: "#666" }}>
+                    <p className="italic text-[15px] leading-relaxed" style={{ color: "#8A8A8A" }}>
                       {c.theySay}
                     </p>
                   </div>
@@ -250,7 +250,7 @@ export default function HomePage() {
                     <p className="text-[11px] font-mono uppercase tracking-[0.15em] text-yellow/60 mb-3">
                       What we actually do
                     </p>
-                    <p className="text-[15px] leading-relaxed" style={{ color: "#CFCFCF" }}>
+                    <p className="text-[15px] leading-relaxed" style={{ color: "#D6D6D6" }}>
                       {c.weDo}
                     </p>
                   </div>
@@ -271,7 +271,7 @@ export default function HomePage() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-center mb-5">
               Six things. Done properly.
             </h2>
-            <p className="text-center mb-20 max-w-lg mx-auto text-base" style={{ color: "#888" }}>
+            <p className="text-center mb-20 max-w-lg mx-auto text-base" style={{ color: "#A5A5A5" }}>
               We don&apos;t do 47 services with varying levels of competence.
               We do six, and we&apos;re unreasonably good at all of them.
             </p>
@@ -286,7 +286,7 @@ export default function HomePage() {
                     <h3 className="font-display font-bold text-[17px] mb-2.5 group-hover:text-yellow transition-colors">
                       {s.title}
                     </h3>
-                    <p className="text-[14px] leading-relaxed" style={{ color: "#888" }}>
+                    <p className="text-[14px] leading-relaxed" style={{ color: "#A5A5A5" }}>
                       {s.desc}
                     </p>
                   </div>
@@ -312,7 +312,7 @@ export default function HomePage() {
                   <p className="font-display font-extrabold text-4xl sm:text-5xl text-yellow yellow-glow">
                     {s.number}
                   </p>
-                  <p className="text-[13px] mt-2" style={{ color: "#777" }}>{s.label}</p>
+                  <p className="text-[13px] mt-2" style={{ color: "#8A8A8A" }}>{s.label}</p>
                 </div>
               ))}
             </div>
@@ -336,7 +336,7 @@ export default function HomePage() {
                 A 15-year-old dental clinic in Rohtak.<br />
                 Zero online presence.
               </h3>
-              <p className="text-[15px] leading-relaxed mb-6 max-w-2xl" style={{ color: "#999" }}>
+              <p className="text-[15px] leading-relaxed mb-6 max-w-2xl" style={{ color: "#A5A5A5" }}>
                 Google Business Profile, a clean website, WhatsApp appointment booking,
                 and a QR card for the reception desk.
                 First online appointment booked within 72 hours of going live.
@@ -373,7 +373,7 @@ export default function HomePage() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-5">
               Ready to stop doing<br className="hidden sm:block" /> everything yourself?
             </h2>
-            <p className="mb-10 max-w-md mx-auto text-base" style={{ color: "#888" }}>
+            <p className="mb-10 max-w-md mx-auto text-base" style={{ color: "#A5A5A5" }}>
               One conversation. No pitch decks. Just honest answers
               about what we&apos;d do and what it costs.
             </p>
