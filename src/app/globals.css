@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-jet: #0A0A0A;
+  --color-yellow: #FFD000;
+  --color-cream: #F0F0F0;
+  --color-gray-dark: #1A1A1A;
+  --color-gray-mid: #2A2A2A;
+  --color-gray-light: #888888;
+
+  --font-display: "Syne", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-jet);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background-color: var(--color-yellow);
+    color: var(--color-jet);
+  }
+}
+
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 208, 0, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Yellow underline draw animation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-yellow);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-jet);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-mid);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-yellow);
+}
