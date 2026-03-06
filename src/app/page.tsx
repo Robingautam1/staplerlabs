@@ -91,15 +91,6 @@ const comparisons = [
   },
 ];
 
-const floatingPills = [
-  { label: "Next.js", x: "8%", y: "18%", delay: 0 },
-  { label: "WhatsApp Bots", x: "78%", y: "12%", delay: 0.3 },
-  { label: "Google Ads", x: "85%", y: "65%", delay: 0.6 },
-  { label: "Local SEO", x: "5%", y: "70%", delay: 0.9 },
-  { label: "CRM", x: "72%", y: "38%", delay: 0.4 },
-  { label: "QR Menus", x: "12%", y: "45%", delay: 0.7 },
-];
-
 export default function HomePage() {
   return (
     <>
@@ -118,29 +109,6 @@ export default function HomePage() {
         >
           <StaplerLogo className="w-[600px] h-[600px]" animate={false} />
         </motion.div>
-
-        {/* Floating tech pills — desktop only */}
-        {floatingPills.map((pill, i) => (
-          <motion.div
-            key={i}
-            className="absolute hidden lg:block pointer-events-none"
-            style={{ left: pill.x, top: pill.y }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: [0, 0.15, 0.15, 0],
-              scale: [0.8, 1, 1, 0.9],
-              y: [0, -8, 0, 8, 0],
-            }}
-            transition={{
-              opacity: { duration: 8, delay: pill.delay + 2, repeat: Infinity, repeatDelay: 2 },
-              y: { duration: 6, delay: pill.delay + 2, repeat: Infinity, ease: "easeInOut" },
-            }}
-          >
-            <span className="text-xs font-mono text-yellow/80 border border-yellow/20 px-3 py-1.5 rounded-full bg-yellow/5 backdrop-blur-sm">
-              {pill.label}
-            </span>
-          </motion.div>
-        ))}
 
         {/* Main hero content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
@@ -173,8 +141,8 @@ export default function HomePage() {
 
           {/* Subheadline */}
           <motion.p
-            className="mt-7 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "#9A9A9A" }}
+            className="mt-7 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed font-normal"
+            style={{ color: "#ABABAB" }}
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.7 }}
