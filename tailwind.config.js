@@ -17,7 +17,7 @@ module.exports = {
       },
       fontFamily: {
         display: ["Syne", "sans-serif"],
-        body: ["Space Grotesk", "sans-serif"],
+        body: ["Inter", "Space Grotesk", "-apple-system", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
     },
