@@ -46,7 +46,7 @@ export default function AboutPage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="space-y-5 text-cream/70 text-base leading-relaxed">
+            <div className="space-y-5 text-base leading-relaxed" style={{ color: "#CCCCCC" }}>
               <p>
                 In a market full of agencies called &ldquo;DigiPro
                 Solutions&rdquo; and &ldquo;TechBridge Innovations,&rdquo; we
@@ -76,7 +76,7 @@ export default function AboutPage() {
             <h2 className="font-display font-bold text-2xl sm:text-3xl mb-6">
               We&apos;re small on purpose.
             </h2>
-            <p className="text-cream/60 text-base leading-relaxed mb-4">
+            <p className="text-base leading-relaxed mb-4" style={{ color: "#BBBBBB" }}>
               Every project gets a founder&apos;s attention, not an
               intern&apos;s. We could hire more people and take on more clients.
               We choose not to. Because the moment you scale past the point
@@ -84,7 +84,7 @@ export default function AboutPage() {
               it, quality drops. We&apos;ve seen it happen. We refuse to let it
               happen here.
             </p>
-            <p className="text-cream/60 text-base leading-relaxed">
+            <p className="text-base leading-relaxed" style={{ color: "#BBBBBB" }}>
               This doesn&apos;t mean we&apos;re slow. It means we&apos;re
               selective. If we take your project, it&apos;s because we know
               we can deliver something worth paying for.
@@ -108,7 +108,7 @@ export default function AboutPage() {
                   <h3 className="font-display font-bold text-base mb-2 text-yellow">
                     {b.title}
                   </h3>
-                  <p className="text-sm text-cream/60 leading-relaxed">
+                  <p className="text-[15px] leading-relaxed" style={{ color: "#BBBBBB" }}>
                     {b.desc}
                   </p>
                 </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
               <FadeIn key={i} delay={i * 0.06}>
                 <div className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-yellow mt-2 shrink-0" />
-                  <p className="text-cream/70 text-sm leading-relaxed">{b}</p>
+                  <p className="text-[15px] leading-relaxed" style={{ color: "#CCCCCC" }}>{b}</p>
                 </div>
               </FadeIn>
             ))}
@@ -143,9 +143,9 @@ export default function AboutPage() {
       <section className="py-24 px-6 text-center">
         <FadeIn>
           <div className="max-w-xs mx-auto mb-8">
-            <StaplerLogo className="w-24 h-24 mx-auto" />
+            <StaplerLogo className="w-24 h-24 mx-auto" hoverAnimate={true} />
           </div>
-          <p className="text-cream/30 text-sm font-mono">
+          <p className="text-sm font-mono" style={{ color: "#777" }}>
             Holding things together since 2024.
           </p>
         </FadeIn>
@@ -157,7 +157,7 @@ export default function AboutPage() {
           <h2 className="font-display font-bold text-3xl mb-4">
             Now that you know who we are.
           </h2>
-          <p className="text-cream/50 mb-8 max-w-md mx-auto">
+          <p className="mb-8 max-w-md mx-auto" style={{ color: "#B0B0B0" }}>
             Let&apos;s find out if we can help you.
           </p>
           <Link

@@ -51,7 +51,7 @@ export default function WorkPage() {
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
             Work that <span className="text-yellow">speaks</span>
           </h1>
-          <p className="mt-4 text-cream/50 max-w-xl mx-auto">
+          <p className="mt-4 max-w-xl mx-auto" style={{ color: "#B0B0B0" }}>
             Real projects. Real outcomes. No stock screenshots or vague testimonials.
           </p>
         </FadeIn>
@@ -72,7 +72,7 @@ export default function WorkPage() {
                   <p className="text-xs font-mono text-yellow/50 uppercase tracking-wider mb-1">
                     Case Study 0{i + 1}
                   </p>
-                  <p className="font-display font-bold text-lg text-cream/90 mb-4">
+                  <p className="font-display font-bold text-lg mb-4" style={{ color: "#EEEEEE" }}>
                     {cs.type}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -88,28 +88,28 @@ export default function WorkPage() {
                 </div>
 
                 {/* Right content */}
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-mono text-cream/30 uppercase tracking-wider mb-1">
+                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5" style={{ color: "#808080" }}>
                       The Situation
                     </p>
-                    <p className="text-sm text-cream/60 leading-relaxed">
+                    <p className="text-[15px] leading-relaxed" style={{ color: "#BBBBBB" }}>
                       {cs.situation}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-mono text-cream/30 uppercase tracking-wider mb-1">
+                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5" style={{ color: "#808080" }}>
                       What We Built
                     </p>
-                    <p className="text-sm text-cream/60 leading-relaxed">
+                    <p className="text-[15px] leading-relaxed" style={{ color: "#BBBBBB" }}>
                       {cs.work}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-mono text-yellow/50 uppercase tracking-wider mb-1">
+                    <p className="text-xs font-mono text-yellow/50 uppercase tracking-wider mb-1.5">
                       The Outcome
                     </p>
-                    <p className="text-sm text-cream/80 leading-relaxed font-medium">
+                    <p className="text-[15px] leading-relaxed font-medium" style={{ color: "#E0E0E0" }}>
                       {cs.outcome}
                     </p>
                   </div>
@@ -125,7 +125,7 @@ export default function WorkPage() {
         <div className="max-w-3xl mx-auto text-center">
           <FadeIn>
             <div className="border border-gray-mid/20 rounded-xl p-8 bg-gray-dark/20">
-              <p className="text-cream/60 text-sm leading-relaxed italic">
+              <p className="text-[15px] leading-relaxed italic" style={{ color: "#B8B8B8" }}>
                 &ldquo;We&apos;re a young agency building our portfolio publicly.
                 Every project we take teaches us something. Every client gets the
                 benefit of that. We&apos;d rather show you three real projects than
@@ -142,7 +142,7 @@ export default function WorkPage() {
           <h2 className="font-display font-bold text-3xl mb-4">
             Want to be the next case study?
           </h2>
-          <p className="text-cream/50 mb-8 max-w-md mx-auto">
+          <p className="mb-8 max-w-md mx-auto" style={{ color: "#B0B0B0" }}>
             We promise not to put your name on the website without asking first.
           </p>
           <Link

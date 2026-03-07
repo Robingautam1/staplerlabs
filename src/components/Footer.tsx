@@ -27,7 +27,7 @@ export default function Footer() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="text-xs text-cream/50 hover:text-cream transition-colors"
+                className="text-xs text-cream/70 hover:text-cream transition-colors"
               >
                 {l.label}
               </Link>
@@ -35,10 +35,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between mt-6 pt-6 border-t border-gray-mid/20">
-          <p className="text-xs text-cream/30">
+          <p className="text-xs text-cream/50">
             &copy; {new Date().getFullYear()} StaplerLabs. All rights reserved.
           </p>
-          <p className="text-xs font-mono text-cream/20 mt-2 md:mt-0">
+          <p className="text-xs font-mono text-cream/40 mt-2 md:mt-0">
             Built with irrational attention to detail
           </p>
         </div>

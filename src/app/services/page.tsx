@@ -160,7 +160,7 @@ export default function ServicesPage() {
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
             What we <span className="text-yellow">actually</span> do
           </h1>
-          <p className="mt-4 text-cream/50 max-w-xl mx-auto">
+          <p className="mt-4 max-w-xl mx-auto" style={{ color: "#B0B0B0" }}>
             Six services. No fluff. Each one exists because we watched businesses struggle without it.
           </p>
         </FadeIn>
@@ -191,20 +191,21 @@ export default function ServicesPage() {
                   <h2 className="font-display font-bold text-2xl sm:text-3xl mb-4 leading-snug">
                     {s.headline}
                   </h2>
-                  <p className="text-cream/60 text-sm leading-relaxed mb-6">
+                  <p className="text-[15.5px] leading-relaxed mb-6" style={{ color: "#BBBBBB" }}>
                     {s.body}
                   </p>
                   <div>
-                    <p className="text-xs font-mono text-cream/40 uppercase tracking-wider mb-3">
+                    <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "#808080" }}>
                       What you get
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {s.outcomes.map((o, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-2.5 text-sm text-cream/70"
+                          className="flex items-start gap-2.5 text-[15px]"
+                          style={{ color: "#CCCCCC" }}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-yellow mt-1.5 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-yellow mt-2 shrink-0" />
                           {o}
                         </li>
                       ))}
@@ -237,7 +238,7 @@ export default function ServicesPage() {
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-3">
               Not sure which one you need?
             </h2>
-            <p className="text-cream/50 mb-10">
+            <p className="mb-10" style={{ color: "#B0B0B0" }}>
               Four quick questions. No form submissions. Just a nudge in the right direction.
             </p>
           </FadeIn>
@@ -256,7 +257,7 @@ export default function ServicesPage() {
           {step >= 0 && step < questions.length && (
             <FadeIn key={step} delay={0}>
               <div className="text-left bg-jet/60 border border-gray-mid/30 rounded-xl p-8">
-                <p className="text-xs font-mono text-cream/30 mb-2">
+                <p className="text-xs font-mono mb-2" style={{ color: "#777" }}>
                   Question {step + 1} of {questions.length}
                 </p>
                 <p className="font-display font-bold text-lg mb-6">
@@ -267,7 +268,8 @@ export default function ServicesPage() {
                     <button
                       key={j}
                       onClick={() => handleAnswer(o.tags)}
-                      className="w-full text-left px-5 py-3.5 rounded-lg border border-gray-mid/30 text-sm text-cream/70 hover:border-yellow/50 hover:text-cream transition-all"
+                      className="w-full text-left px-5 py-3.5 rounded-lg border border-gray-mid/30 text-[15px] hover:border-yellow/50 hover:text-cream transition-all"
+                      style={{ color: "#CCCCCC" }}
                     >
                       {o.label}
                     </button>
@@ -293,7 +295,7 @@ export default function ServicesPage() {
                     </p>
                   ))}
                 </div>
-                <p className="text-cream/50 text-sm mb-6">
+                <p className="text-[15px] mb-6" style={{ color: "#B0B0B0" }}>
                   Of course, we&apos;d want to chat before committing to anything. Every business is different.
                 </p>
                 <div className="flex gap-3">
@@ -308,7 +310,8 @@ export default function ServicesPage() {
                       setStep(-1);
                       setScores({});
                     }}
-                    className="border border-gray-mid/30 text-cream/50 px-6 py-3 rounded-md text-sm hover:border-cream/30 transition-colors"
+                    className="border border-gray-mid/30 px-6 py-3 rounded-md text-sm hover:border-cream/30 transition-colors"
+                    style={{ color: "#A0A0A0" }}
                   >
                     Retake quiz
                   </button>
@@ -325,7 +328,7 @@ export default function ServicesPage() {
           <h2 className="font-display font-bold text-3xl mb-4">
             Want to talk specifics?
           </h2>
-          <p className="text-cream/50 mb-8 max-w-md mx-auto">
+          <p className="mb-8 max-w-md mx-auto" style={{ color: "#B0B0B0" }}>
             Tell us what you need. We&apos;ll tell you exactly what we&apos;d do, how long it takes, and what it costs.
           </p>
           <Link

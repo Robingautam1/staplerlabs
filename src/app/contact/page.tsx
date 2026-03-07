@@ -49,7 +49,7 @@ export default function ContactPage() {
               Let&apos;s figure out if we&apos;re a{" "}
               <span className="text-yellow">fit.</span>
             </h1>
-            <p className="text-cream/50 max-w-2xl mb-16 text-center lg:text-left">
+            <p className="max-w-2xl mb-16 text-center lg:text-left" style={{ color: "#B0B0B0" }}>
               We don&apos;t do discovery calls where we pitch at you for 45
               minutes. We ask a few questions, you answer honestly, and we tell
               you exactly what we&apos;d do and what it would cost. No fluff.
@@ -65,7 +65,7 @@ export default function ContactPage() {
                   className="space-y-5"
                 >
                   <div>
-                    <label className="block text-xs font-mono text-cream/40 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
                       What&apos;s your business?
                     </label>
                     <input
@@ -73,18 +73,18 @@ export default function ContactPage() {
                       name="business"
                       required
                       placeholder="e.g. Dental clinic in Rohtak, SaaS startup in Bengaluru"
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-sm text-cream placeholder:text-cream/25 focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream placeholder:text-cream/30 focus:outline-none focus:border-yellow/50 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-cream/40 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
                       What do you need help with?
                     </label>
                     <select
                       name="service"
                       required
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-sm text-cream focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream focus:outline-none focus:border-yellow/50 transition-colors"
                     >
                       <option value="">Select one</option>
                       <option value="web">Web Development</option>
@@ -99,13 +99,13 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-cream/40 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
                       Rough budget range
                     </label>
                     <select
                       name="budget"
                       required
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-sm text-cream focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream focus:outline-none focus:border-yellow/50 transition-colors"
                     >
                       <option value="">Select one</option>
                       <option value="under-15k">Under ₹15,000</option>
@@ -117,13 +117,13 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-cream/40 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
                       How soon do you need this?
                     </label>
                     <select
                       name="timeline"
                       required
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-sm text-cream focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream focus:outline-none focus:border-yellow/50 transition-colors"
                     >
                       <option value="">Select one</option>
                       <option value="asap">As soon as possible</option>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-cream/40 uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
                       Your WhatsApp number
                     </label>
                     <input
@@ -142,7 +142,7 @@ export default function ContactPage() {
                       name="whatsapp"
                       required
                       placeholder="+91 98765 43210"
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-sm text-cream placeholder:text-cream/25 focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream placeholder:text-cream/30 focus:outline-none focus:border-yellow/50 transition-colors"
                     />
                   </div>
 
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   <p className="text-yellow font-display font-bold text-2xl mb-3">
                     Got it.
                   </p>
-                  <p className="text-cream/60 text-sm">
+                  <p className="text-[15px]" style={{ color: "#B8B8B8" }}>
                     We&apos;ll get back to you on WhatsApp within 24 hours.
                     Usually much faster. In the meantime, feel free to message
                     us directly.
@@ -169,10 +169,10 @@ export default function ContactPage() {
 
               {/* Alternative contact */}
               <div className="mt-8 pt-8 border-t border-gray-mid/20">
-                <p className="text-xs font-mono text-cream/30 uppercase tracking-wider mb-3">
+                <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "#777" }}>
                   Or reach out directly
                 </p>
-                <p className="text-sm text-cream/60">
+                <p className="text-[15px]" style={{ color: "#BBBBBB" }}>
                   WhatsApp:{" "}
                   <a
                     href="https://wa.me/919999999999"
@@ -183,7 +183,7 @@ export default function ContactPage() {
                     +91 99999 99999
                   </a>
                 </p>
-                <p className="text-sm text-cream/60 mt-1">
+                <p className="text-[15px] mt-1" style={{ color: "#BBBBBB" }}>
                   Email:{" "}
                   <a
                     href="mailto:hello@staplerlabs.com"
@@ -201,13 +201,13 @@ export default function ContactPage() {
                 <h2 className="font-display font-bold text-lg mb-6">
                   Quick answers
                 </h2>
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {faqs.map((f, i) => (
                     <div key={i}>
-                      <p className="text-sm font-semibold text-cream/90 mb-1">
+                      <p className="text-[15px] font-semibold mb-1.5" style={{ color: "#EEEEEE" }}>
                         {f.q}
                       </p>
-                      <p className="text-xs text-cream/50 leading-relaxed">
+                      <p className="text-[14px] leading-relaxed" style={{ color: "#AAAAAA" }}>
                         {f.a}
                       </p>
                     </div>

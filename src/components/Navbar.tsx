@@ -58,7 +58,7 @@ export default function Navbar() {
                 key={l.href}
                 href={l.href}
                 className={`nav-link text-sm font-medium transition-colors ${
-                  pathname === l.href ? "text-yellow" : "text-cream/70 hover:text-cream"
+                  pathname === l.href ? "text-yellow" : "text-cream/85 hover:text-cream"
                 }`}
               >
                 {l.label}
