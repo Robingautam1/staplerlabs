@@ -14,7 +14,7 @@ import {
   AdsIllustration,
 } from "@/components/ServiceIllustrations";
 
-const rotatingWords = ["websites", "automation", "onboarding", "SEO", "ads", "everything"];
+const rotatingWords = ["websites", "automation", "ads", "everything"];
 
 function RotatingWord() {
   const [index, setIndex] = useState(0);
@@ -114,7 +114,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           {/* Status line */}
           <motion.div
-            className="mb-10 font-mono text-[11px] tracking-[0.15em] uppercase t-dim"
+            className="mb-8 font-mono text-[11px] tracking-[0.15em] uppercase t-dim"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 2.2 }}
@@ -136,14 +136,14 @@ export default function HomePage() {
 
           {/* Subheadline */}
           <motion.p
-            className="mt-7 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed font-normal t-secondary"
+            className="mt-6 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed font-normal t-secondary"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.7 }}
           >
-            Web development. Automation. Onboarding. SEO. Ads.
+            So you can focus on the thing you&apos;re actually good at.
             <br className="hidden sm:block" />
-            So you can do the thing you&apos;re actually good at.
+            We handle the rest.
           </motion.p>
 
           {/* CTA row */}
@@ -162,8 +162,8 @@ export default function HomePage() {
             </a>
             <Link
               href="/contact"
-              className="font-medium px-8 py-4 rounded-lg text-base t-secondary transition-all"
-              style={{ border: "1px solid var(--border-primary)" }}
+              className="font-medium px-8 py-4 rounded-lg text-base t-primary transition-all"
+              style={{ border: "1px solid rgba(255,255,255,0.18)" }}
             >
               Get a free quote
             </Link>
@@ -171,22 +171,20 @@ export default function HomePage() {
 
           {/* Trust signals */}
           <motion.div
-            className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 3.2 }}
           >
             {[
-              "3-day avg. launch time",
-              "Zero client chasing",
-            ].map((t, i) => (
-              <span key={i} className="flex items-center gap-2 text-sm t-tertiary">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <circle cx="7" cy="7" r="6" stroke="var(--yellow)" strokeWidth="1.5" opacity="0.5" />
-                  <path d="M4.5 7 L6.2 8.7 L9.5 5.3" stroke="var(--yellow)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {t}
-              </span>
+              { number: "47+", label: "businesses onboarded" },
+              { number: "3 days", label: "avg. time to go live" },
+              { number: "0", label: "times a client chased us" },
+            ].map((s, i) => (
+              <div key={i} className="flex items-baseline gap-2">
+                <span className="font-display font-extrabold text-xl t-yellow">{s.number}</span>
+                <span className="text-sm t-dim">{s.label}</span>
+              </div>
             ))}
           </motion.div>
         </div>
