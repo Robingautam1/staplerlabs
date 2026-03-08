@@ -18,7 +18,7 @@ export default function NotFound() {
         </motion.div>
 
         <motion.h1
-          className="font-display font-extrabold text-6xl sm:text-7xl text-yellow mb-4"
+          className="font-display font-extrabold text-6xl sm:text-7xl t-yellow mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -27,7 +27,7 @@ export default function NotFound() {
         </motion.h1>
 
         <motion.p
-          className="font-display font-bold text-xl sm:text-2xl mb-3 text-cream"
+          className="font-display font-bold text-xl sm:text-2xl mb-3 t-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -36,7 +36,7 @@ export default function NotFound() {
         </motion.p>
 
         <motion.p
-          className="text-cream/50 text-sm mb-8"
+          className="t-muted text-sm mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -52,7 +52,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-block bg-yellow text-jet font-semibold px-6 py-3 rounded-md hover:bg-yellow/90 transition-colors"
+            className="inline-block btn-yellow px-6 py-3 rounded-md"
           >
             Back to Home
           </Link>

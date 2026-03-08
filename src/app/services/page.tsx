@@ -16,7 +16,7 @@ const services = [
   {
     headline: "Websites that work while you sleep",
     illustration: <WebDevIllustration />,
-    body: "We don't just build websites — we build digital storefronts that load fast, look sharp, and convert visitors into customers. Whether you need a founder portfolio, a local business site, or a SaaS front-end, we build with Next.js because speed isn't a feature, it's table stakes. Most standard projects go live in under two weeks.",
+    body: "We don't just build websites - we build digital storefronts that load fast, look sharp, and convert visitors into customers. Whether you need a founder portfolio, a local business site, or a SaaS front-end, we build with Next.js because speed isn't a feature, it's table stakes. Most standard projects go live in under two weeks.",
     outcomes: [
       "A website that loads in under 2 seconds on 4G",
       "Mobile-first design that actually looks good on phones",
@@ -28,7 +28,7 @@ const services = [
   {
     headline: "The best employee you'll ever have works 24 hours a day",
     illustration: <AutomationIllustration />,
-    body: "WhatsApp automation, CRM workflows, invoice follow-ups, AI-assisted customer responses — everything that makes your business feel like it has twice the staff. The kind of automation that doesn't just save time, it makes your competitors wonder how you're responding to leads at 2am.",
+    body: "WhatsApp automation, CRM workflows, invoice follow-ups, AI-assisted customer responses - everything that makes your business feel like it has twice the staff. The kind of automation that doesn't just save time, it makes your competitors wonder how you're responding to leads at 2am.",
     outcomes: [
       "WhatsApp bots that qualify leads before you wake up",
       "CRM workflows that move deals forward automatically",
@@ -40,7 +40,7 @@ const services = [
   {
     headline: "Your receptionist doesn't need a lunch break. Ours doesn't either.",
     illustration: <ReceptionistIllustration />,
-    body: "An AI-powered front desk that handles calls, responds on WhatsApp in seconds, qualifies leads, and books appointments — all before a human gets involved. For business owners who are tired of missing calls while they're actually doing their job.",
+    body: "An AI-powered front desk that handles calls, responds on WhatsApp in seconds, qualifies leads, and books appointments - all before a human gets involved. For business owners who are tired of missing calls while they're actually doing their job.",
     outcomes: [
       "Instant WhatsApp first-response to every enquiry",
       "Smart appointment booking with calendar integration",
@@ -52,12 +52,12 @@ const services = [
   {
     headline: "You've been running a great business. Now let the internet know.",
     illustration: <OnboardingIllustration />,
-    body: "For businesses with zero digital presence — the doctor with a packed waiting room but no Google listing, the CA with 200 clients but no website, the shop that's been around for 30 years but can't be found online. We handle everything: Google Business Profile, your first website, social handles, payment gateway, QR menus, digital visiting cards. The full package.",
+    body: "For businesses with zero digital presence - the doctor with a packed waiting room but no Google listing, the CA with 200 clients but no website, the shop that's been around for 30 years but can't be found online. We handle everything: Google Business Profile, your first website, social handles, payment gateway, QR menus, digital visiting cards. The full package.",
     outcomes: [
       "Google Business Profile that shows up in local searches",
       "A professional website that matches your reputation",
       "Social media handles claimed and set up",
-      "Digital payment integration — UPI, cards, the works",
+      "Digital payment integration - UPI, cards, the works",
       "QR menus, digital cards, and everything to bridge offline and online",
     ],
   },
@@ -67,7 +67,7 @@ const services = [
     body: "We won't promise page 1 in 30 days because that's not how SEO works and anyone who tells you otherwise is either lying or selling something. What we will do: build a proper technical foundation, create content that real humans want to read, and optimise your local presence so the people searching for your service actually find you. It takes 3-6 months. It's worth it.",
     outcomes: [
       "Technical SEO audit and fixes that search engines reward",
-      "Local SEO that puts you on the map — literally",
+      "Local SEO that puts you on the map - literally",
       "Content strategy built around what your customers actually search",
       "Google Business Profile optimisation with regular updates",
       "Monthly reports with metrics that make sense to non-SEO people",
@@ -87,7 +87,6 @@ const services = [
   },
 ];
 
-// Diagnostic quiz
 const questions = [
   {
     q: "What best describes your business right now?",
@@ -158,9 +157,9 @@ export default function ServicesPage() {
       <section className="py-20 px-6 text-center">
         <FadeIn>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
-            What we <span className="text-yellow">actually</span> do
+            What we <span className="t-yellow">actually</span> do
           </h1>
-          <p className="mt-4 max-w-xl mx-auto" style={{ color: "#B0B0B0" }}>
+          <p className="mt-4 max-w-xl mx-auto t-tertiary">
             Six services. No fluff. Each one exists because we watched businesses struggle without it.
           </p>
         </FadeIn>
@@ -170,7 +169,8 @@ export default function ServicesPage() {
       {services.map((s, i) => (
         <section
           key={i}
-          className={`py-20 px-6 ${i % 2 === 0 ? "" : "bg-gray-dark/30"}`}
+          className="py-20 px-6"
+          style={i % 2 !== 0 ? { backgroundColor: "var(--bg-card)" } : {}}
         >
           <div className="max-w-6xl mx-auto">
             <div
@@ -185,27 +185,26 @@ export default function ServicesPage() {
                 delay={0}
               >
                 <div style={{ direction: "ltr" }}>
-                  <p className="text-xs font-mono text-yellow/50 uppercase tracking-wider mb-3">
+                  <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "var(--yellow-muted)" }}>
                     0{i + 1}
                   </p>
                   <h2 className="font-display font-bold text-2xl sm:text-3xl mb-4 leading-snug">
                     {s.headline}
                   </h2>
-                  <p className="text-[15.5px] leading-relaxed mb-6" style={{ color: "#BBBBBB" }}>
+                  <p className="text-[15.5px] leading-relaxed mb-6 t-secondary">
                     {s.body}
                   </p>
                   <div>
-                    <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "#808080" }}>
+                    <p className="text-xs font-mono uppercase tracking-wider mb-3 t-muted">
                       What you get
                     </p>
                     <ul className="space-y-2.5">
                       {s.outcomes.map((o, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-2.5 text-[15px]"
-                          style={{ color: "#CCCCCC" }}
+                          className="flex items-start gap-2.5 text-[15px] t-secondary"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-yellow mt-2 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ backgroundColor: "var(--yellow)" }} />
                           {o}
                         </li>
                       ))}
@@ -220,7 +219,7 @@ export default function ServicesPage() {
                 delay={0.1}
               >
                 <div
-                  className="w-full max-w-sm mx-auto aspect-[6/5] bg-gray-dark/40 rounded-xl border border-gray-mid/20 p-6 flex items-center justify-center"
+                  className="w-full max-w-sm mx-auto aspect-[6/5] card-theme rounded-xl p-6 flex items-center justify-center"
                   style={{ direction: "ltr" }}
                 >
                   {s.illustration}
@@ -232,13 +231,13 @@ export default function ServicesPage() {
       ))}
 
       {/* ============ DIAGNOSTIC QUIZ ============ */}
-      <section className="py-24 px-6 bg-gray-dark/50">
+      <section className="py-24 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-2xl mx-auto text-center">
           <FadeIn>
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-3">
               Not sure which one you need?
             </h2>
-            <p className="mb-10" style={{ color: "#B0B0B0" }}>
+            <p className="mb-10 t-tertiary">
               Four quick questions. No form submissions. Just a nudge in the right direction.
             </p>
           </FadeIn>
@@ -247,7 +246,7 @@ export default function ServicesPage() {
             <FadeIn delay={0.1}>
               <button
                 onClick={() => setStep(0)}
-                className="bg-yellow text-jet font-semibold px-8 py-3.5 rounded-md hover:bg-yellow/90 transition-colors"
+                className="btn-yellow px-8 py-3.5 rounded-md"
               >
                 Take the quiz
               </button>
@@ -256,8 +255,8 @@ export default function ServicesPage() {
 
           {step >= 0 && step < questions.length && (
             <FadeIn key={step} delay={0}>
-              <div className="text-left bg-jet/60 border border-gray-mid/30 rounded-xl p-8">
-                <p className="text-xs font-mono mb-2" style={{ color: "#777" }}>
+              <div className="text-left rounded-xl p-8" style={{ backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border-primary)" }}>
+                <p className="text-xs font-mono mb-2 t-dim">
                   Question {step + 1} of {questions.length}
                 </p>
                 <p className="font-display font-bold text-lg mb-6">
@@ -268,8 +267,8 @@ export default function ServicesPage() {
                     <button
                       key={j}
                       onClick={() => handleAnswer(o.tags)}
-                      className="w-full text-left px-5 py-3.5 rounded-lg border border-gray-mid/30 text-[15px] hover:border-yellow/50 hover:text-cream transition-all"
-                      style={{ color: "#CCCCCC" }}
+                      className="w-full text-left px-5 py-3.5 rounded-lg text-[15px] t-secondary transition-all"
+                      style={{ border: "1px solid var(--border-primary)" }}
                     >
                       {o.label}
                     </button>
@@ -281,8 +280,8 @@ export default function ServicesPage() {
 
           {step >= questions.length && (
             <FadeIn delay={0}>
-              <div className="bg-jet/60 border border-yellow/30 rounded-xl p-8 text-left">
-                <p className="text-xs font-mono text-yellow/60 uppercase tracking-wider mb-2">
+              <div className="rounded-xl p-8 text-left" style={{ backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border-hover)" }}>
+                <p className="text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--yellow-muted)" }}>
                   Our recommendation
                 </p>
                 <p className="font-display font-bold text-xl mb-4">
@@ -290,18 +289,18 @@ export default function ServicesPage() {
                 </p>
                 <div className="space-y-2 mb-6">
                   {getResult().map((r, i) => (
-                    <p key={i} className="text-yellow font-semibold text-lg">
+                    <p key={i} className="t-yellow font-semibold text-lg">
                       {i + 1}. {r}
                     </p>
                   ))}
                 </div>
-                <p className="text-[15px] mb-6" style={{ color: "#B0B0B0" }}>
+                <p className="text-[15px] mb-6 t-tertiary">
                   Of course, we&apos;d want to chat before committing to anything. Every business is different.
                 </p>
                 <div className="flex gap-3">
                   <Link
                     href="/contact"
-                    className="bg-yellow text-jet font-semibold px-6 py-3 rounded-md text-sm hover:bg-yellow/90 transition-colors"
+                    className="btn-yellow px-6 py-3 rounded-md text-sm"
                   >
                     Let&apos;s talk
                   </Link>
@@ -310,8 +309,8 @@ export default function ServicesPage() {
                       setStep(-1);
                       setScores({});
                     }}
-                    className="border border-gray-mid/30 px-6 py-3 rounded-md text-sm hover:border-cream/30 transition-colors"
-                    style={{ color: "#A0A0A0" }}
+                    className="px-6 py-3 rounded-md text-sm t-tertiary transition-colors"
+                    style={{ border: "1px solid var(--border-primary)" }}
                   >
                     Retake quiz
                   </button>
@@ -328,12 +327,12 @@ export default function ServicesPage() {
           <h2 className="font-display font-bold text-3xl mb-4">
             Want to talk specifics?
           </h2>
-          <p className="mb-8 max-w-md mx-auto" style={{ color: "#B0B0B0" }}>
+          <p className="mb-8 max-w-md mx-auto t-tertiary">
             Tell us what you need. We&apos;ll tell you exactly what we&apos;d do, how long it takes, and what it costs.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-yellow text-jet font-semibold px-8 py-3.5 rounded-md hover:bg-yellow/90 transition-colors"
+            className="inline-block btn-yellow px-8 py-3.5 rounded-md"
           >
             Get a quote
           </Link>

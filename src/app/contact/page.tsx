@@ -33,7 +33,6 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    // Simulate form submission — replace with Formspree/Resend endpoint
     setTimeout(() => {
       setSending(false);
       setSubmitted(true);
@@ -47,9 +46,9 @@ export default function ContactPage() {
           <FadeIn>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl mb-4 text-center lg:text-left">
               Let&apos;s figure out if we&apos;re a{" "}
-              <span className="text-yellow">fit.</span>
+              <span className="t-yellow">fit.</span>
             </h1>
-            <p className="max-w-2xl mb-16 text-center lg:text-left" style={{ color: "#B0B0B0" }}>
+            <p className="max-w-2xl mb-16 text-center lg:text-left t-tertiary">
               We don&apos;t do discovery calls where we pitch at you for 45
               minutes. We ask a few questions, you answer honestly, and we tell
               you exactly what we&apos;d do and what it would cost. No fluff.
@@ -65,7 +64,7 @@ export default function ContactPage() {
                   className="space-y-5"
                 >
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
                       What&apos;s your business?
                     </label>
                     <input
@@ -73,18 +72,18 @@ export default function ContactPage() {
                       name="business"
                       required
                       placeholder="e.g. Dental clinic in Rohtak, SaaS startup in Bengaluru"
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream placeholder:text-cream/30 focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
                       What do you need help with?
                     </label>
                     <select
                       name="service"
                       required
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     >
                       <option value="">Select one</option>
                       <option value="web">Web Development</option>
@@ -99,31 +98,31 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
                       Rough budget range
                     </label>
                     <select
                       name="budget"
                       required
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     >
                       <option value="">Select one</option>
                       <option value="under-15k">Under ₹15,000</option>
-                      <option value="15k-50k">₹15,000 – ₹50,000</option>
-                      <option value="50k-1L">₹50,000 – ₹1,00,000</option>
+                      <option value="15k-50k">₹15,000 - ₹50,000</option>
+                      <option value="50k-1L">₹50,000 - ₹1,00,000</option>
                       <option value="above-1L">Above ₹1,00,000</option>
                       <option value="no-idea">I have no idea yet</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
                       How soon do you need this?
                     </label>
                     <select
                       name="timeline"
                       required
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     >
                       <option value="">Select one</option>
                       <option value="asap">As soon as possible</option>
@@ -134,7 +133,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "#909090" }}>
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
                       Your WhatsApp number
                     </label>
                     <input
@@ -142,24 +141,24 @@ export default function ContactPage() {
                       name="whatsapp"
                       required
                       placeholder="+91 98765 43210"
-                      className="w-full bg-gray-dark/50 border border-gray-mid/30 rounded-lg px-4 py-3 text-[15px] text-cream placeholder:text-cream/30 focus:outline-none focus:border-yellow/50 transition-colors"
+                      className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full bg-yellow text-jet font-semibold py-3.5 rounded-md hover:bg-yellow/90 transition-colors disabled:opacity-60"
+                    className="w-full btn-yellow py-3.5 rounded-md disabled:opacity-60"
                   >
                     {sending ? "Sending..." : "Send it over"}
                   </button>
                 </form>
               ) : (
-                <div className="border border-yellow/30 rounded-xl p-8 text-center">
-                  <p className="text-yellow font-display font-bold text-2xl mb-3">
+                <div className="rounded-xl p-8 text-center" style={{ border: "1px solid var(--border-hover)" }}>
+                  <p className="t-yellow font-display font-bold text-2xl mb-3">
                     Got it.
                   </p>
-                  <p className="text-[15px]" style={{ color: "#B8B8B8" }}>
+                  <p className="text-[15px] t-secondary">
                     We&apos;ll get back to you on WhatsApp within 24 hours.
                     Usually much faster. In the meantime, feel free to message
                     us directly.
@@ -168,28 +167,28 @@ export default function ContactPage() {
               )}
 
               {/* Alternative contact */}
-              <div className="mt-8 pt-8 border-t border-gray-mid/20">
-                <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "#777" }}>
+              <div className="mt-8 pt-8" style={{ borderTop: "1px solid var(--border-primary)" }}>
+                <p className="text-xs font-mono uppercase tracking-wider mb-3 t-dim">
                   Or reach out directly
                 </p>
-                <p className="text-[15px]" style={{ color: "#BBBBBB" }}>
+                <p className="text-[15px] t-secondary">
                   WhatsApp:{" "}
                   <a
-                    href="https://wa.me/919999999999"
-                    className="text-yellow hover:underline"
+                    href="https://wa.me/918292511007"
+                    className="t-yellow hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    +91 99999 99999
+                    +91 82925 11007
                   </a>
                 </p>
-                <p className="text-[15px] mt-1" style={{ color: "#BBBBBB" }}>
+                <p className="text-[15px] mt-1 t-secondary">
                   Email:{" "}
                   <a
-                    href="mailto:hello@staplerlabs.com"
-                    className="text-yellow hover:underline"
+                    href="mailto:work@staplerlabs.com"
+                    className="t-yellow hover:underline"
                   >
-                    hello@staplerlabs.com
+                    work@staplerlabs.com
                   </a>
                 </p>
               </div>
@@ -204,10 +203,10 @@ export default function ContactPage() {
                 <div className="space-y-6">
                   {faqs.map((f, i) => (
                     <div key={i}>
-                      <p className="text-[15px] font-semibold mb-1.5" style={{ color: "#EEEEEE" }}>
+                      <p className="text-[15px] font-semibold mb-1.5 t-primary">
                         {f.q}
                       </p>
-                      <p className="text-[14px] leading-relaxed" style={{ color: "#AAAAAA" }}>
+                      <p className="text-[14px] leading-relaxed t-tertiary">
                         {f.a}
                       </p>
                     </div>

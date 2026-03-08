@@ -2,85 +2,221 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════
+   THEME VARIABLES
+   ══════════════════════════════════════════ */
+
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-card: rgba(17, 17, 17, 0.4);
+  --bg-card-hover: rgba(17, 17, 17, 0.6);
+  --bg-nav: rgba(10, 10, 10, 0.9);
+
+  --text-primary: #ECECEC;
+  --text-heading: #FFFFFF;
+  --text-paragraph: #D5D5D5;
+  --text-secondary: #BBBBBB;
+  --text-tertiary: #A0A0A0;
+  --text-muted: #808080;
+  --text-dim: #666666;
+
+  --border-primary: rgba(85, 85, 85, 0.2);
+  --border-hover: rgba(255, 208, 0, 0.3);
+  --border-nav: rgba(85, 85, 85, 0.3);
+
+  --yellow: #FFD000;
+  --yellow-hover: #E8C000;
+  --yellow-muted: rgba(255, 208, 0, 0.5);
+  --yellow-subtle: rgba(255, 208, 0, 0.12);
+
+  --input-bg: rgba(17, 17, 17, 0.5);
+  --input-border: rgba(85, 85, 85, 0.3);
+
+  --scrollbar-track: #0A0A0A;
+  --scrollbar-thumb: #2A2A2A;
+
+  --grid-opacity: 0.03;
+  --glow-opacity: 0.15;
+  --selection-text: #0A0A0A;
+
+  --logo-bg: #0A0A0A;
+  --logo-arm: #EEEEEE;
+  --logo-arm-dark: #C0C0C0;
+  --logo-base: #F0F0F0;
+
+  --font-smoothing: auto;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F0F0F0;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
+  --bg-nav: rgba(250, 250, 250, 0.92);
+
+  --text-primary: #1A1A1A;
+  --text-heading: #0A0A0A;
+  --text-paragraph: #333333;
+  --text-secondary: #4A4A4A;
+  --text-tertiary: #666666;
+  --text-muted: #888888;
+  --text-dim: #AAAAAA;
+
+  --border-primary: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(200, 160, 0, 0.4);
+  --border-nav: rgba(0, 0, 0, 0.06);
+
+  --yellow: #D4A800;
+  --yellow-hover: #B89200;
+  --yellow-muted: rgba(180, 140, 0, 0.5);
+  --yellow-subtle: rgba(200, 160, 0, 0.1);
+
+  --input-bg: #FFFFFF;
+  --input-border: rgba(0, 0, 0, 0.12);
+
+  --scrollbar-track: #FAFAFA;
+  --scrollbar-thumb: #D0D0D0;
+
+  --grid-opacity: 0.06;
+  --glow-opacity: 0;
+  --selection-text: #FFFFFF;
+
+  --logo-bg: #F0F0F0;
+  --logo-arm: #555555;
+  --logo-arm-dark: #444444;
+  --logo-base: #333333;
+
+  --font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════════
+   BASE STYLES
+   ══════════════════════════════════════════ */
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* DO NOT use antialiased on dark backgrounds — it thins light text */
-    -webkit-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
     text-rendering: optimizeLegibility;
   }
 
   body {
-    background-color: #0A0A0A;
-    color: #ECECEC;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 17px;
     line-height: 1.75;
     letter-spacing: 0.01em;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-weight: 420;
+    -webkit-font-smoothing: var(--font-smoothing);
+    -moz-osx-font-smoothing: var(--font-smoothing);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Syne", sans-serif;
     letter-spacing: -0.025em;
     line-height: 1.12;
-    color: #FFFFFF;
+    color: var(--text-heading);
     font-weight: 700;
   }
 
   p {
-    color: #D5D5D5;
+    color: var(--text-paragraph);
     line-height: 1.8;
     font-weight: 420;
     letter-spacing: 0.008em;
   }
 
   ::selection {
-    background-color: #FFD000;
-    color: #0A0A0A;
+    background-color: var(--yellow);
+    color: var(--selection-text);
   }
 
-  /* Ensure inputs/selects inherit better contrast */
   input, select, textarea {
     font-weight: 420;
   }
 }
 
-/* ── Readability utility classes ── */
-.text-body {
-  color: #D5D5D5;
-  font-weight: 420;
+/* ══════════════════════════════════════════
+   THEME-AWARE UTILITY CLASSES
+   ══════════════════════════════════════════ */
+
+/* Text */
+.t-heading { color: var(--text-heading); }
+.t-primary { color: var(--text-primary); }
+.t-paragraph { color: var(--text-paragraph); }
+.t-secondary { color: var(--text-secondary); }
+.t-tertiary { color: var(--text-tertiary); }
+.t-muted { color: var(--text-muted); }
+.t-dim { color: var(--text-dim); }
+.t-yellow { color: var(--yellow); }
+
+/* Backgrounds */
+.bg-theme { background-color: var(--bg-primary); }
+.bg-theme-secondary { background-color: var(--bg-secondary); }
+.bg-theme-card { background-color: var(--bg-card); }
+
+/* Borders */
+.border-theme { border-color: var(--border-primary); }
+.border-theme-hover:hover { border-color: var(--border-hover); }
+
+/* Inputs */
+.input-theme {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
 }
-.text-body-bright {
-  color: #E8E8E8;
-  font-weight: 420;
+.input-theme::placeholder {
+  color: var(--text-dim);
 }
-.text-muted {
-  color: #A0A0A0;
-  font-weight: 400;
-}
-.text-dim {
-  color: #888888;
-  font-weight: 400;
+.input-theme:focus {
+  border-color: var(--yellow);
+  outline: none;
 }
 
-/* Dot grid background */
-.dot-grid {
-  background-image: radial-gradient(circle, rgba(255, 208, 0, 0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
+/* Cards */
+.card-theme {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.card-theme:hover {
+  border-color: var(--border-hover);
+  background-color: var(--bg-card-hover);
 }
 
-/* Graph paper grid */
+/* Button yellow */
+.btn-yellow {
+  background-color: var(--yellow);
+  color: var(--bg-primary);
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-yellow:hover {
+  background-color: var(--yellow-hover);
+}
+
+/* ══════════════════════════════════════════
+   DECORATIVE
+   ══════════════════════════════════════════ */
+
 .graph-grid {
   background-image:
-    linear-gradient(rgba(255, 208, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 208, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 208, 0, var(--grid-opacity)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 208, 0, var(--grid-opacity)) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
-/* Yellow underline draw animation */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 208, 0, calc(var(--grid-opacity) * 2)) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 .nav-link {
   position: relative;
 }
@@ -91,34 +227,56 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #FFD000;
+  background-color: var(--yellow);
   transition: width 0.3s ease;
 }
 .nav-link:hover::after {
   width: 100%;
 }
 
-/* Glow effect for hero elements */
 .yellow-glow {
-  text-shadow: 0 0 40px rgba(255, 208, 0, 0.15), 0 0 80px rgba(255, 208, 0, 0.05);
+  text-shadow: 0 0 40px rgba(255, 208, 0, var(--glow-opacity)), 0 0 80px rgba(255, 208, 0, calc(var(--glow-opacity) * 0.33));
 }
 
-/* Subtle gradient overlay */
 .hero-gradient {
   background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 208, 0, 0.04) 0%, transparent 70%);
 }
 
+[data-theme="light"] .hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200, 160, 0, 0.05) 0%, transparent 70%);
+}
+
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
+
+/* ══════════════════════════════════════════
+   LIGHT MODE OVERRIDES FOR COMPONENTS
+   ══════════════════════════════════════════ */
+
+/* Nav backdrop */
+[data-theme="light"] nav {
+  --tw-backdrop-blur: blur(12px);
 }
-::-webkit-scrollbar-track {
-  background: #0A0A0A;
+
+/* Yellow tag pills in light mode need darker text */
+[data-theme="light"] .text-yellow {
+  color: var(--yellow);
 }
-::-webkit-scrollbar-thumb {
-  background: #2A2A2A;
-  border-radius: 3px;
+
+/* WhatsApp button in light mode */
+[data-theme="light"] .shadow-yellow\/20 {
+  box-shadow: 0 10px 15px -3px rgba(180, 140, 0, 0.15);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #FFD000;
+
+/* Transition smoothness for all themed elements */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0s;
+}
+body, nav, .card-theme, .input-theme, .bg-theme, .bg-theme-secondary {
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }

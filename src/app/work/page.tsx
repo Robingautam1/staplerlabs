@@ -7,7 +7,7 @@ const caseStudies = [
   {
     type: "Healthcare · Dental Clinic",
     situation:
-      "A 15-year-old dental clinic in Rohtak with a packed schedule but zero online presence — no website, no Google listing, no digital appointment system.",
+      "A 15-year-old dental clinic in Rohtak with a packed schedule but zero online presence - no website, no Google listing, no digital appointment system.",
     work: "Google Business Profile setup, a clean responsive website, WhatsApp-based appointment booking with automated confirmations, QR visiting card for the reception desk, and local SEO foundation.",
     outcome:
       "First online appointment booked within 72 hours. Google listing appearing in local search within 2 weeks. 40% of new appointments now come through WhatsApp.",
@@ -34,7 +34,7 @@ const caseStudies = [
   {
     type: "Internal Build · StaplerLabs",
     situation:
-      "We needed to build our own agency website that practised what it preached — fast, honest, and built with the same tools we sell.",
+      "We needed to build our own agency website that practised what it preached - fast, honest, and built with the same tools we sell.",
     work: "This website. Next.js, Tailwind, Framer Motion. Every illustration hand-coded as SVG. Every line of copy written by humans. Zero stock photos.",
     outcome:
       "You're looking at it. If you've read this far, it's working.",
@@ -49,9 +49,9 @@ export default function WorkPage() {
       <section className="py-20 px-6 text-center">
         <FadeIn>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
-            Work that <span className="text-yellow">speaks</span>
+            Work that <span className="t-yellow">speaks</span>
           </h1>
-          <p className="mt-4 max-w-xl mx-auto" style={{ color: "#B0B0B0" }}>
+          <p className="mt-4 max-w-xl mx-auto t-tertiary">
             Real projects. Real outcomes. No stock screenshots or vague testimonials.
           </p>
         </FadeIn>
@@ -63,23 +63,23 @@ export default function WorkPage() {
           {caseStudies.map((cs, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div
-                className={`grid lg:grid-cols-[280px_1fr] gap-8 p-8 sm:p-10 rounded-xl border border-gray-mid/20 bg-gray-dark/30 ${
-                  i % 2 === 0 ? "border-l-4 border-l-yellow" : ""
-                }`}
+                className="grid lg:grid-cols-[280px_1fr] gap-8 p-8 sm:p-10 rounded-xl card-theme"
+                style={i % 2 === 0 ? { borderLeft: "4px solid var(--yellow)" } : {}}
               >
                 {/* Left meta */}
                 <div>
-                  <p className="text-xs font-mono text-yellow/50 uppercase tracking-wider mb-1">
+                  <p className="text-xs font-mono uppercase tracking-wider mb-1" style={{ color: "var(--yellow-muted)" }}>
                     Case Study 0{i + 1}
                   </p>
-                  <p className="font-display font-bold text-lg mb-4" style={{ color: "#EEEEEE" }}>
+                  <p className="font-display font-bold text-lg mb-4 t-primary">
                     {cs.type}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {cs.tags.map((t) => (
                       <span
                         key={t}
-                        className="text-xs font-mono px-2.5 py-1 rounded-full border border-yellow/30 text-yellow/70"
+                        className="text-xs font-mono px-2.5 py-1 rounded-full"
+                        style={{ border: "1px solid var(--yellow-subtle)", color: "var(--yellow-muted)" }}
                       >
                         {t}
                       </span>
@@ -90,26 +90,26 @@ export default function WorkPage() {
                 {/* Right content */}
                 <div className="space-y-5">
                   <div>
-                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5" style={{ color: "#808080" }}>
+                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5 t-muted">
                       The Situation
                     </p>
-                    <p className="text-[15px] leading-relaxed" style={{ color: "#BBBBBB" }}>
+                    <p className="text-[15px] leading-relaxed t-secondary">
                       {cs.situation}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5" style={{ color: "#808080" }}>
+                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5 t-muted">
                       What We Built
                     </p>
-                    <p className="text-[15px] leading-relaxed" style={{ color: "#BBBBBB" }}>
+                    <p className="text-[15px] leading-relaxed t-secondary">
                       {cs.work}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs font-mono text-yellow/50 uppercase tracking-wider mb-1.5">
+                    <p className="text-xs font-mono uppercase tracking-wider mb-1.5" style={{ color: "var(--yellow-muted)" }}>
                       The Outcome
                     </p>
-                    <p className="text-[15px] leading-relaxed font-medium" style={{ color: "#E0E0E0" }}>
+                    <p className="text-[15px] leading-relaxed font-medium t-primary">
                       {cs.outcome}
                     </p>
                   </div>
@@ -124,8 +124,8 @@ export default function WorkPage() {
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <FadeIn>
-            <div className="border border-gray-mid/20 rounded-xl p-8 bg-gray-dark/20">
-              <p className="text-[15px] leading-relaxed italic" style={{ color: "#B8B8B8" }}>
+            <div className="card-theme rounded-xl p-8">
+              <p className="text-[15px] leading-relaxed italic t-secondary">
                 &ldquo;We&apos;re a young agency building our portfolio publicly.
                 Every project we take teaches us something. Every client gets the
                 benefit of that. We&apos;d rather show you three real projects than
@@ -142,12 +142,12 @@ export default function WorkPage() {
           <h2 className="font-display font-bold text-3xl mb-4">
             Want to be the next case study?
           </h2>
-          <p className="mb-8 max-w-md mx-auto" style={{ color: "#B0B0B0" }}>
+          <p className="mb-8 max-w-md mx-auto t-tertiary">
             We promise not to put your name on the website without asking first.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-yellow text-jet font-semibold px-8 py-3.5 rounded-md hover:bg-yellow/90 transition-colors"
+            className="inline-block btn-yellow px-8 py-3.5 rounded-md"
           >
             Start a project
           </Link>

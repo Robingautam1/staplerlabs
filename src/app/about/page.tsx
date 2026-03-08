@@ -26,7 +26,7 @@ const beliefs = [
 const builtFor = [
   "Local businesses in Tier 2 and Tier 3 cities who've been doing great work offline and need to exist online",
   "Founders who are the smartest person in their field but don't have time to figure out digital marketing",
-  "Professionals — doctors, CAs, lawyers — who know they should be online but don't know where to start",
+  "Professionals - doctors, CAs, lawyers - who know they should be online but don't know where to start",
   "Small teams that need enterprise-level automation at prices that don't require a board meeting",
   "Anyone who's been burned by an agency that promised the world and delivered a WordPress template",
 ];
@@ -40,13 +40,13 @@ export default function AboutPage() {
           <FadeIn>
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl mb-8">
               Named after the most{" "}
-              <span className="text-yellow">underrated</span> tool in the
+              <span className="t-yellow">underrated</span> tool in the
               office.
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="space-y-5 text-base leading-relaxed" style={{ color: "#CCCCCC" }}>
+            <div className="space-y-5 text-base leading-relaxed t-secondary">
               <p>
                 In a market full of agencies called &ldquo;DigiPro
                 Solutions&rdquo; and &ldquo;TechBridge Innovations,&rdquo; we
@@ -70,13 +70,13 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-16 px-6 bg-gray-dark/30">
+      <section className="py-16 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <h2 className="font-display font-bold text-2xl sm:text-3xl mb-6">
               We&apos;re small on purpose.
             </h2>
-            <p className="text-base leading-relaxed mb-4" style={{ color: "#BBBBBB" }}>
+            <p className="text-base leading-relaxed mb-4 t-secondary">
               Every project gets a founder&apos;s attention, not an
               intern&apos;s. We could hire more people and take on more clients.
               We choose not to. Because the moment you scale past the point
@@ -84,7 +84,7 @@ export default function AboutPage() {
               it, quality drops. We&apos;ve seen it happen. We refuse to let it
               happen here.
             </p>
-            <p className="text-base leading-relaxed" style={{ color: "#BBBBBB" }}>
+            <p className="text-base leading-relaxed t-secondary">
               This doesn&apos;t mean we&apos;re slow. It means we&apos;re
               selective. If we take your project, it&apos;s because we know
               we can deliver something worth paying for.
@@ -104,11 +104,11 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 gap-6">
             {beliefs.map((b, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <div className="border border-gray-mid/20 rounded-xl p-6 h-full hover:border-yellow/30 transition-colors">
-                  <h3 className="font-display font-bold text-base mb-2 text-yellow">
+                <div className="card-theme rounded-xl p-6 h-full">
+                  <h3 className="font-display font-bold text-base mb-2 t-yellow">
                     {b.title}
                   </h3>
-                  <p className="text-[15px] leading-relaxed" style={{ color: "#BBBBBB" }}>
+                  <p className="text-[15px] leading-relaxed t-secondary">
                     {b.desc}
                   </p>
                 </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
       </section>
 
       {/* Built for */}
-      <section className="py-20 px-6 bg-gray-dark/30">
+      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <h2 className="font-display font-bold text-2xl sm:text-3xl mb-8">
@@ -130,8 +130,8 @@ export default function AboutPage() {
             {builtFor.map((b, i) => (
               <FadeIn key={i} delay={i * 0.06}>
                 <div className="flex items-start gap-3">
-                  <span className="w-2 h-2 rounded-full bg-yellow mt-2 shrink-0" />
-                  <p className="text-[15px] leading-relaxed" style={{ color: "#CCCCCC" }}>{b}</p>
+                  <span className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ backgroundColor: "var(--yellow)" }} />
+                  <p className="text-[15px] leading-relaxed t-secondary">{b}</p>
                 </div>
               </FadeIn>
             ))}
@@ -145,7 +145,7 @@ export default function AboutPage() {
           <div className="max-w-xs mx-auto mb-8">
             <StaplerLogo className="w-24 h-24 mx-auto" hoverAnimate={true} />
           </div>
-          <p className="text-sm font-mono" style={{ color: "#777" }}>
+          <p className="text-sm font-mono t-dim">
             Holding things together since 2024.
           </p>
         </FadeIn>
@@ -157,12 +157,12 @@ export default function AboutPage() {
           <h2 className="font-display font-bold text-3xl mb-4">
             Now that you know who we are.
           </h2>
-          <p className="mb-8 max-w-md mx-auto" style={{ color: "#B0B0B0" }}>
+          <p className="mb-8 max-w-md mx-auto t-tertiary">
             Let&apos;s find out if we can help you.
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-yellow text-jet font-semibold px-8 py-3.5 rounded-md hover:bg-yellow/90 transition-colors"
+            className="inline-block btn-yellow px-8 py-3.5 rounded-md"
           >
             Get in touch
           </Link>
