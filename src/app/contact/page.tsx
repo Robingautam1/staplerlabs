@@ -150,7 +150,7 @@ export default function ContactPage() {
                     disabled={sending}
                     className="w-full btn-yellow py-3.5 rounded-md disabled:opacity-60"
                   >
-                    {sending ? "Sending..." : "Send it over"}
+                    {sending ? "Sending..." : "Send my details"}
                   </button>
                 </form>
               ) : (

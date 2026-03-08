@@ -49,7 +49,7 @@ export default function WorkPage() {
       <section className="py-20 px-6 text-center">
         <FadeIn>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
-            Work that <span className="t-yellow">speaks</span>
+            Work that <span className="t-yellow">speaks</span> for itself
           </h1>
           <p className="mt-4 max-w-xl mx-auto t-tertiary">
             Real projects. Real outcomes. No stock screenshots or vague testimonials.
@@ -74,7 +74,7 @@ export default function WorkPage() {
                   <p className="font-display font-bold text-lg mb-4 t-primary">
                     {cs.type}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {cs.tags.map((t) => (
                       <span
                         key={t}
@@ -84,6 +84,19 @@ export default function WorkPage() {
                         {t}
                       </span>
                     ))}
+                  </div>
+                  {/* Placeholder screenshot */}
+                  <div
+                    className="w-full rounded-lg flex items-center justify-center"
+                    style={{
+                      aspectRatio: "16/10",
+                      backgroundColor: "var(--bg-secondary)",
+                      border: "1px solid var(--border-primary)",
+                    }}
+                  >
+                    <span className="text-xs font-mono uppercase tracking-wider t-dim">
+                      Project Screenshot
+                    </span>
                   </div>
                 </div>
 

@@ -3,19 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
-import {
-  WebDevIllustration,
-  AutomationIllustration,
-  ReceptionistIllustration,
-  OnboardingIllustration,
-  SEOIllustration,
-  AdsIllustration,
-} from "@/components/ServiceIllustrations";
+import { Globe, Zap, Phone, MapPin, Search, Megaphone } from "lucide-react";
+
+const iconStyle = { color: "var(--yellow)", width: 32, height: 32, strokeWidth: 1.5 };
 
 const services = [
   {
     headline: "Websites that work while you sleep",
-    illustration: <WebDevIllustration />,
+    illustration: <Globe style={iconStyle} />,
     body: "We don't just build websites - we build digital storefronts that load fast, look sharp, and convert visitors into customers. Whether you need a founder portfolio, a local business site, or a SaaS front-end, we build with Next.js because speed isn't a feature, it's table stakes. Most standard projects go live in under two weeks.",
     outcomes: [
       "A website that loads in under 2 seconds on 4G",
@@ -27,7 +22,7 @@ const services = [
   },
   {
     headline: "The best employee you'll ever have works 24 hours a day",
-    illustration: <AutomationIllustration />,
+    illustration: <Zap style={iconStyle} />,
     body: "WhatsApp automation, CRM workflows, invoice follow-ups, AI-assisted customer responses - everything that makes your business feel like it has twice the staff. The kind of automation that doesn't just save time, it makes your competitors wonder how you're responding to leads at 2am.",
     outcomes: [
       "WhatsApp bots that qualify leads before you wake up",
@@ -39,7 +34,7 @@ const services = [
   },
   {
     headline: "Your receptionist doesn't need a lunch break. Ours doesn't either.",
-    illustration: <ReceptionistIllustration />,
+    illustration: <Phone style={iconStyle} />,
     body: "An AI-powered front desk that handles calls, responds on WhatsApp in seconds, qualifies leads, and books appointments - all before a human gets involved. For business owners who are tired of missing calls while they're actually doing their job.",
     outcomes: [
       "Instant WhatsApp first-response to every enquiry",
@@ -51,7 +46,7 @@ const services = [
   },
   {
     headline: "You've been running a great business. Now let the internet know.",
-    illustration: <OnboardingIllustration />,
+    illustration: <MapPin style={iconStyle} />,
     body: "For businesses with zero digital presence - the doctor with a packed waiting room but no Google listing, the CA with 200 clients but no website, the shop that's been around for 30 years but can't be found online. We handle everything: Google Business Profile, your first website, social handles, payment gateway, QR menus, digital visiting cards. The full package.",
     outcomes: [
       "Google Business Profile that shows up in local searches",
@@ -63,7 +58,7 @@ const services = [
   },
   {
     headline: "The long game that actually pays off",
-    illustration: <SEOIllustration />,
+    illustration: <Search style={iconStyle} />,
     body: "We won't promise page 1 in 30 days because that's not how SEO works and anyone who tells you otherwise is either lying or selling something. What we will do: build a proper technical foundation, create content that real humans want to read, and optimise your local presence so the people searching for your service actually find you. It takes 3-6 months. It's worth it.",
     outcomes: [
       "Technical SEO audit and fixes that search engines reward",
@@ -75,7 +70,7 @@ const services = [
   },
   {
     headline: "Ads that spend your money wisely, not quickly",
-    illustration: <AdsIllustration />,
+    illustration: <Megaphone style={iconStyle} />,
     body: "Meta Ads and Google Ads for businesses that want results without burning money learning how. We handle strategy, creative direction, copy, A/B testing, and monthly reporting. Most clients have never had anyone explain what their ad spend actually bought them. We change that.",
     outcomes: [
       "Campaign strategy based on your actual business goals",
@@ -322,7 +317,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 px-6 text-center">
+      <section className="py-24 px-6 text-center" style={{ marginTop: "80px" }}>
         <FadeIn>
           <h2 className="font-display font-bold text-3xl mb-4">
             Want to talk specifics?

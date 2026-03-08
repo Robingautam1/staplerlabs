@@ -177,7 +177,6 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 3.2 }}
           >
             {[
-              "47+ businesses onboarded",
               "3-day avg. launch time",
               "Zero client chasing",
             ].map((t, i) => (
