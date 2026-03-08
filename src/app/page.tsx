@@ -14,7 +14,7 @@ import {
   AdsIllustration,
 } from "@/components/ServiceIllustrations";
 
-const rotatingWords = ["websites", "automation", "ads", "everything"];
+const rotatingWords = ["websites", "automation", "onboarding", "SEO", "ads", "everything"];
 
 function RotatingWord() {
   const [index, setIndex] = useState(0);
