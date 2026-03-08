@@ -112,26 +112,15 @@ export default function HomePage() {
 
         {/* Main hero content */}
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          {/* Animated logo badge */}
+          {/* Status line */}
           <motion.div
-            className="inline-block mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.2 }}
+            className="mb-10 font-mono text-[11px] tracking-[0.15em] uppercase t-dim"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 2.2 }}
           >
-            <div
-              className="flex items-center gap-3 rounded-full px-5 py-2 backdrop-blur-sm"
-              style={{
-                border: "1px solid var(--border-primary)",
-                backgroundColor: "var(--bg-card)",
-              }}
-            >
-              <StaplerLogo className="w-7 h-7 rounded-lg" animate={true} hoverAnimate={true} />
-              <span className="text-sm font-medium t-tertiary">
-                The agency that holds everything together
-              </span>
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            </div>
+            <span className="t-yellow">*</span>{" "}
+            accepting projects for Q2 2026
           </motion.div>
 
           {/* Headline */}
@@ -203,26 +192,19 @@ export default function HomePage() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll line */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
+          animate={{ opacity: 0.25 }}
           transition={{ delay: 3.5 }}
         >
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] t-dim">
-            Scroll
-          </span>
-          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.8, repeat: Infinity }}>
-            <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
-              <rect x="1" y="1" width="14" height="22" rx="7" stroke="var(--text-dim)" strokeWidth="1.5" />
-              <motion.circle
-                cx="8" cy="7" r="1.5" fill="var(--yellow)"
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 1.8, repeat: Infinity }}
-              />
-            </svg>
-          </motion.div>
+          <motion.div
+            className="w-px h-10"
+            style={{ backgroundColor: "var(--text-dim)" }}
+            animate={{ scaleY: [0.4, 1, 0.4] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
       </section>
 
