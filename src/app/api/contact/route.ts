@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
   try {
     const resend = getResend();
     const { error } = await resend.emails.send({
-      from:    "StaplerLabs Contact <onboarding@resend.dev>",
+      from:    "StaplerLabs <hello@staplerlabs.com>",
       to:      ["gautam.robin333@gmail.com"],
       subject: `New inquiry — ${business}`,
       html: `
