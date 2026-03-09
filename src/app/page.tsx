@@ -91,9 +91,80 @@ const comparisons = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://staplerlabs.com/#organization",
+      name: "StaplerLabs",
+      url: "https://staplerlabs.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://staplerlabs.com/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-82925-11007",
+        contactType: "customer service",
+        availableLanguage: ["English", "Hindi"],
+      },
+      email: "work@staplerlabs.com",
+      sameAs: ["https://www.instagram.com/staplerlabs"],
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://staplerlabs.com/#localbusiness",
+      name: "StaplerLabs",
+      description:
+        "StaplerLabs is a lean digital operations agency. We build websites, automate business workflows, run SEO & ads, and handle your entire digital office.",
+      url: "https://staplerlabs.com",
+      telephone: "+91-82925-11007",
+      email: "work@staplerlabs.com",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IN",
+        addressRegion: "Assam",
+      },
+      priceRange: "₹₹",
+      openingHours: "Mo-Fr 10:00-19:00",
+      image: "https://staplerlabs.com/og-image.png",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Digital Services",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Development" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Automation" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO & Content" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Professional Ads" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Offline to Online Onboarding" } },
+        ],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://staplerlabs.com/#website",
+      url: "https://staplerlabs.com",
+      name: "StaplerLabs",
+      publisher: { "@id": "https://staplerlabs.com/#organization" },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: "https://staplerlabs.com/?q={search_term_string}" },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ============ HERO ============ */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background layers */}

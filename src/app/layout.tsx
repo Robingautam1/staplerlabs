@@ -7,17 +7,84 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import PageLoader from "@/components/PageLoader";
 
 export const metadata: Metadata = {
-  title: "StaplerLabs - We run your digital office",
+  metadataBase: new URL("https://staplerlabs.com"),
+
+  title: {
+    default: "StaplerLabs — We run your digital office",
+    template: "%s | StaplerLabs",
+  },
+
   description:
-    "Web development, business automation, offline-to-online onboarding, SEO, and professional advertising. The agency that holds everything together.",
+    "StaplerLabs is a lean digital operations agency in India. We build websites, automate business workflows, run SEO & ads, and handle your entire digital office — so you can focus on what you're actually good at.",
+
+  keywords: [
+    "digital agency India",
+    "web development agency India",
+    "business automation India",
+    "website development Guwahati",
+    "digital marketing Guwahati",
+    "SEO agency India",
+    "WhatsApp automation for business",
+    "Next.js web development",
+    "offline to online onboarding",
+    "Google Ads management India",
+    "small business digital services",
+    "StaplerLabs",
+  ],
+
+  authors: [{ name: "StaplerLabs", url: "https://staplerlabs.com" }],
+  creator: "StaplerLabs",
+  publisher: "StaplerLabs",
+
   openGraph: {
-    title: "StaplerLabs - We run your digital office",
+    title: "StaplerLabs — We run your digital office",
     description:
-      "Web development, business automation, offline-to-online onboarding, SEO, and professional advertising.",
+      "Web. Automation. Onboarding. SEO. Ads. All of it. So you can focus on what you're actually good at.",
     url: "https://staplerlabs.com",
     siteName: "StaplerLabs",
+    locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "StaplerLabs — We run your digital office",
+      },
+    ],
   },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "StaplerLabs — We run your digital office",
+    description:
+      "Web. Automation. Onboarding. SEO. Ads. All of it. So you can focus on what you're actually good at.",
+    images: ["/og-image.png"],
+    creator: "@staplerlabs",
+  },
+
+  alternates: {
+    canonical: "https://staplerlabs.com",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+
+  category: "technology",
 };
 
 export default function RootLayout({
