@@ -42,6 +42,7 @@ export default function ContactPage() {
       service:  (form.elements.namedItem("service")  as HTMLSelectElement).value,
       budget:   (form.elements.namedItem("budget")   as HTMLSelectElement).value,
       timeline: (form.elements.namedItem("timeline") as HTMLSelectElement).value,
+      email:    (form.elements.namedItem("email")    as HTMLInputElement).value,
       whatsapp: (form.elements.namedItem("whatsapp") as HTMLInputElement).value,
     };
 
@@ -159,6 +160,19 @@ export default function ContactPage() {
                       <option value="month">Within a month</option>
                       <option value="no-rush">No rush, just exploring</option>
                     </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
+                      Your email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="you@example.com"
+                      className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
+                    />
                   </div>
 
                   <div>

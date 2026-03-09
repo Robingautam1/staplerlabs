@@ -28,28 +28,27 @@ function isRateLimited(ip: string): boolean {
 }
 
 // ─── Sanitizer ────────────────────────────────────────────────────────────────
-// Strip HTML tags, trim whitespace, cap length
 function sanitize(value: unknown, maxLen = 500): string {
   if (typeof value !== "string") return "";
   return value
-    .replace(/<[^>]*>/g, "")   // strip HTML
-    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "") // strip control chars
+    .replace(/<[^>]*>/g, "")
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
     .trim()
     .slice(0, maxLen);
 }
 
 // ─── Allowed values (whitelist) ───────────────────────────────────────────────
-const VALID_SERVICES = ["web", "automation", "onboarding", "seo", "ads", "not-sure"];
-const VALID_BUDGETS  = ["under-15k", "15k-50k", "50k-1L", "above-1L", "no-idea"];
+const VALID_SERVICES  = ["web", "automation", "onboarding", "seo", "ads", "not-sure"];
+const VALID_BUDGETS   = ["under-15k", "15k-50k", "50k-1L", "above-1L", "no-idea"];
 const VALID_TIMELINES = ["asap", "2-weeks", "month", "no-rush"];
 
 const SERVICE_LABELS: Record<string, string> = {
-  web:         "Web Development",
-  automation:  "Business Automation",
-  onboarding:  "Offline to Online Onboarding",
-  seo:         "SEO & Content",
-  ads:         "Professional Advertising",
-  "not-sure":  "Not sure yet",
+  web:        "Web Development",
+  automation: "Business Automation",
+  onboarding: "Offline to Online Onboarding",
+  seo:        "SEO & Content",
+  ads:        "Professional Advertising",
+  "not-sure": "Not sure yet",
 };
 const BUDGET_LABELS: Record<string, string> = {
   "under-15k": "Under ₹15,000",
@@ -59,10 +58,10 @@ const BUDGET_LABELS: Record<string, string> = {
   "no-idea":   "No idea yet",
 };
 const TIMELINE_LABELS: Record<string, string> = {
-  asap:       "As soon as possible",
-  "2-weeks":  "Within 2 weeks",
-  month:      "Within a month",
-  "no-rush":  "No rush, just exploring",
+  asap:      "As soon as possible",
+  "2-weeks": "Within 2 weeks",
+  month:     "Within a month",
+  "no-rush": "No rush, just exploring",
 };
 
 // ─── Handler ──────────────────────────────────────────────────────────────────
@@ -93,6 +92,7 @@ export async function POST(req: NextRequest) {
   const service  = sanitize(body.service);
   const budget   = sanitize(body.budget);
   const timeline = sanitize(body.timeline);
+  const email    = sanitize(body.email, 254);
   const whatsapp = sanitize(body.whatsapp, 25);
 
   // 4. Validate
@@ -110,6 +110,10 @@ export async function POST(req: NextRequest) {
   if (!VALID_TIMELINES.includes(timeline))
     errors.push("Please select a valid timeline.");
 
+  // Basic email format check
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    errors.push("Please enter a valid email address.");
+
   // WhatsApp: digits, spaces, +, -, (), 7–20 chars
   if (!/^[\d\s\+\-\(\)]{7,20}$/.test(whatsapp))
     errors.push("Please enter a valid WhatsApp number.");
@@ -118,11 +122,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: errors[0] }, { status: 422 });
   }
 
-  // 5. Send email via Resend
+  // 5. Send both emails via Resend
   try {
     const resend = getResend();
-    const { error } = await resend.emails.send({
-      from:    "StaplerLabs <hello@staplerlabs.com>",
+
+    // ── Admin notification → work@staplerlabs.com ──
+    const { error: adminError } = await resend.emails.send({
+      from:    "StaplerLabs <work@staplerlabs.com>",
       to:      ["work@staplerlabs.com"],
       subject: `New inquiry — ${business}`,
       html: `
@@ -143,6 +149,12 @@ export async function POST(req: NextRequest) {
               <td style="padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px;">${TIMELINE_LABELS[timeline]}</td>
             </tr>
             <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #222; color: #888; font-size: 13px;">Email</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px;">
+                <a href="mailto:${email}" style="color: #FFD000;">${email}</a>
+              </td>
+            </tr>
+            <tr>
               <td style="padding: 10px 0; color: #888; font-size: 13px;">WhatsApp</td>
               <td style="padding: 10px 0; font-size: 14px;">
                 <a href="https://wa.me/${whatsapp.replace(/[\s\-\(\)\+]/g, "")}" style="color: #FFD000;">
@@ -156,13 +168,38 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    if (error) {
-      console.error("Resend API error:", error);
+    if (adminError) {
+      console.error("Resend admin email error:", adminError);
       return NextResponse.json(
         { error: "Could not send your details. Please reach out on WhatsApp." },
         { status: 500 }
       );
     }
+
+    // ── Client confirmation → client's email ──
+    await resend.emails.send({
+      from:    "StaplerLabs <work@staplerlabs.com>",
+      to:      [email],
+      subject: "We got your message — StaplerLabs",
+      html: `
+        <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; background: #0A0A0A; color: #E0E0E0; padding: 32px; border-radius: 12px;">
+          <p style="color: #FFD000; font-size: 11px; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 24px;">StaplerLabs</p>
+          <h1 style="font-size: 22px; font-weight: 700; margin: 0 0 16px; color: #FFFFFF;">Got it.</h1>
+          <p style="font-size: 15px; line-height: 1.6; color: #AAAAAA; margin: 0 0 24px;">
+            We've received your details for <strong style="color: #FFFFFF;">${business}</strong> and we'll get back to you on WhatsApp within 24 hours. Usually much faster.
+          </p>
+          <p style="font-size: 15px; line-height: 1.6; color: #AAAAAA; margin: 0 0 32px;">
+            In the meantime, feel free to message us directly at
+            <a href="https://wa.me/918292511007" style="color: #FFD000;">+91 82925 11007</a>.
+          </p>
+          <p style="font-size: 13px; color: #555; margin: 0;">— The StaplerLabs team</p>
+          <p style="color: #333; font-size: 11px; margin: 28px 0 0; border-top: 1px solid #1A1A1A; padding-top: 16px;">
+            You're receiving this because you submitted a contact form at staplerlabs.com
+          </p>
+        </div>
+      `,
+    });
+    // We don't block on client confirmation error — admin notification already sent
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
