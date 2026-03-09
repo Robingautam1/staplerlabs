@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
     const resend = getResend();
     const { error } = await resend.emails.send({
       from:    "StaplerLabs <hello@staplerlabs.com>",
-      to:      ["gautam.robin333@gmail.com"],
+      to:      ["work@staplerlabs.com"],
       subject: `New inquiry — ${business}`,
       html: `
         <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; background: #0A0A0A; color: #E0E0E0; padding: 32px; border-radius: 12px;">
