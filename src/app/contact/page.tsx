@@ -29,14 +29,43 @@ const faqs = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormError(null);
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+
+    const form = e.currentTarget;
+    const data = {
+      business: (form.elements.namedItem("business") as HTMLInputElement).value,
+      service:  (form.elements.namedItem("service")  as HTMLSelectElement).value,
+      budget:   (form.elements.namedItem("budget")   as HTMLSelectElement).value,
+      timeline: (form.elements.namedItem("timeline") as HTMLSelectElement).value,
+      whatsapp: (form.elements.namedItem("whatsapp") as HTMLInputElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        setFormError(json.error ?? "Something went wrong. Please try again.");
+        setSending(false);
+        return;
+      }
+
       setSubmitted(true);
-    }, 1200);
+    } catch {
+      setFormError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -144,6 +173,12 @@ export default function ContactPage() {
                       className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     />
                   </div>
+
+                  {formError && (
+                    <p className="text-sm px-4 py-3 rounded-lg" style={{ background: "rgba(255,60,60,0.08)", color: "#ff6b6b", border: "1px solid rgba(255,60,60,0.2)" }}>
+                      {formError}
+                    </p>
+                  )}
 
                   <button
                     type="submit"
