@@ -126,44 +126,85 @@ export async function POST(req: NextRequest) {
   try {
     const resend = getResend();
 
+    const waNumber = whatsapp.replace(/[\s\-\(\)\+]/g, "");
+
     // ── Admin notification → work@staplerlabs.com ──
     const { error: adminError } = await resend.emails.send({
       from:    "StaplerLabs <work@staplerlabs.com>",
       to:      ["work@staplerlabs.com"],
-      subject: `New inquiry — ${business}`,
+      subject: `🔔 New inquiry — ${business}`,
       html: `
-        <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; background: #0A0A0A; color: #E0E0E0; padding: 32px; border-radius: 12px;">
-          <p style="color: #FFD000; font-size: 11px; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 24px;">StaplerLabs · New Inquiry</p>
-          <h1 style="font-size: 22px; font-weight: 700; margin: 0 0 24px; color: #FFFFFF;">${business}</h1>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; color: #888; font-size: 13px; width: 40%;">Service</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px;">${SERVICE_LABELS[service]}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; color: #888; font-size: 13px;">Budget</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px;">${BUDGET_LABELS[budget]}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; color: #888; font-size: 13px;">Timeline</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px;">${TIMELINE_LABELS[timeline]}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; color: #888; font-size: 13px;">Email</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #222; font-size: 14px;">
-                <a href="mailto:${email}" style="color: #FFD000;">${email}</a>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #888; font-size: 13px;">WhatsApp</td>
-              <td style="padding: 10px 0; font-size: 14px;">
-                <a href="https://wa.me/${whatsapp.replace(/[\s\-\(\)\+]/g, "")}" style="color: #FFD000;">
-                  ${whatsapp}
-                </a>
-              </td>
-            </tr>
-          </table>
-          <p style="color: #444; font-size: 11px; margin: 28px 0 0;">staplerlabs.com · ${new Date().toUTCString()}</p>
+        <div style="background:#0D0D0D; padding: 40px 20px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;">
+          <div style="max-width: 560px; margin: 0 auto;">
+
+            <!-- Yellow accent bar -->
+            <div style="background: #FFD000; height: 4px; border-radius: 4px; margin-bottom: 32px;"></div>
+
+            <!-- Logo + label -->
+            <table style="width:100%; border-collapse:collapse; margin-bottom: 28px;">
+              <tr>
+                <td>
+                  <span style="font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Stapler</span><span style="font-size: 18px; font-weight: 800; color: #FFD000; letter-spacing: -0.5px;">Labs</span>
+                </td>
+                <td style="text-align: right;">
+                  <span style="background: #FFD000; color: #0A0A0A; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;">New Inquiry</span>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Business name -->
+            <h1 style="font-size: 26px; font-weight: 800; color: #FFFFFF; margin: 0 0 6px; letter-spacing: -0.5px;">${business}</h1>
+            <p style="font-size: 13px; color: #555; margin: 0 0 28px;">Received ${new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}</p>
+
+            <!-- Details card -->
+            <div style="background: #161616; border-radius: 12px; overflow: hidden; border: 1px solid #222;">
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 38%;">Service</td>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #E0E0E0; font-size: 14px; font-weight: 500;">${SERVICE_LABELS[service]}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Budget</td>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #E0E0E0; font-size: 14px; font-weight: 500;">${BUDGET_LABELS[budget]}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Timeline</td>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #E0E0E0; font-size: 14px; font-weight: 500;">${TIMELINE_LABELS[timeline]}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
+                  <td style="padding: 14px 20px; border-bottom: 1px solid #222; font-size: 14px;">
+                    <a href="mailto:${email}" style="color: #FFD000; text-decoration: none; font-weight: 500;">${email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 20px; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">WhatsApp</td>
+                  <td style="padding: 14px 20px; font-size: 14px;">
+                    <a href="https://wa.me/${waNumber}" style="color: #FFD000; text-decoration: none; font-weight: 500;">${whatsapp}</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- CTA buttons -->
+            <table style="width:100%; border-collapse:collapse; margin-top: 24px;">
+              <tr>
+                <td style="padding-right: 8px;">
+                  <a href="https://wa.me/${waNumber}" style="display:block; background:#25D366; color:#FFFFFF; text-align:center; padding: 13px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration:none;">
+                    Reply on WhatsApp
+                  </a>
+                </td>
+                <td style="padding-left: 8px;">
+                  <a href="mailto:${email}" style="display:block; background:#1A1A1A; color:#E0E0E0; text-align:center; padding: 13px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration:none; border: 1px solid #333;">
+                    Reply via Email
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Footer -->
+            <p style="color: #333; font-size: 11px; margin: 32px 0 0; text-align: center;">staplerlabs.com</p>
+          </div>
         </div>
       `,
     });
@@ -182,20 +223,59 @@ export async function POST(req: NextRequest) {
       to:      [email],
       subject: "We got your message — StaplerLabs",
       html: `
-        <div style="font-family: -apple-system, sans-serif; max-width: 580px; margin: 0 auto; background: #0A0A0A; color: #E0E0E0; padding: 32px; border-radius: 12px;">
-          <p style="color: #FFD000; font-size: 11px; font-family: monospace; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 24px;">StaplerLabs</p>
-          <h1 style="font-size: 22px; font-weight: 700; margin: 0 0 16px; color: #FFFFFF;">Got it.</h1>
-          <p style="font-size: 15px; line-height: 1.6; color: #AAAAAA; margin: 0 0 24px;">
-            We've received your details for <strong style="color: #FFFFFF;">${business}</strong> and we'll get back to you on WhatsApp within 24 hours. Usually much faster.
-          </p>
-          <p style="font-size: 15px; line-height: 1.6; color: #AAAAAA; margin: 0 0 32px;">
-            In the meantime, feel free to message us directly at
-            <a href="https://wa.me/918292511007" style="color: #FFD000;">+91 82925 11007</a>.
-          </p>
-          <p style="font-size: 13px; color: #555; margin: 0;">— The StaplerLabs team</p>
-          <p style="color: #333; font-size: 11px; margin: 28px 0 0; border-top: 1px solid #1A1A1A; padding-top: 16px;">
-            You're receiving this because you submitted a contact form at staplerlabs.com
-          </p>
+        <div style="background: #0D0D0D; padding: 40px 20px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;">
+          <div style="max-width: 560px; margin: 0 auto;">
+
+            <!-- Yellow accent bar -->
+            <div style="background: #FFD000; height: 4px; border-radius: 4px; margin-bottom: 32px;"></div>
+
+            <!-- Logo -->
+            <p style="margin: 0 0 36px;">
+              <span style="font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Stapler</span><span style="font-size: 18px; font-weight: 800; color: #FFD000; letter-spacing: -0.5px;">Labs</span>
+            </p>
+
+            <!-- Heading -->
+            <h1 style="font-size: 36px; font-weight: 800; color: #FFFFFF; margin: 0 0 12px; letter-spacing: -1px;">We got it.</h1>
+            <p style="font-size: 16px; line-height: 1.7; color: #888; margin: 0 0 32px;">
+              Your details for <strong style="color: #FFFFFF;">${business}</strong> are with us. We'll reach out on WhatsApp within 24 hours — usually much faster.
+            </p>
+
+            <!-- Summary card -->
+            <div style="background: #161616; border-radius: 12px; border: 1px solid #222; padding: 20px 24px; margin-bottom: 32px;">
+              <p style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 16px; font-weight: 600;">Your submission</p>
+              <table style="width:100%; border-collapse:collapse;">
+                <tr>
+                  <td style="padding: 7px 0; color: #555; font-size: 13px; width: 40%;">Service</td>
+                  <td style="padding: 7px 0; color: #D0D0D0; font-size: 13px; font-weight: 500;">${SERVICE_LABELS[service]}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 7px 0; color: #555; font-size: 13px;">Budget</td>
+                  <td style="padding: 7px 0; color: #D0D0D0; font-size: 13px; font-weight: 500;">${BUDGET_LABELS[budget]}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 7px 0; color: #555; font-size: 13px;">Timeline</td>
+                  <td style="padding: 7px 0; color: #D0D0D0; font-size: 13px; font-weight: 500;">${TIMELINE_LABELS[timeline]}</td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- WhatsApp CTA -->
+            <a href="https://wa.me/918292511007" style="display:block; background:#FFD000; color:#0A0A0A; text-align:center; padding: 15px 24px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration:none; margin-bottom: 16px;">
+              Message us on WhatsApp
+            </a>
+            <p style="text-align:center; font-size: 13px; color: #444; margin: 0 0 36px;">
+              or reply directly to this email
+            </p>
+
+            <!-- Footer -->
+            <div style="border-top: 1px solid #1A1A1A; padding-top: 24px;">
+              <p style="color: #333; font-size: 12px; margin: 0; line-height: 1.6;">
+                You're receiving this because you submitted a contact form at
+                <a href="https://staplerlabs.com" style="color: #555; text-decoration: none;">staplerlabs.com</a>
+              </p>
+            </div>
+
+          </div>
         </div>
       `,
     });
