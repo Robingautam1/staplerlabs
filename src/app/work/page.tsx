@@ -46,24 +46,24 @@ export default function WorkPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <section className="py-20 px-6 text-center">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 text-center">
         <FadeIn>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
+          <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl">
             Work that <span className="t-yellow">speaks</span> for itself
           </h1>
-          <p className="mt-4 max-w-xl mx-auto t-tertiary">
+          <p className="mt-4 max-w-xl mx-auto t-tertiary text-sm sm:text-base">
             Real projects. Real outcomes. No stock screenshots or vague testimonials.
           </p>
         </FadeIn>
       </section>
 
       {/* Case studies */}
-      <section className="pb-20 px-6">
-        <div className="max-w-5xl mx-auto space-y-8">
+      <section className="pb-16 sm:pb-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
           {caseStudies.map((cs, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div
-                className="grid lg:grid-cols-[280px_1fr] gap-8 p-8 sm:p-10 rounded-xl card-theme"
+                className="grid lg:grid-cols-[280px_1fr] gap-6 sm:gap-8 p-6 sm:p-10 rounded-xl card-theme"
                 style={i % 2 === 0 ? { borderLeft: "4px solid var(--yellow)" } : {}}
               >
                 {/* Left meta */}

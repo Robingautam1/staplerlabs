@@ -196,44 +196,44 @@ export default function HomePage() {
 
           {/* Headline */}
           <motion.h1
-            className="font-display font-extrabold text-[2.75rem] sm:text-6xl lg:text-[5.5rem] leading-[1.05] tracking-tight"
+            className="font-display font-extrabold text-[1.85rem] sm:text-5xl lg:text-[5.5rem] leading-[1.1] sm:leading-[1.05] tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            We handle your <br className="hidden sm:block" />
+            We handle your <br />
             <RotatingWord />
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            className="mt-6 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed font-normal t-secondary"
+            className="mt-6 text-base sm:text-xl max-w-xl mx-auto leading-relaxed font-normal t-secondary"
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.7 }}
           >
-            So you can focus on the thing you&apos;re actually good at.
+            So you can focus on the thing you&apos;re actually good at.{" "}
             <br className="hidden sm:block" />
             We handle the rest.
           </motion.p>
 
           {/* CTA row */}
           <motion.div
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-2 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 2.9 }}
           >
             <a
               href="#services"
-              className="btn-yellow px-8 py-4 rounded-lg text-base"
+              className="btn-yellow px-8 py-4 rounded-lg text-base w-full sm:w-auto text-center"
               style={{ boxShadow: "0 10px 15px -3px rgba(255,208,0,0.1)" }}
             >
               See what we do
             </a>
             <Link
               href="/contact"
-              className="font-medium px-8 py-4 rounded-lg text-base t-primary transition-all"
+              className="font-medium px-8 py-4 rounded-lg text-base t-primary transition-all w-full sm:w-auto text-center"
               style={{ border: "1px solid rgba(255,255,255,0.18)" }}
             >
               Get a free quote
@@ -242,7 +242,7 @@ export default function HomePage() {
 
           {/* Trust signals */}
           <motion.div
-            className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4"
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pb-2 px-10 sm:px-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 3.2 }}

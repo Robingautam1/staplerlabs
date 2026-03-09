@@ -22,7 +22,7 @@ export default function Footer() {
               StaplerLabs
             </span>
           </Link>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
             {links.map((l) => (
               <Link
                 key={l.href}

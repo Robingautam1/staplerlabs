@@ -149,12 +149,12 @@ export default function ServicesPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <section className="py-20 px-6 text-center">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 text-center">
         <FadeIn>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl">
+          <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl">
             What we <span className="t-yellow">actually</span> do
           </h1>
-          <p className="mt-4 max-w-xl mx-auto t-tertiary">
+          <p className="mt-4 max-w-xl mx-auto t-tertiary text-sm sm:text-base">
             Six services. No fluff. Each one exists because we watched businesses struggle without it.
           </p>
         </FadeIn>
@@ -164,7 +164,7 @@ export default function ServicesPage() {
       {services.map((s, i) => (
         <section
           key={i}
-          className="py-20 px-6"
+          className="py-14 sm:py-20 px-4 sm:px-6"
           style={i % 2 !== 0 ? { backgroundColor: "var(--bg-card)" } : {}}
         >
           <div className="max-w-6xl mx-auto">

@@ -71,21 +71,21 @@ export default function ContactPage() {
 
   return (
     <div className="pt-20">
-      <section className="py-20 px-6">
+      <section className="py-12 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl mb-4 text-center lg:text-left">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl mb-4 text-center lg:text-left">
               Let&apos;s figure out if we&apos;re a{" "}
               <span className="t-yellow">fit.</span>
             </h1>
-            <p className="max-w-2xl mb-16 text-center lg:text-left t-tertiary">
+            <p className="max-w-2xl mb-10 sm:mb-16 text-center lg:text-left t-tertiary text-sm sm:text-base">
               We don&apos;t do discovery calls where we pitch at you for 45
               minutes. We ask a few questions, you answer honestly, and we tell
               you exactly what we&apos;d do and what it would cost. No fluff.
             </p>
           </FadeIn>
 
-          <div className="grid lg:grid-cols-[1fr_380px] gap-12 lg:gap-16">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-16">
             {/* Form */}
             <FadeIn delay={0.1}>
               {!submitted ? (

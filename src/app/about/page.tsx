@@ -35,10 +35,10 @@ export default function AboutPage() {
   return (
     <div className="pt-20">
       {/* Header */}
-      <section className="py-20 px-6">
+      <section className="py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl mb-8">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8">
               Named after the most{" "}
               <span className="t-yellow">underrated</span> tool in the
               office.
@@ -70,7 +70,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-16 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
+      <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <h2 className="font-display font-bold text-2xl sm:text-3xl mb-6">
@@ -94,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* Beliefs */}
-      <section className="py-20 px-6">
+      <section className="py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <h2 className="font-display font-bold text-2xl sm:text-3xl mb-10">
@@ -119,7 +119,7 @@ export default function AboutPage() {
       </section>
 
       {/* Built for */}
-      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
+      <section className="py-14 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
             <h2 className="font-display font-bold text-2xl sm:text-3xl mb-8">
