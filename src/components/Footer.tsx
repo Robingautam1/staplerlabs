@@ -34,10 +34,13 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between mt-6 pt-6" style={{ borderTop: "1px solid var(--border-primary)" }}>
-          <p className="text-xs t-muted">
-            &copy; {new Date().getFullYear()} StaplerLabs. All rights reserved.
-          </p>
+        <div className="flex flex-col items-center gap-4 mt-6 pt-6 md:flex-row md:justify-between" style={{ borderTop: "1px solid var(--border-primary)" }}>
+          <div className="text-center md:text-left">
+            <p className="text-[11px] t-dim mb-1">We work with established businesses that are ready to be found.</p>
+            <p className="text-xs t-muted">
+              &copy; {new Date().getFullYear()} StaplerLabs. All rights reserved.
+            </p>
+          </div>
           <p className="text-xs font-mono t-dim mt-2 md:mt-0">
             Built with irrational attention to detail
           </p>

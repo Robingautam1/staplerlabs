@@ -72,7 +72,7 @@ export default function Navbar() {
               href="/contact"
               className="btn-yellow text-sm px-5 py-2 rounded-md"
             >
-              Get Started
+              Talk to us
             </Link>
           </div>
 
@@ -155,7 +155,7 @@ export default function Navbar() {
                   href="/contact"
                   className="inline-block btn-yellow px-6 py-3 rounded-md text-lg"
                 >
-                  Get Started
+                  Talk to us
                 </Link>
               </motion.div>
             </motion.div>

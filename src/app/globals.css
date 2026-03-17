@@ -3,94 +3,105 @@
 @tailwind utilities;
 
 /* ══════════════════════════════════════════
-   THEME VARIABLES
+   THEME VARIABLES — Warm Cream + Ink
    ══════════════════════════════════════════ */
 
-/* Dark theme (default) */
+/* Light theme (NEW DEFAULT) — Warm Cream */
 :root,
-[data-theme="dark"] {
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #111111;
-  --bg-card: rgba(17, 17, 17, 0.4);
-  --bg-card-hover: rgba(17, 17, 17, 0.6);
-  --bg-nav: rgba(10, 10, 10, 0.9);
-
-  --text-primary: #ECECEC;
-  --text-heading: #FFFFFF;
-  --text-paragraph: #D5D5D5;
-  --text-secondary: #BBBBBB;
-  --text-tertiary: #A0A0A0;
-  --text-muted: #808080;
-  --text-dim: #666666;
-
-  --border-primary: rgba(85, 85, 85, 0.2);
-  --border-hover: rgba(255, 208, 0, 0.3);
-  --border-nav: rgba(85, 85, 85, 0.3);
-
-  --yellow: #FFD000;
-  --yellow-hover: #E8C000;
-  --yellow-muted: rgba(255, 208, 0, 0.5);
-  --yellow-subtle: rgba(255, 208, 0, 0.12);
-
-  --input-bg: rgba(17, 17, 17, 0.5);
-  --input-border: rgba(85, 85, 85, 0.3);
-
-  --scrollbar-track: #0A0A0A;
-  --scrollbar-thumb: #2A2A2A;
-
-  --grid-opacity: 0.03;
-  --glow-opacity: 0.15;
-  --selection-text: #0A0A0A;
-
-  --logo-bg: #0A0A0A;
-  --logo-arm: #EEEEEE;
-  --logo-arm-dark: #C0C0C0;
-  --logo-base: #F0F0F0;
-
-  --font-smoothing: auto;
-}
-
-/* Light theme */
 [data-theme="light"] {
-  --bg-primary: #FAFAFA;
-  --bg-secondary: #F0F0F0;
-  --bg-card: rgba(255, 255, 255, 0.7);
-  --bg-card-hover: rgba(255, 255, 255, 0.9);
-  --bg-nav: rgba(250, 250, 250, 0.92);
+  --bg-primary: #F7F3EC;
+  --bg-secondary: #EDE8DF;
+  --bg-card: rgba(255, 255, 255, 0.55);
+  --bg-card-hover: rgba(255, 255, 255, 0.8);
+  --bg-nav: rgba(247, 243, 236, 0.92);
 
-  --text-primary: #1A1A1A;
-  --text-heading: #0A0A0A;
-  --text-paragraph: #333333;
-  --text-secondary: #4A4A4A;
-  --text-tertiary: #666666;
-  --text-muted: #888888;
-  --text-dim: #AAAAAA;
+  --text-primary: #1a1710;
+  --text-heading: #1a1710;
+  --text-paragraph: #2c2820;
+  --text-secondary: #4a453a;
+  --text-tertiary: #6b6459;
+  --text-muted: #8a8378;
+  --text-dim: #a9a297;
 
-  --border-primary: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(200, 160, 0, 0.4);
-  --border-nav: rgba(0, 0, 0, 0.06);
+  --border-primary: rgba(26, 23, 16, 0.12);
+  --border-hover: rgba(198, 144, 10, 0.4);
+  --border-nav: rgba(26, 23, 16, 0.08);
 
-  --yellow: #D4A800;
-  --yellow-hover: #B89200;
-  --yellow-muted: rgba(180, 140, 0, 0.5);
-  --yellow-subtle: rgba(200, 160, 0, 0.1);
+  --yellow: #C6900A;
+  --yellow-hover: #A87A08;
+  --yellow-bright: #FAC755;
+  --yellow-muted: rgba(198, 144, 10, 0.55);
+  --yellow-subtle: rgba(198, 144, 10, 0.1);
 
   --input-bg: #FFFFFF;
-  --input-border: rgba(0, 0, 0, 0.12);
+  --input-border: rgba(26, 23, 16, 0.15);
 
-  --scrollbar-track: #FAFAFA;
-  --scrollbar-thumb: #D0D0D0;
+  --scrollbar-track: #F7F3EC;
+  --scrollbar-thumb: #D4CFC6;
 
-  --grid-opacity: 0.06;
+  --grid-opacity: 0.03;
   --glow-opacity: 0;
   --selection-text: #FFFFFF;
 
-  --logo-bg: #F0F0F0;
-  --logo-arm: #555555;
-  --logo-arm-dark: #444444;
-  --logo-base: #333333;
+  --logo-bg: #F0EBE1;
+  --logo-arm: #4a453a;
+  --logo-arm-dark: #3a352c;
+  --logo-base: #2c2820;
 
   --font-smoothing: antialiased;
+
+  /* CTA button uses bright yellow bg with ink text */
+  --btn-bg: #FAC755;
+  --btn-bg-hover: #E8B840;
+  --btn-text: #1a1710;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg-primary: #141210;
+  --bg-secondary: #1c1a17;
+  --bg-card: rgba(28, 26, 23, 0.5);
+  --bg-card-hover: rgba(28, 26, 23, 0.75);
+  --bg-nav: rgba(20, 18, 16, 0.92);
+
+  --text-primary: #F0EBE1;
+  --text-heading: #F0EBE1;
+  --text-paragraph: #D4CFC6;
+  --text-secondary: #B0A99E;
+  --text-tertiary: #8A8378;
+  --text-muted: #6B6459;
+  --text-dim: #4A453A;
+
+  --border-primary: rgba(240, 235, 225, 0.1);
+  --border-hover: rgba(250, 199, 85, 0.3);
+  --border-nav: rgba(240, 235, 225, 0.08);
+
+  --yellow: #FAC755;
+  --yellow-hover: #E8B840;
+  --yellow-bright: #FAC755;
+  --yellow-muted: rgba(250, 199, 85, 0.5);
+  --yellow-subtle: rgba(250, 199, 85, 0.1);
+
+  --input-bg: rgba(28, 26, 23, 0.6);
+  --input-border: rgba(240, 235, 225, 0.12);
+
+  --scrollbar-track: #141210;
+  --scrollbar-thumb: #2c2820;
+
+  --grid-opacity: 0.03;
+  --glow-opacity: 0.12;
+  --selection-text: #141210;
+
+  --logo-bg: #141210;
+  --logo-arm: #D4CFC6;
+  --logo-arm-dark: #B0A99E;
+  --logo-base: #F0EBE1;
+
+  --font-smoothing: auto;
+
+  --btn-bg: #FAC755;
+  --btn-bg-hover: #E8B840;
+  --btn-text: #141210;
 }
 
 /* ══════════════════════════════════════════
@@ -125,6 +136,11 @@
     font-weight: 700;
   }
 
+  /* Hero h1 uses lighter weight on cream */
+  h1 {
+    font-weight: 500;
+  }
+
   p {
     color: var(--text-paragraph);
     line-height: 1.8;
@@ -155,6 +171,7 @@
 .t-muted { color: var(--text-muted); }
 .t-dim { color: var(--text-dim); }
 .t-yellow { color: var(--yellow); }
+.t-amber { color: #C6900A; }
 
 /* Backgrounds */
 .bg-theme { background-color: var(--bg-primary); }
@@ -190,15 +207,27 @@
   background-color: var(--bg-card-hover);
 }
 
-/* Button yellow */
+/* Button yellow — uses bright yellow bg always */
 .btn-yellow {
-  background-color: var(--yellow);
-  color: var(--bg-primary);
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
   font-weight: 600;
   transition: all 0.2s;
 }
 .btn-yellow:hover {
-  background-color: var(--yellow-hover);
+  background-color: var(--btn-bg-hover);
+}
+
+/* Secondary/outline button */
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  border-color: var(--border-hover);
 }
 
 /* ══════════════════════════════════════════
@@ -207,13 +236,20 @@
 
 .graph-grid {
   background-image:
-    linear-gradient(rgba(255, 208, 0, var(--grid-opacity)) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 208, 0, var(--grid-opacity)) 1px, transparent 1px);
+    linear-gradient(rgba(26, 23, 16, var(--grid-opacity)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 23, 16, var(--grid-opacity)) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+[data-theme="dark"] .graph-grid {
+  background-image:
+    linear-gradient(rgba(250, 199, 85, var(--grid-opacity)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 199, 85, var(--grid-opacity)) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255, 208, 0, calc(var(--grid-opacity) * 2)) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(26, 23, 16, calc(var(--grid-opacity) * 2)) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -235,15 +271,15 @@
 }
 
 .yellow-glow {
-  text-shadow: 0 0 40px rgba(255, 208, 0, var(--glow-opacity)), 0 0 80px rgba(255, 208, 0, calc(var(--glow-opacity) * 0.33));
+  text-shadow: 0 0 40px rgba(250, 199, 85, var(--glow-opacity)), 0 0 80px rgba(250, 199, 85, calc(var(--glow-opacity) * 0.33));
 }
 
 .hero-gradient {
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 208, 0, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(198, 144, 10, 0.04) 0%, transparent 70%);
 }
 
-[data-theme="light"] .hero-gradient {
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200, 160, 0, 0.05) 0%, transparent 70%);
+[data-theme="dark"] .hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(250, 199, 85, 0.04) 0%, transparent 70%);
 }
 
 /* Scrollbar */
@@ -253,7 +289,7 @@
 ::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
 
 /* ══════════════════════════════════════════
-   LIGHT MODE OVERRIDES FOR COMPONENTS
+   COMPONENT OVERRIDES
    ══════════════════════════════════════════ */
 
 /* Nav backdrop */
@@ -261,17 +297,12 @@
   --tw-backdrop-blur: blur(12px);
 }
 
-/* Yellow tag pills in light mode need darker text */
-[data-theme="light"] .text-yellow {
-  color: var(--yellow);
-}
-
-/* WhatsApp button in light mode */
+/* WhatsApp button shadow */
 [data-theme="light"] .shadow-yellow\/20 {
-  box-shadow: 0 10px 15px -3px rgba(180, 140, 0, 0.15);
+  box-shadow: 0 10px 15px -3px rgba(198, 144, 10, 0.15);
 }
 
-/* Transition smoothness for all themed elements */
+/* Transition smoothness */
 * {
   transition-property: background-color, border-color, color;
   transition-duration: 0s;
