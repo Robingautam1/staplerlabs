@@ -1,34 +1,29 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import PageLoader from "@/components/PageLoader";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://staplerlabs.com"),
 
   title: {
-    default: "StaplerLabs — We run your digital office",
+    default: "StaplerLabs — We take established businesses online",
     template: "%s | StaplerLabs",
   },
 
   description:
-    "StaplerLabs is a lean digital operations agency in India. We build websites, automate business workflows, run SEO & ads, and handle your entire digital office — so you can focus on what you're actually good at.",
+    "StaplerLabs takes established offline businesses and builds their entire digital presence from scratch in 30 days — website, Google, WhatsApp, ads — then stays as their long-term digital ops partner.",
 
   keywords: [
-    "digital agency India",
-    "web development agency India",
+    "offline to online business",
+    "digital presence for local business",
     "business automation India",
-    "website development Guwahati",
-    "digital marketing Guwahati",
-    "SEO agency India",
+    "website development India",
+    "Google Business Profile setup",
     "WhatsApp automation for business",
-    "Next.js web development",
-    "offline to online onboarding",
-    "Google Ads management India",
     "small business digital services",
+    "local business SEO India",
     "StaplerLabs",
   ],
 
@@ -37,9 +32,9 @@ export const metadata: Metadata = {
   publisher: "StaplerLabs",
 
   openGraph: {
-    title: "StaplerLabs — We run your digital office",
+    title: "StaplerLabs — We take established businesses online",
     description:
-      "Web. Automation. Onboarding. SEO. Ads. All of it. So you can focus on what you're actually good at.",
+      "Website. Google. WhatsApp. Ads. All of it in 30 days. Then we stick around.",
     url: "https://staplerlabs.com",
     siteName: "StaplerLabs",
     locale: "en_IN",
@@ -49,23 +44,21 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "StaplerLabs — We run your digital office",
+        alt: "StaplerLabs — We take established businesses online",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "StaplerLabs — We run your digital office",
+    title: "StaplerLabs — We take established businesses online",
     description:
-      "Web. Automation. Onboarding. SEO. Ads. All of it. So you can focus on what you're actually good at.",
+      "Website. Google. WhatsApp. Ads. All of it in 30 days. Then we stick around.",
     images: ["/og-image.png"],
     creator: "@staplerlabs",
   },
 
-  alternates: {
-    canonical: "https://staplerlabs.com",
-  },
+  alternates: { canonical: "https://staplerlabs.com" },
 
   robots: {
     index: true,
@@ -85,19 +78,13 @@ export const metadata: Metadata = {
       { url: "/icon.png", type: "image/png", sizes: "32x32" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
     shortcut: "/favicon.ico",
   },
 
   manifest: "/manifest.json",
-
   category: "technology",
-
-  verification: {
-    google: "EnpQuHDyWNZUTypnbNe45Kt32KfeJ420agd5ADapPPI",
-  },
+  verification: { google: "EnpQuHDyWNZUTypnbNe45Kt32KfeJ420agd5ADapPPI" },
 };
 
 export default function RootLayout({
@@ -106,33 +93,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('staplerlabs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
-          }}
         />
       </head>
       <body>
-        <ThemeProvider>
-          <PageLoader />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppButton />
-        </ThemeProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

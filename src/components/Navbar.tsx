@@ -4,15 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import StaplerLogo from "./StaplerLogo";
-import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -39,70 +35,78 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "backdrop-blur-xl"
-            : "bg-transparent"
+          scrolled ? "backdrop-blur-xl" : "bg-transparent"
         }`}
-        style={scrolled ? { backgroundColor: "var(--bg-nav)", borderBottom: "1px solid var(--border-nav)" } : {}}
+        style={
+          scrolled
+            ? { backgroundColor: "rgba(247, 243, 236, 0.85)", borderBottom: "1px solid var(--ink-06)" }
+            : {}
+        }
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <StaplerLogo className="w-8 h-8 rounded-lg" hoverAnimate={true} />
-            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "15px", color: "var(--text-heading)" }}>
-              StaplerLabs
+          {/* Wordmark — Instrument Serif */}
+          <Link href="/" className="flex items-center gap-2">
+            <span
+              className="font-display"
+              style={{ fontSize: "18px", color: "var(--ink)", letterSpacing: "-0.01em" }}
+            >
+              Stapler<span style={{ color: "var(--amber)" }}>Labs</span>
             </span>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav — centered links */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="nav-link transition-colors"
+                className="nav-link transition-colors font-body"
                 style={{
-                  fontFamily: "'Inter', sans-serif",
                   fontSize: "14px",
                   fontWeight: 500,
-                  color: pathname === l.href ? "var(--yellow)" : "var(--text-primary)",
-                  opacity: pathname === l.href ? 1 : 0.85,
+                  color: pathname === l.href ? "var(--amber)" : "var(--ink-60)",
                 }}
               >
                 {l.label}
               </Link>
             ))}
-            <ThemeToggle />
+          </div>
+
+          {/* CTA with hover arrow */}
+          <div className="hidden md:block">
             <Link
               href="/contact"
-              className="btn-yellow"
-              style={{ padding: "10px 20px" }}
+              className="group btn-yellow inline-flex items-center gap-1.5"
+              style={{ padding: "10px 22px" }}
             >
               Talk to us
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
 
           {/* Mobile hamburger */}
-          <div className="flex items-center gap-4 md:hidden">
-            <ThemeToggle />
-            <button
-              onClick={() => setOpen(!open)}
-              className="relative w-8 h-8 flex flex-col justify-center gap-1.5"
-              aria-label="Toggle menu"
-            >
-              <span
-                className={`block w-6 h-0.5 transition-all duration-300 ${
-                  open ? "rotate-45 translate-y-1" : ""
-                }`}
-                style={{ backgroundColor: "var(--text-primary)" }}
-              />
-              <span
-                className={`block w-6 h-0.5 transition-all duration-300 ${
-                  open ? "-rotate-45 -translate-y-1" : ""
-                }`}
-                style={{ backgroundColor: "var(--text-primary)" }}
-              />
-            </button>
-          </div>
+          <button
+            onClick={() => setOpen(!open)}
+            className="relative w-8 h-8 flex flex-col justify-center gap-1.5 md:hidden"
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`block w-6 h-0.5 transition-all duration-300 ${open ? "rotate-45 translate-y-1" : ""}`}
+              style={{ backgroundColor: "var(--ink)" }}
+            />
+            <span
+              className={`block w-6 h-0.5 transition-all duration-300 ${open ? "-rotate-45 -translate-y-1" : ""}`}
+              style={{ backgroundColor: "var(--ink)" }}
+            />
+          </button>
         </div>
       </nav>
 
@@ -115,25 +119,26 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 backdrop-blur-sm z-40"
-              style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+              style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
               onClick={() => setOpen(false)}
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+              transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-50 flex flex-col justify-center px-10"
-              style={{ backgroundColor: "var(--bg-primary)" }}
+              style={{ backgroundColor: "var(--cream)" }}
             >
               <button
                 onClick={() => setOpen(false)}
-                className="absolute top-5 right-6 t-tertiary text-2xl"
+                className="absolute top-5 right-6 text-2xl"
+                style={{ color: "var(--ink-40)" }}
                 aria-label="Close menu"
               >
                 &times;
               </button>
-              {links.map((l, i) => (
+              {[{ href: "/", label: "Home" }, ...links, { href: "/contact", label: "Contact" }].map((l, i) => (
                 <motion.div
                   key={l.href}
                   initial={{ opacity: 0, x: 30 }}
@@ -142,10 +147,10 @@ export default function Navbar() {
                 >
                   <Link
                     href={l.href}
-                    className="block py-3 transition-colors font-display"
+                    className="block py-3 font-display"
                     style={{
                       fontSize: "32px",
-                      color: pathname === l.href ? "var(--yellow)" : "var(--text-heading)",
+                      color: pathname === l.href ? "var(--amber)" : "var(--ink)",
                     }}
                   >
                     {l.label}
