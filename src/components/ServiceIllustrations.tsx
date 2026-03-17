@@ -3,8 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const ink = "rgba(26,23,16,";
-const amber = "#C6900A";
+const ink = "rgba(var(--ink-rgb),";
+const amber = "var(--amber)";
 const font = "var(--font-inter), Inter, sans-serif";
 
 /* ── Service 01: Websites — Browser with loading bar ── */

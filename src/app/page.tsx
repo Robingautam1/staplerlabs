@@ -183,7 +183,7 @@ export default function HomePage() {
 
       {/* ══════════════ INDUSTRY MARQUEE (Fix 10) ══════════════ */}
       <section
-        className="overflow-hidden"
+        className="overflow-hidden marquee-wrap"
         style={{ borderTop: "1px solid var(--ink-06)", borderBottom: "1px solid var(--ink-06)", paddingTop: "14px", paddingBottom: "14px" }}
       >
         <div className="marquee-track flex items-center gap-8 whitespace-nowrap">
@@ -191,7 +191,7 @@ export default function HomePage() {
             <span
               key={i}
               className="font-body"
-              style={{ fontSize: "13px", fontWeight: 500, color: "rgba(26,23,16,0.50)", flexShrink: 0 }}
+              style={{ fontSize: "13px", fontWeight: 500, color: "var(--tertiary)", flexShrink: 0 }}
             >
               {name}
               <span className="mx-4" style={{ color: "var(--ink-12)" }}>&bull;</span>
@@ -445,7 +445,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ DARK CTA SECTION ══════════════ */}
-      <section className="relative px-6 text-center overflow-hidden" style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#1a1710" }}>
+      <section className="relative px-6 text-center overflow-hidden cta-dark" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(198, 144, 10, 0.08) 0%, transparent 70%)" }} />
         <motion.div
           initial={{ opacity: 0, y: 20 }}

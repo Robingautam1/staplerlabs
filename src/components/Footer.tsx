@@ -11,7 +11,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#EDE9E0" }}>
+    <footer style={{ backgroundColor: "var(--bg-deep)" }}>
       <div className="max-w-7xl mx-auto px-6 py-10 pt-12">
         <div className="flex flex-col md:flex-row items-start justify-between gap-8">
           {/* Left — Wordmark */}
@@ -87,7 +87,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid rgba(26, 23, 16, 0.08)" }}
+          style={{ borderTop: "1px solid var(--border)" }}
         >
           <p style={{ fontSize: "12px", color: "var(--ink-40)" }}>
             &copy; {new Date().getFullYear()} StaplerLabs. All rights reserved.
@@ -102,7 +102,7 @@ export default function Footer() {
             </Link>
             <span
               className="font-mono"
-              style={{ fontSize: "11px", color: "rgba(26, 23, 16, 0.3)" }}
+              style={{ fontSize: "11px", color: "var(--ink-40)" }}
             >
               Built with irrational attention to detail
             </span>

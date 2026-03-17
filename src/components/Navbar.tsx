@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -39,7 +40,7 @@ export default function Navbar() {
         }`}
         style={
           scrolled
-            ? { backgroundColor: "rgba(247, 243, 236, 0.85)", borderBottom: "1px solid var(--ink-06)" }
+            ? { backgroundColor: "var(--nav-bg)", borderBottom: "1px solid var(--ink-06)" }
             : {}
         }
       >
@@ -70,6 +71,11 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
+          </div>
+
+          {/* Theme toggle */}
+          <div className="hidden md:block">
+            <ThemeToggle />
           </div>
 
           {/* CTA with hover arrow */}

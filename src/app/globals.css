@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 /* ══════════════════════════════════════════
-   DESIGN TOKENS — Single warm cream theme
+   DESIGN TOKENS — Dual theme system
    ══════════════════════════════════════════ */
 
 :root {
   --font-display: "Instrument Serif", Georgia, serif;
   --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --cream: #F7F3EC;
-  --cream-deep: #EDE9E0;
+  /* Light theme (cream) */
+  --ink-rgb: 26, 23, 16;
+  --bg: #F7F3EC;
+  --bg-deep: #EDE9E0;
+  --bg-card: #FFFFFF;
   --ink: #1a1710;
   --ink-60: rgba(26, 23, 16, 0.60);
   --ink-40: rgba(26, 23, 16, 0.40);
@@ -20,22 +23,77 @@
   --ink-06: rgba(26, 23, 16, 0.06);
   --amber: #C6900A;
   --yellow: #FAC755;
-  --white: #FFFFFF;
+  --border: rgba(26, 23, 16, 0.08);
+  --border-hover: rgba(26, 23, 16, 0.20);
+  --nav-bg: rgba(247, 243, 236, 0.85);
+  --label-muted: rgba(26, 23, 16, 0.42);
+  --tertiary: rgba(26, 23, 16, 0.50);
+  --dim: rgba(26, 23, 16, 0.35);
+  --grid-line: rgba(26, 23, 16, 0.03);
+  --scrollbar-track: #F7F3EC;
+  --scrollbar-thumb: #D4CFC6;
+  --outline-border: rgba(26, 23, 16, 0.22);
+  --selection-text: #FFFFFF;
 
-  /* Compatibility aliases for components */
-  --bg-primary: var(--cream);
-  --bg-secondary: var(--cream-deep);
-  --bg-card: var(--white);
-  --bg-nav: rgba(247, 243, 236, 0.85);
-  --border-primary: var(--ink-08);
+  /* Compatibility aliases */
+  --cream: var(--bg);
+  --cream-deep: var(--bg-deep);
+  --white: var(--bg-card);
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg-deep);
+  --bg-nav: var(--nav-bg);
+  --border-primary: var(--border);
   --border-nav: var(--ink-06);
   --text-heading: var(--ink);
   --text-primary: var(--ink);
   --text-secondary: var(--ink-60);
   --text-muted: var(--ink-40);
-  --text-dim: rgba(26, 23, 16, 0.35);
+  --text-dim: var(--dim);
   --yellow-subtle: rgba(198, 144, 10, 0.15);
   --yellow-muted: var(--amber);
+}
+
+/* Dark theme */
+.dark {
+  --ink-rgb: 245, 245, 240;
+  --bg: #1C1C1E;
+  --bg-deep: #141414;
+  --bg-card: #2C2C2E;
+  --ink: #F5F5F0;
+  --ink-60: rgba(245, 245, 240, 0.60);
+  --ink-40: rgba(245, 245, 240, 0.40);
+  --ink-12: rgba(245, 245, 240, 0.10);
+  --ink-08: rgba(245, 245, 240, 0.06);
+  --ink-06: rgba(245, 245, 240, 0.05);
+  --amber: #FAC755;
+  --yellow: #FAC755;
+  --border: rgba(245, 245, 240, 0.08);
+  --border-hover: rgba(245, 245, 240, 0.18);
+  --nav-bg: rgba(28, 28, 30, 0.85);
+  --label-muted: rgba(245, 245, 240, 0.42);
+  --tertiary: rgba(245, 245, 240, 0.50);
+  --dim: rgba(245, 245, 240, 0.35);
+  --grid-line: rgba(245, 245, 240, 0.03);
+  --scrollbar-track: #1C1C1E;
+  --scrollbar-thumb: #3A3A3C;
+  --outline-border: rgba(245, 245, 240, 0.18);
+  --selection-text: #1a1710;
+  --yellow-subtle: rgba(250, 199, 85, 0.15);
+  --yellow-muted: #FAC755;
+
+  --cream: var(--bg);
+  --cream-deep: var(--bg-deep);
+  --white: var(--bg-card);
+  --bg-primary: var(--bg);
+  --bg-secondary: var(--bg-deep);
+  --bg-nav: var(--nav-bg);
+  --border-primary: var(--border);
+  --border-nav: var(--ink-06);
+  --text-heading: var(--ink);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-60);
+  --text-muted: var(--ink-40);
+  --text-dim: var(--dim);
 }
 
 /* ══════════════════════════════════════════
@@ -49,7 +107,7 @@
   }
 
   body {
-    background-color: var(--cream);
+    background-color: var(--bg);
     color: var(--ink);
     font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 16px;
@@ -58,6 +116,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
+    transition: background-color 300ms ease, color 300ms ease;
   }
 
   /* Noise texture overlay */
@@ -98,7 +157,6 @@
     max-width: 580px;
   }
 
-  /* Centered paragraphs should still center */
   .text-center p,
   p.text-center {
     margin-left: auto;
@@ -107,7 +165,7 @@
 
   ::selection {
     background-color: var(--amber);
-    color: #FFFFFF;
+    color: var(--selection-text);
   }
 }
 
@@ -130,7 +188,7 @@
   font-weight: 500;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: rgba(26, 23, 16, 0.42);
+  color: var(--label-muted);
 }
 
 /* ══════════════════════════════════════════
@@ -146,27 +204,27 @@
 .t-heading { color: var(--ink); }
 .t-primary { color: var(--ink); }
 .t-secondary { color: var(--ink-60); }
-.t-tertiary { color: rgba(26, 23, 16, 0.50); }
+.t-tertiary { color: var(--tertiary); }
 .t-muted { color: var(--ink-40); }
-.t-dim { color: rgba(26, 23, 16, 0.35); }
+.t-dim { color: var(--dim); }
 
 /* ══════════════════════════════════════════
    COMPONENT STYLES
    ══════════════════════════════════════════ */
 
 .card-theme {
-  background-color: var(--white);
-  border: 1px solid var(--ink-08);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
   transition: border-color 220ms ease, transform 220ms ease;
 }
 .card-theme:hover {
-  border-color: rgba(26, 23, 16, 0.20);
+  border-color: var(--border-hover);
   transform: translateY(-4px);
 }
 
 .btn-yellow {
   background-color: var(--yellow);
-  color: var(--ink);
+  color: #1a1710;
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -182,7 +240,7 @@
 .btn-outline {
   background: transparent;
   color: var(--ink);
-  border: 1px solid rgba(26, 23, 16, 0.22);
+  border: 1px solid var(--outline-border);
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -196,7 +254,7 @@
 }
 
 .input-theme {
-  background-color: var(--white);
+  background-color: var(--bg-card);
   border-color: var(--ink-12);
   color: var(--ink);
 }
@@ -226,8 +284,8 @@
 
 .graph-grid {
   background-image:
-    linear-gradient(rgba(26, 23, 16, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(26, 23, 16, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -246,13 +304,35 @@
   animation-play-state: paused;
 }
 
+.marquee-wrap {
+  background-color: var(--bg);
+}
+.dark .marquee-wrap {
+  background-color: #141414;
+}
+
+/* ══════════════════════════════════════════
+   DARK MODE — CTA SECTION
+   ══════════════════════════════════════════ */
+
+.cta-dark {
+  background-color: #1a1710;
+}
+.dark .cta-dark {
+  background-color: #2C2C2E;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
 /* ══════════════════════════════════════════
    SCROLLBAR
    ══════════════════════════════════════════ */
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: #D4CFC6; border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--amber); }
 
 /* ══════════════════════════════════════════

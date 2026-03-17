@@ -16,44 +16,44 @@ export default function HeroIllustration() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         {/* Storefront — muted, dusty */}
-        <rect x="30" y="120" width="140" height="120" rx="4" stroke="rgba(26,23,16,0.18)" strokeWidth="2" fill="none" />
+        <rect x="30" y="120" width="140" height="120" rx="4" stroke="rgba(var(--ink-rgb),0.18)" strokeWidth="2" fill="none" />
         {/* Awning */}
-        <path d="M24 120 L100 100 L176 120" stroke="rgba(26,23,16,0.18)" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M24 120 L100 100 L176 120" stroke="rgba(var(--ink-rgb),0.18)" strokeWidth="2" fill="none" strokeLinecap="round" />
         {/* Door — closed */}
-        <rect x="82" y="180" width="36" height="60" rx="2" stroke="rgba(26,23,16,0.18)" strokeWidth="1.5" fill="none" />
-        <circle cx="112" cy="210" r="2" fill="rgba(26,23,16,0.14)" />
+        <rect x="82" y="180" width="36" height="60" rx="2" stroke="rgba(var(--ink-rgb),0.18)" strokeWidth="1.5" fill="none" />
+        <circle cx="112" cy="210" r="2" fill="rgba(var(--ink-rgb),0.14)" />
 
         {/* Window with "Closed Mon" sign */}
-        <rect x="42" y="132" width="32" height="34" rx="2" stroke="rgba(26,23,16,0.18)" strokeWidth="1.5" fill="none" />
-        <rect x="46" y="140" width="24" height="14" rx="1" fill="rgba(26,23,16,0.04)" />
-        <text x="50" y="149" fontSize="5.5" fill="rgba(26,23,16,0.28)" fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600">CLOSED</text>
-        <text x="53" y="157" fontSize="4.5" fill="rgba(26,23,16,0.18)" fontFamily="var(--font-inter), Inter, sans-serif">Mon</text>
+        <rect x="42" y="132" width="32" height="34" rx="2" stroke="rgba(var(--ink-rgb),0.18)" strokeWidth="1.5" fill="none" />
+        <rect x="46" y="140" width="24" height="14" rx="1" fill="rgba(var(--ink-rgb),0.04)" />
+        <text x="50" y="149" fontSize="5.5" fill="rgba(var(--ink-rgb),0.28)" fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600">CLOSED</text>
+        <text x="53" y="157" fontSize="4.5" fill="rgba(var(--ink-rgb),0.18)" fontFamily="var(--font-inter), Inter, sans-serif">Mon</text>
 
         {/* Phone with 3 missed call indicators */}
-        <rect x="140" y="130" width="24" height="42" rx="5" stroke="rgba(26,23,16,0.18)" strokeWidth="1.5" fill="none" />
-        <rect x="144" y="136" width="16" height="28" rx="1" fill="rgba(26,23,16,0.03)" />
+        <rect x="140" y="130" width="24" height="42" rx="5" stroke="rgba(var(--ink-rgb),0.18)" strokeWidth="1.5" fill="none" />
+        <rect x="144" y="136" width="16" height="28" rx="1" fill="rgba(var(--ink-rgb),0.03)" />
         {/* Red missed call dots */}
         <circle cx="149" cy="143" r="2.5" fill="#D44444" opacity="0.55" />
         <circle cx="156" cy="143" r="2.5" fill="#D44444" opacity="0.45" />
         <circle cx="149" cy="151" r="2.5" fill="#D44444" opacity="0.35" />
         {/* Missed label */}
-        <text x="143" y="162" fontSize="3.5" fill="rgba(26,23,16,0.15)" fontFamily="var(--font-inter), Inter, sans-serif">3 missed</text>
+        <text x="143" y="162" fontSize="3.5" fill="rgba(var(--ink-rgb),0.15)" fontFamily="var(--font-inter), Inter, sans-serif">3 missed</text>
 
         {/* Paper ledger below storefront */}
-        <rect x="42" y="258" width="68" height="44" rx="2" fill="rgba(26,23,16,0.03)" stroke="rgba(26,23,16,0.12)" strokeWidth="1" />
+        <rect x="42" y="258" width="68" height="44" rx="2" fill="rgba(var(--ink-rgb),0.03)" stroke="rgba(var(--ink-rgb),0.12)" strokeWidth="1" />
         {/* Ledger lines */}
-        <line x1="50" y1="268" x2="102" y2="268" stroke="rgba(26,23,16,0.1)" strokeWidth="0.8" />
-        <line x1="50" y1="276" x2="98" y2="276" stroke="rgba(26,23,16,0.08)" strokeWidth="0.8" />
-        <line x1="50" y1="284" x2="90" y2="284" stroke="rgba(26,23,16,0.06)" strokeWidth="0.8" />
-        <line x1="50" y1="292" x2="84" y2="292" stroke="rgba(26,23,16,0.04)" strokeWidth="0.8" />
+        <line x1="50" y1="268" x2="102" y2="268" stroke="rgba(var(--ink-rgb),0.1)" strokeWidth="0.8" />
+        <line x1="50" y1="276" x2="98" y2="276" stroke="rgba(var(--ink-rgb),0.08)" strokeWidth="0.8" />
+        <line x1="50" y1="284" x2="90" y2="284" stroke="rgba(var(--ink-rgb),0.06)" strokeWidth="0.8" />
+        <line x1="50" y1="292" x2="84" y2="292" stroke="rgba(var(--ink-rgb),0.04)" strokeWidth="0.8" />
         {/* Pen */}
-        <line x1="115" y1="256" x2="108" y2="300" stroke="rgba(26,23,16,0.12)" strokeWidth="1" strokeLinecap="round" />
+        <line x1="115" y1="256" x2="108" y2="300" stroke="rgba(var(--ink-rgb),0.12)" strokeWidth="1" strokeLinecap="round" />
       </motion.g>
 
       {/* ── TRANSFORMATION PATH (center) ── */}
       <motion.path
         d="M 185 200 C 230 160, 290 240, 335 200"
-        stroke="#C6900A"
+        stroke="var(--amber)"
         strokeWidth="2.5"
         strokeLinecap="round"
         fill="none"
@@ -81,7 +81,7 @@ export default function HeroIllustration() {
             height="20"
             rx="10"
             fill="var(--cream)"
-            stroke="#C6900A"
+            stroke="var(--amber)"
             strokeWidth="1.2"
           />
           <text
@@ -91,7 +91,7 @@ export default function HeroIllustration() {
             fontSize="7.5"
             fontFamily="var(--font-inter), Inter, sans-serif"
             fontWeight="500"
-            fill="#C6900A"
+            fill="var(--amber)"
           >
             {node.label}
           </text>
@@ -105,30 +105,30 @@ export default function HeroIllustration() {
         transition={{ duration: 0.6, delay: 1.6 }}
       >
         {/* Storefront — bold, confident */}
-        <rect x="350" y="120" width="140" height="120" rx="4" stroke="rgba(26,23,16,0.7)" strokeWidth="2" fill="none" />
-        <path d="M344 120 L420 100 L496 120" stroke="rgba(26,23,16,0.7)" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <rect x="350" y="120" width="140" height="120" rx="4" stroke="rgba(var(--ink-rgb),0.7)" strokeWidth="2" fill="none" />
+        <path d="M344 120 L420 100 L496 120" stroke="rgba(var(--ink-rgb),0.7)" strokeWidth="2" fill="none" strokeLinecap="round" />
         {/* Door — open */}
-        <rect x="402" y="180" width="36" height="60" rx="2" stroke="rgba(26,23,16,0.7)" strokeWidth="1.5" fill="none" />
-        <circle cx="432" cy="210" r="2" fill="rgba(26,23,16,0.5)" />
+        <rect x="402" y="180" width="36" height="60" rx="2" stroke="rgba(var(--ink-rgb),0.7)" strokeWidth="1.5" fill="none" />
+        <circle cx="432" cy="210" r="2" fill="rgba(var(--ink-rgb),0.5)" />
 
         {/* Window — glowing screen */}
-        <rect x="362" y="132" width="32" height="34" rx="2" stroke="rgba(26,23,16,0.7)" strokeWidth="1.5" fill="none" />
+        <rect x="362" y="132" width="32" height="34" rx="2" stroke="rgba(var(--ink-rgb),0.7)" strokeWidth="1.5" fill="none" />
         <rect x="365" y="135" width="26" height="28" rx="1" fill="var(--yellow)" opacity="0.15" />
         {/* Screen glow */}
-        <rect x="367" y="138" width="22" height="4" rx="1" fill="#C6900A" opacity="0.25" />
-        <rect x="367" y="145" width="16" height="3" rx="1" fill="#C6900A" opacity="0.15" />
-        <rect x="367" y="151" width="20" height="3" rx="1" fill="#C6900A" opacity="0.12" />
-        <text x="370" y="162" fontSize="4.5" fill="rgba(26,23,16,0.5)" fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600">OPEN</text>
+        <rect x="367" y="138" width="22" height="4" rx="1" fill="var(--amber)" opacity="0.25" />
+        <rect x="367" y="145" width="16" height="3" rx="1" fill="var(--amber)" opacity="0.15" />
+        <rect x="367" y="151" width="20" height="3" rx="1" fill="var(--amber)" opacity="0.12" />
+        <text x="370" y="162" fontSize="4.5" fill="rgba(var(--ink-rgb),0.5)" fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600">OPEN</text>
 
         {/* WhatsApp green dot on storefront */}
         <circle cx="498" cy="118" r="4" fill="#25D366" opacity="0.8" />
 
         {/* Phone with WhatsApp chat */}
-        <rect x="460" y="125" width="28" height="52" rx="6" stroke="rgba(26,23,16,0.7)" strokeWidth="1.5" fill="none" />
-        <rect x="464" y="132" width="20" height="36" rx="2" fill="rgba(26,23,16,0.03)" />
+        <rect x="460" y="125" width="28" height="52" rx="6" stroke="rgba(var(--ink-rgb),0.7)" strokeWidth="1.5" fill="none" />
+        <rect x="464" y="132" width="20" height="36" rx="2" fill="rgba(var(--ink-rgb),0.03)" />
         {/* Chat bubbles */}
         <rect x="466" y="136" width="14" height="7" rx="3.5" fill="#DCF8C6" />
-        <rect x="470" y="146" width="12" height="7" rx="3.5" fill="var(--white)" stroke="rgba(26,23,16,0.08)" strokeWidth="0.5" />
+        <rect x="470" y="146" width="12" height="7" rx="3.5" fill="var(--white)" stroke="rgba(var(--ink-rgb),0.08)" strokeWidth="0.5" />
         <rect x="466" y="156" width="16" height="7" rx="3.5" fill="#DCF8C6" />
         {/* Green pulse dot */}
         <motion.circle
@@ -180,7 +180,7 @@ export default function HeroIllustration() {
             width="9"
             height={bar.h}
             rx="2"
-            fill="#C6900A"
+            fill="var(--amber)"
             opacity="0.35"
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 1 }}
@@ -188,10 +188,10 @@ export default function HeroIllustration() {
             style={{ transformOrigin: `${bar.x + 4.5}px 308px` }}
           />
         ))}
-        <line x1="356" y1="308" x2="420" y2="308" stroke="rgba(26,23,16,0.12)" strokeWidth="0.8" />
+        <line x1="356" y1="308" x2="420" y2="308" stroke="rgba(var(--ink-rgb),0.12)" strokeWidth="0.8" />
         {/* Stars below chart */}
         {[0, 1, 2, 3, 4].map((s) => (
-          <text key={s} x={358 + s * 9} y="324" fontSize="7" fill="#C6900A" opacity="0.6">★</text>
+          <text key={s} x={358 + s * 9} y="324" fontSize="7" fill="var(--amber)" opacity="0.6">★</text>
         ))}
       </motion.g>
     </svg>
