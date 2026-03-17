@@ -40,7 +40,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "backdrop-blur-md"
+            ? "backdrop-blur-xl"
             : "bg-transparent"
         }`}
         style={scrolled ? { backgroundColor: "var(--bg-nav)", borderBottom: "1px solid var(--border-nav)" } : {}}
@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
             <StaplerLogo className="w-8 h-8 rounded-lg" hoverAnimate={true} />
-            <span className="font-display font-bold text-lg tracking-tight t-heading">
+            <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "15px", color: "var(--text-heading)" }}>
               StaplerLabs
             </span>
           </Link>
@@ -59,10 +59,14 @@ export default function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`nav-link text-sm font-medium transition-colors ${
-                  pathname === l.href ? "t-yellow" : "t-primary"
-                }`}
-                style={pathname !== l.href ? { opacity: 0.85 } : {}}
+                className="nav-link transition-colors"
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: pathname === l.href ? "var(--yellow)" : "var(--text-primary)",
+                  opacity: pathname === l.href ? 1 : 0.85,
+                }}
               >
                 {l.label}
               </Link>
@@ -70,7 +74,8 @@ export default function Navbar() {
             <ThemeToggle />
             <Link
               href="/contact"
-              className="btn-yellow text-sm px-5 py-2 rounded-md"
+              className="btn-yellow"
+              style={{ padding: "10px 20px" }}
             >
               Talk to us
             </Link>
@@ -137,9 +142,11 @@ export default function Navbar() {
                 >
                   <Link
                     href={l.href}
-                    className={`block text-3xl font-display font-bold py-3 transition-colors ${
-                      pathname === l.href ? "t-yellow" : "t-heading"
-                    }`}
+                    className="block py-3 transition-colors font-display"
+                    style={{
+                      fontSize: "32px",
+                      color: pathname === l.href ? "var(--yellow)" : "var(--text-heading)",
+                    }}
                   >
                     {l.label}
                   </Link>
@@ -153,7 +160,8 @@ export default function Navbar() {
               >
                 <Link
                   href="/contact"
-                  className="inline-block btn-yellow px-6 py-3 rounded-md text-lg"
+                  className="inline-block btn-yellow"
+                  style={{ padding: "12px 24px", fontSize: "16px" }}
                 >
                   Talk to us
                 </Link>

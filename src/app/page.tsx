@@ -118,7 +118,7 @@ export default function HomePage() {
       />
 
       {/* ============ HERO ============ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "100vh", paddingTop: "140px", paddingBottom: "100px" }}>
         <div className="absolute inset-0 graph-grid" />
         <div className="absolute inset-0 hero-gradient" />
 
@@ -133,34 +133,43 @@ export default function HomePage() {
         </motion.div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          {/* Status line */}
+          {/* Status badge */}
           <motion.div
-            className="mb-8 font-mono text-[11px] tracking-[0.15em] uppercase t-dim"
+            className="mb-8 flex items-center justify-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <span className="t-yellow">*</span>{" "}
-            accepting projects for Q2 2026
+            <span
+              className="inline-block w-1.5 h-1.5 rounded-full"
+              style={{ backgroundColor: "#C6900A" }}
+            />
+            <span className="label-caps">
+              accepting projects for Q2 2026
+            </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline — Instrument Serif */}
           <motion.h1
-            className="font-display text-[1.6rem] sm:text-4xl lg:text-[4.5rem] leading-[1.15] sm:leading-[1.08] tracking-tight"
+            className="font-display"
+            style={{ fontSize: "clamp(44px, 6vw, 72px)", lineHeight: 1.1, letterSpacing: "-0.01em" }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            You&apos;ve built a great business.
+            <span style={{ color: "var(--text-heading)" }}>
+              You&apos;ve built a great business.
+            </span>
             <br />
             <span style={{ color: "#C6900A" }}>
               The internet just doesn&apos;t know it yet.
             </span>
           </motion.h1>
 
-          {/* Subheading */}
+          {/* Subheading — Inter body */}
           <motion.p
-            className="mt-7 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-normal t-secondary"
+            className="mt-7 max-w-2xl mx-auto"
+            style={{ fontSize: "16px", lineHeight: 1.7, color: "var(--text-secondary)", fontWeight: 400 }}
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}
@@ -179,13 +188,15 @@ export default function HomePage() {
           >
             <a
               href="#how-it-works"
-              className="btn-yellow px-8 py-4 rounded-lg text-base w-full sm:w-auto text-center"
+              className="btn-yellow w-full sm:w-auto text-center"
+              style={{ padding: "14px 32px" }}
             >
               See how it works
             </a>
             <Link
               href="/work"
-              className="btn-outline px-8 py-4 rounded-lg text-base w-full sm:w-auto text-center"
+              className="btn-outline w-full sm:w-auto text-center"
+              style={{ padding: "14px 32px" }}
             >
               View our work
             </Link>
@@ -209,11 +220,19 @@ export default function HomePage() {
       </section>
 
       {/* ============ SOCIAL PROOF / STATS ============ */}
-      <section className="py-20 px-6" style={{ borderTop: "1px solid var(--border-primary)", borderBottom: "1px solid var(--border-primary)" }}>
+      <section
+        className="px-6"
+        style={{
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          borderTop: "1px solid var(--border-primary)",
+          borderBottom: "1px solid var(--border-primary)",
+        }}
+      >
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <p className="text-center text-sm t-secondary mb-12 max-w-xl mx-auto leading-relaxed font-mono tracking-wide uppercase" style={{ fontSize: "11px", letterSpacing: "0.12em" }}>
-              Businesses we&apos;ve worked with have been running for an average of 9 years before calling us.
+            <p className="label-caps text-center mb-12 max-w-xl mx-auto" style={{ letterSpacing: "0.1em" }}>
+              Businesses we&apos;ve worked with have been running for an average of 9 years before calling us
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
               {[
@@ -223,10 +242,15 @@ export default function HomePage() {
                 { number: "24/7", label: "Automation uptime" },
               ].map((s, i) => (
                 <div key={i}>
-                  <p className="font-display font-extrabold text-4xl sm:text-5xl t-yellow yellow-glow">
+                  <p
+                    className="font-display yellow-glow"
+                    style={{ fontSize: "clamp(40px, 5vw, 52px)", color: "#C6900A", lineHeight: 1 }}
+                  >
                     {s.number}
                   </p>
-                  <p className="text-[13px] mt-2 t-tertiary">{s.label}</p>
+                  <p style={{ fontSize: "13px", fontWeight: 400, color: "var(--text-muted)", marginTop: "8px" }}>
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -235,15 +259,15 @@ export default function HomePage() {
       </section>
 
       {/* ============ WHY NOW ============ */}
-      <section className="py-28 px-6">
+      <section className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-center mb-4" style={{ color: "var(--yellow)" }}>
+            <p className="text-center mb-4" style={{ color: "#C6900A", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Why now
             </p>
-            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-[2.8rem] text-center mb-16 max-w-3xl mx-auto leading-snug">
+            <h2 className="font-display text-center mb-16 max-w-3xl mx-auto" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.15 }}>
               Your customers are searching for you.{" "}
-              <span className="t-secondary">They&apos;re finding someone else.</span>
+              <span style={{ color: "var(--text-secondary)" }}>They&apos;re finding someone else.</span>
             </h2>
           </FadeIn>
 
@@ -256,9 +280,9 @@ export default function HomePage() {
               <FadeIn key={i} delay={i * 0.1}>
                 <div
                   className="pt-6"
-                  style={{ borderTop: "1px solid var(--border-primary)" }}
+                  style={{ borderTop: "1px solid rgba(26, 23, 16, 0.12)" }}
                 >
-                  <p className="text-[15.5px] leading-[1.8] t-secondary">
+                  <p style={{ fontSize: "15.5px", lineHeight: 1.8, color: "var(--text-secondary)" }}>
                     {text}
                   </p>
                 </div>
@@ -269,16 +293,16 @@ export default function HomePage() {
       </section>
 
       {/* ============ SERVICES GRID ============ */}
-      <section id="services" className="py-28 px-6" style={{ borderTop: "1px solid var(--border-primary)" }}>
+      <section id="services" className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", borderTop: "1px solid var(--border-primary)" }}>
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-center mb-4" style={{ color: "var(--yellow)" }}>
+            <p className="text-center mb-4" style={{ color: "#C6900A", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Our toolkit
             </p>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-center mb-5">
+            <h2 className="font-display text-center mb-5" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.15 }}>
               Six things. Done properly.
             </h2>
-            <p className="text-center mb-20 max-w-lg mx-auto text-base t-secondary">
+            <p className="text-center mb-20 max-w-lg mx-auto" style={{ fontSize: "16px", color: "var(--text-secondary)" }}>
               We don&apos;t do 47 services with varying levels of competence.
               We do six, and we&apos;re unreasonably good at all of them.
             </p>
@@ -288,12 +312,18 @@ export default function HomePage() {
             {services.map((s, i) => (
               <FadeIn key={i} delay={i * 0.07}>
                 <Link href="/services">
-                  <div className="group card-theme rounded-2xl p-7 h-full transition-all duration-300 cursor-pointer">
-                    <div className="w-14 h-14 mb-5 opacity-70 group-hover:opacity-100 transition-opacity">{s.icon}</div>
-                    <h3 className="font-display font-bold text-[17px] mb-2.5 group-hover:t-yellow transition-colors">
+                  <div
+                    className="group card-theme h-full cursor-pointer"
+                    style={{ borderRadius: "12px", padding: "24px" }}
+                  >
+                    <div className="w-14 h-14 mb-5 opacity-70 group-hover:opacity-100 transition-opacity duration-200">{s.icon}</div>
+                    <h3
+                      className="mb-2.5 group-hover:t-yellow transition-colors duration-150"
+                      style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", fontWeight: 600, color: "var(--text-heading)" }}
+                    >
                       {s.title}
                     </h3>
-                    <p className="text-[15px] leading-relaxed t-secondary">
+                    <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--text-secondary)" }}>
                       {s.desc}
                     </p>
                   </div>
@@ -305,40 +335,42 @@ export default function HomePage() {
       </section>
 
       {/* ============ FEATURED CASE STUDY ============ */}
-      <section className="py-28 px-6" style={{ borderTop: "1px solid var(--border-primary)" }}>
+      <section className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", borderTop: "1px solid var(--border-primary)" }}>
         <div className="max-w-5xl mx-auto">
           <FadeIn>
             <div
-              className="relative rounded-2xl p-10 sm:p-12 overflow-hidden"
+              className="relative overflow-hidden"
               style={{
                 borderLeft: "4px solid var(--yellow)",
                 backgroundColor: "var(--bg-card)",
+                borderRadius: "12px",
+                padding: "clamp(32px, 4vw, 48px)",
               }}
             >
               <div className="absolute -right-8 -bottom-8 opacity-[0.03] pointer-events-none">
                 <StaplerLogo className="w-48 h-48" />
               </div>
-              <p className="text-[11px] font-mono uppercase tracking-[0.15em] mb-4" style={{ color: "var(--yellow)" }}>
-                A client who called us after 15 years of running on word of mouth
+              <p className="label-caps mb-4" style={{ color: "var(--yellow)" }}>
+                A client who called us after years of running on word of mouth
               </p>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl mb-4 leading-snug">
-                A 15-year-old dental clinic in Rohtak.<br />
+              <h3 className="font-display mb-4" style={{ fontSize: "clamp(24px, 3vw, 36px)", lineHeight: 1.2 }}>
+                A 15-year-old dental clinic.<br />
                 Zero online presence.
               </h3>
-              <p className="text-[15.5px] leading-relaxed mb-4 max-w-2xl t-secondary">
+              <p style={{ fontSize: "15.5px", lineHeight: 1.75, color: "var(--text-secondary)", marginBottom: "16px", maxWidth: "640px" }}>
                 Google Business Profile, a clean website, WhatsApp appointment booking,
                 and a QR card for the reception desk.
                 First online appointment booked within 72 hours of going live.
               </p>
-              <p className="text-[15.5px] leading-relaxed mb-6 max-w-2xl t-primary font-medium">
-                They now get 3&ndash;5 online appointment requests per week they would never have received otherwise.
+              <p style={{ fontSize: "15.5px", lineHeight: 1.75, color: "var(--text-primary)", fontWeight: 500, marginBottom: "24px", maxWidth: "640px" }}>
+                They now receive 3&ndash;5 online appointment requests every week they would never have had otherwise.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {["Onboarding", "Web", "Automation"].map((t) => (
                   <span
                     key={t}
-                    className="text-xs font-mono px-3 py-1.5 rounded-full"
-                    style={{ border: "1px solid var(--yellow-subtle)", color: "var(--yellow)" }}
+                    className="font-mono"
+                    style={{ fontSize: "12px", padding: "6px 12px", borderRadius: "9999px", border: "1px solid var(--yellow-subtle)", color: "var(--yellow)" }}
                   >
                     {t}
                   </span>
@@ -346,7 +378,8 @@ export default function HomePage() {
               </div>
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 text-sm t-yellow font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 font-medium hover:gap-3 transition-all duration-150"
+                style={{ fontSize: "14px", color: "var(--yellow)" }}
               >
                 See more work
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -358,14 +391,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ THE WAY WE WORK ============ */}
-      <section id="how-it-works" className="py-28 px-6" style={{ borderTop: "1px solid var(--border-primary)" }}>
+      {/* ============ HOW IT WORKS ============ */}
+      <section id="how-it-works" className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", borderTop: "1px solid var(--border-primary)" }}>
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-center mb-4" style={{ color: "var(--yellow)" }}>
+            <p className="text-center mb-4" style={{ color: "#C6900A", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               How it works
             </p>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-[2.8rem] text-center mb-16">
+            <h2 className="font-display text-center mb-16" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.15 }}>
               Three steps. Then we handle the rest.
             </h2>
           </FadeIn>
@@ -389,17 +422,19 @@ export default function HomePage() {
               },
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.12}>
-                <div className="card-theme rounded-2xl p-8 h-full">
+                <div className="card-theme h-full" style={{ borderRadius: "12px", padding: "32px" }}>
                   <span
-                    className="font-mono text-sm font-bold mb-4 block"
-                    style={{ color: "var(--yellow)" }}
+                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", fontWeight: 500, color: "#C6900A", display: "block", marginBottom: "16px" }}
                   >
                     {item.step}
                   </span>
-                  <h3 className="font-display font-bold text-lg mb-3 leading-snug">
+                  <h3
+                    className="mb-3"
+                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", fontWeight: 600, color: "var(--text-heading)", lineHeight: 1.4 }}
+                  >
                     {item.title}
                   </h3>
-                  <p className="text-[15px] leading-relaxed t-secondary">
+                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--text-secondary)" }}>
                     {item.desc}
                   </p>
                 </div>
@@ -410,21 +445,30 @@ export default function HomePage() {
       </section>
 
       {/* ============ BOTTOM CTA ============ */}
-      <section className="py-28 px-6 text-center relative overflow-hidden" style={{ borderTop: "1px solid var(--border-primary)" }}>
+      <section
+        className="px-6 text-center relative overflow-hidden"
+        style={{
+          paddingTop: "100px",
+          paddingBottom: "100px",
+          backgroundColor: "var(--bg-secondary)",
+          borderTop: "1px solid var(--border-primary)",
+        }}
+      >
         <div className="absolute inset-0 hero-gradient" />
         <FadeIn>
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl mb-5 leading-snug">
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h2 className="font-display mb-5" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.2 }}>
               If your business has been running for years but you&apos;re not online &mdash;{" "}
               <span style={{ color: "#C6900A" }}>this is the call to make.</span>
             </h2>
-            <p className="mb-10 max-w-lg mx-auto text-base t-secondary leading-relaxed">
+            <p className="mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", color: "var(--text-secondary)", lineHeight: 1.7 }}>
               One conversation. We&apos;ll tell you exactly what you need and what it costs.
               No pitch deck. No pressure.
             </p>
             <Link
               href="/contact"
-              className="inline-block btn-yellow px-10 py-4 rounded-lg text-base"
+              className="inline-block btn-yellow"
+              style={{ padding: "14px 40px" }}
             >
               Let&apos;s talk
             </Link>
