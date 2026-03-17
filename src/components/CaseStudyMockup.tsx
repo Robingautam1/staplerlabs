@@ -72,7 +72,7 @@ export default function CaseStudyMockup() {
           Done! You&apos;re booked for
         </text>
         <text x="102" y="169" fontSize="9" fill="var(--ink)" fontFamily="var(--font-inter), Inter, sans-serif">
-          Thu 3:30 PM with Dr. Mehta.
+          Thu 3:30 PM with the dentist.
         </text>
         <text x="102" y="182" fontSize="8" fill="var(--ink-40)" fontFamily="var(--font-inter), Inter, sans-serif">
           Automated via StaplerLabs
@@ -99,7 +99,7 @@ export default function CaseStudyMockup() {
         <circle cx="120" cy="223" r="2.5" fill="#FFFFFF" opacity="0.9" />
         {/* Business info */}
         <text x="38" y="268" fontSize="10" fontWeight="600" fill="var(--ink)" fontFamily="var(--font-inter), Inter, sans-serif">
-          Mehta Dental Clinic
+          Dental Clinic
         </text>
         <text x="38" y="280" fontSize="8" fill="var(--ink-40)" fontFamily="var(--font-inter), Inter, sans-serif">
           4.8 ★★★★★ · 127 reviews

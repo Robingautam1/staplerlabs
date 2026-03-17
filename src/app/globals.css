@@ -77,13 +77,32 @@
     font-family: var(--font-display), "Instrument Serif", Georgia, serif;
     font-weight: 400;
     color: var(--ink);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    line-height: 1.05;
   }
 
   p {
     color: var(--ink-60);
     line-height: 1.72;
+    max-width: 580px;
+  }
+
+  section p,
+  .max-w-5xl p,
+  .max-w-6xl p,
+  .max-w-7xl p {
+    max-width: 580px;
+  }
+
+  /* Centered paragraphs should still center */
+  .text-center p,
+  p.text-center {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   ::selection {

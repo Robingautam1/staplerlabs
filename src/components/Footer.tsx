@@ -12,7 +12,7 @@ const navLinks = [
 export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#EDE9E0" }}>
-      <div className="max-w-7xl mx-auto px-6 py-14">
+      <div className="max-w-7xl mx-auto px-6 py-10 pt-12">
         <div className="flex flex-col md:flex-row items-start justify-between gap-8">
           {/* Left — Wordmark */}
           <div>
