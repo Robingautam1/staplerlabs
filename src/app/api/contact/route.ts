@@ -134,20 +134,20 @@ export async function POST(req: NextRequest) {
       to:      ["work@staplerlabs.com"],
       subject: `🔔 New inquiry — ${business}`,
       html: `
-        <div style="background:#0D0D0D; padding: 40px 20px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;">
+        <div style="background:#141210; padding: 40px 20px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;">
           <div style="max-width: 560px; margin: 0 auto;">
 
             <!-- Yellow accent bar -->
-            <div style="background: #FFD000; height: 4px; border-radius: 4px; margin-bottom: 32px;"></div>
+            <div style="background: #FAC755; height: 4px; border-radius: 4px; margin-bottom: 32px;"></div>
 
             <!-- Logo + label -->
             <table style="width:100%; border-collapse:collapse; margin-bottom: 28px;">
               <tr>
                 <td>
-                  <span style="font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Stapler</span><span style="font-size: 18px; font-weight: 800; color: #FFD000; letter-spacing: -0.5px;">Labs</span>
+                  <span style="font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Stapler</span><span style="font-size: 18px; font-weight: 800; color: #FAC755; letter-spacing: -0.5px;">Labs</span>
                 </td>
                 <td style="text-align: right;">
-                  <span style="background: #FFD000; color: #0A0A0A; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;">New Inquiry</span>
+                  <span style="background: #FAC755; color: #1a1710; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;">New Inquiry</span>
                 </td>
               </tr>
             </table>
@@ -174,13 +174,13 @@ export async function POST(req: NextRequest) {
                 <tr>
                   <td style="padding: 14px 20px; border-bottom: 1px solid #222; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
                   <td style="padding: 14px 20px; border-bottom: 1px solid #222; font-size: 14px;">
-                    <a href="mailto:${email}" style="color: #FFD000; text-decoration: none; font-weight: 500;">${email}</a>
+                    <a href="mailto:${email}" style="color: #FAC755; text-decoration: none; font-weight: 500;">${email}</a>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding: 14px 20px; color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">WhatsApp</td>
                   <td style="padding: 14px 20px; font-size: 14px;">
-                    <a href="https://wa.me/${waNumber}" style="color: #FFD000; text-decoration: none; font-weight: 500;">${whatsapp}</a>
+                    <a href="https://wa.me/${waNumber}" style="color: #FAC755; text-decoration: none; font-weight: 500;">${whatsapp}</a>
                   </td>
                 </tr>
               </table>
@@ -223,15 +223,15 @@ export async function POST(req: NextRequest) {
       to:      [email],
       subject: "We got your message — StaplerLabs",
       html: `
-        <div style="background: #0D0D0D; padding: 40px 20px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;">
+        <div style="background: #141210; padding: 40px 20px; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;">
           <div style="max-width: 560px; margin: 0 auto;">
 
             <!-- Yellow accent bar -->
-            <div style="background: #FFD000; height: 4px; border-radius: 4px; margin-bottom: 32px;"></div>
+            <div style="background: #FAC755; height: 4px; border-radius: 4px; margin-bottom: 32px;"></div>
 
             <!-- Logo -->
             <p style="margin: 0 0 36px;">
-              <span style="font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Stapler</span><span style="font-size: 18px; font-weight: 800; color: #FFD000; letter-spacing: -0.5px;">Labs</span>
+              <span style="font-size: 18px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">Stapler</span><span style="font-size: 18px; font-weight: 800; color: #FAC755; letter-spacing: -0.5px;">Labs</span>
             </p>
 
             <!-- Heading -->
@@ -260,7 +260,7 @@ export async function POST(req: NextRequest) {
             </div>
 
             <!-- WhatsApp CTA -->
-            <a href="https://wa.me/918292511007" style="display:block; background:#FFD000; color:#0A0A0A; text-align:center; padding: 15px 24px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration:none; margin-bottom: 16px;">
+            <a href="https://wa.me/918292511007" style="display:block; background:#FAC755; color:#1a1710; text-align:center; padding: 15px 24px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration:none; margin-bottom: 16px;">
               Message us on WhatsApp
             </a>
             <p style="text-align:center; font-size: 13px; color: #444; margin: 0 0 36px;">

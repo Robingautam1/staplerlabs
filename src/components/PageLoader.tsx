@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const quips = [
-  "Stapling your ideas together...",
-  "Fastening the details...",
-  "Binding brilliance, one click at a time...",
-  "Holding it all together...",
-  "Almost pinned down...",
+  "Setting things up...",
+  "Almost there...",
+  "Loading your experience...",
 ];
 
 export default function PageLoader() {
@@ -16,7 +14,7 @@ export default function PageLoader() {
   const [quip] = useState(() => quips[Math.floor(Math.random() * quips.length)]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => setLoading(false), 1800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -76,7 +74,7 @@ export default function PageLoader() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
           >
             {quip}
           </motion.p>

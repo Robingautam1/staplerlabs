@@ -7,7 +7,7 @@ const caseStudies = [
   {
     type: "Healthcare · Dental Clinic",
     situation:
-      "A 15-year-old dental clinic in Rohtak with a packed schedule but zero online presence - no website, no Google listing, no digital appointment system.",
+      "A 15-year-old dental clinic with a packed schedule but zero online presence \u2014 no website, no Google listing, no digital appointment system.",
     work: "Google Business Profile setup, a clean responsive website, WhatsApp-based appointment booking with automated confirmations, QR visiting card for the reception desk, and local SEO foundation.",
     outcome:
       "First online appointment booked within 72 hours. Google listing appearing in local search within 2 weeks. 40% of new appointments now come through WhatsApp.",
@@ -48,7 +48,7 @@ export default function WorkPage() {
       {/* Header */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 text-center">
         <FadeIn>
-          <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl">
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl">
             Work that <span className="t-yellow">speaks</span> for itself
           </h1>
           <p className="mt-4 max-w-xl mx-auto t-tertiary text-sm sm:text-base">
@@ -71,7 +71,7 @@ export default function WorkPage() {
                   <p className="text-xs font-mono uppercase tracking-wider mb-1" style={{ color: "var(--yellow-muted)" }}>
                     Case Study 0{i + 1}
                   </p>
-                  <p className="font-display font-bold text-lg mb-4 t-primary">
+                  <p className="font-display text-lg mb-4 t-primary">
                     {cs.type}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -85,17 +85,21 @@ export default function WorkPage() {
                       </span>
                     ))}
                   </div>
-                  {/* Placeholder screenshot */}
+                  {/* Project visual */}
                   <div
-                    className="w-full rounded-lg flex items-center justify-center"
+                    className="w-full rounded-lg flex flex-col items-center justify-center gap-2"
                     style={{
                       aspectRatio: "16/10",
                       backgroundColor: "var(--bg-secondary)",
                       border: "1px solid var(--border-primary)",
                     }}
                   >
-                    <span className="text-xs font-mono uppercase tracking-wider t-dim">
-                      Project Screenshot
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <path d="M8 21h8M12 17v4" />
+                    </svg>
+                    <span className="text-[10px] font-mono uppercase tracking-wider t-dim">
+                      Client work &middot; confidential
                     </span>
                   </div>
                 </div>
@@ -152,7 +156,7 @@ export default function WorkPage() {
       {/* CTA */}
       <section className="py-24 px-6 text-center">
         <FadeIn>
-          <h2 className="font-display font-bold text-3xl mb-4">
+          <h2 className="font-display text-3xl mb-4">
             Want to be the next case study?
           </h2>
           <p className="mb-8 max-w-md mx-auto t-tertiary">
@@ -162,7 +166,7 @@ export default function WorkPage() {
             href="/contact"
             className="inline-block btn-yellow px-8 py-3.5 rounded-md"
           >
-            Start a project
+            Let&apos;s talk
           </Link>
         </FadeIn>
       </section>

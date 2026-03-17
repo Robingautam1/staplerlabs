@@ -38,7 +38,7 @@ export default function AboutPage() {
       <section className="py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
-            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8">
               Named after the most{" "}
               <span className="t-yellow">underrated</span> tool in the
               office.
@@ -73,7 +73,7 @@ export default function AboutPage() {
       <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
-            <h2 className="font-display font-bold text-2xl sm:text-3xl mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl mb-6">
               We&apos;re small on purpose.
             </h2>
             <p className="text-base leading-relaxed mb-4 t-secondary">
@@ -97,7 +97,7 @@ export default function AboutPage() {
       <section className="py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <FadeIn>
-            <h2 className="font-display font-bold text-2xl sm:text-3xl mb-10">
+            <h2 className="font-display text-2xl sm:text-3xl mb-10">
               Things we actually believe in
             </h2>
           </FadeIn>
@@ -105,7 +105,7 @@ export default function AboutPage() {
             {beliefs.map((b, i) => (
               <FadeIn key={i} delay={i * 0.08}>
                 <div className="card-theme rounded-xl p-6 h-full">
-                  <h3 className="font-display font-bold text-base mb-2 t-yellow">
+                  <h3 className="font-display text-base mb-2 t-yellow">
                     {b.title}
                   </h3>
                   <p className="text-[15px] leading-relaxed t-secondary">
@@ -122,7 +122,7 @@ export default function AboutPage() {
       <section className="py-14 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
-            <h2 className="font-display font-bold text-2xl sm:text-3xl mb-8">
+            <h2 className="font-display text-2xl sm:text-3xl mb-8">
               Who we&apos;re built for
             </h2>
           </FadeIn>
@@ -154,7 +154,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <FadeIn>
-          <h2 className="font-display font-bold text-3xl mb-4">
+          <h2 className="font-display text-3xl mb-4">
             Now that you know who we are.
           </h2>
           <p className="mb-8 max-w-md mx-auto t-tertiary">

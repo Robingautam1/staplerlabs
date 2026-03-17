@@ -118,7 +118,7 @@ export default function HomePage() {
       />
 
       {/* ============ HERO ============ */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "100vh", paddingTop: "140px", paddingBottom: "100px" }}>
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "100vh", paddingTop: "clamp(100px, 12vh, 140px)", paddingBottom: "clamp(60px, 8vh, 100px)" }}>
         <div className="absolute inset-0 graph-grid" />
         <div className="absolute inset-0 hero-gradient" />
 
@@ -142,7 +142,7 @@ export default function HomePage() {
           >
             <span
               className="inline-block w-1.5 h-1.5 rounded-full"
-              style={{ backgroundColor: "#C6900A" }}
+              style={{ backgroundColor: "var(--yellow)" }}
             />
             <span className="label-caps">
               accepting projects for Q2 2026
@@ -161,7 +161,7 @@ export default function HomePage() {
               You&apos;ve built a great business.
             </span>
             <br />
-            <span style={{ color: "#C6900A" }}>
+            <span style={{ color: "var(--yellow)" }}>
               The internet just doesn&apos;t know it yet.
             </span>
           </motion.h1>
@@ -244,7 +244,7 @@ export default function HomePage() {
                 <div key={i}>
                   <p
                     className="font-display yellow-glow"
-                    style={{ fontSize: "clamp(40px, 5vw, 52px)", color: "#C6900A", lineHeight: 1 }}
+                    style={{ fontSize: "clamp(40px, 5vw, 52px)", color: "var(--yellow)", lineHeight: 1 }}
                   >
                     {s.number}
                   </p>
@@ -262,7 +262,7 @@ export default function HomePage() {
       <section className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <p className="text-center mb-4" style={{ color: "#C6900A", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <p className="text-center mb-4" style={{ color: "var(--yellow)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Why now
             </p>
             <h2 className="font-display text-center mb-16 max-w-3xl mx-auto" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.15 }}>
@@ -296,7 +296,7 @@ export default function HomePage() {
       <section id="services" className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", borderTop: "1px solid var(--border-primary)" }}>
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <p className="text-center mb-4" style={{ color: "#C6900A", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <p className="text-center mb-4" style={{ color: "var(--yellow)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Our toolkit
             </p>
             <h2 className="font-display text-center mb-5" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.15 }}>
@@ -395,7 +395,7 @@ export default function HomePage() {
       <section id="how-it-works" className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", borderTop: "1px solid var(--border-primary)" }}>
         <div className="max-w-5xl mx-auto">
           <FadeIn>
-            <p className="text-center mb-4" style={{ color: "#C6900A", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <p className="text-center mb-4" style={{ color: "var(--yellow)", fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               How it works
             </p>
             <h2 className="font-display text-center mb-16" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.15 }}>
@@ -424,7 +424,7 @@ export default function HomePage() {
               <FadeIn key={i} delay={i * 0.12}>
                 <div className="card-theme h-full" style={{ borderRadius: "12px", padding: "32px" }}>
                   <span
-                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", fontWeight: 500, color: "#C6900A", display: "block", marginBottom: "16px" }}
+                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "13px", fontWeight: 500, color: "var(--yellow)", display: "block", marginBottom: "16px" }}
                   >
                     {item.step}
                   </span>
@@ -459,7 +459,7 @@ export default function HomePage() {
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="font-display mb-5" style={{ fontSize: "clamp(32px, 4vw, 48px)", lineHeight: 1.2 }}>
               If your business has been running for years but you&apos;re not online &mdash;{" "}
-              <span style={{ color: "#C6900A" }}>this is the call to make.</span>
+              <span style={{ color: "var(--yellow)" }}>this is the call to make.</span>
             </h2>
             <p className="mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", color: "var(--text-secondary)", lineHeight: 1.7 }}>
               One conversation. We&apos;ll tell you exactly what you need and what it costs.

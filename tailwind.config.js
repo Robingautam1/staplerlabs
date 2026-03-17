@@ -8,17 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        jet: "#0A0A0A",
-        yellow: "#FFD000",
-        cream: "#F0F0F0",
-        "gray-dark": "#1A1A1A",
-        "gray-mid": "#2A2A2A",
-        "gray-light": "#888888",
+        cream: "#F7F3EC",
+        ink: "#1a1710",
+        amber: "#C6900A",
+        gold: "#FAC755",
       },
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        body: ["Inter", "Space Grotesk", "-apple-system", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        display: ['"Instrument Serif"', "Georgia", "serif"],
+        body: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
       },
     },
   },

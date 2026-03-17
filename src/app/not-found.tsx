@@ -18,7 +18,7 @@ export default function NotFound() {
         </motion.div>
 
         <motion.h1
-          className="font-display font-extrabold text-6xl sm:text-7xl t-yellow mb-4"
+          className="font-display text-6xl sm:text-7xl t-yellow mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -27,7 +27,7 @@ export default function NotFound() {
         </motion.h1>
 
         <motion.p
-          className="font-display font-bold text-xl sm:text-2xl mb-3 t-heading"
+          className="font-display text-xl sm:text-2xl mb-3 t-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}

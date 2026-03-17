@@ -74,7 +74,7 @@ export default function ContactPage() {
       <section className="py-12 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl mb-4 text-center lg:text-left">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl mb-4 text-center lg:text-left">
               Let&apos;s figure out if we&apos;re a{" "}
               <span className="t-yellow">fit.</span>
             </h1>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                 </form>
               ) : (
                 <div className="rounded-xl p-8 text-center" style={{ border: "1px solid var(--border-hover)" }}>
-                  <p className="t-yellow font-display font-bold text-2xl mb-3">
+                  <p className="t-yellow font-display text-2xl mb-3">
                     Got it.
                   </p>
                   <p className="text-[15px] t-secondary">
@@ -246,7 +246,7 @@ export default function ContactPage() {
             {/* FAQ */}
             <FadeIn delay={0.2}>
               <div>
-                <h2 className="font-display font-bold text-lg mb-6">
+                <h2 className="font-display text-lg mb-6">
                   Quick answers
                 </h2>
                 <div className="space-y-6">

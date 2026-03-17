@@ -151,7 +151,7 @@ export default function ServicesPage() {
       {/* Header */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 text-center">
         <FadeIn>
-          <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl">
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl">
             What we <span className="t-yellow">actually</span> do
           </h1>
           <p className="mt-4 max-w-xl mx-auto t-tertiary text-sm sm:text-base">
@@ -183,7 +183,7 @@ export default function ServicesPage() {
                   <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "var(--yellow-muted)" }}>
                     0{i + 1}
                   </p>
-                  <h2 className="font-display font-bold text-2xl sm:text-3xl mb-4 leading-snug">
+                  <h2 className="font-display text-2xl sm:text-3xl mb-4 leading-snug">
                     {s.headline}
                   </h2>
                   <p className="text-[15.5px] leading-relaxed mb-6 t-secondary">
@@ -229,7 +229,7 @@ export default function ServicesPage() {
       <section className="py-24 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-2xl mx-auto text-center">
           <FadeIn>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-3">
+            <h2 className="font-display text-3xl sm:text-4xl mb-3">
               Not sure which one you need?
             </h2>
             <p className="mb-10 t-tertiary">
@@ -254,7 +254,7 @@ export default function ServicesPage() {
                 <p className="text-xs font-mono mb-2 t-dim">
                   Question {step + 1} of {questions.length}
                 </p>
-                <p className="font-display font-bold text-lg mb-6">
+                <p className="font-display text-lg mb-6">
                   {questions[step].q}
                 </p>
                 <div className="space-y-3">
@@ -279,7 +279,7 @@ export default function ServicesPage() {
                 <p className="text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--yellow-muted)" }}>
                   Our recommendation
                 </p>
-                <p className="font-display font-bold text-xl mb-4">
+                <p className="font-display text-xl mb-4">
                   Based on your answers, we&apos;d start with:
                 </p>
                 <div className="space-y-2 mb-6">
@@ -319,7 +319,7 @@ export default function ServicesPage() {
       {/* Bottom CTA */}
       <section className="py-24 px-6 text-center" style={{ marginTop: "80px" }}>
         <FadeIn>
-          <h2 className="font-display font-bold text-3xl mb-4">
+          <h2 className="font-display text-3xl mb-4">
             Want to talk specifics?
           </h2>
           <p className="mb-8 max-w-md mx-auto t-tertiary">
@@ -329,7 +329,7 @@ export default function ServicesPage() {
             href="/contact"
             className="inline-block btn-yellow px-8 py-3.5 rounded-md"
           >
-            Get a quote
+            Let&apos;s talk
           </Link>
         </FadeIn>
       </section>
