@@ -109,7 +109,7 @@ export default function HomePage() {
       {/* ══════════════ HERO — Two Column ══════════════ */}
       <section
         className="relative overflow-hidden"
-        style={{ paddingTop: "clamp(90px, 12vh, 140px)", paddingBottom: "clamp(48px, 6vh, 80px)" }}
+        style={{ paddingTop: "clamp(100px, 14vh, 160px)", paddingBottom: "clamp(56px, 7vh, 90px)" }}
       >
         <div className="absolute inset-0 graph-grid" />
 

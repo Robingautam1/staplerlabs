@@ -4,23 +4,81 @@ import { motion } from "framer-motion";
 
 export default function CaseStudyMockup() {
   return (
-    <svg viewBox="0 0 260 480" fill="none" className="w-full h-auto max-w-[260px] mx-auto">
-      {/* Phone frame */}
+    <svg viewBox="0 0 260 500" fill="none" className="w-full h-auto max-w-[260px] mx-auto">
+      <defs>
+        {/* Premium glass reflection */}
+        <linearGradient id="glassShine" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
+          <stop offset="50%" stopColor="rgba(255,255,255,0.1)" />
+          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+        </linearGradient>
+
+        {/* Subtle frame gradient */}
+        <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="rgba(0,0,0,0.08)" />
+          <stop offset="100%" stopColor="rgba(0,0,0,0.03)" />
+        </linearGradient>
+      </defs>
+
+      {/* ── Outer Phone Bezel ── */}
       <rect
         x="8"
-        y="8"
+        y="12"
         width="244"
-        height="464"
-        rx="28"
+        height="476"
+        rx="44"
         stroke="var(--ink)"
-        strokeWidth="2"
-        opacity="0.15"
-        fill="var(--cream-deep)"
+        strokeWidth="2.5"
+        opacity="0.12"
+        fill="#1a1a1a"
       />
-      {/* Screen */}
-      <rect x="18" y="38" width="224" height="404" rx="4" fill="var(--white)" />
-      {/* Notch */}
-      <rect x="90" y="14" width="80" height="18" rx="9" fill="var(--ink)" opacity="0.08" />
+
+      {/* Frame gradient overlay for depth */}
+      <rect
+        x="8"
+        y="12"
+        width="244"
+        height="476"
+        rx="44"
+        fill="url(#frameGradient)"
+        opacity="0.6"
+      />
+
+      {/* ── Screen Area ── */}
+      <rect
+        x="18"
+        y="28"
+        width="224"
+        height="424"
+        rx="40"
+        fill="var(--white)"
+      />
+
+      {/* ── Dynamic Island (pill-shaped cutout at top center) ── */}
+      <ellipse cx="130" cy="42" rx="28" ry="16" fill="#000" />
+
+      {/* Camera lens detail near Dynamic Island */}
+      <circle cx="116" cy="42" r="3.5" fill="#1a1a1a" opacity="0.8" />
+      <circle cx="116" cy="42" r="2.8" fill="#000" />
+      <circle cx="145" cy="42" r="2" fill="#000" opacity="0.6" />
+
+      {/* Glass shine reflection */}
+      <rect
+        x="18"
+        y="28"
+        width="224"
+        height="424"
+        rx="40"
+        fill="url(#glassShine)"
+        opacity="0.5"
+      />
+
+      {/* ── Left Side Buttons (Volume) ── */}
+      <rect x="12" y="120" width="3" height="24" rx="1.5" fill="var(--ink)" opacity="0.4" />
+      <rect x="12" y="160" width="3" height="20" rx="1.5" fill="var(--ink)" opacity="0.4" />
+
+      {/* ── Right Side Button (Power) ── */}
+      <rect x="245" y="140" width="3" height="32" rx="1.5" fill="var(--ink)" opacity="0.4" />
 
       {/* ── WhatsApp Header ── */}
       <rect x="18" y="38" width="224" height="44" rx="4" fill="#075E54" />

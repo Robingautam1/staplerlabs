@@ -51,6 +51,12 @@
   --text-dim: var(--dim);
   --yellow-subtle: rgba(198, 144, 10, 0.15);
   --yellow-muted: var(--amber);
+
+  /* Logo */
+  --logo-bg: #F0F0F0;
+  --logo-base: #F0F0F0;
+  --logo-arm: #EEEEEE;
+  --logo-arm-dark: #C0C0C0;
 }
 
 /* Dark theme */
@@ -80,6 +86,12 @@
   --selection-text: #1a1710;
   --yellow-subtle: rgba(250, 199, 85, 0.15);
   --yellow-muted: #FAC755;
+
+  /* Logo */
+  --logo-bg: #0A0A0A;
+  --logo-base: #F0F0F0;
+  --logo-arm: #EEEEEE;
+  --logo-arm-dark: #C0C0C0;
 
   --cream: var(--bg);
   --cream-deep: var(--bg-deep);
