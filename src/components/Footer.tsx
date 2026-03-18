@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import StaplerIcon from "@/components/StaplerIcon";
+import StaplerLogo from "@/components/StaplerLogo";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Left — Wordmark */}
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <StaplerIcon size={32} />
+              <StaplerLogo className="w-8 h-8" />
               <span
                 className="font-display"
                 style={{ fontSize: "20px", color: "var(--ink)", letterSpacing: "-0.01em" }}

@@ -7,6 +7,7 @@ import FadeIn from "@/components/FadeIn";
 import HeroIllustration from "@/components/HeroIllustration";
 import CaseStudyMockup from "@/components/CaseStudyMockup";
 import { TimelineMini } from "@/components/ServiceIllustrations";
+import TransformationSection from "@/components/transformation";
 
 /* ── Animated counter ── */
 function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -232,6 +233,9 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* ══════════════ THE TRANSFORMATION — Bento Grid ══════════════ */}
+      <TransformationSection />
 
       {/* ══════════════ WHY NOW — Amber Left Borders ══════════════ */}
       <section className="px-6" style={{ paddingTop: "64px", paddingBottom: "64px" }}>

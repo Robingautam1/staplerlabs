@@ -53,10 +53,10 @@
   --yellow-muted: var(--amber);
 
   /* Logo */
-  --logo-bg: #F0F0F0;
-  --logo-base: #F0F0F0;
-  --logo-arm: #EEEEEE;
-  --logo-arm-dark: #C0C0C0;
+  --logo-bg: #EDEDED;
+  --logo-base: #D8D8D8;
+  --logo-arm: #E0E0E0;
+  --logo-arm-dark: #B0B0B0;
 }
 
 /* Dark theme */
@@ -88,10 +88,10 @@
   --yellow-muted: #FAC755;
 
   /* Logo */
-  --logo-bg: #0A0A0A;
-  --logo-base: #F0F0F0;
-  --logo-arm: #EEEEEE;
-  --logo-arm-dark: #C0C0C0;
+  --logo-bg: #2C2C2E;
+  --logo-base: #E8E8E8;
+  --logo-arm: #D4D4D4;
+  --logo-arm-dark: #9A9A9A;
 
   --cream: var(--bg);
   --cream-deep: var(--bg-deep);

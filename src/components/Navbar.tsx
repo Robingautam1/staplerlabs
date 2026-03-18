@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/ThemeToggle";
-import StaplerIcon from "@/components/StaplerIcon";
+import StaplerLogo from "@/components/StaplerLogo";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -48,7 +48,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Wordmark — Instrument Serif */}
           <Link href="/" className="flex items-center gap-2.5">
-            <StaplerIcon size={32} />
+            <StaplerLogo className="w-8 h-8" hoverAnimate />
             <span
               className="font-display"
               style={{ fontSize: "18px", color: "var(--ink)", letterSpacing: "-0.01em" }}
