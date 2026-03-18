@@ -50,11 +50,13 @@ export default function NotFound() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <Link
-            href="/"
-            className="inline-block btn-yellow px-6 py-3 rounded-md"
-          >
+          <Link href="/" className="btn-primary">
             Back to Home
+            <span className="arrow-chip">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
           </Link>
         </motion.div>
       </div>

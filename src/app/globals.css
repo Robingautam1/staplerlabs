@@ -234,36 +234,125 @@
   transform: translateY(-4px);
 }
 
-.btn-yellow {
+/* ── Primary button (yellow bg, dark text, arrow-chip on hover) ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background-color: var(--yellow);
   color: #1a1710;
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 10px;
-  padding: 13px 26px;
-  transition: background-color 150ms ease;
-  display: inline-block;
+  padding: 14px 28px;
+  transition: background-color 150ms ease, transform 120ms ease;
+  cursor: pointer;
+  border: none;
 }
-.btn-yellow:hover {
+.btn-primary:hover {
   background-color: #f0bb3a;
+  transform: translateY(-1px);
+}
+.btn-primary .arrow-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background-color: rgba(26, 23, 16, 0.10);
+  transition: background-color 150ms ease, transform 200ms ease;
+}
+.btn-primary:hover .arrow-chip {
+  background-color: rgba(26, 23, 16, 0.18);
+  transform: translateX(2px);
 }
 
-.btn-outline {
+/* ── Secondary button (outlined, theme-aware) ── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: transparent;
   color: var(--ink);
-  border: 1px solid var(--outline-border);
+  border: 1.5px solid var(--outline-border);
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
   font-weight: 500;
   border-radius: 10px;
-  padding: 13px 26px;
-  transition: border-color 150ms ease;
-  display: inline-block;
+  padding: 13px 28px;
+  transition: border-color 200ms ease, color 200ms ease, transform 120ms ease;
+  cursor: pointer;
 }
-.btn-outline:hover {
+.btn-secondary:hover {
   border-color: var(--amber);
+  color: var(--amber);
+  transform: translateY(-1px);
 }
+.dark .btn-secondary {
+  border-color: rgba(245, 245, 240, 0.18);
+  color: var(--ink);
+}
+.dark .btn-secondary:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+/* ── Nav CTA button (compact primary variant) ── */
+.btn-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--yellow);
+  color: #1a1710;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 9px 18px;
+  transition: background-color 150ms ease, transform 120ms ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-nav:hover {
+  background-color: #f0bb3a;
+  transform: translateY(-1px);
+}
+.btn-nav .arrow-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background-color: rgba(26, 23, 16, 0.10);
+  transition: background-color 150ms ease, transform 200ms ease;
+}
+.btn-nav:hover .arrow-chip {
+  background-color: rgba(26, 23, 16, 0.18);
+  transform: translateX(2px);
+}
+
+/* Legacy aliases */
+.btn-yellow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background-color: var(--yellow); color: #1a1710;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 14px; font-weight: 600; border-radius: 10px;
+  padding: 14px 28px; transition: background-color 150ms ease;
+  cursor: pointer; border: none;
+}
+.btn-yellow:hover { background-color: #f0bb3a; }
+.btn-outline {
+  display: inline-flex; align-items: center;
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--outline-border);
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 14px; font-weight: 500; border-radius: 10px;
+  padding: 13px 28px; transition: border-color 200ms ease;
+}
+.btn-outline:hover { border-color: var(--amber); }
 
 .input-theme {
   background-color: var(--bg-card);

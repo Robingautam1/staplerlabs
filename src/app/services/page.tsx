@@ -246,7 +246,7 @@ export default function ServicesPage() {
             <FadeIn delay={0.1}>
               <button
                 onClick={() => setStep(0)}
-                className="btn-yellow px-8 py-3.5 rounded-md"
+                className="btn-primary"
               >
                 Take the quiz
               </button>
@@ -300,7 +300,7 @@ export default function ServicesPage() {
                 <div className="flex gap-3">
                   <Link
                     href="/contact"
-                    className="btn-yellow px-6 py-3 rounded-md text-sm"
+                    className="btn-primary text-sm"
                   >
                     Let&apos;s talk
                   </Link>
@@ -332,7 +332,7 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block btn-yellow px-8 py-3.5 rounded-md"
+            className="btn-primary"
           >
             Let&apos;s talk
           </Link>

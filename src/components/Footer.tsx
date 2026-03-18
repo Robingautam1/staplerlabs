@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import StaplerIcon from "@/components/StaplerIcon";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -17,27 +18,7 @@ export default function Footer() {
           {/* Left — Wordmark */}
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <svg viewBox="10 50 180 130" width="28" height="20" className="shrink-0">
-                <defs>
-                  <linearGradient id="hg-ft" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#FFE033"/>
-                    <stop offset="100%" stopColor="#E8B800"/>
-                  </linearGradient>
-                </defs>
-                <rect x="22" y="134" width="156" height="30" rx="9" fill="var(--logo-base)"/>
-                <rect x="22" y="134" width="156" height="4" rx="9" fill="var(--logo-base)" opacity="0.9"/>
-                <path d="M 22 134 L 22 88 Q 22 72 38 68 L 140 62 Q 160 60 168 76 L 174 96 L 174 134 Z" fill="var(--logo-arm)"/>
-                <path d="M 22 88 Q 22 72 38 68 L 140 62 Q 160 60 168 76 L 168 90 L 22 90 Z" fill="var(--logo-arm-dark)"/>
-                <circle cx="170" cy="112" r="20" fill="var(--bg)"/>
-                <circle cx="170" cy="112" r="20" fill="none" stroke="url(#hg-ft)" strokeWidth="4.5"/>
-                <circle cx="170" cy="112" r="9.5" fill="var(--yellow)"/>
-                <circle cx="170" cy="112" r="5" fill="var(--yellow)"/>
-                <circle cx="170" cy="112" r="3.5" fill="var(--bg)"/>
-                <rect x="22" y="118" width="146" height="16" fill="var(--bg)"/>
-                <rect x="32" y="110" width="52" height="10" rx="5" fill="var(--yellow)"/>
-                <rect x="32" y="110" width="10" height="32" rx="5" fill="var(--yellow)"/>
-                <rect x="74" y="110" width="10" height="32" rx="5" fill="var(--yellow)"/>
-              </svg>
+              <StaplerIcon size={32} />
               <span
                 className="font-display"
                 style={{ fontSize: "20px", color: "var(--ink)", letterSpacing: "-0.01em" }}

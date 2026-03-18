@@ -158,13 +158,15 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.75 }}
             >
-              <Link href="/contact" className="btn-yellow inline-flex items-center gap-2" style={{ padding: "14px 32px" }}>
+              <Link href="/contact" className="btn-primary">
                 Start a project
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <span className="arrow-chip">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
               </Link>
-              <Link href="/work" className="btn-outline" style={{ padding: "14px 32px" }}>
+              <Link href="/work" className="btn-secondary">
                 View our work
               </Link>
             </motion.div>
@@ -461,8 +463,13 @@ export default function HomePage() {
             <p className="mb-8" style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "580px", margin: "0 auto 32px" }}>
               One conversation. We&apos;ll tell you exactly what you need and what it costs. No pitch deck. No pressure.
             </p>
-            <Link href="/contact" className="inline-block btn-yellow" style={{ padding: "14px 40px" }}>
+            <Link href="/contact" className="btn-primary">
               Let&apos;s talk
+              <span className="arrow-chip">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </Link>
           </div>
         </motion.div>

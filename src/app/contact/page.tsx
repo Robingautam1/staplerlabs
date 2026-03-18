@@ -197,7 +197,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full btn-yellow py-3.5 rounded-md disabled:opacity-60"
+                    className="w-full btn-primary justify-center py-3.5 rounded-md disabled:opacity-60"
                   >
                     {sending ? "Sending..." : "Send my details"}
                   </button>

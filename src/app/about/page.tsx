@@ -160,11 +160,13 @@ export default function AboutPage() {
           <p className="mb-8 max-w-md mx-auto t-tertiary">
             Let&apos;s find out if we can help you.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block btn-yellow px-8 py-3.5 rounded-md"
-          >
+          <Link href="/contact" className="btn-primary">
             Get in touch
+            <span className="arrow-chip">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
           </Link>
         </FadeIn>
       </section>
