@@ -186,11 +186,15 @@ export default function AboutPage() {
       </section>
 
       {/* Stapler Diagram — exploded view */}
-      <section className="py-16 sm:py-24 px-6">
-        <div className="max-w-md mx-auto">
+      <section className="py-16 sm:py-32 px-6">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
+            <div className="mb-16 text-center">
+              <h2 className="font-display text-3xl sm:text-4xl mb-4">The StaplerLabs Anatomy</h2>
+              <p className="t-secondary text-base max-w-2xl mx-auto">Every part of the tool serves a distinct, critical purpose. Here is how our services map to the anatomy of our namesake.</p>
+            </div>
             <StaplerDiagram />
-            <p className="text-sm font-mono t-dim text-center mt-6">
+            <p className="text-sm font-mono t-dim text-center mt-12">
               Holding things together since 2024.
             </p>
           </FadeIn>
