@@ -17,8 +17,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-start justify-between gap-8">
           {/* Left — Wordmark */}
           <div>
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <StaplerLogo className="w-8 h-8" />
+            <Link href="/" className="inline-flex items-center gap-3">
+              <StaplerLogo className="w-10 h-10" />
               <span
                 className="font-display"
                 style={{ fontSize: "20px", color: "var(--ink)", letterSpacing: "-0.01em" }}

@@ -117,17 +117,6 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left — Copy */}
           <div>
-            <motion.div
-              className="mb-5 flex items-center gap-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--yellow)" }} />
-              <span className="label-caps">accepting projects for Q2 2026</span>
-            </motion.div>
-
-            {/* Fix 7: line-height 1.05, letter-spacing -0.02em */}
             <motion.h1
               className="font-display"
               style={{ fontSize: "clamp(38px, 5.2vw, 60px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}
@@ -169,6 +158,9 @@ export default function HomePage() {
               </Link>
               <Link href="/work" className="btn-secondary">
                 View our work
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.5 }}>
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
             </motion.div>
           </div>

@@ -228,11 +228,15 @@
 .card-theme {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  transition: border-color 220ms ease, transform 220ms ease;
+  transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 .card-theme:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.dark .card-theme:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
 /* ── Primary button (yellow bg, dark text, arrow-chip on hover) ── */
@@ -290,6 +294,7 @@
   border-color: var(--amber);
   color: var(--amber);
   transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(198,144,10,0.08);
 }
 .dark .btn-secondary {
   border-color: rgba(245, 245, 240, 0.18);
@@ -359,9 +364,22 @@
   background-color: var(--bg-card);
   border-color: var(--ink-12);
   color: var(--ink);
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 .input-theme::placeholder { color: var(--ink-40); }
-.input-theme:focus { border-color: var(--amber); outline: none; }
+.input-theme:focus {
+  border-color: var(--amber);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(198,144,10,0.08);
+}
+
+/* Focus visible for accessibility */
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-nav:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
 
 /* ══════════════════════════════════════════
    NAV

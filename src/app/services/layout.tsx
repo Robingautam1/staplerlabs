@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Google Ads management",
     "local business website India",
     "offline to online business India",
-    "digital operations agency",
+    "digital operations startup",
   ],
   openGraph: {
     title: "Services — StaplerLabs",

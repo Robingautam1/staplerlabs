@@ -36,7 +36,7 @@ const caseStudies = [
   {
     type: "Internal Build · StaplerLabs",
     situation:
-      "We needed to build our own agency website that practised what it preached - fast, honest, and built with the same tools we sell.",
+      "We needed to build our own website that practised what it preached - fast, honest, and built with the same tools we sell.",
     work: "This website. Next.js, Tailwind, Framer Motion. Every illustration hand-coded as SVG. Every line of copy written by humans. Zero stock photos.",
     outcome:
       "You're looking at it. If you've read this far, it's working.",
@@ -147,7 +147,7 @@ export default function WorkPage() {
           <FadeIn>
             <div className="card-theme rounded-xl p-8">
               <p className="text-[15px] leading-relaxed italic t-secondary">
-                &ldquo;We&apos;re a young agency building our portfolio publicly.
+                &ldquo;We&apos;re a young startup building our portfolio publicly.
                 Every project we take teaches us something. Every client gets the
                 benefit of that. We&apos;d rather show you three real projects than
                 fifty fake ones.&rdquo;

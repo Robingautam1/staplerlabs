@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/FadeIn";
 
 const faqs = [
@@ -30,6 +31,7 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -200,6 +202,13 @@ export default function ContactPage() {
                     className="w-full btn-primary justify-center py-3.5 rounded-md disabled:opacity-60"
                   >
                     {sending ? "Sending..." : "Send my details"}
+                    {!sending && (
+                      <span className="arrow-chip">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    )}
                   </button>
                 </form>
               ) : (
@@ -249,15 +258,43 @@ export default function ContactPage() {
                 <h2 className="font-display text-lg mb-6">
                   Quick answers
                 </h2>
-                <div className="space-y-6">
+                <div className="space-y-0">
                   {faqs.map((f, i) => (
-                    <div key={i}>
-                      <p className="text-[15px] font-semibold mb-1.5 t-primary">
-                        {f.q}
-                      </p>
-                      <p className="text-[14px] leading-relaxed t-tertiary">
-                        {f.a}
-                      </p>
+                    <div key={i} style={{ borderBottom: "1px solid var(--border-primary)" }}>
+                      <button
+                        onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                        className="w-full flex items-center justify-between py-4 text-left"
+                      >
+                        <p className="text-[15px] font-semibold t-primary pr-4">
+                          {f.q}
+                        </p>
+                        <motion.svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          className="shrink-0"
+                          animate={{ rotate: openFaq === i ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <path d="M4 6l4 4 4-4" stroke="var(--ink-40)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </motion.svg>
+                      </button>
+                      <AnimatePresence>
+                        {openFaq === i && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                            style={{ overflow: "hidden" }}
+                          >
+                            <p className="text-[14px] leading-relaxed t-tertiary pb-4">
+                              {f.a}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   ))}
                 </div>

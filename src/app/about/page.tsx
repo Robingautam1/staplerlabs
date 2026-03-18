@@ -53,7 +53,7 @@ const builtFor = [
   "Founders who are the smartest person in their field but don't have time to figure out digital marketing",
   "Professionals - doctors, CAs, lawyers - who know they should be online but don't know where to start",
   "Small teams that need enterprise-level automation at prices that don't require a board meeting",
-  "Anyone who's been burned by an agency that promised the world and delivered a WordPress template",
+  "Anyone who's been burned by a vendor that promised the world and delivered a WordPress template",
 ];
 
 export default function AboutPage() {

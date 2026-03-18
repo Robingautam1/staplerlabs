@@ -47,11 +47,11 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Wordmark — Instrument Serif */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <StaplerLogo className="w-8 h-8" hoverAnimate />
+          <Link href="/" className="flex items-center gap-3">
+            <StaplerLogo className="w-10 h-10" hoverAnimate />
             <span
               className="font-display"
-              style={{ fontSize: "18px", color: "var(--ink)", letterSpacing: "-0.01em" }}
+              style={{ fontSize: "21px", color: "var(--ink)", letterSpacing: "-0.01em" }}
             >
               Stapler<span style={{ color: "var(--amber)" }}>Labs</span>
             </span>

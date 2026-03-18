@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   description:
     "Real results for real businesses. See how StaplerLabs helped a dental chain automate bookings, took a financial advisory firm digital, and more.",
   keywords: [
-    "digital agency case studies India",
+    "digital startup case studies India",
     "web development portfolio India",
     "business automation results",
     "WhatsApp chatbot results",
     "digital transformation case study",
     "StaplerLabs portfolio",
-    "agency work Guwahati",
+    "startup work Guwahati",
   ],
   openGraph: {
     title: "Our Work — StaplerLabs",

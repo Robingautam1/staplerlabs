@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Ready to hand off your digital operations? Tell us what you need — website, automation, SEO, ads, or all of it. We'll get back on WhatsApp within 24 hours.",
   keywords: [
     "contact StaplerLabs",
-    "hire digital agency India",
+    "hire digital startup India",
     "get a website India",
     "business automation quote India",
     "digital marketing inquiry",
