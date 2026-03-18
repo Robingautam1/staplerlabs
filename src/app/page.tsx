@@ -136,7 +136,7 @@ export default function HomePage() {
               transition={{ duration: 0.65, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
               You&apos;ve built a great business.{" "}
-              <span style={{ color: "var(--amber)" }}>
+              <span className="lg:whitespace-nowrap" style={{ color: "var(--amber)" }}>
                 The internet just doesn&apos;t know it yet.
               </span>
             </motion.h1>
@@ -290,8 +290,8 @@ export default function HomePage() {
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {/* Large — spans 2 cols — with timeline (Fix 4) */}
+          {/* Row 1: Offline to Online (2/4) | Automation (1/4) | AI Bot (1/4) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             <FadeIn delay={0} className="lg:col-span-2">
               <Link href="/services">
                 <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "32px" }}>
@@ -317,6 +317,11 @@ export default function HomePage() {
                   <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
                     Invoice reminders, appointment confirmations, review requests &mdash; all running automatically so your staff can focus on actual work.
                   </p>
+                  {/* Mini flow diagram */}
+                  <svg viewBox="0 0 120 60" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-60">
+                    {[0,1,2].map((i) => (<g key={i}><rect x={i*42} y={4} width="34" height="16" rx="4" stroke="var(--ink)" strokeWidth="0.8" opacity="0.15" fill="none" /><text x={i*42+17} y="15" textAnchor="middle" fontSize="5" fill="var(--ink)" opacity="0.3" fontFamily="var(--font-inter)">Step {i+1}</text>{i<2 && <line x1={i*42+36} y1={12} x2={i*42+40} y2={12} stroke="var(--amber)" strokeWidth="0.8" opacity="0.4" />}</g>))}
+                    <circle cx="17" cy="12" r="2.5" fill="var(--amber)" opacity="0.6"><animate attributeName="cx" values="17;59;101;17" dur="2s" repeatCount="indefinite" /></circle>
+                  </svg>
                 </div>
               </Link>
             </FadeIn>
@@ -329,29 +334,40 @@ export default function HomePage() {
                   <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
                     Answers enquiries, qualifies leads, and books appointments on WhatsApp. Works at 2am. Never calls in sick.
                   </p>
+                  {/* Mini chat bubbles */}
+                  <svg viewBox="0 0 100 50" fill="none" className="w-full max-w-[100px] h-auto mt-4 opacity-60">
+                    <rect x="2" y="4" width="48" height="14" rx="7" fill="#DCF8C6" opacity="0.4" />
+                    <rect x="50" y="22" width="48" height="14" rx="7" fill="var(--bg-card)" stroke="var(--ink)" strokeWidth="0.5" opacity="0.2" />
+                    <circle cx="56" cy="44" r="2" fill="#25D366" opacity="0.5"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" /></circle>
+                    <circle cx="62" cy="44" r="2" fill="#25D366" opacity="0.4"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.5s" begin="0.2s" repeatCount="indefinite" /></circle>
+                    <circle cx="68" cy="44" r="2" fill="#25D366" opacity="0.3"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.5s" begin="0.4s" repeatCount="indefinite" /></circle>
+                  </svg>
                 </div>
               </Link>
             </FadeIn>
+          </div>
 
-            <FadeIn delay={0.18} className="lg:col-span-2">
+          {/* Row 2: Web Dev (1/3) | SEO (1/3) | Ads (1/3) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+            <FadeIn delay={0.18}>
               <Link href="/services">
                 <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Development</p>
-                      <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>Web Development</h3>
-                      <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                        Clean, fast websites that load in under two seconds and convert visitors into customers. No templates. Built from scratch.
-                      </p>
-                    </div>
-                    <div>
-                      <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Growth</p>
-                      <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>SEO &amp; Content</h3>
-                      <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                        The long game that actually pays off. Local SEO, technical audits, and content that real humans want to read.
-                      </p>
-                    </div>
-                  </div>
+                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Development</p>
+                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>Web Development</h3>
+                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
+                    Clean, fast websites that load in under two seconds and convert visitors into customers. No templates. Built from scratch.
+                  </p>
+                  {/* Mini browser */}
+                  <svg viewBox="0 0 120 60" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-50">
+                    <rect x="2" y="2" width="116" height="56" rx="4" stroke="var(--ink)" strokeWidth="0.8" opacity="0.15" fill="none" />
+                    <rect x="2" y="2" width="116" height="12" rx="4" fill="var(--ink)" opacity="0.03" />
+                    <circle cx="10" cy="8" r="2" fill="#FF5F56" opacity="0.5" /><circle cx="17" cy="8" r="2" fill="#FFBD2E" opacity="0.5" /><circle cx="24" cy="8" r="2" fill="#27C93F" opacity="0.5" />
+                    <rect x="10" y="20" width="40" height="3" rx="1" fill="var(--ink)" opacity="0.08" />
+                    <rect x="10" y="27" width="60" height="2" rx="1" fill="var(--ink)" opacity="0.05" />
+                    <rect x="10" y="33" width="50" height="2" rx="1" fill="var(--ink)" opacity="0.04" />
+                    <rect x="10" y="42" width="24" height="8" rx="3" fill="var(--amber)" opacity="0.2" />
+                    <rect x="76" y="18" width="36" height="26" rx="3" fill="var(--ink)" opacity="0.03" />
+                  </svg>
                 </div>
               </Link>
             </FadeIn>
@@ -359,11 +375,37 @@ export default function HomePage() {
             <FadeIn delay={0.24}>
               <Link href="/services">
                 <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
+                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Growth</p>
+                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>SEO &amp; Content</h3>
+                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
+                    The long game that actually pays off. Local SEO, technical audits, and content that real humans want to read.
+                  </p>
+                  {/* Mini line graph */}
+                  <svg viewBox="0 0 120 50" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-50">
+                    <line x1="10" y1="42" x2="110" y2="42" stroke="var(--ink)" strokeWidth="0.5" opacity="0.1" />
+                    <polyline points="10,38 30,35 50,30 70,22 90,16 110,8" stroke="var(--amber)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
+                    <circle cx="110" cy="8" r="2.5" fill="var(--amber)" opacity="0.5"><animate attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite" /></circle>
+                  </svg>
+                </div>
+              </Link>
+            </FadeIn>
+
+            <FadeIn delay={0.30}>
+              <Link href="/services">
+                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
                   <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Advertising</p>
                   <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>Professional Ads</h3>
                   <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
                     Meta and Google Ads without burning money learning how. Strategy, creative, copy, and monthly reports you&apos;ll actually understand.
                   </p>
+                  {/* Mini A/B cards */}
+                  <svg viewBox="0 0 120 50" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-50">
+                    <rect x="2" y="4" width="48" height="42" rx="4" stroke="var(--ink)" strokeWidth="0.8" opacity="0.12" fill="none" />
+                    <text x="26" y="28" textAnchor="middle" fontSize="10" fill="var(--ink)" opacity="0.15" fontWeight="600" fontFamily="var(--font-inter)">A</text>
+                    <rect x="70" y="4" width="48" height="42" rx="4" stroke="var(--amber)" strokeWidth="1" opacity="0.35" fill="none"><animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite" /></rect>
+                    <text x="94" y="28" textAnchor="middle" fontSize="10" fill="var(--amber)" opacity="0.4" fontWeight="600" fontFamily="var(--font-inter)">B</text>
+                    <text x="60" y="28" textAnchor="middle" fontSize="7" fill="var(--ink)" opacity="0.15" fontFamily="var(--font-inter)">vs</text>
+                  </svg>
                 </div>
               </Link>
             </FadeIn>
@@ -428,7 +470,12 @@ export default function HomePage() {
           </motion.div>
 
           <div className="relative">
-            <div className="hidden md:block absolute top-[28px] left-[16.66%] right-[16.66%] h-px" style={{ borderTop: "2px dashed var(--ink-12)" }} />
+            {/* Gradient connecting line with three dots */}
+            <div className="hidden md:block absolute left-[16.66%] right-[16.66%]" style={{ top: 36, height: 2, background: "linear-gradient(to right, transparent, var(--amber) 30%, var(--amber) 70%, transparent)", opacity: 0.18, borderRadius: 1 }} />
+            {/* Three dots on the line */}
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="hidden md:block absolute" style={{ top: 33, left: `${16.66 + i * 33.33}%`, width: 8, height: 8, borderRadius: "50%", backgroundColor: "var(--amber)", opacity: 0.3, transform: "translateX(-50%)" }} />
+            ))}
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 { step: "01", title: "You tell us about your business.", desc: "One WhatsApp conversation. We ask about your services, your customers, your goals. No forms. No briefs. No jargon." },
@@ -437,8 +484,9 @@ export default function HomePage() {
               ].map((item, i) => (
                 <FadeIn key={i} delay={i * 0.12}>
                   <div className="text-center md:text-left">
-                    <div className="relative z-10 w-14 h-14 rounded-full flex items-center justify-center mx-auto md:mx-0 mb-4" style={{ backgroundColor: "var(--yellow)", color: "var(--ink)" }}>
-                      <span className="font-body" style={{ fontSize: "14px", fontWeight: 600 }}>{item.step}</span>
+                    <div className="relative z-10 mx-auto md:mx-0 mb-4" style={{ width: 72, height: 72 }}>
+                      {/* Watermark numeral */}
+                      <span className="font-display absolute inset-0 flex items-center justify-center select-none" style={{ fontSize: 96, fontWeight: 700, color: "var(--ink)", opacity: 0.04, lineHeight: 1, letterSpacing: "-0.04em" }}>{item.step}</span>
                     </div>
                     <h3 className="font-body mb-2" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)", lineHeight: 1.4 }}>{item.title}</h3>
                     <p style={{ fontSize: "15px", lineHeight: 1.72, color: "var(--ink-60)", maxWidth: "580px" }}>{item.desc}</p>

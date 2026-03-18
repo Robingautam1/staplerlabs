@@ -74,8 +74,9 @@ export default function RevenueCard() {
       <div className="flex flex-col items-center">
         <div className="relative flex items-end" style={{ height: 130 }}>
           <div
-            className="w-12 rounded-t-md transition-all duration-100"
+            className="rounded-t-md transition-all duration-100"
             style={{
+              width: 48,
               height: Math.max(4, barHeight),
               backgroundColor: "var(--amber)",
               opacity: 0.6,

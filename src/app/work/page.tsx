@@ -124,9 +124,9 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* Metrics counter for dramatic effect */}
-      <section className="py-12 px-6" style={{ borderTop: "1px solid var(--border-primary)" }}>
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {/* Metrics counter — amber top border + large numbers */}
+      <section className="px-6" style={{ paddingTop: 48, paddingBottom: 48, borderTop: "3px solid var(--amber)" }}>
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { val: "72h", label: "Fastest time to first lead" },
             { val: "40%", label: "Avg new appointments from online" },
@@ -134,8 +134,8 @@ export default function WorkPage() {
             { val: "11d", label: "Fastest go-live" },
           ].map((s, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <p className="font-display text-2xl sm:text-3xl t-yellow">{s.val}</p>
-              <p className="text-xs mt-1 t-muted">{s.label}</p>
+              <p className="font-display" style={{ fontSize: "clamp(32px, 4vw, 40px)", fontWeight: 700, color: "var(--amber)", lineHeight: 1.1, letterSpacing: "-0.02em", fontFeatureSettings: '"tnum"' }}>{s.val}</p>
+              <p className="text-xs mt-2 t-muted" style={{ maxWidth: 160, margin: "8px auto 0" }}>{s.label}</p>
             </FadeIn>
           ))}
         </div>
@@ -185,63 +185,125 @@ function CaseStudyVisual({ index }: { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
+  const ink = "rgba(var(--ink-rgb),";
+  const f = "var(--font-inter), Inter, sans-serif";
   const visuals = [
-    // 0 — Dental: Google listing + WhatsApp
-    <svg key={0} viewBox="0 0 200 125" fill="none" className="w-full h-auto">
-      <rect x="10" y="10" width="180" height="60" rx="8" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="1" />
-      <rect x="18" y="18" width="60" height="6" rx="2" fill="var(--amber)" opacity="0.3" />
-      <rect x="18" y="28" width="100" height="4" rx="1.5" fill="rgba(var(--ink-rgb),0.08)" />
-      <rect x="18" y="36" width="80" height="4" rx="1.5" fill="rgba(var(--ink-rgb),0.05)" />
-      {[0,1,2,3,4].map(s => <text key={s} x={18 + s*12} y="56" fontSize="9" fill="var(--amber)" opacity="0.6">★</text>)}
-      <text x="78" y="56" fontSize="7" fill="rgba(var(--ink-rgb),0.35)" fontFamily="var(--font-inter), Inter, sans-serif">4.8</text>
-      <rect x="10" y="80" width="80" height="36" rx="8" fill="#DCF8C6" opacity="0.6" />
-      <rect x="16" y="88" width="50" height="4" rx="1.5" fill="rgba(26,23,16,0.12)" />
-      <rect x="16" y="96" width="40" height="4" rx="1.5" fill="rgba(26,23,16,0.08)" />
-      <circle cx="170" cy="98" r="12" fill="#25D366" opacity="0.15" />
-      <text x="170" y="102" textAnchor="middle" fontSize="10" fill="#25D366">✓</text>
+    // 0 — Dental: Before/After Google listing split
+    <svg key={0} viewBox="0 0 200 130" fill="none" className="w-full h-auto">
+      {/* Before side */}
+      <text x="50" y="10" textAnchor="middle" fontSize="6" fill={`${ink}0.25)`} fontFamily={f} fontWeight="600" letterSpacing="0.06em">BEFORE</text>
+      <rect x="5" y="16" width="90" height="50" rx="6" fill="var(--bg-card)" stroke={`${ink}0.08)`} strokeWidth="0.8" />
+      <rect x="12" y="24" width="40" height="4" rx="1.5" fill={`${ink}0.06)`} />
+      <rect x="12" y="32" width="60" height="3" rx="1" fill={`${ink}0.04)`} />
+      <rect x="12" y="38" width="50" height="3" rx="1" fill={`${ink}0.03)`} />
+      <rect x="12" y="48" width="36" height="8" rx="4" fill="rgba(220,50,50,0.08)" />
+      <text x="30" y="54" textAnchor="middle" fontSize="5" fill="rgba(220,50,50,0.5)" fontFamily={f}>Not found</text>
+      {/* Arrow */}
+      <path d="M98 42 L108 42" stroke="var(--amber)" strokeWidth="1.2" strokeLinecap="round" opacity="0.4" />
+      <path d="M105 39 L108 42 L105 45" stroke="var(--amber)" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.4" />
+      {/* After side */}
+      <text x="150" y="10" textAnchor="middle" fontSize="6" fill="var(--amber)" fontFamily={f} fontWeight="600" letterSpacing="0.06em" opacity="0.6">AFTER</text>
+      <rect x="105" y="16" width="90" height="50" rx="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="1" />
+      <rect x="105" y="16" width="90" height="50" rx="6" fill="var(--amber)" opacity="0.03" />
+      <rect x="112" y="24" width="50" height="4" rx="1.5" fill="var(--amber)" opacity="0.25" />
+      <rect x="112" y="32" width="65" height="3" rx="1" fill={`${ink}0.08)`} />
+      {[0,1,2,3,4].map(s => <text key={s} x={112 + s*9} y="44" fontSize="7" fill="var(--amber)" opacity="0.6">★</text>)}
+      <text x="159" y="44" fontSize="6" fill={`${ink}0.35)`} fontFamily={f}>4.8</text>
+      <rect x="112" y="48" width="36" height="8" rx="4" fill="rgba(37,211,102,0.1)" />
+      <text x="130" y="54" textAnchor="middle" fontSize="5" fill="#25D366" fontFamily={f} fontWeight="600">#1 result</text>
+      {/* WhatsApp chat below */}
+      <rect x="20" y="76" width="70" height="20" rx="8" fill="#DCF8C6" opacity="0.5" />
+      <rect x="26" y="82" width="40" height="3" rx="1" fill="rgba(26,23,16,0.1)" />
+      <rect x="26" y="88" width="30" height="3" rx="1" fill="rgba(26,23,16,0.06)" />
+      <rect x="110" y="76" width="75" height="20" rx="8" fill="var(--bg-card)" stroke={`${ink}0.06)`} strokeWidth="0.5" />
+      <rect x="116" y="82" width="50" height="3" rx="1" fill={`${ink}0.08)`} />
+      <rect x="116" y="88" width="35" height="3" rx="1" fill={`${ink}0.05)`} />
+      <circle cx="100" cy="112" r="10" fill="#25D366" opacity="0.12" />
+      <text x="100" y="116" textAnchor="middle" fontSize="8" fill="#25D366" opacity="0.7">✓</text>
+      <text x="100" y="128" textAnchor="middle" fontSize="5.5" fill={`${ink}0.3)`} fontFamily={f}>72h to first booking</text>
     </svg>,
-    // 1 — CA: Automation flow
-    <svg key={1} viewBox="0 0 200 125" fill="none" className="w-full h-auto">
-      {[{y:14,l:"Invoice"},{y:44,l:"Reminder"},{y:74,l:"Payment"},{y:104,l:"Done"}].map((n,i) => (
+    // 1 — CA: Automation flow with time savings
+    <svg key={1} viewBox="0 0 200 130" fill="none" className="w-full h-auto">
+      {[{y:8,l:"Invoice sent",icon:"📄"},{y:38,l:"Auto-reminder",icon:"🔔"},{y:68,l:"Payment received",icon:"💳"},{y:98,l:"Reconciled",icon:"✓"}].map((n,i) => (
         <g key={i}>
-          <rect x="50" y={n.y} width="100" height="24" rx="6" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="1" />
-          <text x="100" y={n.y+16} textAnchor="middle" fontSize="8" fill="rgba(var(--ink-rgb),0.5)" fontFamily="var(--font-inter), Inter, sans-serif">{n.l}</text>
-          {i < 3 && <line x1="100" y1={n.y+24} x2="100" y2={n.y+30} stroke="var(--amber)" strokeWidth="1" strokeDasharray="2 2" />}
-          {i < 3 && <path d={`M97 ${n.y+28} L100 ${n.y+32} L103 ${n.y+28}`} stroke="var(--amber)" strokeWidth="0.8" fill="none" />}
+          <rect x="35" y={n.y} width="130" height="24" rx="8" fill="var(--bg-card)" stroke={i === 3 ? "var(--amber)" : `${ink}0.08)`} strokeWidth={i === 3 ? 1.2 : 0.8} />
+          {i === 3 && <rect x="35" y={n.y} width="130" height="24" rx="8" fill="var(--amber)" opacity="0.04" />}
+          <text x="56" y={n.y+16} fontSize="7.5" fill={`${ink}0.5)`} fontFamily={f}>{n.l}</text>
+          <text x="46" y={n.y+16} fontSize="8">{n.icon}</text>
+          {i < 3 && <line x1="100" y1={n.y+24} x2="100" y2={n.y+38} stroke="var(--amber)" strokeWidth="1" strokeDasharray="3 2" opacity="0.3" />}
+          {i < 3 && <circle cx="100" cy={n.y+31} r="1.5" fill="var(--amber)" opacity="0.35" />}
         </g>
       ))}
+      {/* Time saved badge */}
+      <rect x="140" y="108" width="55" height="16" rx="8" fill="var(--amber)" opacity="0.1" />
+      <text x="167" y="119" textAnchor="middle" fontSize="6" fill="var(--amber)" fontFamily={f} fontWeight="600">3h → 15min</text>
     </svg>,
-    // 2 — Fashion: Mobile storefront + chart
-    <svg key={2} viewBox="0 0 200 125" fill="none" className="w-full h-auto">
-      <rect x="10" y="8" width="70" height="110" rx="10" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="1" />
-      <rect x="25" y="12" width="40" height="4" rx="2" fill="rgba(var(--ink-rgb),0.08)" />
-      <rect x="16" y="22" width="58" height="40" rx="4" fill="rgba(var(--ink-rgb),0.03)" />
-      <rect x="20" y="26" width="20" height="3" rx="1" fill="var(--amber)" opacity="0.3" />
-      <rect x="20" y="32" width="40" height="3" rx="1" fill="rgba(var(--ink-rgb),0.06)" />
-      <rect x="20" y="68" width="50" height="10" rx="4" fill="var(--yellow)" opacity="0.2" />
-      <text x="45" y="76" textAnchor="middle" fontSize="6" fill="var(--amber)" fontFamily="var(--font-inter), Inter, sans-serif">Buy Now</text>
-      {[{x:100,h:18},{x:118,h:28},{x:136,h:24},{x:154,h:36},{x:172,h:50}].map((b,i) => (
-        <rect key={i} x={b.x} y={108-b.h} width="12" height={b.h} rx="2" fill="var(--amber)" opacity={0.2+i*0.1} />
+    // 2 — Fashion: Phone + revenue chart
+    <svg key={2} viewBox="0 0 200 130" fill="none" className="w-full h-auto">
+      {/* Phone */}
+      <rect x="8" y="6" width="62" height="118" rx="10" fill="var(--bg-card)" stroke={`${ink}0.12)`} strokeWidth="1" />
+      <rect x="24" y="10" width="30" height="3" rx="1.5" fill={`${ink}0.08)`} />
+      {/* Screen content */}
+      <rect x="14" y="18" width="50" height="34" rx="3" fill={`${ink}0.03)`} />
+      <rect x="18" y="22" width="30" height="3" rx="1" fill="var(--amber)" opacity="0.25" />
+      <rect x="18" y="28" width="40" height="3" rx="1" fill={`${ink}0.06)`} />
+      <rect x="18" y="34" width="22" height="3" rx="1" fill={`${ink}0.04)`} />
+      <rect x="14" y="58" width="50" height="34" rx="3" fill={`${ink}0.03)`} />
+      <rect x="18" y="62" width="28" height="3" rx="1" fill="var(--amber)" opacity="0.2" />
+      <rect x="18" y="68" width="38" height="3" rx="1" fill={`${ink}0.06)`} />
+      <rect x="14" y="98" width="50" height="14" rx="5" fill="var(--amber)" opacity="0.15" />
+      <text x="39" y="108" textAnchor="middle" fontSize="6" fill="var(--amber)" fontFamily={f} fontWeight="600">Buy Now</text>
+      <rect x="28" y="116" width="22" height="3" rx="1.5" fill={`${ink}0.1)`} />
+      {/* Revenue chart */}
+      <text x="138" y="14" textAnchor="middle" fontSize="6" fill={`${ink}0.3)`} fontFamily={f} fontWeight="500">Monthly Revenue</text>
+      {[{x:90,h:14},{x:106,h:22},{x:122,h:18},{x:138,h:30},{x:154,h:26},{x:170,h:42},{x:186,h:56}].map((b,i) => (
+        <rect key={i} x={b.x} y={108-b.h} width="11" height={b.h} rx="2.5" fill="var(--amber)" opacity={0.15 + i*0.08} />
       ))}
-      <line x1="100" y1="108" x2="186" y2="108" stroke="rgba(var(--ink-rgb),0.08)" strokeWidth="0.5" />
-      <text x="143" y="122" textAnchor="middle" fontSize="6" fill="rgba(var(--ink-rgb),0.3)" fontFamily="var(--font-inter), Inter, sans-serif">+35% revenue</text>
+      <line x1="90" y1="108" x2="197" y2="108" stroke={`${ink}0.06)`} strokeWidth="0.5" />
+      {/* +35% badge */}
+      <rect x="154" y="42" width="40" height="14" rx="7" fill="rgba(37,211,102,0.1)" />
+      <text x="174" y="52" textAnchor="middle" fontSize="6.5" fill="#25D366" fontFamily={f} fontWeight="600">+35%</text>
+      <text x="143" y="124" textAnchor="middle" fontSize="5.5" fill={`${ink}0.25)`} fontFamily={f}>Live in 11 days</text>
     </svg>,
-    // 3 — StaplerLabs: Code/build
-    <svg key={3} viewBox="0 0 200 125" fill="none" className="w-full h-auto">
-      <rect x="10" y="10" width="180" height="105" rx="8" fill="var(--bg-card)" stroke="var(--border)" strokeWidth="1" />
-      <rect x="10" y="10" width="180" height="22" rx="8" fill="rgba(var(--ink-rgb),0.03)" />
-      <rect x="10" y="28" width="180" height="4" fill="rgba(var(--ink-rgb),0.03)" />
-      <circle cx="22" cy="21" r="3" fill="#FF5F56" opacity="0.6" />
-      <circle cx="32" cy="21" r="3" fill="#FFBD2E" opacity="0.6" />
-      <circle cx="42" cy="21" r="3" fill="#27C93F" opacity="0.6" />
-      <rect x="20" y="40" width="30" height="4" rx="1" fill="var(--amber)" opacity="0.3" />
-      <rect x="55" y="40" width="50" height="4" rx="1" fill="rgba(var(--ink-rgb),0.08)" />
-      <rect x="30" y="50" width="70" height="4" rx="1" fill="rgba(var(--ink-rgb),0.06)" />
-      <rect x="30" y="60" width="50" height="4" rx="1" fill="rgba(var(--ink-rgb),0.05)" />
-      <rect x="20" y="70" width="25" height="4" rx="1" fill="var(--amber)" opacity="0.2" />
-      <rect x="50" y="70" width="60" height="4" rx="1" fill="rgba(var(--ink-rgb),0.06)" />
-      <rect x="30" y="80" width="80" height="4" rx="1" fill="rgba(var(--ink-rgb),0.04)" />
-      <text x="100" y="102" textAnchor="middle" fontSize="6" fill="rgba(var(--ink-rgb),0.25)" fontFamily="var(--font-inter), Inter, sans-serif">Next.js · Tailwind · Framer Motion</text>
+    // 3 — StaplerLabs: Code editor with tech stack
+    <svg key={3} viewBox="0 0 200 130" fill="none" className="w-full h-auto">
+      {/* Editor window */}
+      <rect x="8" y="8" width="184" height="108" rx="8" fill="var(--bg-card)" stroke={`${ink}0.1)`} strokeWidth="1" />
+      {/* Title bar */}
+      <rect x="8" y="8" width="184" height="20" rx="8" fill={`${ink}0.03)`} />
+      <rect x="8" y="20" width="184" height="8" fill={`${ink}0.03)`} />
+      <circle cx="20" cy="18" r="3" fill="#FF5F56" opacity="0.5" />
+      <circle cx="30" cy="18" r="3" fill="#FFBD2E" opacity="0.5" />
+      <circle cx="40" cy="18" r="3" fill="#27C93F" opacity="0.5" />
+      <text x="100" y="20" textAnchor="middle" fontSize="5.5" fill={`${ink}0.2)`} fontFamily={f}>page.tsx</text>
+      {/* Code lines with syntax highlighting */}
+      <text x="16" y="38" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">1</text>
+      <rect x="24" y="34" width="22" height="4" rx="1" fill="#C678DD" opacity="0.2" />
+      <rect x="50" y="34" width="40" height="4" rx="1" fill={`${ink}0.06)`} />
+      <text x="16" y="46" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">2</text>
+      <rect x="24" y="42" width="18" height="4" rx="1" fill="#E06C75" opacity="0.2" />
+      <rect x="46" y="42" width="55" height="4" rx="1" fill={`${ink}0.05)`} />
+      <text x="16" y="54" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">3</text>
+      <rect x="32" y="50" width="28" height="4" rx="1" fill="var(--amber)" opacity="0.25" />
+      <rect x="64" y="50" width="45" height="4" rx="1" fill={`${ink}0.06)`} />
+      <text x="16" y="62" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">4</text>
+      <rect x="32" y="58" width="60" height="4" rx="1" fill={`${ink}0.04)`} />
+      <text x="16" y="70" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">5</text>
+      <rect x="32" y="66" width="48" height="4" rx="1" fill="#98C379" opacity="0.15" />
+      <text x="16" y="78" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">6</text>
+      <rect x="24" y="74" width="15" height="4" rx="1" fill="#E06C75" opacity="0.15" />
+      <rect x="42" y="74" width="70" height="4" rx="1" fill={`${ink}0.04)`} />
+      <text x="16" y="86" fontSize="5" fill={`${ink}0.15)`} fontFamily="monospace">7</text>
+      <rect x="24" y="82" width="20" height="4" rx="1" fill="#C678DD" opacity="0.15" />
+      {/* Tech stack pills */}
+      <g transform="translate(24, 96)">
+        {[{l:"Next.js",w:34},{l:"Tailwind",w:38},{l:"Motion",w:34},{l:"SVG",w:26}].map((p,i) => (
+          <g key={i}>
+            <rect x={i > 0 ? [0,38,80,118][i] : 0} y="0" width={p.w} height="12" rx="6" fill="var(--amber)" opacity="0.08" />
+            <text x={i > 0 ? [0,38,80,118][i] + p.w/2 : p.w/2} y="9" textAnchor="middle" fontSize="5.5" fill="var(--amber)" fontFamily={f} opacity="0.6">{p.l}</text>
+          </g>
+        ))}
+      </g>
     </svg>,
   ];
 

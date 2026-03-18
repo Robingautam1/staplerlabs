@@ -12,10 +12,10 @@ export default function HeroIllustration() {
 
   return (
     <svg
-      viewBox="0 0 700 400"
+      viewBox="-10 -10 700 420"
       fill="none"
-      className="w-full h-auto lg:max-w-[700px]"
-      style={{ maxHeight: "400px" }}
+      className="w-full h-auto"
+      style={{ overflow: "visible" }}
     >
       <defs>
         <linearGradient id="heroGlow" x1="50%" y1="0%" x2="50%" y2="100%">

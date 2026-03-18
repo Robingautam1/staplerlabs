@@ -2,7 +2,32 @@
 
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
-import StaplerLogo from "@/components/StaplerLogo";
+import StaplerDiagram from "@/components/StaplerDiagram";
+
+const beliefIcons = [
+  // Padlock — no lock-in
+  <svg key="lock" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="5" y="11" width="14" height="10" rx="2" />
+    <path d="M8 11V7a4 4 0 0 1 8 0" />
+    <circle cx="12" cy="16" r="1.5" fill="var(--amber)" stroke="none" />
+  </svg>,
+  // Speech bubble — no jargon
+  <svg key="speech" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12a9 9 0 0 1-9 9 9.8 9.8 0 0 1-4.5-1.1L3 21l1.1-4.5A9 9 0 1 1 21 12Z" />
+    <line x1="8" y1="10" x2="16" y2="10" />
+    <line x1="8" y1="14" x2="13" y2="14" />
+  </svg>,
+  // Eye — no hiding
+  <svg key="eye" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12Z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>,
+  // Price tag — no mystery pricing
+  <svg key="tag" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2 2 12l8.5 8.5a1 1 0 0 0 1.4 0L22 10.5V2H12Z" />
+    <circle cx="17" cy="7" r="1.5" fill="var(--amber)" stroke="none" />
+  </svg>,
+];
 
 const beliefs = [
   {
@@ -73,6 +98,24 @@ export default function AboutPage() {
       <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-3xl mx-auto">
           <FadeIn>
+            {/* Spotlight illustration */}
+            <div className="flex justify-center mb-8">
+              <svg viewBox="0 0 200 100" fill="none" className="w-48 h-auto" style={{ overflow: "visible" }}>
+                {/* Spotlight beam */}
+                <path d="M100 12 L50 90 L150 90 Z" fill="var(--amber)" opacity="0.04" />
+                <path d="M100 12 L60 90 L140 90 Z" fill="var(--amber)" opacity="0.04" />
+                {/* Lamp */}
+                <rect x="88" y="2" width="24" height="14" rx="4" fill="var(--bg-card)" stroke="rgba(var(--ink-rgb),0.12)" strokeWidth="1" />
+                <rect x="94" y="16" width="12" height="3" rx="1" fill="var(--amber)" opacity="0.4" />
+                {/* Person silhouette at desk */}
+                <circle cx="100" cy="62" r="8" fill="rgba(var(--ink-rgb),0.06)" />
+                <rect x="88" y="72" width="24" height="16" rx="3" fill="rgba(var(--ink-rgb),0.04)" stroke="rgba(var(--ink-rgb),0.06)" strokeWidth="0.8" />
+                {/* Desk */}
+                <line x1="60" y1="90" x2="140" y2="90" stroke="rgba(var(--ink-rgb),0.1)" strokeWidth="1.5" strokeLinecap="round" />
+                {/* Monitor */}
+                <rect x="78" y="74" width="16" height="12" rx="2" fill="var(--amber)" opacity="0.08" stroke="rgba(var(--ink-rgb),0.08)" strokeWidth="0.5" />
+              </svg>
+            </div>
             <h2 className="font-display text-2xl sm:text-3xl mb-6">
               We&apos;re small on purpose.
             </h2>
@@ -105,6 +148,9 @@ export default function AboutPage() {
             {beliefs.map((b, i) => (
               <FadeIn key={i} delay={i * 0.08}>
                 <div className="card-theme rounded-xl p-6 h-full">
+                  <div className="mb-3 opacity-60">
+                    {beliefIcons[i]}
+                  </div>
                   <h3 className="font-display text-base mb-2 t-yellow">
                     {b.title}
                   </h3>
@@ -139,16 +185,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Desk illustration / logo section */}
-      <section className="py-24 px-6 text-center">
-        <FadeIn>
-          <div className="max-w-xs mx-auto mb-8">
-            <StaplerLogo className="w-24 h-24 mx-auto" hoverAnimate={true} />
-          </div>
-          <p className="text-sm font-mono t-dim">
-            Holding things together since 2024.
-          </p>
-        </FadeIn>
+      {/* Stapler Diagram — exploded view */}
+      <section className="py-16 sm:py-24 px-6">
+        <div className="max-w-md mx-auto">
+          <FadeIn>
+            <StaplerDiagram />
+            <p className="text-sm font-mono t-dim text-center mt-6">
+              Holding things together since 2024.
+            </p>
+          </FadeIn>
+        </div>
       </section>
 
       {/* CTA */}

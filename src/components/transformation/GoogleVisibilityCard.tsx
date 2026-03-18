@@ -104,7 +104,7 @@ export default function GoogleVisibilityCard() {
       </div>
 
       {/* Progress bar */}
-      <div className="w-full h-1 rounded-full overflow-hidden mt-2" style={{ backgroundColor: `${ink}0.06)` }}>
+      <div className="w-full rounded-full overflow-hidden mt-2" style={{ height: 3, backgroundColor: "rgba(245,245,240,0.08)" }}>
         <div
           className="h-full rounded-full transition-[width] duration-100 ease-linear"
           style={{ width: `${progress}%`, backgroundColor: "var(--amber)" }}

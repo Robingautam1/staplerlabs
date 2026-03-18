@@ -188,6 +188,7 @@
 .font-display {
   font-family: var(--font-display), "Instrument Serif", Georgia, serif;
   font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .font-body {
@@ -407,6 +408,7 @@
 
 .marquee-wrap {
   background-color: var(--bg);
+  padding: 0 16px;
 }
 .dark .marquee-wrap {
   background-color: #141414;

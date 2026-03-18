@@ -54,7 +54,7 @@ export default function WhatsAppCard() {
         </div>
 
         {/* Chat area */}
-        <div className="px-2 py-2 space-y-1.5" style={{ minHeight: 180, backgroundColor: `${ink}0.02)` }}>
+        <div className="px-3 py-2 space-y-1.5" style={{ minHeight: 180, backgroundColor: `${ink}0.02)` }}>
           {visible.filter((m) => m.from !== "typing" && m.from !== "pill").map((m, i) => (
             <div
               key={i}
