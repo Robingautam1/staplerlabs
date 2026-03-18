@@ -1,243 +1,157 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-/**
- * Hero SVG — Offline → Online transformation
- * viewBox 700×400, dot grid background, isometric buildings,
- * animated dashed arc with traveling dot and service pills.
- */
 export default function HeroIllustration() {
-  const ink = "rgba(var(--ink-rgb),";
-
   return (
-    <svg
-      viewBox="-10 -10 700 420"
-      fill="none"
-      className="w-full h-auto"
-      style={{ overflow: "visible" }}
-    >
-      <defs>
-        <linearGradient id="heroGlow" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#C6900A" stopOpacity="0.12" />
-          <stop offset="100%" stopColor="#C6900A" stopOpacity="0" />
-        </linearGradient>
-        <filter id="softShadow">
-          <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="rgba(0,0,0,0.10)" />
-        </filter>
-        <filter id="amberGlow">
-          <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#C6900A" floodOpacity="0.25" />
-        </filter>
-      </defs>
+    <div className="w-full h-auto flex items-center justify-center">
+<svg viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <pattern id="dotGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="var(--ink-12)" opacity="0.6"/>
+    </pattern>
 
-      {/* ── DOT GRID BACKGROUND ── */}
-      {Array.from({ length: 18 }).map((_, row) =>
-        Array.from({ length: 30 }).map((_, col) => (
-          <circle
-            key={`${row}-${col}`}
-            cx={20 + col * 24}
-            cy={12 + row * 24}
-            r="0.8"
-            fill={`${ink}0.06)`}
-          />
-        ))
-      )}
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="var(--ink)" floodOpacity="0.08"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="15" floodColor="var(--yellow)" floodOpacity="0.3"/>
+    </filter>
 
-      {/* ══════════ OFFLINE SIDE (left) ══════════ */}
-      <motion.g
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Ground shadow */}
-        <ellipse cx="130" cy="315" rx="90" ry="8" fill={`${ink}0.05)`} />
+    <linearGradient id="onlineRoofGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="var(--amber)"/>
+      <stop offset="100%" stopColor="var(--amber)"/>
+    </linearGradient>
+    <linearGradient id="staplerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="var(--yellow)"/>
+      <stop offset="100%" stopColor="var(--amber)"/>
+    </linearGradient>
+    <linearGradient id="flowRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="var(--ink-40)" stopOpacity="0.2"/>
+      <stop offset="100%" stopColor="var(--amber)" stopOpacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="flowLeft" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stopColor="var(--amber)" stopOpacity="0.8"/>
+      <stop offset="100%" stopColor="var(--ink-40)" stopOpacity="0.2"/>
+    </linearGradient>
 
-        {/* Building — front face */}
-        <path d="M40 135 L40 295 L220 295 L220 135 Z" fill="var(--bg-card)" stroke={`${ink}0.12)`} strokeWidth="1.5" />
-        {/* Side face */}
-        <path d="M220 135 L255 115 L255 275 L220 295 Z" fill={`${ink}0.04)`} stroke={`${ink}0.10)`} strokeWidth="1" />
-        {/* Roof */}
-        <path d="M40 135 L75 115 L255 115 L220 135 Z" fill={`${ink}0.06)`} stroke={`${ink}0.10)`} strokeWidth="1" />
+    <marker id="arrowRight" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,1 L8,5 L0,9 Z" fill="var(--amber)"/>
+    </marker>
+    <marker id="arrowLeft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,1 L8,5 L0,9 Z" fill="var(--yellow)"/>
+    </marker>
+  </defs>
 
-        {/* Awning */}
-        <path d="M35 150 L130 136 L225 150" stroke={`${ink}0.12)`} strokeWidth="1.5" fill="none" strokeLinecap="round" />
+  
+  
 
-        {/* Window — dark / dusty */}
-        <rect x="60" y="165" width="48" height="40" rx="3" stroke={`${ink}0.12)`} strokeWidth="1.2" fill={`${ink}0.02)`} />
-        <rect x="66" y="175" width="36" height="18" rx="2" fill={`${ink}0.04)`} />
-        <text x="74" y="187" fontSize="7" fill={`${ink}0.22)`} fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600">CLOSED</text>
+  <g textAnchor="middle" fontFamily="system-ui, -apple-system, sans-serif">
+    <text x="600" y="80" fontWeight="800" fontSize="44" fill="var(--ink)">StaplerLabs O2O Ecosystem</text>
+    <text x="600" y="120" fontWeight="500" fontSize="22" fill="var(--ink-60)">Bridging the Gap Between Offline and Online Business</text>
+  </g>
 
-        {/* Door — shut */}
-        <rect x="145" y="205" width="48" height="90" rx="3" stroke={`${ink}0.12)`} strokeWidth="1.2" fill={`${ink}0.02)`} />
-        <circle cx="183" cy="250" r="3" fill={`${ink}0.10)`} />
+  <g>
+    <path d="M 360 280 C 480 200, 720 200, 840 280" fill="none" stroke="url(#flowRight)" strokeWidth="6" strokeDasharray="8 8" markerEnd="url(#arrowRight)"/>
+    <path d="M 840 440 C 720 520, 480 520, 360 440" fill="none" stroke="url(#flowLeft)" strokeWidth="6" strokeDasharray="8 8" markerEnd="url(#arrowLeft)"/>
+  </g>
 
-        {/* Phone with missed calls */}
-        <g transform="translate(65, 215)">
-          <rect width="30" height="50" rx="6" stroke={`${ink}0.12)`} strokeWidth="1.2" fill={`${ink}0.02)`} />
-          <rect x="3" y="7" width="24" height="34" rx="2" fill={`${ink}0.03)`} />
-          <circle cx="10" cy="18" r="3.5" fill="#D44444" opacity="0.5" />
-          <circle cx="20" cy="18" r="3.5" fill="#D44444" opacity="0.4" />
-          <circle cx="10" cy="28" r="3.5" fill="#D44444" opacity="0.3" />
-          <text x="4" y="39" fontSize="4.5" fill={`${ink}0.15)`} fontFamily="var(--font-inter), Inter, sans-serif">3 missed</text>
-        </g>
+  <g transform="translate(140, 0)">
+    <ellipse cx="110" cy="540" rx="140" ry="20" fill="var(--bg-deep)"/>
+    
+    <rect x="0" y="300" width="220" height="220" rx="4" fill="var(--bg-deep)"/>
+    <path d="M -20 300 L 240 300 L 200 230 L 20 230 Z" fill="var(--ink-12)"/>
+    
+    <rect x="80" y="400" width="60" height="120" fill="var(--ink-40)"/>
+    <rect x="30" y="340" width="40" height="40" fill="var(--ink-40)"/>
+    <rect x="150" y="340" width="40" height="40" fill="var(--ink-40)"/>
+    
+    <rect x="85" y="440" width="50" height="18" rx="4" fill="#EF4444"/>
+    <text x="110" y="452.5" fontFamily="system-ui" fontWeight="bold" fontSize="10" fill="var(--bg-card)" textAnchor="middle">CLOSED</text>
+    
+    <rect x="20" y="255" width="180" height="30" fill="var(--bg-deep)" stroke="var(--ink-40)" strokeWidth="2"/>
+    <text x="110" y="275" fontFamily="system-ui" fontWeight="bold" fontSize="14" fill="var(--ink-60)" textAnchor="middle">TRADITIONAL</text>
+    <text x="110" y="600" fontFamily="system-ui" fontWeight="700" fontSize="20" fill="var(--ink-40)" textAnchor="middle">OFFLINE</text>
+  </g>
 
-        {/* Paper ledger */}
-        <g transform="translate(48, 305)">
-          <rect width="85" height="50" rx="3" fill={`${ink}0.03)`} stroke={`${ink}0.07)`} strokeWidth="0.8" />
-          {[12, 20, 28, 36].map((y, i) => (
-            <line key={i} x1="10" y1={y} x2={70 - i * 5} y2={y} stroke={`${ink}${0.06 - i * 0.01})`} strokeWidth="0.6" />
-          ))}
-        </g>
 
-        {/* OFFLINE label */}
-        <text x="130" y="375" textAnchor="middle" fontSize="9" fill={`${ink}0.18)`} fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600" letterSpacing="0.12em">OFFLINE</text>
-      </motion.g>
+  <g transform="translate(840, 0)">
+    <ellipse cx="110" cy="540" rx="140" ry="20" fill="var(--bg-deep)"/>
+    
+    <rect x="0" y="300" width="220" height="220" rx="4" fill="var(--bg-card)" filter="url(#shadow)"/>
+    <path d="M -20 300 L 240 300 L 200 230 L 20 230 Z" fill="url(#onlineRoofGrad)"/>
+    
+    <rect x="80" y="400" width="60" height="120" fill="var(--bg-deep)"/>
+    <rect x="30" y="340" width="40" height="40" fill="var(--bg-deep)"/>
+    <rect x="150" y="340" width="40" height="40" fill="var(--bg-deep)"/>
+    
+    <rect x="85" y="440" width="50" height="18" rx="4" fill="#10B981"/>
+    <text x="110" y="452.5" fontFamily="system-ui" fontWeight="bold" fontSize="10" fill="var(--bg-card)" textAnchor="middle">OPEN</text>
+    
+    <rect x="20" y="255" width="180" height="30" fill="var(--bg-card)" filter="url(#shadow)"/>
+    <text x="110" y="275" fontFamily="system-ui" fontWeight="bold" fontSize="14" fill="var(--amber)" textAnchor="middle">DIGITAL STORE</text>
+    <text x="110" y="600" fontFamily="system-ui" fontWeight="700" fontSize="20" fill="var(--amber)" textAnchor="middle">ONLINE</text>
 
-      {/* ══════════ TRANSFORMATION ARC (center) ══════════ */}
-      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.8 }}>
-        {/* Subtle glow */}
-        <ellipse cx="350" cy="200" rx="70" ry="110" fill="url(#heroGlow)" />
+    <g transform="translate(90, 130)" filter="url(#shadow)">
+      <path d="M 20 0 C 8.95 0 0 8.95 0 20 C 0 35 20 55 20 55 C 20 55 40 35 40 20 C 40 8.95 31.05 0 20 0 Z" fill="#EF4444"/>
+      <circle cx="20" cy="20" r="8" fill="var(--bg-card)"/>
+    </g>
 
-        {/* Dashed arc path */}
-        <motion.path
-          d="M 270 220 C 300 150, 390 270, 430 195"
-          stroke="#C6900A"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          fill="none"
-          strokeDasharray="5 5"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.4, delay: 1.0, ease: "easeInOut" }}
-        />
+    <rect x="60" y="500" width="100" height="28" rx="14" fill="var(--bg-card)" filter="url(#shadow)"/>
+    <g transform="translate(70, 508)" fill="#FBBF24">
+      <polygon points="6,0 7.8,4.2 12,4.5 8.7,7.4 9.8,11.5 6,9.2 2.2,11.5 3.3,7.4 0,4.5 4.2,4.2" />
+      <polygon points="22,0 23.8,4.2 28,4.5 24.7,7.4 25.8,11.5 22,9.2 18.2,11.5 19.3,7.4 16,4.5 20.2,4.2" />
+      <polygon points="38,0 39.8,4.2 44,4.5 40.7,7.4 41.8,11.5 38,9.2 34.2,11.5 35.3,7.4 32,4.5 36.2,4.2" />
+      <polygon points="54,0 55.8,4.2 60,4.5 56.7,7.4 57.8,11.5 54,9.2 50.2,11.5 51.3,7.4 48,4.5 52.2,4.2" />
+      <polygon points="70,0 71.8,4.2 76,4.5 72.7,7.4 73.8,11.5 70,9.2 66.2,11.5 67.3,7.4 64,4.5 68.2,4.2" />
+    </g>
 
-        {/* Traveling dot */}
-        <motion.circle
-          r="5"
-          fill="#C6900A"
-          filter="url(#amberGlow)"
-          animate={{ cx: [270, 300, 390, 430], cy: [220, 160, 260, 195] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "linear", times: [0, 0.33, 0.66, 1] }}
-        />
+    <g transform="translate(200, 260)" filter="url(#shadow)">
+      <rect x="0" y="0" width="70" height="120" rx="10" fill="var(--bg-card)"/>
+      <rect x="5" y="5" width="60" height="110" rx="6" fill="var(--bg)"/>
+      <circle cx="35" cy="15" r="3" fill="var(--ink-12)"/>
+      <rect x="10" y="30" width="35" height="14" rx="6" fill="var(--bg-deep)"/>
+      <rect x="25" y="50" width="35" height="14" rx="6" fill="#10B981"/>
+      <rect x="10" y="70" width="25" height="14" rx="6" fill="var(--bg-deep)"/>
+      <circle cx="60" cy="10" r="6" fill="#10B981"/>
+    </g>
 
-        {/* Service pills */}
-        {[
-          { x: 295, y: 175, label: "Website", delay: 1.2 },
-          { x: 345, y: 220, label: "Google", delay: 1.5 },
-          { x: 395, y: 190, label: "WhatsApp", delay: 1.8 },
-        ].map((node, i) => (
-          <motion.g
-            key={i}
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: node.delay, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <rect x={node.x - 28} y={node.y - 12} width="56" height="24" rx="12" fill="var(--bg)" stroke="#C6900A" strokeWidth="1.2" />
-            <text x={node.x} y={node.y + 4} textAnchor="middle" fontSize="8" fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="500" fill="#C6900A">
-              {node.label}
-            </text>
-          </motion.g>
-        ))}
-      </motion.g>
+    <g transform="translate(-100, 410)" filter="url(#shadow)">
+      <rect x="0" y="0" width="100" height="90" rx="8" fill="var(--bg-card)"/>
+      <rect x="15" y="60" width="12" height="15" fill="#FBBF24" rx="2"/>
+      <rect x="35" y="45" width="12" height="30" fill="#FBBF24" rx="2"/>
+      <rect x="55" y="25" width="12" height="50" fill="#FBBF24" rx="2"/>
+      <rect x="75" y="10" width="12" height="65" fill="#10B981" rx="2"/>
+      <polyline points="20,55 40,35 60,15 80,0" fill="none" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+    </g>
+  </g>
 
-      {/* ══════════ ONLINE SIDE (right) ══════════ */}
-      <motion.g
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <ellipse cx="555" cy="315" rx="95" ry="10" fill={`${ink}0.06)`} />
 
-        {/* Building — front face with shadow */}
-        <path d="M445 125 L445 295 L635 295 L635 125 Z" fill="var(--bg-card)" stroke={`${ink}0.22)`} strokeWidth="1.8" filter="url(#softShadow)" />
-        {/* Side face */}
-        <path d="M635 125 L670 105 L670 275 L635 295 Z" fill={`${ink}0.05)`} stroke={`${ink}0.15)`} strokeWidth="1" />
-        {/* Roof */}
-        <path d="M445 125 L480 105 L670 105 L635 125 Z" fill={`${ink}0.07)`} stroke={`${ink}0.12)`} strokeWidth="1" />
+  <g>
+    <circle cx="600" cy="360" r="110" fill="rgba(198, 144, 10, 0.1)" opacity="0.4"/>
+    <circle cx="600" cy="360" r="85" fill="rgba(198, 144, 10, 0.2)" opacity="0.6"/>
+    
+    <circle cx="600" cy="360" r="65" fill="url(#staplerGrad)" filter="url(#glow)"/>
+    <text x="600" y="366" fontFamily="system-ui" fontWeight="900" fontSize="18" fill="var(--bg-card)" textAnchor="middle" letterSpacing="1">StaplerLabs</text>
+    
+    <g transform="translate(420, 220)" filter="url(#shadow)">
+      <rect x="0" y="0" width="120" height="40" rx="20" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2"/>
+      <text x="60" y="25" fontFamily="system-ui" fontWeight="bold" fontSize="14" fill="var(--ink)" textAnchor="middle">Website</text>
+    </g>
 
-        {/* Window — glowing screen */}
-        <rect x="465" y="150" width="52" height="44" rx="3" stroke={`${ink}0.22)`} strokeWidth="1.5" fill={`${ink}0.03)`} />
-        <rect x="468" y="153" width="46" height="38" rx="2" fill="var(--yellow)" opacity="0.10" />
-        <rect x="472" y="158" width="35" height="5" rx="2" fill="#C6900A" opacity="0.22" />
-        <rect x="472" y="167" width="26" height="3.5" rx="1" fill="#C6900A" opacity="0.14" />
-        <rect x="472" y="174" width="30" height="3.5" rx="1" fill="#C6900A" opacity="0.10" />
-        <text x="475" y="189" fontSize="5.5" fill={`${ink}0.4)`} fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600">OPEN</text>
+    <g transform="translate(680, 200)" filter="url(#shadow)">
+      <rect x="0" y="0" width="120" height="40" rx="20" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2"/>
+      <text x="60" y="25" fontFamily="system-ui" fontWeight="bold" fontSize="14" fill="var(--ink)" textAnchor="middle">WhatsApp</text>
+    </g>
 
-        {/* Door — open with warm light */}
-        <rect x="545" y="205" width="50" height="90" rx="3" stroke={`${ink}0.22)`} strokeWidth="1.5" fill={`${ink}0.03)`} />
-        <rect x="550" y="210" width="40" height="80" rx="2" fill="var(--yellow)" opacity="0.04" />
-        <circle cx="585" cy="250" r="3" fill={`${ink}0.35)`} />
+    <g transform="translate(450, 480)" filter="url(#shadow)">
+      <rect x="0" y="0" width="120" height="40" rx="20" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2"/>
+      <text x="60" y="25" fontFamily="system-ui" fontWeight="bold" fontSize="14" fill="var(--ink)" textAnchor="middle">Google</text>
+    </g>
+    
+    <g transform="translate(650, 460)" filter="url(#shadow)">
+      <rect x="0" y="0" width="120" height="40" rx="20" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2"/>
+      <text x="60" y="25" fontFamily="system-ui" fontWeight="bold" fontSize="14" fill="var(--ink)" textAnchor="middle">Social Media</text>
+    </g>
+  </g>
 
-        {/* WhatsApp badge */}
-        <motion.circle
-          cx="640" cy="122" r="6" fill="#25D366" opacity="0.85"
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* iPhone mini with chat */}
-        <g transform="translate(628, 138)">
-          <rect width="34" height="62" rx="7" stroke={`${ink}0.22)`} strokeWidth="1.5" fill="var(--bg-card)" />
-          <rect x="3" y="8" width="28" height="44" rx="3" fill={`${ink}0.03)`} />
-          <rect x="10" y="3" width="14" height="3" rx="1.5" fill={`${ink}0.12)`} />
-          <rect x="6" y="14" width="16" height="9" rx="4.5" fill="#DCF8C6" />
-          <rect x="12" y="27" width="14" height="9" rx="4.5" fill="var(--bg-card)" stroke={`${ink}0.06)`} strokeWidth="0.5" />
-          <rect x="6" y="40" width="18" height="9" rx="4.5" fill="#DCF8C6" />
-          <motion.circle
-            cx="17" cy="56" r="2.5" fill="#25D366"
-            animate={{ opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </g>
-
-        {/* Google Maps pin */}
-        <motion.g
-          initial={{ y: -10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 2.2, duration: 0.5, type: "spring", stiffness: 180 }}
-        >
-          <path d="M558 105 C558 97 551 91 544 91 C537 91 530 97 530 105 C530 113 544 127 544 127 C544 127 558 113 558 105Z" fill="#EA4335" opacity="0.85" />
-          <circle cx="544" cy="104" r="4.5" fill="var(--bg-card)" opacity="0.9" />
-          <motion.circle
-            cx="544" cy="104" r="9" fill="none" stroke="#EA4335" strokeWidth="1"
-            animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-          />
-        </motion.g>
-
-        {/* Bar chart — bookings */}
-        <g transform="translate(460, 305)">
-          {[
-            { x: 0, h: 16, delay: 2.4 },
-            { x: 16, h: 24, delay: 2.5 },
-            { x: 32, h: 20, delay: 2.6 },
-            { x: 48, h: 32, delay: 2.7 },
-            { x: 64, h: 42, delay: 2.8 },
-          ].map((bar, i) => (
-            <motion.rect
-              key={i}
-              x={bar.x}
-              y={48 - bar.h}
-              width="11"
-              height={bar.h}
-              rx="2"
-              fill="#C6900A"
-              opacity="0.35"
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 1 }}
-              transition={{ delay: bar.delay, duration: 0.5, ease: "easeOut" }}
-              style={{ transformOrigin: `${bar.x + 5.5}px 48px` }}
-            />
-          ))}
-          <line x1="0" y1="48" x2="78" y2="48" stroke={`${ink}0.08)`} strokeWidth="0.8" />
-          {[0, 1, 2, 3, 4].map((s) => (
-            <text key={s} x={s * 11} y="62" fontSize="7.5" fill="#C6900A" opacity="0.55">★</text>
-          ))}
-        </g>
-
-        {/* ONLINE label */}
-        <text x="555" y="375" textAnchor="middle" fontSize="9" fill="#C6900A" fontFamily="var(--font-inter), Inter, sans-serif" fontWeight="600" letterSpacing="0.12em" opacity="0.5">ONLINE</text>
-      </motion.g>
-    </svg>
+</svg>
+    </div>
   );
 }
