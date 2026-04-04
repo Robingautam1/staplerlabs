@@ -6,10 +6,10 @@ import FadeIn from "@/components/FadeIn";
 import StaplerDiagram from "@/components/StaplerDiagram";
 
 const businessModelCards = [
-  { mono: "DX", title: "Diagnostic", desc: "AI-powered Business Intelligence Dashboard generated in 30 minutes. Business Index Score, competitor map, gap analysis, and visibility assessment." },
-  { mono: "CN", title: "Consultant", desc: "A dedicated StaplerLabs consultant walks you through findings, identifies the highest-leverage interventions, and builds your strategic roadmap." },
-  { mono: "EX", title: "Execution", desc: "Full-stack technology execution \u2014 website, automation, SEO, chatbots, ads. Scoped from the diagnostic, not from a feature list." },
-  { mono: "PT", title: "Partnership", desc: "We stay. Monthly intelligence reports, ongoing competitive monitoring, and strategic advisory. Not a one-time vendor \u2014 a long-term partner." },
+  { mono: "DX", title: "Diagnostic", desc: "You fill a 15-minute questionnaire. Within 30 minutes, you have a Business Intelligence Dashboard \u2014 your score, your competitors, your gaps. Built by AI. Checked by us." },
+  { mono: "CN", title: "Consultant", desc: "Within 24 hours, a real person is assigned to your account. They walk you through the dashboard. Tell you what matters. Tell you what does not. Then they shut up and listen." },
+  { mono: "EX", title: "Execution", desc: "We build what the strategy calls for. Website, automation, SEO, WhatsApp, ads. Every product quoted separately before we touch anything. No surprises." },
+  { mono: "PT", title: "Partnership", desc: "We do not disappear after launch. Monthly competitor reports. Strategy check-ins. A team that stays on top of what your market is doing so you do not have to." },
 ];
 
 export default function AboutPage() {
@@ -54,12 +54,10 @@ export default function AboutPage() {
               What we are
             </h2>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 600, marginBottom: "16px", maxWidth: "none" }}>
-              StaplerLabs is a management consulting and technology execution platform for established
-              Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore in annual revenue.
+              StaplerLabs is a strategic partner for established Indian businesses. We diagnose your competitive position, build the strategy, and execute the technology. One engagement. No handoffs. No middle managers.
             </p>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "none" }}>
-              We help businesses that are too serious to ignore digital and too smart to overpay for it.
-              Because being better at business should not mean losing to someone who is better at the internet.
+              We work with businesses doing Rs. 50 Lakh to Rs. 50 Crore that are good at what they do but invisible to the customers searching for them.
             </p>
           </FadeIn>
         </div>

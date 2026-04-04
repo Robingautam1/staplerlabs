@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 
 const faqs = [
   { q: "What is the Rs. 999 diagnostic?", a: "It\u2019s an AI-generated Business Intelligence Dashboard that includes your Business Index Score, competitor map, gap analysis, and visibility assessment. You also get a 1-hour guide session with an assigned StaplerLabs consultant. It\u2019s a diagnostic product fee, not a consultation fee." },
-  { q: "What happens after the diagnostic?", a: "Your consultant walks you through the dashboard and recommends the 2\u20133 highest-leverage interventions. You can then choose the Starter Bundle (Rs. 9,999 one-time) or Strategic Retainer (Rs. 30K\u201350K/month). No pressure." },
+  { q: "What happens after the diagnostic?", a: "Your consultant walks you through the dashboard and recommends the 2\u20133 highest-impact actions. You can then choose the Starter Bundle (Rs. 9,999 one-time) or Strategic Retainer (Rs. 30K\u201350K/month). No pressure." },
   { q: "Do you work with businesses outside Delhi NCR?", a: "We\u2019re launching in Delhi NCR first. Mumbai, Bangalore, and Hyderabad are next. If you\u2019re in those cities, register now and we\u2019ll reach out when we expand." },
   { q: "What size businesses do you work with?", a: "Established businesses generating Rs. 50 Lakh to Rs. 50 Crore in annual revenue. Below that, we\u2019re not the right fit. Above that, you likely have in-house teams already." },
   { q: "Are consulting and technology priced separately?", a: "Always. Consulting fees cover strategic advisory. Technology products are scoped and quoted individually based on what the diagnostic reveals. Full transparency." },

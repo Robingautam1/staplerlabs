@@ -44,10 +44,10 @@ export default function WorkPage() {
         <div className="px-4 sm:px-6 text-center">
           <FadeIn>
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(44px, 5.5vw, 68px)", fontWeight: 400 }}>
-              Work that <em>speaks</em> for itself
+              What <em>actually</em> happened.
             </h1>
             <p className="mt-4 max-w-xl mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "var(--text-secondary)" }}>
-              Real projects. Real outcomes. No stock screenshots or vague testimonials.
+              Four businesses. What they had before, what we built, and the number that changed.
             </p>
           </FadeIn>
         </div>
@@ -116,10 +116,10 @@ export default function WorkPage() {
         <div className="px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, color: "white" }}>
-              Ready to become the next case study?
+              Want to know what your number looks like?
             </h2>
             <p className="mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "#9CA3AF", maxWidth: "480px", marginTop: "16px" }}>
-              Start with the Rs. 999 diagnostic. See exactly where your business stands.
+              Start with the diagnostic. Rs. 999. Thirty minutes. Your business, mapped.
             </p>
             <div style={{ marginTop: "36px" }}>
               <Link href="/contact" className="inline-flex items-center gap-2" style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px" }}>

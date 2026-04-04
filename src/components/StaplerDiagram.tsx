@@ -26,9 +26,11 @@ export default function StaplerDiagram() {
 
   /* Dark section — uses hardcoded colors for contrast */
   const blue = "#3B82F6";
-  const textDim = "rgba(249,250,251,0.4)";
-  const textLabel = "#93C5FD";
-  const strokeDim = "rgba(249,250,251,0.12)";
+  const yellow = "#F5C400";
+  const metalGray = "#374151";
+  const textDim = "#E5E7EB";
+  const textLabel = "#FFFFFF";
+  const strokeDim = "rgba(249,250,251,0.25)";
 
   return (
     <div ref={ref} className="relative w-full" style={{ maxWidth: 720, margin: "0 auto" }}>
@@ -62,9 +64,9 @@ export default function StaplerDiagram() {
           />
           <circle cx="360" cy="90" r="22" fill={blue} opacity="0.06" />
           <line x1="385" y1="88" x2="510" y2="88" stroke={blue} strokeWidth="0.8" opacity="0.3" />
-          <circle cx="510" cy="88" r="3" fill={blue} opacity="0.3" />
-          <text x="520" y="84" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" letterSpacing="-0.01em">The Deliverable</text>
-          <text x="520" y="100" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400">Live website, WhatsApp pipeline, Maps ranking</text>
+          <circle cx="510" cy="88" r="3" fill={yellow} />
+          <text x="520" y="84" fontSize="13" fill={textLabel} fontFamily="'DM Sans', sans-serif" fontWeight="700" letterSpacing="-0.01em">The Deliverable</text>
+          <text x="520" y="100" fontSize="10" fill={textDim} fontFamily="'DM Sans', sans-serif" fontWeight="400">Live website, WhatsApp pipeline, Maps ranking</text>
         </motion.g>
 
         {/* ARM — The Consultant */}
@@ -87,9 +89,9 @@ export default function StaplerDiagram() {
           <line x1="240" y1="120" x2="490" y2="120" stroke={blue} strokeWidth="0.5" opacity="0.12" />
           <line x1="240" y1="130" x2="490" y2="130" stroke={blue} strokeWidth="0.5" opacity="0.08" />
           <line x1="190" y1="133" x2="90" y2="133" stroke={blue} strokeWidth="0.8" opacity="0.3" />
-          <circle cx="90" cy="133" r="3" fill={blue} opacity="0.3" />
-          <text x="80" y="128" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">The Consultant</text>
-          <text x="80" y="144" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400" textAnchor="end">Strategic intelligence &amp; advisory</text>
+          <circle cx="90" cy="133" r="3" fill={yellow} />
+          <text x="80" y="128" fontSize="13" fill={textLabel} fontFamily="'DM Sans', sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">The Consultant</text>
+          <text x="80" y="144" fontSize="10" fill={textDim} fontFamily="'DM Sans', sans-serif" fontWeight="400" textAnchor="end">Strategic intelligence &amp; advisory</text>
         </motion.g>
 
         {/* SPRING — AI Diagnostic Engine */}
@@ -111,24 +113,24 @@ export default function StaplerDiagram() {
             strokeLinecap="round"
           />
           <line x1="378" y1="220" x2="510" y2="220" stroke={blue} strokeWidth="0.8" opacity="0.3" />
-          <circle cx="510" cy="220" r="3" fill={blue} opacity="0.3" />
-          <text x="520" y="216" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" letterSpacing="-0.01em">AI Engine</text>
-          <text x="520" y="232" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400">30-min intelligence dashboard</text>
+          <circle cx="510" cy="220" r="3" fill={yellow} />
+          <text x="520" y="216" fontSize="13" fill={textLabel} fontFamily="'DM Sans', sans-serif" fontWeight="700" letterSpacing="-0.01em">AI Engine</text>
+          <text x="520" y="232" fontSize="10" fill={textDim} fontFamily="'DM Sans', sans-serif" fontWeight="400">30-min intelligence dashboard</text>
         </motion.g>
 
         {/* HINGE — The Platform */}
         <motion.g {...enter(3)} {...float(0.3, 3)}>
-          <circle cx="200" cy="270" r="14" fill="#1F2937" stroke={strokeDim} strokeWidth="2.5" filter="url(#sd)" />
+          <circle cx="200" cy="270" r="14" fill={metalGray} stroke={strokeDim} strokeWidth="2.5" filter="url(#sd)" />
           <circle cx="200" cy="270" r="5" fill="rgba(249,250,251,0.1)" />
           <line x1="182" y1="270" x2="90" y2="270" stroke={strokeDim} strokeWidth="0.8" />
-          <circle cx="90" cy="270" r="3" fill={blue} opacity="0.3" />
-          <text x="80" y="265" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">The Platform</text>
-          <text x="80" y="281" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400" textAnchor="end">Intake, CRM, portal, dashboard</text>
+          <circle cx="90" cy="270" r="3" fill={yellow} />
+          <text x="80" y="265" fontSize="13" fill={textLabel} fontFamily="'DM Sans', sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">The Platform</text>
+          <text x="80" y="281" fontSize="10" fill={textDim} fontFamily="'DM Sans', sans-serif" fontWeight="400" textAnchor="end">Intake, CRM, portal, dashboard</text>
         </motion.g>
 
         {/* MAGAZINE — Product Stack */}
         <motion.g {...enter(4)} {...float(0.9, 3)}>
-          <rect x="215" y="296" width="290" height="42" rx="6" fill="#1F2937" stroke={strokeDim} strokeWidth="1.8" filter="url(#sd)" />
+          <rect x="215" y="296" width="290" height="42" rx="6" fill={metalGray} stroke={strokeDim} strokeWidth="1.8" filter="url(#sd)" />
           <path
             d="M215 338 L215 348 C215 352 219 354 225 354 L499 354 C505 354 509 352 509 348 L509 338"
             fill="url(#base-grad)"
@@ -145,14 +147,14 @@ export default function StaplerDiagram() {
             </g>
           ))}
           <line x1="210" y1="320" x2="90" y2="320" stroke={strokeDim} strokeWidth="0.8" />
-          <circle cx="90" cy="320" r="3" fill={blue} opacity="0.3" />
-          <text x="80" y="315" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">Product Stack</text>
-          <text x="80" y="331" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400" textAnchor="end">Web, SEO, automation, chatbots, ads</text>
+          <circle cx="90" cy="320" r="3" fill={yellow} />
+          <text x="80" y="315" fontSize="13" fill={textLabel} fontFamily="'DM Sans', sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">Product Stack</text>
+          <text x="80" y="331" fontSize="10" fill={textDim} fontFamily="'DM Sans', sans-serif" fontWeight="400" textAnchor="end">Web, SEO, automation, chatbots, ads</text>
         </motion.g>
 
         {/* BASE — Your Business (Anvil) */}
         <motion.g {...enter(5)} {...float(0, 2)}>
-          <path d="M180 388 L180 378 C180 372 192 368 210 368 L510 368 C528 368 540 372 540 378 L540 388 Z" fill="#1F2937" stroke={strokeDim} strokeWidth="1.8" filter="url(#sd)" />
+          <path d="M180 388 L180 378 C180 372 192 368 210 368 L510 368 C528 368 540 372 540 378 L540 388 Z" fill={metalGray} stroke={strokeDim} strokeWidth="1.8" filter="url(#sd)" />
           <path d="M180 388 L180 410 C180 418 192 424 210 424 L510 424 C528 424 540 418 540 410 L540 388 Z" fill="url(#base-grad)" stroke={strokeDim} strokeWidth="1" />
           <line x1="210" y1="398" x2="510" y2="398" stroke="rgba(249,250,251,0.04)" strokeWidth="1" />
           <line x1="210" y1="408" x2="510" y2="408" stroke="rgba(249,250,251,0.03)" strokeWidth="1" />
@@ -160,18 +162,18 @@ export default function StaplerDiagram() {
           <rect x="200" y="420" width="20" height="6" rx="3" fill="rgba(249,250,251,0.06)" />
           <rect x="500" y="420" width="20" height="6" rx="3" fill="rgba(249,250,251,0.06)" />
           <line x1="545" y1="396" x2="600" y2="396" stroke={strokeDim} strokeWidth="0.8" />
-          <circle cx="600" cy="396" r="3" fill={blue} opacity="0.3" />
-          <text x="610" y="392" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" letterSpacing="-0.01em">Your Business</text>
-          <text x="610" y="408" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400">The foundation we build on</text>
+          <circle cx="600" cy="396" r="3" fill={yellow} />
+          <text x="610" y="392" fontSize="13" fill={textLabel} fontFamily="'DM Sans', sans-serif" fontWeight="700" letterSpacing="-0.01em">Your Business</text>
+          <text x="610" y="408" fontSize="10" fill={textDim} fontFamily="'DM Sans', sans-serif" fontWeight="400">The foundation we build on</text>
         </motion.g>
 
         {/* TITLE */}
         <motion.g {...enter(6)}>
-          <text x="360" y="468" textAnchor="middle" fontSize="10.5" fill="rgba(249,250,251,0.2)" fontFamily="Inter, sans-serif" fontWeight="600" letterSpacing="0.14em">
+          <text x="360" y="468" textAnchor="middle" fontSize="10.5" fill="rgba(249,250,251,0.5)" fontFamily="'DM Sans', sans-serif" fontWeight="600" letterSpacing="0.14em">
             ANATOMY OF STAPLERLABS
           </text>
-          <line x1="240" y1="478" x2="480" y2="478" stroke="rgba(249,250,251,0.06)" strokeWidth="1" />
-          <text x="360" y="496" textAnchor="middle" fontSize="11" fill="rgba(249,250,251,0.35)" fontFamily="Inter, sans-serif" fontWeight="400" fontStyle="italic">
+          <line x1="240" y1="478" x2="480" y2="478" stroke="rgba(249,250,251,0.15)" strokeWidth="1" />
+          <text x="360" y="496" textAnchor="middle" fontSize="11" fill="rgba(249,250,251,0.6)" fontFamily="'DM Sans', sans-serif" fontWeight="400" fontStyle="italic">
             Every part working together. Nothing wasted.
           </text>
         </motion.g>

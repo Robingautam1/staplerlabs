@@ -51,18 +51,14 @@ export default function ServicesPage() {
                 <p className="label-caps-blue" style={{ marginBottom: "12px" }}>Layer 1</p>
                 <h2 style={{ fontFamily: "var(--font-body)", fontSize: "20px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "16px" }}>Management Consulting</h2>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "none" }}>
-                  Strategic advisory on digital positioning, competitive intelligence, online brand
-                  architecture, and customer acquisition strategy. For businesses competing with
-                  VC-funded startups and D2C brands that spend 40&ndash;60% of revenue on digital.
+                  We look at who is eating your market, what they are doing online that you are not, and build you a clear plan to close the gap. That is the consulting layer. It drives every decision that comes after.
                 </p>
               </div>
               <div>
                 <p className="label-caps-blue" style={{ marginBottom: "12px" }}>Layer 2</p>
                 <h2 style={{ fontFamily: "var(--font-body)", fontSize: "20px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "16px" }}>Technology Execution</h2>
                 <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "none" }}>
-                  Full-stack web development, business automation, WhatsApp pipelines, local SEO,
-                  AI chatbots, and performance marketing. Always scoped from the consulting layer,
-                  never sold in isolation.
+                  The technology we build comes from the strategy, not from a service menu. Website, automation, WhatsApp pipelines, ads &mdash; we scope it based on what your diagnostic says you actually need. Always quoted separately. Always approved before we start.
                 </p>
               </div>
             </div>
@@ -75,9 +71,12 @@ export default function ServicesPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <FadeIn>
             <p className="label-caps" style={{ marginBottom: "12px" }}>Consulting services</p>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, marginBottom: "40px" }}>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, marginBottom: "16px" }}>
               Strategy that drives every technical decision
             </h2>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280", marginBottom: "40px", maxWidth: "600px" }}>
+              These are the six ways we engage strategically. All of them come with your assigned consultant. None of them involve a deck full of jargon.
+            </p>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {consultingServices.map((s, i) => (
@@ -112,9 +111,8 @@ export default function ServicesPage() {
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, marginBottom: "16px" }}>
               Everything recommended by the diagnostic, built to spec
             </h2>
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "var(--text-secondary)", marginBottom: "40px", maxWidth: "600px" }}>
-              All technology services are quoted separately from consulting. They are recommended
-              by your consultant based on diagnostic findings.
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280", marginBottom: "40px", maxWidth: "600px" }}>
+              We only recommend a technology product after the diagnostic tells us it is the right one for your business. Then we quote it, you approve it, we build it.
             </p>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
