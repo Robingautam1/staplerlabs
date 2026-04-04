@@ -87,7 +87,7 @@ export default function TransformationSection() {
   return (
     <section
       className="px-6"
-      style={{ paddingTop: "80px", paddingBottom: "80px", background: "var(--color-bg-subtle)" }}
+      style={{ paddingTop: "80px", paddingBottom: "80px", background: "var(--bg-base)" }}
     >
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
@@ -105,7 +105,7 @@ export default function TransformationSection() {
               fontWeight: 600,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
-              color: "var(--amber)",
+              color: "var(--text-muted)",
             }}
           >
             What actually changes
@@ -116,7 +116,7 @@ export default function TransformationSection() {
               fontSize: "clamp(30px, 4.2vw, 52px)",
               lineHeight: 1.08,
               letterSpacing: "-0.02em",
-              color: "var(--ink)",
+              color: "var(--text-primary)",
             }}
           >
             Before us. After us.
@@ -125,7 +125,7 @@ export default function TransformationSection() {
             style={{
               fontSize: "16px",
               lineHeight: 1.7,
-              color: "var(--ink-60)",
+              color: "var(--text-secondary)",
               maxWidth: "560px",
               margin: "0 auto",
             }}
@@ -164,7 +164,7 @@ export default function TransformationSection() {
                   fontWeight: 600,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: "var(--amber)",
+                  color: "var(--text-muted)",
                 }}
               >
                 {card.tag}
@@ -179,13 +179,13 @@ export default function TransformationSection() {
               <div className="mt-auto">
                 <p
                   className="font-body"
-                  style={{ fontSize: "15px", fontWeight: 600, color: "var(--ink)", lineHeight: 1.3 }}
+                  style={{ fontSize: "15px", fontWeight: 600, color: "var(--text-primary)", lineHeight: 1.3 }}
                 >
                   {card.title}
                 </p>
                 <p
                   className="font-body mt-1"
-                  style={{ fontSize: "13px", color: "var(--ink-60)", lineHeight: 1.5 }}
+                  style={{ fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}
                 >
                   {card.description}
                 </p>

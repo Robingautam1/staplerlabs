@@ -35,24 +35,26 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "backdrop-blur-xl" : "bg-transparent"
-        }`}
-        style={
-          scrolled
-            ? { backgroundColor: "var(--nav-bg)", borderBottom: "1px solid var(--color-border)" }
-            : {}
-        }
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          backgroundColor: "var(--bg-base)",
+          borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "1px solid transparent",
+        }}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Wordmark */}
           <Link href="/" className="flex items-center gap-3">
             <StaplerLogo className="w-10 h-10" hoverAnimate />
             <span
-              className="font-display"
-              style={{ fontSize: "21px", color: "var(--color-text-primary)", letterSpacing: "-0.01em" }}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "21px",
+                fontWeight: 700,
+                color: "var(--text-primary)",
+                letterSpacing: "-0.01em",
+              }}
             >
-              Stapler<span style={{ color: "var(--color-primary)" }}>Labs</span>
+              StaplerLabs
             </span>
           </Link>
 
@@ -62,11 +64,12 @@ export default function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="nav-link transition-colors font-body"
+                className="nav-link transition-colors"
                 style={{
+                  fontFamily: "var(--font-body)",
                   fontSize: "14px",
                   fontWeight: 500,
-                  color: pathname === l.href ? "var(--color-primary)" : "var(--color-text-muted)",
+                  color: pathname === l.href ? "var(--text-primary)" : "var(--text-secondary)",
                 }}
               >
                 {l.label}
@@ -94,11 +97,11 @@ export default function Navbar() {
           >
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${open ? "rotate-45 translate-y-1" : ""}`}
-              style={{ backgroundColor: "var(--color-text-primary)" }}
+              style={{ backgroundColor: "var(--text-primary)" }}
             />
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${open ? "-rotate-45 -translate-y-1" : ""}`}
-              style={{ backgroundColor: "var(--color-text-primary)" }}
+              style={{ backgroundColor: "var(--text-primary)" }}
             />
           </button>
         </div>
@@ -120,14 +123,14 @@ export default function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ type: "tween", duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-50 flex flex-col justify-center px-10"
-              style={{ backgroundColor: "#FFFFFF" }}
+              style={{ backgroundColor: "var(--bg-base)" }}
             >
               <button
                 onClick={() => setOpen(false)}
                 className="absolute top-5 right-6 text-2xl"
-                style={{ color: "var(--color-text-muted)" }}
+                style={{ color: "var(--text-muted)" }}
                 aria-label="Close menu"
               >
                 &times;
@@ -141,11 +144,12 @@ export default function Navbar() {
                 >
                   <Link
                     href={l.href}
-                    className="block py-3 font-display"
+                    className="block py-3"
                     style={{
+                      fontFamily: "var(--font-display)",
                       fontSize: "28px",
-                      fontWeight: 700,
-                      color: pathname === l.href ? "var(--color-primary)" : "var(--color-text-primary)",
+                      fontWeight: 400,
+                      color: pathname === l.href ? "var(--text-primary)" : "var(--text-secondary)",
                     }}
                   >
                     {l.label}

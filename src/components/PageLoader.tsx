@@ -74,7 +74,7 @@ export default function PageLoader() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+            style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}
           >
             {quip}
           </motion.p>

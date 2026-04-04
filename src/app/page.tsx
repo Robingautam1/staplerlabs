@@ -2,18 +2,14 @@
 
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import FadeIn from "@/components/FadeIn";
+import { useRef, useState, useEffect } from "react";
 import TransformationSection from "@/components/transformation";
 
-/* ── Stagger wrapper variants ── */
-const sectionVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-const childVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const } },
+/* ── Animation variants ── */
+const sectionV = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
+const childV = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 /* ── JSON-LD ── */
@@ -59,323 +55,316 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ══════════════ HERO ══════════════ */}
-      <section
-        className="relative overflow-hidden"
-        style={{ paddingTop: "clamp(110px, 16vh, 180px)", paddingBottom: "clamp(60px, 8vh, 100px)", background: "#FFFFFF" }}
-      >
-        <div className="absolute inset-0 graph-grid opacity-50" />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <section style={{ paddingTop: "100px", paddingBottom: "80px", background: "var(--bg-base)" }}>
+        <div className="relative z-10 mx-auto px-6 text-center" style={{ maxWidth: "720px" }}>
           <motion.h1
-            className="font-display mx-auto"
-            style={{ fontSize: "clamp(36px, 5vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em", fontWeight: 800, maxWidth: "900px" }}
-            initial={{ opacity: 0, y: 30 }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(48px, 6vw, 68px)",
+              fontWeight: 400,
+              color: "var(--text-primary)",
+              lineHeight: 1.08,
+              textAlign: "center",
+            }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            The internet favours startups.{" "}
-            <span style={{ color: "var(--color-primary)" }}>
-              We level the field for businesses that actually built something.
-            </span>
+            The internet favours startups.<br />
+            We level the field for businesses<br />
+            that <em>actually</em> built something.
           </motion.h1>
 
           <motion.p
-            className="mt-6 mx-auto"
-            style={{ fontSize: "18px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "700px" }}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "18px",
+              color: "var(--text-muted)",
+              textAlign: "center",
+              maxWidth: "520px",
+              margin: "24px auto 0",
+              lineHeight: 1.7,
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.55, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            StaplerLabs is the strategic consulting and technology partner for established
-            Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore &mdash; competing in an era built against them.
+            Strategic consulting and technology execution for established Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore &mdash; competing in an era built against them.
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3"
+            style={{ marginTop: "36px" }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.55, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Link href="/contact" className="btn-primary" style={{ fontSize: "15px", padding: "14px 28px" }}>
-              Get Your Business Diagnostic &mdash; Rs. 999
-              <span className="arrow-chip">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
+            <Link href="/contact" className="btn-primary">
+              Get Your Business Diagnostic &mdash; Rs. 999 &rarr;
             </Link>
             <Link href="#how-it-works" className="btn-secondary">
               See How It Works
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.6 }}>
-                <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
             </Link>
           </motion.div>
 
-          {/* ── Trust stats row ── */}
+          {/* ── Stats row with dividers ── */}
           <motion.div
-            className="mt-12 flex flex-wrap items-center justify-center gap-8 sm:gap-12"
+            className="flex items-center justify-center gap-0"
+            style={{ marginTop: "52px" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.55, delay: 0.8 }}
           >
             {[
               { val: "63M+", label: "SMBs in India" },
-              { val: "Rs. 50L\u201350Cr", label: "Our Revenue Band" },
-              { val: "Delhi NCR", label: "Launch 2026" },
+              { val: "Rs. 50L\u201350Cr", label: "Our revenue band" },
+              { val: "30 min", label: "To your first intelligence report" },
             ].map((s, i) => (
-              <div key={i} className="text-center">
-                <p style={{ fontSize: "20px", fontWeight: 800, color: "var(--color-primary)", letterSpacing: "-0.01em" }}>{s.val}</p>
-                <p style={{ fontSize: "13px", fontWeight: 500, color: "var(--color-text-muted)", marginTop: "2px" }}>{s.label}</p>
+              <div key={i} className="flex items-center">
+                {i > 0 && (
+                  <div style={{ width: 1, height: 32, background: "var(--border-default)", margin: "0 24px" }} />
+                )}
+                <div className="text-center">
+                  <p style={{ fontFamily: "var(--font-display)", fontSize: "32px", fontWeight: 400, color: "var(--text-primary)" }}>{s.val}</p>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-muted)", marginTop: "4px" }}>{s.label}</p>
+                </div>
               </div>
             ))}
           </motion.div>
         </div>
+
+        {/* Dashboard illustration */}
+        <DashboardCard />
       </section>
 
-      {/* ══════════════ THE PROBLEM — 3-Column Cards ══════════════ */}
-      <section style={{ background: "var(--color-bg-subtle)", paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* ══════════════ THE PROBLEM ══════════════ */}
+      <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3">Why this matters</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-12 mx-auto" style={{ fontSize: "clamp(28px, 3.5vw, 38px)", maxWidth: "700px" }}>
-              You built something real.{" "}
-              <span style={{ color: "var(--color-text-secondary)" }}>The internet doesn&apos;t know it yet.</span>
+          <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+            <motion.p variants={childV} className="label-caps text-center" style={{ marginBottom: "12px" }}>Why this matters</motion.p>
+            <motion.h2 variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, maxWidth: "700px", marginBottom: "48px" }}>
+              You built something real.<br />
+              <span style={{ color: "var(--text-secondary)" }}>The internet doesn&apos;t know it yet.</span>
             </motion.h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              {
-                icon: "threat",
-                title: "The Threat",
-                stat: "40\u201360%",
-                desc: "of revenue is spent on digital by VC-funded startups. They&apos;re not better than you \u2014 they&apos;re just better at the internet.",
-              },
-              {
-                icon: "gap",
-                title: "The Gap",
-                stat: "92%",
-                desc: "of SMBs in the Rs. 50L\u201350Cr band have no integrated digital strategy. Your competitors aren&apos;t the problem \u2014 your invisibility is.",
-              },
-              {
-                icon: "cost",
-                title: "The Cost",
-                stat: "Every month",
-                desc: "without a digital strategy is market share lost permanently. Customers who can&apos;t find you online find someone else.",
-              },
+              { stat: "40\u201360%", title: "The Threat", desc: "of revenue is spent on digital by VC-funded startups. They\u2019re not better than you \u2014 they\u2019re just better at the internet." },
+              { stat: "92%", title: "The Gap", desc: "of SMBs in the Rs. 50L\u201350Cr band have no integrated digital strategy. Your competitors aren\u2019t the problem \u2014 your invisibility is." },
+              { stat: "Every month", title: "The Cost", desc: "without a digital strategy is market share lost permanently. Customers who can\u2019t find you online find someone else." },
             ].map((card, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="card-theme p-8 h-full" style={{ background: "#FFFFFF" }}>
-                  <p style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "var(--color-primary)", lineHeight: 1, marginBottom: "12px" }}>
-                    {card.stat}
-                  </p>
-                  <h3 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "8px" }}>
-                    {card.title}
-                  </h3>
-                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "none" }}>
-                    {card.desc}
-                  </p>
-                </div>
-              </FadeIn>
+              <motion.div key={i} className="card-theme p-8 h-full" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 400, color: "var(--text-primary)", lineHeight: 1, marginBottom: "12px" }}>{card.stat}</p>
+                <h3 style={{ fontFamily: "var(--font-body)", fontSize: "18px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "8px" }}>{card.title}</h3>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "none" }}>{card.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════ HOW IT WORKS — The 3I Model ══════════════ */}
-      <section id="how-it-works" style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* ══════════════ 3I MODEL ══════════════ */}
+      <section id="how-it-works" style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-5xl mx-auto px-6">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3">How it works</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 38px)" }}>
-              Three steps. Thirty minutes to your first intelligence report.
+          <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+            <motion.p variants={childV} className="label-caps-blue text-center" style={{ marginBottom: "12px" }}>How it works</motion.p>
+            <motion.h2 variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, maxWidth: "700px", marginBottom: "16px" }}>
+              Three steps.<br />
+              <em>Thirty minutes to your first intelligence report.</em>
             </motion.h2>
-            <motion.p variants={childVariants} className="text-center mx-auto mb-14" style={{ fontSize: "16px", color: "var(--color-text-secondary)", maxWidth: "600px" }}>
+            <motion.p variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "var(--text-secondary)", maxWidth: "600px", marginBottom: "56px" }}>
               Every engagement follows the same proven model. No sales pitch. No fluff. Just intelligence, then action.
             </motion.p>
           </motion.div>
 
-          <div className="relative">
-            {/* Connecting line */}
-            <div className="hidden md:block absolute left-[16.66%] right-[16.66%]" style={{ top: 44, height: 2, background: "linear-gradient(to right, transparent, var(--color-primary) 25%, var(--color-primary) 75%, transparent)", opacity: 0.15, borderRadius: 1 }} />
-
-            <div className="grid md:grid-cols-3 gap-10">
-              {[
-                {
-                  step: "01",
-                  name: "INTRODUCE",
-                  title: "Fill a 15-minute questionnaire",
-                  desc: "Sector-specific. Dynamically generated for your business type. Zero cost. No commitment.",
-                  tag: "Free",
-                },
-                {
-                  step: "02",
-                  name: "IMPRESS",
-                  title: "Get your AI Intelligence Dashboard",
-                  desc: "Business Index Score, competitor map, gap analysis, and visibility assessment \u2014 generated in 30 minutes.",
-                  tag: "Rs. 999",
-                },
-                {
-                  step: "03",
-                  name: "INITIATE",
-                  title: "Meet your assigned consultant",
-                  desc: "A StaplerLabs consultant walks you through findings and recommends exactly what to fix first.",
-                  tag: "24 hours",
-                },
-              ].map((item, i) => (
-                <FadeIn key={i} delay={i * 0.12}>
-                  <div className="text-center md:text-left">
-                    <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-                      <div style={{
-                        width: 48, height: 48, borderRadius: "50%",
-                        background: "var(--color-primary-light)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        fontSize: "16px", fontWeight: 800, color: "var(--color-primary)"
-                      }}>
-                        {item.step}
-                      </div>
-                      <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: "var(--color-primary)" }}>
-                        {item.name}
-                      </span>
-                    </div>
-                    <h3 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "8px", lineHeight: 1.3 }}>
-                      {item.title}
-                    </h3>
-                    <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "340px" }}>
-                      {item.desc}
-                    </p>
-                    <span style={{
-                      display: "inline-block", marginTop: "12px",
-                      fontSize: "12px", fontWeight: 600, color: "var(--color-primary)",
-                      background: "var(--color-primary-light)", borderRadius: "9999px",
-                      padding: "4px 12px",
-                    }}>
-                      {item.tag}
+          {/* Three cards with arrows */}
+          <div className="flex flex-col md:flex-row items-stretch gap-4 md:gap-0">
+            {[
+              {
+                step: "01", name: "INTRODUCE", badge: "Free",
+                title: "Fill a 15-minute questionnaire",
+                desc: "Sector-specific. Dynamically generated for your business type. A dental clinic gets different questions from a textile distributor. Zero cost. No commitment.",
+                illustration: "form",
+              },
+              {
+                step: "02", name: "IMPRESS", badge: "Rs. 999",
+                title: "Get your AI Intelligence Dashboard",
+                desc: "Business Index Score, competitor map, gap analysis, and visibility assessment \u2014 generated in 30 minutes. Pay Rs. 999 to unlock your assigned StaplerLabs consultant.",
+                illustration: "dial",
+              },
+              {
+                step: "03", name: "INITIATE", badge: "24 hours",
+                title: "Meet your assigned consultant",
+                desc: "A StaplerLabs consultant walks you through the findings and recommends exactly what to fix first. Plain language. No slides. No upsell theatre.",
+                illustration: "chat",
+              },
+            ].map((item, i) => (
+              <div key={i} className="flex items-stretch flex-1">
+                <motion.div className="card-theme p-8 flex flex-col flex-1" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}>
+                  {/* Header row */}
+                  <div className="flex items-start justify-between" style={{ marginBottom: "20px" }}>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, color: "white", background: "var(--bg-dark)", borderRadius: "100px", padding: "4px 12px" }}>
+                      {item.step}&nbsp;&nbsp;{item.name}
+                    </span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--text-muted)", background: "var(--bg-base)", borderRadius: "100px", padding: "4px 10px", border: "1px solid var(--border-default)" }}>
+                      {item.badge}
                     </span>
                   </div>
-                </FadeIn>
-              ))}
-            </div>
+                  <h3 style={{ fontFamily: "var(--font-body)", fontSize: "18px", fontWeight: 600, color: "var(--text-primary)", marginBottom: "8px" }}>{item.title}</h3>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: "none", flex: 1 }}>{item.desc}</p>
+                  {/* Mini illustration */}
+                  <div style={{ marginTop: "20px", height: "80px" }}>
+                    {item.illustration === "form" && (
+                      <svg viewBox="0 0 200 80" fill="none" style={{ width: "100%", height: "100%" }}>
+                        <rect x="10" y="8" width="180" height="16" rx="4" fill="var(--border-default)" />
+                        <rect x="10" y="32" width="180" height="16" rx="4" fill="var(--border-default)" />
+                        <rect x="10" y="32" width="4" height="16" rx="2" fill="var(--accent-blue)" />
+                        <path d="M178 38 L182 42 L178 46" stroke="var(--text-faint)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                        <rect x="10" y="56" width="180" height="16" rx="4" fill="var(--border-default)" />
+                      </svg>
+                    )}
+                    {item.illustration === "dial" && (
+                      <svg viewBox="0 0 200 80" fill="none" style={{ width: "100%", height: "100%" }}>
+                        <circle cx="100" cy="36" r="24" stroke="var(--border-default)" strokeWidth="3.5" fill="none" />
+                        <circle cx="100" cy="36" r="24" stroke="var(--text-primary)" strokeWidth="3.5" fill="none" strokeDasharray="150.8" strokeDashoffset="43" strokeLinecap="round" transform="rotate(-90 100 36)" />
+                        <text x="100" y="40" textAnchor="middle" style={{ fontFamily: "var(--font-display)", fontSize: "14px", fill: "var(--text-primary)" }}>72</text>
+                        <rect x="60" y="68" width="48" height="6" rx="3" fill="var(--text-primary)" opacity="0.6" />
+                        <rect x="114" y="68" width="28" height="6" rx="3" fill="var(--text-primary)" opacity="0.35" />
+                      </svg>
+                    )}
+                    {item.illustration === "chat" && (
+                      <div>
+                        <div style={{ fontFamily: "var(--font-body)", fontSize: "11px", background: "var(--bg-dark)", color: "white", borderRadius: "12px", padding: "10px 14px", display: "inline-block", maxWidth: "220px" }}>
+                          Your 3 priority actions are ready.
+                        </div>
+                        <div className="flex items-center gap-2" style={{ marginTop: "10px" }}>
+                          <div style={{ width: 32, height: 32, borderRadius: "50%", background: "var(--bg-base)", border: "1px solid var(--border-default)" }} />
+                          <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "var(--text-muted)" }}>Arjun M. &mdash; Consultant</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+                {/* Arrow between cards */}
+                {i < 2 && (
+                  <div className="hidden md:flex flex-col items-center justify-center" style={{ width: "56px", flexShrink: 0 }}>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--text-faint)" }}>
+                      {i === 0 ? "30 min" : "24 hrs"}
+                    </span>
+                    <span style={{ fontSize: "18px", color: "var(--text-faint)", marginTop: "4px" }}>&rarr;</span>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
-          <div className="text-center mt-14">
-            <Link href="/contact" className="btn-primary" style={{ fontSize: "15px", padding: "14px 28px" }}>
-              Start Your Diagnostic &mdash; Rs. 999
-              <span className="arrow-chip">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════ DASHBOARD PREVIEW ══════════════ */}
-      <section style={{ background: "var(--color-bg-subtle)", paddingTop: "80px", paddingBottom: "80px" }}>
-        <div className="max-w-5xl mx-auto px-6">
+          {/* Dark callout */}
           <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            style={{ background: "var(--bg-dark)", borderRadius: "16px", padding: "40px 48px", textAlign: "center", marginTop: "48px" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3">What you get</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-12 mx-auto" style={{ fontSize: "clamp(28px, 3.5vw, 38px)", maxWidth: "700px" }}>
-              Intelligence that used to cost lakhs. Now available in 30 minutes.
-            </motion.h2>
+            <p style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "26px", color: "white", lineHeight: 1.3 }}>
+              &ldquo;The Rs. 999 is not a consultation fee.&rdquo;
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#9CA3AF", marginTop: "12px", maxWidth: "600px", margin: "12px auto 0", lineHeight: 1.7 }}>
+              It is a diagnostic product that most consulting firms charge lakhs to produce. You get it in 30 minutes. Whether or not you continue with StaplerLabs, you walk away knowing exactly where your business stands.
+            </p>
+            <div style={{ marginTop: "24px" }}>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2"
+                style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px" }}
+              >
+                Start Your Diagnostic &mdash; Rs. 999 &rarr;
+              </Link>
+            </div>
           </motion.div>
-
-          <FadeIn>
-            <BIDashboardPreview />
-          </FadeIn>
         </div>
       </section>
 
       {/* ══════════════ WHO THIS IS FOR ══════════════ */}
-      <section style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+      <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3">Who this is for</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-12 mx-auto" style={{ fontSize: "clamp(28px, 3.5vw, 38px)", maxWidth: "800px" }}>
-              Built for businesses that are too serious to ignore digital{" "}
-              <span style={{ color: "var(--color-text-secondary)" }}>and too smart to overpay for it.</span>
+          <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+            <motion.p variants={childV} className="label-caps text-center" style={{ marginBottom: "12px" }}>Who this is for</motion.p>
+            <motion.h2 variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, maxWidth: "800px", marginBottom: "48px" }}>
+              Built for businesses that are<br />
+              <em>too serious to ignore digital.</em>
             </motion.h2>
           </motion.div>
 
           {/* Revenue band visual */}
-          <FadeIn>
-            <div className="mx-auto mb-12" style={{ maxWidth: "600px" }}>
-              <div style={{ height: 8, borderRadius: 4, background: "var(--color-border)", position: "relative" }}>
-                <div style={{
-                  position: "absolute", left: "15%", right: "15%", top: 0, bottom: 0,
-                  borderRadius: 4, background: "var(--color-primary)",
-                }} />
-              </div>
-              <div className="flex justify-between mt-3" style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text-muted)" }}>
-                <span>Rs. 0</span>
-                <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>Rs. 50L &mdash; Rs. 50Cr</span>
-                <span>Rs. 100Cr+</span>
+          <motion.div
+            className="mx-auto"
+            style={{ maxWidth: "600px", marginBottom: "56px" }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Pill label */}
+            <div className="flex justify-center" style={{ marginBottom: "8px" }}>
+              <div className="text-center">
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 600, background: "var(--text-primary)", color: "white", borderRadius: "100px", padding: "4px 14px", display: "inline-block" }}>
+                  Rs. 50L &mdash; Rs. 50Cr
+                </span>
+                <div style={{ width: 0, height: 0, borderLeft: "6px solid transparent", borderRight: "6px solid transparent", borderTop: "6px solid var(--text-primary)", margin: "0 auto" }} />
               </div>
             </div>
-          </FadeIn>
+            {/* Track */}
+            <div style={{ height: 6, borderRadius: 100, background: "var(--border-default)", position: "relative" }}>
+              <div style={{ position: "absolute", left: "15%", right: "25%", top: 0, bottom: 0, borderRadius: 100, background: "var(--text-primary)" }} />
+            </div>
+            <div className="flex justify-between" style={{ marginTop: "8px" }}>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--text-faint)" }}>Rs. 0</span>
+              <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--text-faint)" }}>Rs. 100Cr+</span>
+            </div>
+          </motion.div>
 
+          {/* Three qualification cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Healthcare",
-                desc: "Multi-specialty clinics, dental practices, diagnostic labs losing patients to Practo and Google-visible competitors.",
-                sectors: ["Clinics", "Dental", "Diagnostics", "Physiotherapy"],
-              },
-              {
-                title: "Professional Services",
-                desc: "CAs, law firms, architects who built their practice on referrals but can\u2019t be found by anyone searching online.",
-                sectors: ["CA Firms", "Law Firms", "Architecture", "Interior Design"],
-              },
-              {
-                title: "Manufacturing & Retail",
-                desc: "Established businesses with 10\u201330 years of reputation, zero digital presence, and D2C brands eating their lunch.",
-                sectors: ["Textiles", "Jewellery", "Food & Beverage", "Education"],
-              },
-            ].map((card, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="card-theme p-7 h-full">
-                  <h3 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "8px" }}>
-                    {card.title}
-                  </h3>
-                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", marginBottom: "16px", maxWidth: "none" }}>
-                    {card.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {card.sectors.map((s) => (
-                      <span key={s} style={{
-                        fontSize: "12px", fontWeight: 500, color: "var(--color-primary)",
-                        background: "var(--color-primary-light)", borderRadius: "9999px",
-                        padding: "3px 10px",
-                      }}>
-                        {s}
-                      </span>
-                    ))}
+            {/* Card 1 — You Are A Fit If */}
+            <motion.div className="card-theme p-7 h-full" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] }}>
+              <p className="label-caps" style={{ color: "var(--text-primary)", marginBottom: "16px" }}>You are a fit if</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {["5 or more years in operation", "Rs. 50 Lakh to Rs. 50 Crore revenue", "Minimal or fragmented digital presence", "You are the primary decision-maker", "Based in Delhi NCR"].map((t, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span style={{ color: "var(--text-primary)", fontWeight: 600, flexShrink: 0 }}>&check;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{t}</span>
                   </div>
-                </div>
-              </FadeIn>
-            ))}
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Card 2 — Your Situation (dark) */}
+            <motion.div style={{ background: "var(--bg-dark)", borderRadius: "16px", padding: "28px" }} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}>
+              <p className="label-caps" style={{ color: "var(--text-faint)", marginBottom: "16px" }}>Your situation</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {["Digital-first competitors gaining your customers", "Previous agency or freelancer disappointed you", "No credible strategic partner at a sensible price", "Your business is good \u2014 the internet does not show it"].map((t, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span style={{ color: "#4B5563", flexShrink: 0 }}>&rarr;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#9CA3AF", lineHeight: 1.5 }}>{t}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Card 3 — Not A Fit If */}
+            <motion.div className="card-theme p-7 h-full" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}>
+              <p className="label-caps" style={{ color: "var(--text-muted)", marginBottom: "16px" }}>Not a fit if</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {["Revenue below Rs. 50 Lakh", "New startup with no track record", "Already digital-first business", "Want only a single deliverable"].map((t, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span style={{ color: "var(--text-faint)", flexShrink: 0 }}>&times;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--text-muted)", lineHeight: 1.5 }}>{t}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -384,250 +373,239 @@ export default function HomePage() {
       <TransformationSection />
 
       {/* ══════════════ PRICING ══════════════ */}
-      <section style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+      <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3">Pricing</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 38px)" }}>
-              Transparent pricing. No hidden retainers.
+          <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
+            <motion.p variants={childV} className="label-caps text-center" style={{ marginBottom: "12px" }}>Pricing</motion.p>
+            <motion.h2 variants={childV} className="text-center" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, marginBottom: "16px" }}>
+              Transparent pricing.<br />
+              <em>No hidden retainers.</em>
             </motion.h2>
-            <motion.p variants={childVariants} className="text-center mx-auto mb-14" style={{ fontSize: "16px", color: "var(--color-text-secondary)", maxWidth: "600px" }}>
-              Consulting and technology are always priced as separate, transparent line items. You see exactly what you&apos;re paying for.
+            <motion.p variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "18px", color: "var(--text-muted)", maxWidth: "540px", marginBottom: "56px" }}>
+              Consulting and technology are always separate line items. You see exactly what you are paying for.
             </motion.p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                tier: "Diagnostic",
-                price: "Rs. 999",
-                period: "one-time",
-                highlight: false,
-                features: [
-                  "AI Business Intelligence Dashboard",
-                  "Business Index Score",
-                  "Competitor Intelligence Report",
-                  "Gap Analysis & Visibility Assessment",
-                  "1-hour guide session with consultant",
-                ],
-                cta: "Start Diagnostic",
-              },
-              {
-                tier: "Starter Bundle",
-                price: "Rs. 9,999",
-                period: "one-time + tech quoted separately",
-                highlight: true,
-                features: [
-                  "Everything in Diagnostic",
-                  "3-hour deep-dive strategic session",
-                  "Written Digital Positioning Report",
-                  "90-Day Strategic Roadmap",
-                  "Tech team access for scoping",
-                ],
-                cta: "Get Started",
-              },
-              {
-                tier: "Strategic Retainer",
-                price: "Rs. 30K\u201350K",
-                period: "per month + tech quoted separately",
-                highlight: false,
-                features: [
-                  "Everything in Starter Bundle",
-                  "Ongoing strategic consulting",
-                  "Monthly Competitor Intelligence",
-                  "Digital positioning management",
-                  "Tech team on-call for scoping",
-                ],
-                cta: "Talk to Us",
-              },
-            ].map((plan, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div
-                  className="relative rounded-xl p-8 h-full flex flex-col"
-                  style={{
-                    background: plan.highlight ? "var(--color-primary)" : "#FFFFFF",
-                    border: plan.highlight ? "none" : "1px solid var(--color-border)",
-                    color: plan.highlight ? "#FFFFFF" : "var(--color-text-primary)",
-                    transform: plan.highlight ? "scale(1.02)" : "none",
-                  }}
-                >
-                  {plan.highlight && (
-                    <span style={{
-                      position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
-                      fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase",
-                      background: "#FFFFFF", color: "var(--color-primary)", borderRadius: "9999px",
-                      padding: "4px 14px",
-                    }}>
-                      Most Popular
-                    </span>
-                  )}
-                  <p style={{ fontSize: "14px", fontWeight: 600, marginBottom: "4px", opacity: plan.highlight ? 0.8 : 1, color: plan.highlight ? "rgba(255,255,255,0.8)" : "var(--color-text-muted)" }}>
-                    {plan.tier}
-                  </p>
-                  <p style={{ fontSize: "32px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "4px" }}>
-                    {plan.price}
-                  </p>
-                  <p style={{ fontSize: "13px", marginBottom: "24px", opacity: plan.highlight ? 0.7 : 1, color: plan.highlight ? "rgba(255,255,255,0.7)" : "var(--color-text-muted)" }}>
-                    {plan.period}
-                  </p>
-                  <div className="flex-1">
-                    <div className="space-y-3 mb-8">
-                      {plan.features.map((f, j) => (
-                        <div key={j} className="flex items-start gap-2.5">
-                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5">
-                            <path d="M3 8.5l3 3 7-7" stroke={plan.highlight ? "rgba(255,255,255,0.8)" : "var(--color-primary)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          <span style={{ fontSize: "14px", lineHeight: 1.5, color: plan.highlight ? "rgba(255,255,255,0.9)" : "var(--color-text-secondary)" }}>
-                            {f}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+          <div className="grid md:grid-cols-3 gap-6 items-start">
+            {/* Diagnostic */}
+            <motion.div className="card-theme p-7 flex flex-col" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-muted)", fontWeight: 500 }}>Diagnostic</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "40px", color: "var(--text-primary)", marginTop: "4px" }}>Rs. 999</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)" }}>one-time</p>
+              <div style={{ height: 1, background: "var(--border-subtle)", margin: "16px 0" }} />
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
+                {["AI Business Intelligence Dashboard", "Business Index Score", "Competitor Intelligence Report", "Gap Analysis and Visibility Assessment", "1-hour guide session with consultant"].map((f, j) => (
+                  <div key={j} className="flex items-start gap-2">
+                    <span style={{ color: "var(--text-primary)", fontWeight: 600, flexShrink: 0 }}>&check;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{f}</span>
                   </div>
-                  <Link
-                    href="/contact"
-                    className="text-center font-semibold rounded-lg py-3 transition-all duration-150 block"
-                    style={{
-                      fontSize: "14px",
-                      background: plan.highlight ? "#FFFFFF" : "var(--color-primary)",
-                      color: plan.highlight ? "var(--color-primary)" : "#FFFFFF",
-                    }}
-                  >
-                    {plan.cta}
-                  </Link>
-                </div>
-              </FadeIn>
-            ))}
+                ))}
+              </div>
+              <Link href="/contact" className="btn-primary justify-center w-full" style={{ marginTop: "24px" }}>Start Diagnostic</Link>
+            </motion.div>
+
+            {/* Starter Bundle — elevated dark */}
+            <motion.div
+              className="relative flex flex-col"
+              style={{ background: "var(--bg-dark)", borderRadius: "16px", padding: "28px", boxShadow: "0 12px 40px rgba(0,0,0,0.20)", transform: "translateY(-8px)" }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", background: "var(--accent-yellow)", color: "var(--bg-dark)", borderRadius: "100px", padding: "3px 10px" }}>Most Popular</span>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#9CA3AF", fontWeight: 500 }}>Starter Bundle</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "40px", color: "white", marginTop: "4px" }}>Rs. 9,999</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#6B7280" }}>+ tech quoted separately</p>
+              <div style={{ height: 1, background: "rgba(255,255,255,0.1)", margin: "16px 0" }} />
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
+                {["Everything in Diagnostic", "3-hour deep-dive strategic session", "Written Digital Positioning Report", "90-Day Strategic Roadmap", "Tech team access for scoping"].map((f, j) => (
+                  <div key={j} className="flex items-start gap-2">
+                    <span style={{ color: "#6B7280", fontWeight: 600, flexShrink: 0 }}>&check;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#9CA3AF", lineHeight: 1.5 }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/contact" className="block text-center w-full" style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px", marginTop: "24px" }}>Get Started</Link>
+            </motion.div>
+
+            {/* Strategic Retainer */}
+            <motion.div className="card-theme p-7 flex flex-col" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-muted)", fontWeight: 500 }}>Strategic Retainer</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "36px", color: "var(--text-primary)", marginTop: "4px" }}>Rs. 30K&ndash;50K</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)" }}>per month + tech quoted separately</p>
+              <div style={{ height: 1, background: "var(--border-subtle)", margin: "16px 0" }} />
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
+                {["Everything in Starter Bundle", "Ongoing strategic consulting", "Monthly Competitor Intelligence", "Digital positioning management", "Tech team on-call for scoping"].map((f, j) => (
+                  <div key={j} className="flex items-start gap-2">
+                    <span style={{ color: "var(--text-primary)", fontWeight: 600, flexShrink: 0 }}>&check;</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/contact" className="btn-primary justify-center w-full" style={{ marginTop: "24px" }}>Talk to Us</Link>
+            </motion.div>
           </div>
+
+          <p className="text-center mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)", maxWidth: "540px", marginTop: "24px" }}>
+            All technology products are scoped and approved separately before any build begins. Website builds, WhatsApp automation, Google Ads, chatbots &mdash; each quoted individually. No surprise invoices.
+          </p>
         </div>
       </section>
 
-      {/* ══════════════ BLUE CTA SECTION ══════════════ */}
-      <section className="relative text-center overflow-hidden" style={{ background: "var(--color-primary)", paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* ══════════════ FINAL CTA ══════════════ */}
+      <section style={{ background: "var(--bg-dark)", padding: "100px 0" }}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="max-w-3xl mx-auto px-6 text-center"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative z-10 max-w-3xl mx-auto px-6">
-            <h2 className="font-display mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", color: "#FFFFFF" }}>
-              Ready to find out exactly where your business stands?
-            </h2>
-            <p className="mb-8 mx-auto" style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, maxWidth: "560px" }}>
-              One questionnaire. Thirty minutes. Your complete Business Intelligence Dashboard.
-              No pitch deck. No pressure.
-            </p>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, color: "white" }}>
+            Ready to find out exactly<br />
+            <em>where your business stands?</em>
+          </h2>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "#9CA3AF", marginTop: "16px", lineHeight: 1.7 }}>
+            One questionnaire. Thirty minutes. Your complete Business Intelligence Dashboard. No pitch deck. No pressure.
+          </p>
+          <div style={{ marginTop: "36px" }}>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-150"
-              style={{ fontSize: "15px", padding: "14px 28px", background: "#FFFFFF", color: "var(--color-primary)" }}
+              className="inline-flex items-center gap-2"
+              style={{ fontFamily: "var(--font-body)", fontSize: "16px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "16px 32px" }}
             >
-              Get Your Business Diagnostic &mdash; Rs. 999
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              Get Your Business Diagnostic &mdash; Rs. 999 &rarr;
             </Link>
-            <div className="mt-6 flex items-center justify-center gap-6" style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
-              <a href="mailto:work@staplerlabs.com" className="hover:underline">work@staplerlabs.com</a>
-              <a href="https://wa.me/918292511007" target="_blank" rel="noopener noreferrer" className="hover:underline">WhatsApp</a>
-            </div>
           </div>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B7280", marginTop: "20px" }}>
+            work@staplerlabs.com &nbsp;&middot;&nbsp; +91 8292511007 (WhatsApp)
+          </p>
         </motion.div>
       </section>
     </>
   );
 }
 
-/* ── Business Intelligence Dashboard Preview (illustrated) ── */
-function BIDashboardPreview() {
+/* ══════════════ DASHBOARD CARD (Hero illustration) ══════════════ */
+function DashboardCard() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const end = 72;
+    const duration = 1500;
+    const increment = end / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [isInView]);
+
+  const gapItems = [
+    { dot: "var(--accent-red)", text: "No Google Business Profile" },
+    { dot: "var(--accent-red)", text: "Website not mobile-optimised" },
+    { dot: "var(--accent-amber)", text: "Zero review presence" },
+    { dot: "var(--accent-amber)", text: "No WhatsApp pipeline" },
+    { dot: "var(--accent-red)", text: "Competitors outranking on Maps" },
+  ];
+
+  const recs = [
+    "Google Business Profile setup + local SEO",
+    "Mobile-first website with booking",
+    "WhatsApp automation pipeline",
+  ];
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="relative mx-auto px-6" style={{ maxWidth: "720px", marginTop: "64px" }}>
+      {/* Decorative blob */}
+      <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" style={{ position: "absolute", top: "-40px", right: "-60px", width: "500px", height: "400px", zIndex: 0, pointerEvents: "none" }}>
+        <path d="M 60,80 C 120,-20 320,-20 400,60 C 480,140 500,260 420,330 C 340,400 140,420 60,340 C -20,260 0,180 60,80 Z" fill="#B8D4F5" opacity="0.22" />
+      </svg>
+
       <motion.div
-        className="rounded-xl overflow-hidden mx-auto"
-        style={{
-          maxWidth: "800px",
-          border: "1px solid var(--color-border)",
-          background: "#FFFFFF",
-          boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-        }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        style={{ position: "relative", zIndex: 1, background: "var(--bg-surface)", borderRadius: "20px", boxShadow: "var(--shadow-hero-card)", padding: "28px", width: "100%" }}
+        initial={{ opacity: 0, y: 32 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Dashboard header */}
-        <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--color-border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Top row */}
+        <div className="flex items-center justify-between">
           <div>
-            <p style={{ fontSize: "14px", fontWeight: 700, color: "var(--color-text-primary)" }}>Business Intelligence Dashboard</p>
-            <p style={{ fontSize: "12px", color: "var(--color-text-muted)" }}>Generated in 30 minutes from your questionnaire</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 600, color: "var(--text-secondary)" }}>Business Intelligence Dashboard</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "var(--text-faint)", marginTop: "2px" }}>Generated in 30 minutes from your questionnaire</p>
           </div>
-          <div style={{
-            width: 56, height: 56, borderRadius: "50%",
-            background: `conic-gradient(var(--color-primary) 0% 72%, var(--color-border) 72% 100%)`,
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <div style={{
-              width: 44, height: 44, borderRadius: "50%", background: "#FFFFFF",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: "14px", fontWeight: 800, color: "var(--color-primary)",
-            }}>
-              72
-            </div>
-          </div>
+          <svg width="56" height="56" viewBox="0 0 56 56">
+            <circle cx="28" cy="28" r="24" stroke="var(--border-default)" strokeWidth="3.5" fill="none" />
+            <motion.circle
+              cx="28" cy="28" r="24"
+              stroke="var(--text-primary)" strokeWidth="3.5" fill="none"
+              strokeLinecap="round"
+              transform="rotate(-90 28 28)"
+              strokeDasharray="150.8"
+              initial={{ strokeDashoffset: 150.8 }}
+              animate={isInView ? { strokeDashoffset: 43 } : {}}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            />
+            <text x="28" y="29" textAnchor="middle" dominantBaseline="middle" style={{ fontFamily: "var(--font-display)", fontSize: "14px", fill: "var(--text-primary)" }}>{count}</text>
+          </svg>
         </div>
 
-        {/* Dashboard cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-0" style={{ borderBottom: "1px solid var(--color-border)" }}>
+        {/* Metrics row */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0" style={{ marginTop: "20px", borderTop: "1px solid var(--border-subtle)", paddingTop: "16px" }}>
           {[
-            { label: "Business Index Score", val: "72/100", color: "var(--color-primary)" },
-            { label: "Online Visibility", val: "Low", color: "#EF4444" },
-            { label: "Competitors Found", val: "8", color: "var(--color-primary)" },
-            { label: "Critical Gaps", val: "5", color: "var(--color-warning)" },
-            { label: "Recommendations", val: "3", color: "var(--color-success)" },
-          ].map((item, i) => (
-            <div key={i} style={{
-              padding: "16px 20px",
-              borderRight: i < 4 ? "1px solid var(--color-border)" : "none",
-            }}>
-              <p style={{ fontSize: "11px", fontWeight: 600, color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
-                {item.label}
-              </p>
-              <p style={{ fontSize: "20px", fontWeight: 800, color: item.color }}>
-                {item.val}
-              </p>
+            { label: "BUSINESS INDEX", val: "72/100", color: "var(--text-primary)" },
+            { label: "ONLINE VISIBILITY", val: "Low", color: "var(--accent-red)" },
+            { label: "COMPETITORS", val: "8", color: "var(--text-primary)" },
+            { label: "CRITICAL GAPS", val: "5", color: "var(--accent-red)" },
+          ].map((m, i) => (
+            <div key={i} style={{ padding: "0 12px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "var(--text-faint)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{m.label}</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "20px", color: m.color, marginTop: "4px" }}>{m.val}</p>
             </div>
           ))}
         </div>
 
-        {/* Simulated content rows */}
-        <div style={{ padding: "20px 24px" }}>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div style={{ padding: "16px", borderRadius: "8px", background: "var(--color-bg-subtle)" }}>
-              <p style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text-muted)", marginBottom: "8px" }}>GAP ANALYSIS</p>
-              {["No Google Business Profile", "Website not mobile-optimised", "Zero review presence", "No WhatsApp pipeline", "Competitor outranking on Maps"].map((g, i) => (
-                <div key={i} className="flex items-center gap-2" style={{ marginBottom: "6px" }}>
-                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: i < 2 ? "#EF4444" : i < 4 ? "var(--color-warning)" : "var(--color-primary)" }} />
-                  <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>{g}</span>
-                </div>
-              ))}
-            </div>
-            <div style={{ padding: "16px", borderRadius: "8px", background: "var(--color-bg-subtle)" }}>
-              <p style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text-muted)", marginBottom: "8px" }}>STRATEGIC RECOMMENDATIONS</p>
-              {["Google Business Profile setup + local SEO", "Mobile-first website with booking", "WhatsApp automation pipeline"].map((r, i) => (
-                <div key={i} className="flex items-start gap-2" style={{ marginBottom: "8px" }}>
-                  <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-primary)", flexShrink: 0, marginTop: "1px" }}>{i + 1}.</span>
-                  <span style={{ fontSize: "13px", color: "var(--color-text-secondary)", lineHeight: 1.5 }}>{r}</span>
-                </div>
-              ))}
-            </div>
+        {/* Divider */}
+        <div style={{ height: 1, background: "var(--border-subtle)", margin: "16px 0" }} />
+
+        {/* Two column section */}
+        <div className="grid sm:grid-cols-2 gap-6">
+          {/* Gap Analysis */}
+          <div>
+            <p className="label-caps" style={{ marginBottom: "10px" }}>Gap Analysis</p>
+            {gapItems.map((g, i) => (
+              <motion.div
+                key={i}
+                className="flex items-center gap-2"
+                style={{ marginBottom: "6px" }}
+                initial={{ opacity: 0, x: -12 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: g.dot, flexShrink: 0 }} />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-secondary)" }}>{g.text}</span>
+              </motion.div>
+            ))}
+          </div>
+          {/* Strategic Recommendations */}
+          <div>
+            <p className="label-caps" style={{ marginBottom: "10px" }}>Strategic Recommendations</p>
+            {recs.map((r, i) => (
+              <div key={i} className="flex items-start gap-2" style={{ marginBottom: "8px" }}>
+                <span style={{ fontFamily: "var(--font-display)", fontSize: "13px", color: "var(--text-primary)", minWidth: "16px", flexShrink: 0, marginTop: "1px" }}>{i + 1}.</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{r}</span>
+              </div>
+            ))}
           </div>
         </div>
       </motion.div>

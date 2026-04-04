@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const font = "var(--font-inter), Inter, sans-serif";
+const font = "var(--font-body), 'DM Sans', sans-serif";
 const ink = "rgba(var(--ink-rgb),";
 
 const points = [

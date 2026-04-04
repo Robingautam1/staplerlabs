@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const font = "var(--font-inter), Inter, sans-serif";
+const font = "var(--font-body), 'DM Sans', sans-serif";
 
 /**
  * CaseStudyMockup — iPhone 16 Pro style, proper proportions.

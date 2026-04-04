@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const font = "var(--font-inter), Inter, sans-serif";
+const font = "var(--font-body), 'DM Sans', sans-serif";
 const ink = "rgba(var(--ink-rgb),";
 
 type Msg = { from: "user" | "bot" | "typing" | "pill"; text: string; at: number };

@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const ink = "rgba(var(--ink-rgb),";
 const amber = "var(--amber)";
-const font = "var(--font-inter), Inter, sans-serif";
+const font = "var(--font-body), 'DM Sans', sans-serif";
 
 /* ── Service 01: Websites — Browser with progressive loading ── */
 export function WebDevIllustration() {
