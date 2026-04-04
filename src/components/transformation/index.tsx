@@ -87,7 +87,7 @@ export default function TransformationSection() {
   return (
     <section
       className="px-6"
-      style={{ paddingTop: "64px", paddingBottom: "64px", borderTop: "1px solid var(--ink-06)" }}
+      style={{ paddingTop: "80px", paddingBottom: "80px", background: "var(--color-bg-subtle)" }}
     >
       <div className="max-w-6xl mx-auto">
         {/* Section header */}

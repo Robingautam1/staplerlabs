@@ -65,7 +65,7 @@ export default function RevenueCard() {
       {/* Arrow connector */}
       <div className="flex flex-col items-center gap-1 self-center">
         <div className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "var(--amber)", opacity: 0.1 }}>
-          <span style={{ fontSize: 7, fontWeight: 600, color: "var(--amber)", fontFamily: font }}>StaplerLabs ROI</span>
+          <span style={{ fontSize: 7, fontWeight: 600, color: "var(--amber)", fontFamily: font }}>StaplerLabs Impact</span>
         </div>
         <span style={{ fontSize: 16, color: `${ink}0.12)` }}>→</span>
       </div>

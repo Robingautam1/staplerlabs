@@ -4,157 +4,145 @@ import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 import StaplerDiagram from "@/components/StaplerDiagram";
 
-const beliefIcons = [
-  // Padlock — no lock-in
-  <svg key="lock" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="5" y="11" width="14" height="10" rx="2" />
-    <path d="M8 11V7a4 4 0 0 1 8 0" />
-    <circle cx="12" cy="16" r="1.5" fill="var(--amber)" stroke="none" />
-  </svg>,
-  // Speech bubble — no jargon
-  <svg key="speech" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 12a9 9 0 0 1-9 9 9.8 9.8 0 0 1-4.5-1.1L3 21l1.1-4.5A9 9 0 1 1 21 12Z" />
-    <line x1="8" y1="10" x2="16" y2="10" />
-    <line x1="8" y1="14" x2="13" y2="14" />
-  </svg>,
-  // Eye — no hiding
-  <svg key="eye" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12Z" />
-    <circle cx="12" cy="12" r="3" />
-  </svg>,
-  // Price tag — no mystery pricing
-  <svg key="tag" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--amber)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2 2 12l8.5 8.5a1 1 0 0 0 1.4 0L22 10.5V2H12Z" />
-    <circle cx="17" cy="7" r="1.5" fill="var(--amber)" stroke="none" />
-  </svg>,
-];
-
-const beliefs = [
+const businessModelCards = [
   {
-    title: "No lock-in contracts",
-    desc: "If we're doing good work, you'll stay. If we're not, you shouldn't have to. Month-to-month, always.",
+    title: "Diagnostic",
+    desc: "AI-powered Business Intelligence Dashboard generated in 30 minutes. Business Index Score, competitor map, gap analysis, and visibility assessment.",
+    icon: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+      </svg>
+    ),
   },
   {
-    title: "No jargon in client calls",
-    desc: "If we can't explain what we're doing in plain language, we probably don't understand it well enough ourselves.",
+    title: "Consultant",
+    desc: "A dedicated StaplerLabs consultant walks you through findings, identifies the highest-leverage interventions, and builds your strategic roadmap.",
+    icon: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M20 21a8 8 0 1 0-16 0" />
+      </svg>
+    ),
   },
   {
-    title: "No hiding behind dashboards",
-    desc: "We send updates before you ask. If something's going wrong, you hear about it from us, not from your customers.",
+    title: "Execution",
+    desc: "Full-stack technology execution \u2014 website, automation, SEO, chatbots, ads. Scoped from the diagnostic, not from a feature list.",
+    icon: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 3 21 3 21 8" />
+        <line x1="4" y1="20" x2="21" y2="3" />
+        <polyline points="21 16 21 21 16 21" />
+        <line x1="15" y1="15" x2="21" y2="21" />
+        <line x1="4" y1="4" x2="9" y2="9" />
+      </svg>
+    ),
   },
   {
-    title: "No mystery pricing",
-    desc: "You get a quote before we start. No surprise invoices, no scope-creep charges. If the scope changes, we talk about it first.",
+    title: "Partnership",
+    desc: "We stay. Monthly intelligence reports, ongoing competitive monitoring, and strategic advisory. Not a one-time vendor \u2014 a long-term partner.",
+    icon: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
   },
-];
-
-const builtFor = [
-  "Local businesses in Tier 2 and Tier 3 cities who've been doing great work offline and need to exist online",
-  "Founders who are the smartest person in their field but don't have time to figure out digital marketing",
-  "Professionals - doctors, CAs, lawyers - who know they should be online but don't know where to start",
-  "Small teams that need enterprise-level automation at prices that don't require a board meeting",
-  "Anyone who's been burned by a vendor that promised the world and delivered a WordPress template",
 ];
 
 export default function AboutPage() {
   return (
     <div className="pt-20">
-      {/* Header */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto">
+      {/* Header — Origin Story */}
+      <section style={{ background: "#FFFFFF", paddingTop: "56px", paddingBottom: "56px" }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <FadeIn>
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8">
+            <h1 className="font-display mb-6" style={{ fontSize: "clamp(32px, 4.5vw, 48px)" }}>
               Named after the most{" "}
-              <span className="t-yellow">underrated</span> tool in the
+              <span style={{ color: "var(--color-primary)" }}>underrated</span> tool in the
               office.
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="space-y-5 text-base leading-relaxed t-secondary">
+            <div className="space-y-5" style={{ fontSize: "16px", lineHeight: 1.7, color: "var(--color-text-secondary)" }}>
               <p>
-                In a market full of agencies called &ldquo;DigiPro
-                Solutions&rdquo; and &ldquo;TechBridge Innovations,&rdquo; we
-                named ourselves after a stapler. That was deliberate.
+                A stapler is a precision instrument that holds things together &mdash; deceptively
+                simple on the outside, engineered on the inside, and only effective when every
+                component does its job.
               </p>
               <p>
-                Because a stapler is the most underrated tool in any office. It
-                holds everything together without making a noise about it. No
-                one writes LinkedIn posts about their stapler. No one takes it
-                to conferences. But take it away, and everything falls apart.
+                StaplerLabs does the same for established businesses: it doesn&apos;t replace what
+                the business has built &mdash; it binds new digital capability onto a foundation
+                that already has real value.
               </p>
               <p>
-                That&apos;s what we do. We build the systems, the websites, the
-                automations, and the digital infrastructure that holds your
-                business together. And then we get out of the way so you can do
-                the thing you&apos;re actually good at.
+                In a market full of agencies called &ldquo;DigiPro Solutions&rdquo; and
+                &ldquo;TechBridge Innovations,&rdquo; we named ourselves after a stapler.
+                That was deliberate.
               </p>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
-        <div className="max-w-3xl mx-auto">
+      {/* Positioning */}
+      <section style={{ background: "var(--color-bg-subtle)", paddingTop: "56px", paddingBottom: "56px" }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <FadeIn>
-            {/* Spotlight illustration */}
-            <div className="flex justify-center mb-8">
-              <svg viewBox="0 0 200 100" fill="none" className="w-48 h-auto" style={{ overflow: "visible" }}>
-                {/* Spotlight beam */}
-                <path d="M100 12 L50 90 L150 90 Z" fill="var(--amber)" opacity="0.04" />
-                <path d="M100 12 L60 90 L140 90 Z" fill="var(--amber)" opacity="0.04" />
-                {/* Lamp */}
-                <rect x="88" y="2" width="24" height="14" rx="4" fill="var(--bg-card)" stroke="rgba(var(--ink-rgb),0.12)" strokeWidth="1" />
-                <rect x="94" y="16" width="12" height="3" rx="1" fill="var(--amber)" opacity="0.4" />
-                {/* Person silhouette at desk */}
-                <circle cx="100" cy="62" r="8" fill="rgba(var(--ink-rgb),0.06)" />
-                <rect x="88" y="72" width="24" height="16" rx="3" fill="rgba(var(--ink-rgb),0.04)" stroke="rgba(var(--ink-rgb),0.06)" strokeWidth="0.8" />
-                {/* Desk */}
-                <line x1="60" y1="90" x2="140" y2="90" stroke="rgba(var(--ink-rgb),0.1)" strokeWidth="1.5" strokeLinecap="round" />
-                {/* Monitor */}
-                <rect x="78" y="74" width="16" height="12" rx="2" fill="var(--amber)" opacity="0.08" stroke="rgba(var(--ink-rgb),0.08)" strokeWidth="0.5" />
-              </svg>
-            </div>
-            <h2 className="font-display text-2xl sm:text-3xl mb-6">
+            <h2 className="font-display mb-6" style={{ fontSize: "clamp(24px, 3vw, 32px)" }}>
+              What we are
+            </h2>
+            <p style={{ fontSize: "18px", lineHeight: 1.7, color: "var(--color-text-primary)", fontWeight: 500, marginBottom: "16px" }}>
+              StaplerLabs is a management consulting and technology execution platform for established
+              Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore in annual revenue.
+            </p>
+            <p style={{ fontSize: "16px", lineHeight: 1.7, color: "var(--color-text-secondary)" }}>
+              We help businesses that are too serious to ignore digital and too smart to overpay for it.
+              Because being better at business should not mean losing to someone who is better at the internet.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Small on purpose */}
+      <section style={{ background: "#FFFFFF", paddingTop: "56px", paddingBottom: "56px" }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <FadeIn>
+            <h2 className="font-display mb-6" style={{ fontSize: "clamp(24px, 3vw, 32px)" }}>
               We&apos;re small on purpose.
             </h2>
-            <p className="text-base leading-relaxed mb-4 t-secondary">
-              Every project gets a founder&apos;s attention, not an
-              intern&apos;s. We could hire more people and take on more clients.
-              We choose not to. Because the moment you scale past the point
-              where the person who sold the project is also the person building
-              it, quality drops. We&apos;ve seen it happen. We refuse to let it
-              happen here.
+            <p style={{ fontSize: "16px", lineHeight: 1.7, color: "var(--color-text-secondary)", marginBottom: "12px" }}>
+              Every project gets a founder&apos;s attention, not an intern&apos;s. We could hire
+              more people and take on more clients. We choose not to. Because the moment you scale
+              past the point where the person who sold the project is also the person building it,
+              quality drops.
             </p>
-            <p className="text-base leading-relaxed t-secondary">
-              This doesn&apos;t mean we&apos;re slow. It means we&apos;re
-              selective. If we take your project, it&apos;s because we know
-              we can deliver something worth paying for.
+            <p style={{ fontSize: "16px", lineHeight: 1.7, color: "var(--color-text-secondary)" }}>
+              This doesn&apos;t mean we&apos;re slow. It means we&apos;re selective. If we take your
+              project, it&apos;s because we know we can deliver something worth paying for.
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Beliefs */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto">
+      {/* Business Model Cards */}
+      <section style={{ background: "var(--color-bg-subtle)", paddingTop: "56px", paddingBottom: "56px" }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FadeIn>
-            <h2 className="font-display text-2xl sm:text-3xl mb-10">
-              Things we actually believe in
+            <h2 className="font-display mb-10" style={{ fontSize: "clamp(24px, 3vw, 32px)" }}>
+              How we work
             </h2>
           </FadeIn>
           <div className="grid sm:grid-cols-2 gap-6">
-            {beliefs.map((b, i) => (
+            {businessModelCards.map((b, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <div className="card-theme rounded-xl p-6 h-full">
-                  <div className="mb-3 opacity-60">
-                    {beliefIcons[i]}
+                <div className="card-theme rounded-xl p-7 h-full" style={{ background: "#FFFFFF" }}>
+                  <div className="mb-3" style={{ opacity: 0.8 }}>
+                    {b.icon}
                   </div>
-                  <h3 className="font-display text-base mb-2 t-yellow">
+                  <h3 style={{ fontSize: "17px", fontWeight: 700, color: "var(--color-primary)", marginBottom: "6px" }}>
                     {b.title}
                   </h3>
-                  <p className="text-[15px] leading-relaxed t-secondary">
+                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "none" }}>
                     {b.desc}
                   </p>
                 </div>
@@ -164,37 +152,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Built for */}
-      <section className="py-14 sm:py-20 px-4 sm:px-6" style={{ backgroundColor: "var(--bg-card)" }}>
-        <div className="max-w-3xl mx-auto">
-          <FadeIn>
-            <h2 className="font-display text-2xl sm:text-3xl mb-8">
-              Who we&apos;re built for
-            </h2>
-          </FadeIn>
-          <div className="space-y-4">
-            {builtFor.map((b, i) => (
-              <FadeIn key={i} delay={i * 0.06}>
-                <div className="flex items-start gap-3">
-                  <span className="w-2 h-2 rounded-full mt-2 shrink-0" style={{ backgroundColor: "var(--yellow)" }} />
-                  <p className="text-[15px] leading-relaxed t-secondary">{b}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stapler Diagram — exploded view */}
-      <section className="py-16 sm:py-32 px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* Stapler Diagram — dark section */}
+      <section className="anatomy-section" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
+        <div className="max-w-md mx-auto px-6">
           <FadeIn>
             <div className="mb-16 text-center">
               <h2 className="font-display text-3xl sm:text-4xl mb-4">The StaplerLabs Anatomy</h2>
               <p className="t-secondary text-base max-w-2xl mx-auto">Every part of the tool serves a distinct, critical purpose. Here is how our services map to the anatomy of our namesake.</p>
             </div>
             <StaplerDiagram />
-            <p className="text-sm font-mono t-dim text-center mt-12">
+            <p className="text-sm font-mono text-center mt-6" style={{ color: "rgba(249,250,251,0.4)" }}>
               Holding things together since 2024.
             </p>
           </FadeIn>
@@ -202,23 +169,25 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 text-center">
-        <FadeIn>
-          <h2 className="font-display text-3xl mb-4">
-            Now that you know who we are.
-          </h2>
-          <p className="mb-8 max-w-md mx-auto t-tertiary">
-            Let&apos;s find out if we can help you.
-          </p>
-          <Link href="/contact" className="btn-primary">
-            Get in touch
-            <span className="arrow-chip">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </Link>
-        </FadeIn>
+      <section style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="px-6 text-center">
+          <FadeIn>
+            <h2 className="font-display mb-4" style={{ fontSize: "clamp(24px, 3vw, 32px)" }}>
+              Now that you know who we are.
+            </h2>
+            <p className="mb-8 max-w-md mx-auto" style={{ color: "var(--color-text-secondary)" }}>
+              Find out exactly where your business stands.
+            </p>
+            <Link href="/contact" className="btn-primary" style={{ fontSize: "15px", padding: "14px 28px" }}>
+              Get Your Business Diagnostic &mdash; Rs. 999
+              <span className="arrow-chip">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </Link>
+          </FadeIn>
+        </div>
       </section>
     </div>
   );

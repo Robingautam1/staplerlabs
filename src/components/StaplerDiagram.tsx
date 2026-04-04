@@ -1,220 +1,181 @@
-import { motion } from "framer-motion";
+"use client";
 
-const ink = "rgba(var(--ink-rgb),";
-const f = "var(--font-inter), Inter, sans-serif";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 /**
- * StaplerDiagram — Large isometric 3D exploded view.
- * Maps components to StaplerLabs Services, now fully interconnected
- * to emulate a structured, dissected engineering blueprint.
+ * StaplerDiagram — Large 3D isometric exploded stapler.
+ * Labels match knowledge base: Body=Platform, Arm=Consultant, Spring=AI Engine,
+ * Staple Strip=Product Stack, Slot=Deliverable, Anvil=Client's Core Business.
  */
-export default function StaplerDiagram() {
-  // A single slow, synchronized float for the entire diagram to keep its structure intact
-  const globalFloat = {
-    animate: { y: [-5, 5, -5] },
-    transition: { duration: 8, repeat: Infinity, ease: "easeInOut" as const },
-  };
 
-  // Pulse animation for the interconnecting data stream
-  const pulseStream = {
-    animate: { 
-      pathLength: [0, 1],
-      opacity: [0, 1, 0]
-    },
-    transition: { 
-      duration: 4, 
-      repeat: Infinity, 
-      ease: "easeInOut" as const 
-    },
-  };
+export default function StaplerDiagram() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const enter = (i: number) => ({
+    initial: { opacity: 0, y: 30 },
+    animate: inView ? { opacity: 1, y: 0 } : {},
+    transition: { duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] as const },
+  });
+
+  const float = (delay: number, y: number = 3) => ({
+    animate: inView ? { y: [-y, y, -y] } : {},
+    transition: { duration: 5, repeat: Infinity, ease: "easeInOut" as const, delay: delay + 1.5 },
+  });
+
+  /* Dark section — uses hardcoded colors for contrast */
+  const blue = "#3B82F6";
+  const textDim = "rgba(249,250,251,0.4)";
+  const textLabel = "#93C5FD";
+  const strokeDim = "rgba(249,250,251,0.12)";
 
   return (
-    <div className="w-full relative">
-      <svg viewBox="0 0 1000 700" fill="none" className="w-full h-auto" style={{ overflow: "visible" }}>
-
+    <div ref={ref} className="relative w-full" style={{ maxWidth: 720, margin: "0 auto" }}>
+      <svg viewBox="0 0 720 520" fill="none" className="w-full h-auto" style={{ overflow: "visible" }}>
         <defs>
-          {/* Gradients to simulate 3D lighting without hardcoded colors */}
-          <linearGradient id="amberToYellow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--yellow)" />
-            <stop offset="100%" stopColor="var(--amber)" />
-          </linearGradient>
-          <linearGradient id="baseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="var(--bg-card)" />
-            <stop offset="100%" stopColor="var(--bg-deep)" />
-          </linearGradient>
-          <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={`${ink}0.08)`} />
-            <stop offset="100%" stopColor={`${ink}0.2)`} />
-          </linearGradient>
-          <filter id="partGlow">
-            <feDropShadow dx="0" dy="10" stdDeviation="15" floodColor="var(--amber)" floodOpacity="0.15" />
+          <filter id="sd" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="rgba(0,0,0,0.2)" />
           </filter>
-          <filter id="baseShadow">
-            <feDropShadow dx="0" dy="25" stdDeviation="25" floodColor="var(--ink)" floodOpacity="0.08" />
+          <filter id="sd-blue" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="rgba(59,130,246,0.25)" />
           </filter>
-          <filter id="circuitGlow">
-            <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="var(--amber)" floodOpacity="0.8" />
-          </filter>
+          <linearGradient id="arm-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={blue} stopOpacity="0.35" />
+            <stop offset="100%" stopColor={blue} stopOpacity="0.15" />
+          </linearGradient>
+          <linearGradient id="base-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(249,250,251,0.08)" />
+            <stop offset="100%" stopColor="rgba(249,250,251,0.03)" />
+          </linearGradient>
         </defs>
 
-        <motion.g {...globalFloat}>
-
-          {/* ── STRUCTURAL BLUEPRINT / ASSEMBLY LINES ── */}
-          {/* These lines visually connect the disassembled parts along physical mating points */}
-          <g stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="6 6" opacity="0.6">
-            {/* Front block alignment line */}
-            <path d="M 660 145 L 625 345 L 555 470" />
-            {/* Back pivot alignment line */}
-            <path d="M 330 260 L 320 380 L 340 455 L 340 515" />
-            {/* Center rail alignment line */}
-            <path d="M 495 200 L 485 390 L 445 490" />
-          </g>
-
-          {/* ── DATA STREAM CIRCUIT ── */}
-          {/* A glowing logic thread that connects the dots of StaplerLabs features sequentially */}
-          <g>
-            <path 
-              d="M 220 620 L 150 440 L 220 210 L 710 110 L 710 320 L 780 230" 
-              fill="none" stroke={`${ink}0.1)`} strokeWidth="2" 
-            />
-            <motion.path 
-              d="M 220 620 L 150 440 L 220 210 L 710 110 L 710 320 L 780 230" 
-              fill="none" stroke="var(--yellow)" strokeWidth="3" filter="url(#circuitGlow)"
-              {...pulseStream}
-            />
-            {/* Circular data nodes at each feature hook */}
-            <circle cx="220" cy="620" r="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2" />
-            <circle cx="150" cy="440" r="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2" />
-            <circle cx="220" cy="210" r="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2" />
-            <circle cx="710" cy="110" r="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2" />
-            <circle cx="710" cy="320" r="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2" />
-            <circle cx="780" cy="230" r="6" fill="var(--bg-card)" stroke="var(--amber)" strokeWidth="2" />
-          </g>
-
-          {/* ── BASE (The Foundation - Web Development) ── */}
-          <g filter="url(#baseShadow)">
-            <path d="M 270 600 L 590 460 L 680 500 L 360 640 Z" fill={`${ink}0.03)`} />
-            <path d="M 270 580 L 360 620 L 360 640 L 270 600 Z" fill="var(--bg-deep)" stroke={`${ink}0.1)`} strokeWidth="1" />
-            <path d="M 360 620 L 680 480 L 680 500 L 360 640 Z" fill={`${ink}0.05)`} stroke={`${ink}0.1)`} strokeWidth="1" />
-            <path d="M 270 580 L 590 440 L 680 480 L 360 620 Z" fill="url(#baseGrad)" stroke={`${ink}0.15)`} strokeWidth="1.5" />
-
-            {/* Anvil Plate */}
-            <path d="M 520 480 L 570 458 L 590 467 L 540 489 Z" fill="var(--bg-card)" stroke={`${ink}0.2)`} strokeWidth="1" />
-            <path d="M 545 470 L 555 466 M 555 474 L 565 470" stroke={`${ink}0.3)`} strokeWidth="1.5" strokeLinecap="round" />
-
-            <path d="M 390 575 L 390 620 L 220 620" stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="4 4" />
-
-            <g transform="translate(200, 620)">
-              <text x="-15" y="-5" textAnchor="end" fontSize="16" fontFamily="var(--font-display)" fill="var(--ink)">01. The Foundation</text>
-              <text x="-15" y="15" textAnchor="end" fontSize="13" fontFamily={f} fill={`${ink}0.6)`}>Web Development & Infrastructure</text>
-              <text x="-15" y="35" textAnchor="end" fontSize="12" fontFamily={f} fill={`${ink}0.4)`}>The solid base where everything begins.</text>
-            </g>
-          </g>
-
-          {/* ── MAGAZINE TRAY (The Engine - Business Automation) ── */}
-          <g>
-            {/* Top of Base / Pivot Block */}
-            <path d="M 300 520 L 340 502 L 360 511 L 320 529 Z" fill="var(--bg-card)" stroke={`${ink}0.2)`} strokeWidth="1.5" />
-            <path d="M 320 529 L 360 511 L 360 540 L 320 558 Z" fill={`${ink}0.05)`} stroke={`${ink}0.2)`} strokeWidth="1.5" />
-            <path d="M 300 520 L 320 529 L 320 558 L 300 549 Z" fill="var(--bg-deep)" stroke={`${ink}0.2)`} strokeWidth="1.5" />
-
-            {/* Tray Side */}
-            <path d="M 330 450 L 610 328 L 610 350 L 330 472 Z" fill="url(#metalGrad)" stroke={`${ink}0.3)`} strokeWidth="1" />
-            {/* Tray Bottom */}
-            <path d="M 330 472 L 610 350 L 640 363 L 360 485 Z" fill={`${ink}0.05)`} stroke={`${ink}0.2)`} strokeWidth="1" />
-            {/* Tray Inner Wall */}
-            <path d="M 345 450 L 625 328 L 625 340 L 345 462 Z" fill="var(--bg-card)" stroke={`${ink}0.2)`} strokeWidth="1" />
-
-            {/* Rows of Staples (Automation Tasks) */}
-            {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
-              const x = 380 + i * 25;
-              const y = 435 - i * 11;
-              return (
-                <g key={i}>
-                  <path d={`M ${x} ${y} L ${x + 12} ${y - 5.5} L ${x + 12} ${y - 1} L ${x} ${y + 4.5} Z`} fill="var(--bg-card)" stroke={`${ink}0.3)`} strokeWidth="1" />
-                  <path d={`M ${x} ${y} L ${x + 20} ${y + 9} L ${x + 32} ${y + 3.5} L ${x + 12} ${y - 5.5} Z`} fill={`${ink}0.05)`} stroke={`${ink}0.3)`} strokeWidth="1" />
-                </g>
-              );
-            })}
-
-            <path d="M 520 380 L 520 320 L 710 320" stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="4 4" />
-
-            <g transform="translate(730, 320)">
-              <text x="0" y="-5" textAnchor="start" fontSize="16" fontFamily="var(--font-display)" fill="var(--ink)">02. The Engine</text>
-              <text x="0" y="15" textAnchor="start" fontSize="13" fontFamily={f} fill={`${ink}0.6)`}>Business Automation</text>
-              <text x="0" y="35" textAnchor="start" fontSize="12" fontFamily={f} fill={`${ink}0.4)`}>The internal mechanics doing the heavy lifting.</text>
-            </g>
-          </g>
-
-          {/* ── SPRING (The Tension - AI Bot) ── */}
-          <g>
-            <path d="M 340 380 C 370 330, 480 320, 520 280 C 560 240, 670 230, 700 180"
-              fill="none" stroke="var(--amber)" strokeWidth="3" strokeLinecap="round" opacity="0.6" style={{ filter: "drop-shadow(0px 8px 6px rgba(198,144,10,0.3))" }} />
-
-            <path d="M 460 310 L 460 210 L 220 210" stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="4 4" />
-
-            <g transform="translate(200, 210)">
-              <text x="-15" y="-5" textAnchor="end" fontSize="16" fontFamily="var(--font-display)" fill="var(--ink)">03. The Coil</text>
-              <text x="-15" y="15" textAnchor="end" fontSize="13" fontFamily={f} fill={`${ink}0.6)`}>AI Reception Bot</text>
-              <text x="-15" y="35" textAnchor="end" fontSize="12" fontFamily={f} fill={`${ink}0.4)`}>Stores energy, always active, ready to trigger.</text>
-            </g>
-          </g>
-
-          {/* ── THE ARM (The Lever - SEO & Growth / Advertising) ── */}
-          <g filter="url(#partGlow)">
-            <path d="M 330 250 L 690 93 L 690 120 L 330 277 Z" fill="var(--amber)" opacity="0.8" />
-            <path d="M 330 277 L 690 120 L 730 137 L 370 294 Z" fill="var(--amber)" opacity="0.5" />
-            <path d="M 330 250 L 690 93 L 730 110 L 370 267 Z" fill="url(#amberToYellow)" stroke="var(--bg-card)" strokeWidth="1.5" />
-
-            {/* Branding on Arm */}
-            <g transform="translate(480, 195) rotate(-23) skewX(20)">
-              <text x="0" y="0" fontSize="14" fontWeight="800" fontFamily="var(--font-display)" fill="var(--bg-card)" opacity="0.8" letterSpacing="2">STAPLERLABS</text>
-            </g>
-
-            {/* Striker Plate inside arm */}
-            <path d="M 640 148 L 680 130 L 690 135 L 650 153 Z" fill="var(--bg-card)" stroke={`${ink}0.1)`} strokeWidth="1" opacity="0.6" />
-
-            <path d="M 520 180 L 520 110 L 710 110" stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="4 4" />
-
-            <g transform="translate(730, 110)">
-              <text x="0" y="-5" textAnchor="start" fontSize="16" fontFamily="var(--font-display)" fill="var(--ink)">04. The Lever</text>
-              <text x="0" y="15" textAnchor="start" fontSize="13" fontFamily={f} fill={`${ink}0.6)`}>SEO, Content & Ads</text>
-              <text x="0" y="35" textAnchor="start" fontSize="12" fontFamily={f} fill={`${ink}0.4)`}>Multiplier of force, amplifying your impact.</text>
-            </g>
-          </g>
-
-          {/* ── THE SINGLE STAPLE (The Result) ── */}
-          <g>
-            <path d="M 630 220 L 670 202 M 630 220 L 630 240 M 670 202 L 670 222" fill="none" stroke="var(--yellow)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M 630 220 L 670 202 M 630 220 L 630 240 M 670 202 L 670 222" fill="none" stroke="#FFFFFF" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
-
-            <path d="M 650 216 L 680 230 L 780 230" stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="4 4" />
-
-            <g transform="translate(800, 230)">
-              <text x="0" y="-5" textAnchor="start" fontSize="16" fontFamily="var(--font-display)" fill="var(--ink)">05. The Output</text>
-              <text x="0" y="15" textAnchor="start" fontSize="13" fontFamily={f} fill={`${ink}0.6)`}>Customers & Growth</text>
-              <text x="0" y="35" textAnchor="start" fontSize="12" fontFamily={f} fill={`${ink}0.4)`}>The sharp edge that pierces through the noise.</text>
-            </g>
-          </g>
-
-          {/* ── HINGE / PIN (The Connection) ── */}
-          <g>
-            <ellipse cx="320" cy="380" rx="10" ry="18" fill="var(--bg-card)" stroke={`${ink}0.2)`} strokeWidth="2" transform="rotate(-23 320 380)" />
-            <ellipse cx="320" cy="380" rx="4" ry="7" fill={`${ink}0.4)`} transform="rotate(-23 320 380)" />
-
-            <path d="M 310 390 L 220 440 L 150 440" stroke={`${ink}0.2)`} strokeWidth="1.5" strokeDasharray="4 4" />
-
-            <g transform="translate(130, 440)">
-              <text x="-15" y="-5" textAnchor="end" fontSize="16" fontFamily="var(--font-display)" fill="var(--ink)">06. The Hinge</text>
-              <text x="-15" y="15" textAnchor="end" fontSize="13" fontFamily={f} fill={`${ink}0.6)`}>Data & Analytics</text>
-              <text x="-15" y="35" textAnchor="end" fontSize="12" fontFamily={f} fill={`${ink}0.4)`}>The pivot point connecting strategy to the base.</text>
-            </g>
-          </g>
-
+        {/* STAPLE — The Deliverable */}
+        <motion.g {...enter(0)} {...float(0, 4)}>
+          <path
+            d="M342 62 L342 100 Q342 108 346 112 L350 116 Q354 120 358 120 L362 120 Q366 120 370 116 L374 112 Q378 108 378 100 L378 62"
+            stroke={blue}
+            strokeWidth="3.5"
+            fill="none"
+            strokeLinecap="round"
+            filter="url(#sd-blue)"
+          />
+          <circle cx="360" cy="90" r="22" fill={blue} opacity="0.06" />
+          <line x1="385" y1="88" x2="510" y2="88" stroke={blue} strokeWidth="0.8" opacity="0.3" />
+          <circle cx="510" cy="88" r="3" fill={blue} opacity="0.3" />
+          <text x="520" y="84" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" letterSpacing="-0.01em">The Deliverable</text>
+          <text x="520" y="100" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400">Live website, WhatsApp pipeline, Maps ranking</text>
         </motion.g>
 
+        {/* ARM — The Consultant */}
+        <motion.g {...enter(1)} {...float(0.6, 5)}>
+          <path
+            d="M195 140 L195 126 C195 114 210 106 232 106 L508 106 C524 106 534 114 534 126 L534 140 Z"
+            fill="url(#arm-grad)"
+            stroke={blue}
+            strokeWidth="1.8"
+            filter="url(#sd-blue)"
+          />
+          <path
+            d="M195 140 L195 152 C195 157 200 160 210 160 L520 160 C530 160 534 157 534 152 L534 140 Z"
+            fill={blue}
+            opacity="0.1"
+            stroke={blue}
+            strokeWidth="1"
+          />
+          <rect x="335" y="148" width="50" height="10" rx="3" fill={blue} opacity="0.35" />
+          <line x1="240" y1="120" x2="490" y2="120" stroke={blue} strokeWidth="0.5" opacity="0.12" />
+          <line x1="240" y1="130" x2="490" y2="130" stroke={blue} strokeWidth="0.5" opacity="0.08" />
+          <line x1="190" y1="133" x2="90" y2="133" stroke={blue} strokeWidth="0.8" opacity="0.3" />
+          <circle cx="90" cy="133" r="3" fill={blue} opacity="0.3" />
+          <text x="80" y="128" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">The Consultant</text>
+          <text x="80" y="144" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400" textAnchor="end">Strategic intelligence &amp; advisory</text>
+        </motion.g>
+
+        {/* SPRING — AI Diagnostic Engine */}
+        <motion.g {...enter(2)} {...float(1.2, 4)}>
+          <path
+            d="M310 186 C300 196 340 196 330 208 C320 220 360 220 350 232 C340 244 380 244 370 256"
+            stroke={blue}
+            strokeWidth="3.5"
+            fill="none"
+            strokeLinecap="round"
+            opacity="0.6"
+            filter="url(#sd-blue)"
+          />
+          <path
+            d="M313 188 C303 198 343 198 333 210 C323 222 363 222 353 234 C343 246 383 246 373 258"
+            stroke={strokeDim}
+            strokeWidth="5"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <line x1="378" y1="220" x2="510" y2="220" stroke={blue} strokeWidth="0.8" opacity="0.3" />
+          <circle cx="510" cy="220" r="3" fill={blue} opacity="0.3" />
+          <text x="520" y="216" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" letterSpacing="-0.01em">AI Engine</text>
+          <text x="520" y="232" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400">30-min intelligence dashboard</text>
+        </motion.g>
+
+        {/* HINGE — The Platform */}
+        <motion.g {...enter(3)} {...float(0.3, 3)}>
+          <circle cx="200" cy="270" r="14" fill="#1F2937" stroke={strokeDim} strokeWidth="2.5" filter="url(#sd)" />
+          <circle cx="200" cy="270" r="5" fill="rgba(249,250,251,0.1)" />
+          <line x1="182" y1="270" x2="90" y2="270" stroke={strokeDim} strokeWidth="0.8" />
+          <circle cx="90" cy="270" r="3" fill={blue} opacity="0.3" />
+          <text x="80" y="265" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">The Platform</text>
+          <text x="80" y="281" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400" textAnchor="end">Intake, CRM, portal, dashboard</text>
+        </motion.g>
+
+        {/* MAGAZINE — Product Stack */}
+        <motion.g {...enter(4)} {...float(0.9, 3)}>
+          <rect x="215" y="296" width="290" height="42" rx="6" fill="#1F2937" stroke={strokeDim} strokeWidth="1.8" filter="url(#sd)" />
+          <path
+            d="M215 338 L215 348 C215 352 219 354 225 354 L499 354 C505 354 509 352 509 348 L509 338"
+            fill="url(#base-grad)"
+            stroke={strokeDim}
+            strokeWidth="1"
+          />
+          {Array.from({ length: 12 }).map((_, i) => (
+            <g key={i}>
+              <rect x={228 + i * 21} y="306" width="15" height="22" rx="2" fill="rgba(249,250,251,0.04)" stroke={strokeDim} strokeWidth="0.8" />
+              <path
+                d={`M${231 + i * 21} 312 L${231 + i * 21} 320 Q${231 + i * 21} 322 ${233 + i * 21} 322 L${237 + i * 21} 322 Q${239 + i * 21} 322 ${239 + i * 21} 320 L${239 + i * 21} 312`}
+                stroke="rgba(249,250,251,0.06)" strokeWidth="0.6" fill="none"
+              />
+            </g>
+          ))}
+          <line x1="210" y1="320" x2="90" y2="320" stroke={strokeDim} strokeWidth="0.8" />
+          <circle cx="90" cy="320" r="3" fill={blue} opacity="0.3" />
+          <text x="80" y="315" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" textAnchor="end" letterSpacing="-0.01em">Product Stack</text>
+          <text x="80" y="331" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400" textAnchor="end">Web, SEO, automation, chatbots, ads</text>
+        </motion.g>
+
+        {/* BASE — Your Business (Anvil) */}
+        <motion.g {...enter(5)} {...float(0, 2)}>
+          <path d="M180 388 L180 378 C180 372 192 368 210 368 L510 368 C528 368 540 372 540 378 L540 388 Z" fill="#1F2937" stroke={strokeDim} strokeWidth="1.8" filter="url(#sd)" />
+          <path d="M180 388 L180 410 C180 418 192 424 210 424 L510 424 C528 424 540 418 540 410 L540 388 Z" fill="url(#base-grad)" stroke={strokeDim} strokeWidth="1" />
+          <line x1="210" y1="398" x2="510" y2="398" stroke="rgba(249,250,251,0.04)" strokeWidth="1" />
+          <line x1="210" y1="408" x2="510" y2="408" stroke="rgba(249,250,251,0.03)" strokeWidth="1" />
+          <rect x="330" y="374" width="60" height="8" rx="4" fill="rgba(249,250,251,0.05)" />
+          <rect x="200" y="420" width="20" height="6" rx="3" fill="rgba(249,250,251,0.06)" />
+          <rect x="500" y="420" width="20" height="6" rx="3" fill="rgba(249,250,251,0.06)" />
+          <line x1="545" y1="396" x2="600" y2="396" stroke={strokeDim} strokeWidth="0.8" />
+          <circle cx="600" cy="396" r="3" fill={blue} opacity="0.3" />
+          <text x="610" y="392" fontSize="13" fill={textLabel} fontFamily="Inter, sans-serif" fontWeight="700" letterSpacing="-0.01em">Your Business</text>
+          <text x="610" y="408" fontSize="10" fill={textDim} fontFamily="Inter, sans-serif" fontWeight="400">The foundation we build on</text>
+        </motion.g>
+
+        {/* TITLE */}
+        <motion.g {...enter(6)}>
+          <text x="360" y="468" textAnchor="middle" fontSize="10.5" fill="rgba(249,250,251,0.2)" fontFamily="Inter, sans-serif" fontWeight="600" letterSpacing="0.14em">
+            ANATOMY OF STAPLERLABS
+          </text>
+          <line x1="240" y1="478" x2="480" y2="478" stroke="rgba(249,250,251,0.06)" strokeWidth="1" />
+          <text x="360" y="496" textAnchor="middle" fontSize="11" fill="rgba(249,250,251,0.35)" fontFamily="Inter, sans-serif" fontWeight="400" fontStyle="italic">
+            Every part working together. Nothing wasted.
+          </text>
+        </motion.g>
       </svg>
     </div>
   );
 }
-

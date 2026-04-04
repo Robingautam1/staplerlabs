@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from "@/components/ThemeToggle";
 import StaplerLogo from "@/components/StaplerLogo";
 
 const links = [
@@ -41,23 +40,23 @@ export default function Navbar() {
         }`}
         style={
           scrolled
-            ? { backgroundColor: "var(--nav-bg)", borderBottom: "1px solid var(--ink-06)" }
+            ? { backgroundColor: "var(--nav-bg)", borderBottom: "1px solid var(--color-border)" }
             : {}
         }
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Wordmark — Instrument Serif */}
+          {/* Wordmark */}
           <Link href="/" className="flex items-center gap-3">
             <StaplerLogo className="w-10 h-10" hoverAnimate />
             <span
               className="font-display"
-              style={{ fontSize: "21px", color: "var(--ink)", letterSpacing: "-0.01em" }}
+              style={{ fontSize: "21px", color: "var(--color-text-primary)", letterSpacing: "-0.01em" }}
             >
-              Stapler<span style={{ color: "var(--amber)" }}>Labs</span>
+              Stapler<span style={{ color: "var(--color-primary)" }}>Labs</span>
             </span>
           </Link>
 
-          {/* Desktop nav — centered links */}
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <Link
@@ -67,7 +66,7 @@ export default function Navbar() {
                 style={{
                   fontSize: "14px",
                   fontWeight: 500,
-                  color: pathname === l.href ? "var(--amber)" : "var(--ink-60)",
+                  color: pathname === l.href ? "var(--color-primary)" : "var(--color-text-muted)",
                 }}
               >
                 {l.label}
@@ -75,15 +74,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Theme toggle */}
-          <div className="hidden md:block">
-            <ThemeToggle />
-          </div>
-
           {/* CTA */}
           <div className="hidden md:block">
             <Link href="/contact" className="btn-nav">
-              Talk to us
+              Get Started &mdash; Rs. 999
               <span className="arrow-chip">
                 <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -100,11 +94,11 @@ export default function Navbar() {
           >
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${open ? "rotate-45 translate-y-1" : ""}`}
-              style={{ backgroundColor: "var(--ink)" }}
+              style={{ backgroundColor: "var(--color-text-primary)" }}
             />
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${open ? "-rotate-45 -translate-y-1" : ""}`}
-              style={{ backgroundColor: "var(--ink)" }}
+              style={{ backgroundColor: "var(--color-text-primary)" }}
             />
           </button>
         </div>
@@ -119,7 +113,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 backdrop-blur-sm z-40"
-              style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
+              style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
               onClick={() => setOpen(false)}
             />
             <motion.div
@@ -128,12 +122,12 @@ export default function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-50 flex flex-col justify-center px-10"
-              style={{ backgroundColor: "var(--cream)" }}
+              style={{ backgroundColor: "#FFFFFF" }}
             >
               <button
                 onClick={() => setOpen(false)}
                 className="absolute top-5 right-6 text-2xl"
-                style={{ color: "var(--ink-40)" }}
+                style={{ color: "var(--color-text-muted)" }}
                 aria-label="Close menu"
               >
                 &times;
@@ -149,8 +143,9 @@ export default function Navbar() {
                     href={l.href}
                     className="block py-3 font-display"
                     style={{
-                      fontSize: "32px",
-                      color: pathname === l.href ? "var(--amber)" : "var(--ink)",
+                      fontSize: "28px",
+                      fontWeight: 700,
+                      color: pathname === l.href ? "var(--color-primary)" : "var(--color-text-primary)",
                     }}
                   >
                     {l.label}
@@ -163,8 +158,8 @@ export default function Navbar() {
                 transition={{ delay: 0.35 }}
                 className="mt-8"
               >
-                <Link href="/contact" className="btn-primary" style={{ fontSize: "16px" }}>
-                  Talk to us
+                <Link href="/contact" className="btn-primary" style={{ fontSize: "15px" }}>
+                  Get Your Business Diagnostic
                   <span className="arrow-chip">
                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

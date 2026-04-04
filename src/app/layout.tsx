@@ -3,28 +3,28 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://staplerlabs.com"),
 
   title: {
-    default: "StaplerLabs — We take established businesses online",
+    default: "StaplerLabs — Management Consulting + Technology for Established Indian Businesses",
     template: "%s | StaplerLabs",
   },
 
   description:
-    "StaplerLabs takes established offline businesses and builds their entire digital presence from scratch in 30 days — website, Google, WhatsApp, ads — then stays as their long-term digital ops partner.",
+    "StaplerLabs is the strategic consulting and technology execution partner for established Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore. AI-powered diagnostics, management consulting, and full-stack technology execution.",
 
   keywords: [
-    "offline to online business",
-    "digital presence for local business",
+    "management consulting India",
+    "business consulting SMB India",
+    "digital transformation India",
+    "AI business diagnostics",
+    "technology execution partner",
+    "small business consulting India",
+    "competitive intelligence SMB",
     "business automation India",
     "website development India",
-    "Google Business Profile setup",
-    "WhatsApp automation for business",
-    "small business digital services",
-    "local business SEO India",
     "StaplerLabs",
   ],
 
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   publisher: "StaplerLabs",
 
   openGraph: {
-    title: "StaplerLabs — We take established businesses online",
+    title: "StaplerLabs — The internet favours startups. We level the field.",
     description:
-      "Website. Google. WhatsApp. Ads. All of it in 30 days. Then we stick around.",
+      "Strategic consulting and technology execution for established Indian businesses doing Rs. 50L to Rs. 50Cr.",
     url: "https://staplerlabs.com",
     siteName: "StaplerLabs",
     locale: "en_IN",
@@ -45,16 +45,16 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "StaplerLabs — We take established businesses online",
+        alt: "StaplerLabs — Management Consulting + Technology for Established Indian Businesses",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "StaplerLabs — We take established businesses online",
+    title: "StaplerLabs — The internet favours startups. We level the field.",
     description:
-      "Website. Google. WhatsApp. Ads. All of it in 30 days. Then we stick around.",
+      "Strategic consulting and technology execution for established Indian businesses doing Rs. 50L to Rs. 50Cr.",
     images: ["/og-image.png"],
     creator: "@staplerlabs",
   },
@@ -94,22 +94,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="staplerlabs-theme">
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppButton />
-        </ThemeProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );

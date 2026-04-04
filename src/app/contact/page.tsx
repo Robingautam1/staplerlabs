@@ -6,24 +6,24 @@ import FadeIn from "@/components/FadeIn";
 
 const faqs = [
   {
-    q: "How long does a website take?",
-    a: "Most standard business websites go live in 10-14 days. Complex projects with custom functionality can take 3-4 weeks. We'll give you a timeline before we start.",
+    q: "What is the Rs. 999 diagnostic?",
+    a: "It\u2019s an AI-generated Business Intelligence Dashboard that includes your Business Index Score, competitor map, gap analysis, and visibility assessment. You also get a 1-hour guide session with an assigned StaplerLabs consultant. It\u2019s a diagnostic product fee, not a consultation fee.",
   },
   {
-    q: "Do you work with businesses outside India?",
-    a: "Yes. Most of our automation and web work can be done remotely for anyone, anywhere. SEO and onboarding work best for India-based businesses right now.",
+    q: "What happens after the diagnostic?",
+    a: "Your consultant walks you through the dashboard and recommends the 2\u20133 highest-leverage interventions. You can then choose the Starter Bundle (Rs. 9,999 one-time) or Strategic Retainer (Rs. 30K\u201350K/month). No pressure.",
   },
   {
-    q: "Can I start with just one service?",
-    a: "Absolutely. Most clients start with one service and add others as they see results. No bundles, no upselling pressure.",
+    q: "Do you work with businesses outside Delhi NCR?",
+    a: "We\u2019re launching in Delhi NCR first. Mumbai, Bangalore, and Hyderabad are next. If you\u2019re in those cities, register now and we\u2019ll reach out when we expand.",
   },
   {
-    q: "What if I need to pause the project?",
-    a: "Life happens. We'll hold your project for up to 30 days at no extra cost. Beyond that, we'll figure something out. We're human.",
+    q: "What size businesses do you work with?",
+    a: "Established businesses generating Rs. 50 Lakh to Rs. 50 Crore in annual revenue. Below that, we\u2019re not the right fit. Above that, you likely have in-house teams already.",
   },
   {
-    q: "What do you charge?",
-    a: "It depends on what you need. A basic business website starts around ₹15,000. Automation projects vary by complexity. We give you a clear quote before any work begins.",
+    q: "Are consulting and technology priced separately?",
+    a: "Always. Consulting fees cover strategic advisory. Technology products are scoped and quoted individually based on what the diagnostic reveals. Full transparency.",
   },
 ];
 
@@ -73,17 +73,16 @@ export default function ContactPage() {
 
   return (
     <div className="pt-20">
-      <section className="py-12 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
+      <section style={{ background: "#FFFFFF", paddingTop: "48px", paddingBottom: "80px" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <FadeIn>
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl mb-4 text-center lg:text-left">
-              Let&apos;s figure out if we&apos;re a{" "}
-              <span className="t-yellow">fit.</span>
+            <h1 className="font-display mb-4 text-center lg:text-left" style={{ fontSize: "clamp(32px, 4.5vw, 48px)" }}>
+              Find out where your business{" "}
+              <span style={{ color: "var(--color-primary)" }}>really stands.</span>
             </h1>
-            <p className="max-w-2xl mb-10 sm:mb-16 text-center lg:text-left t-tertiary text-sm sm:text-base">
-              We don&apos;t do discovery calls where we pitch at you for 45
-              minutes. We ask a few questions, you answer honestly, and we tell
-              you exactly what we&apos;d do and what it would cost. No fluff.
+            <p className="max-w-2xl mb-10 sm:mb-14 text-center lg:text-left" style={{ fontSize: "16px", lineHeight: 1.7, color: "var(--color-text-secondary)" }}>
+              Start with the Rs. 999 diagnostic. Get your AI Business Intelligence Dashboard
+              in 30 minutes. Then decide if we&apos;re the right partner.
             </p>
           </FadeIn>
 
@@ -96,20 +95,20 @@ export default function ContactPage() {
                   className="space-y-5"
                 >
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--color-text-muted)" }}>
                       What&apos;s your business?
                     </label>
                     <input
                       type="text"
                       name="business"
                       required
-                      placeholder="e.g. Dental clinic in Rohtak, SaaS startup in Bengaluru"
+                      placeholder="e.g. Dental clinic in Delhi NCR, CA firm in Gurgaon"
                       className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--color-text-muted)" }}>
                       What do you need help with?
                     </label>
                     <select
@@ -118,20 +117,19 @@ export default function ContactPage() {
                       className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     >
                       <option value="">Select one</option>
+                      <option value="diagnostic">Business Diagnostic (Rs. 999)</option>
+                      <option value="consulting">Strategic Consulting</option>
                       <option value="web">Web Development</option>
                       <option value="automation">Business Automation</option>
-                      <option value="onboarding">
-                        Offline to Online Onboarding
-                      </option>
-                      <option value="seo">SEO &amp; Content</option>
-                      <option value="ads">Professional Advertising</option>
+                      <option value="seo">SEO &amp; Online Listing</option>
+                      <option value="ads">Performance Marketing</option>
                       <option value="not-sure">Not sure yet</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
-                      Rough budget range
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--color-text-muted)" }}>
+                      Annual revenue range
                     </label>
                     <select
                       name="budget"
@@ -139,16 +137,16 @@ export default function ContactPage() {
                       className="w-full input-theme rounded-lg px-4 py-3 text-[15px] border transition-colors"
                     >
                       <option value="">Select one</option>
-                      <option value="under-15k">Under ₹15,000</option>
-                      <option value="15k-50k">₹15,000 - ₹50,000</option>
-                      <option value="50k-1L">₹50,000 - ₹1,00,000</option>
-                      <option value="above-1L">Above ₹1,00,000</option>
-                      <option value="no-idea">I have no idea yet</option>
+                      <option value="under-50L">Under Rs. 50 Lakh</option>
+                      <option value="50L-2Cr">Rs. 50 Lakh - Rs. 2 Crore</option>
+                      <option value="2Cr-10Cr">Rs. 2 Crore - Rs. 10 Crore</option>
+                      <option value="10Cr-50Cr">Rs. 10 Crore - Rs. 50 Crore</option>
+                      <option value="above-50Cr">Above Rs. 50 Crore</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--color-text-muted)" }}>
                       How soon do you need this?
                     </label>
                     <select
@@ -165,7 +163,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--color-text-muted)" }}>
                       Your email
                     </label>
                     <input
@@ -178,7 +176,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider mb-2 t-muted">
+                    <label className="block text-xs font-mono uppercase tracking-wider mb-2" style={{ color: "var(--color-text-muted)" }}>
                       Your WhatsApp number
                     </label>
                     <input
@@ -191,7 +189,7 @@ export default function ContactPage() {
                   </div>
 
                   {formError && (
-                    <p className="text-sm px-4 py-3 rounded-lg" style={{ background: "rgba(255,60,60,0.08)", color: "#ff6b6b", border: "1px solid rgba(255,60,60,0.2)" }}>
+                    <p className="text-sm px-4 py-3 rounded-lg" style={{ background: "rgba(239,68,68,0.06)", color: "#EF4444", border: "1px solid rgba(239,68,68,0.15)" }}>
                       {formError}
                     </p>
                   )}
@@ -201,7 +199,7 @@ export default function ContactPage() {
                     disabled={sending}
                     className="w-full btn-primary justify-center py-3.5 rounded-md disabled:opacity-60"
                   >
-                    {sending ? "Sending..." : "Send my details"}
+                    {sending ? "Sending..." : "Get Your Business Diagnostic \u2014 Rs. 999"}
                     {!sending && (
                       <span className="arrow-chip">
                         <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
@@ -212,42 +210,44 @@ export default function ContactPage() {
                   </button>
                 </form>
               ) : (
-                <div className="rounded-xl p-8 text-center" style={{ border: "1px solid var(--border-hover)" }}>
-                  <p className="t-yellow font-display text-2xl mb-3">
+                <div className="rounded-xl p-8 text-center" style={{ border: "1px solid var(--color-primary)", background: "var(--color-primary-light)" }}>
+                  <p style={{ fontSize: "24px", fontWeight: 800, color: "var(--color-primary)", marginBottom: "12px" }}>
                     Got it.
                   </p>
-                  <p className="text-[15px] t-secondary">
+                  <p style={{ fontSize: "15px", color: "var(--color-text-secondary)" }}>
                     We&apos;ll get back to you on WhatsApp within 24 hours.
-                    Usually much faster. In the meantime, feel free to message
-                    us directly.
+                    Usually much faster.
                   </p>
                 </div>
               )}
 
               {/* Alternative contact */}
-              <div className="mt-8 pt-8" style={{ borderTop: "1px solid var(--border-primary)" }}>
-                <p className="text-xs font-mono uppercase tracking-wider mb-3 t-dim">
+              <div className="mt-8 pt-8" style={{ borderTop: "1px solid var(--color-border)" }}>
+                <p className="text-xs font-mono uppercase tracking-wider mb-3" style={{ color: "var(--color-text-muted)" }}>
                   Or reach out directly
                 </p>
-                <p className="text-[15px] t-secondary">
+                <p style={{ fontSize: "15px", color: "var(--color-text-secondary)" }}>
                   WhatsApp:{" "}
                   <a
                     href="https://wa.me/918292511007"
-                    className="t-yellow hover:underline"
+                    style={{ color: "var(--color-primary)", fontWeight: 500 }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     +91 82925 11007
                   </a>
                 </p>
-                <p className="text-[15px] mt-1 t-secondary">
+                <p style={{ fontSize: "15px", marginTop: "4px", color: "var(--color-text-secondary)" }}>
                   Email:{" "}
                   <a
                     href="mailto:work@staplerlabs.com"
-                    className="t-yellow hover:underline"
+                    style={{ color: "var(--color-primary)", fontWeight: 500 }}
                   >
                     work@staplerlabs.com
                   </a>
+                </p>
+                <p style={{ fontSize: "15px", marginTop: "4px", color: "var(--color-text-muted)" }}>
+                  Delhi NCR, India
                 </p>
               </div>
             </FadeIn>
@@ -255,17 +255,17 @@ export default function ContactPage() {
             {/* FAQ */}
             <FadeIn delay={0.2}>
               <div>
-                <h2 className="font-display text-lg mb-6">
-                  Quick answers
+                <h2 className="font-display mb-6" style={{ fontSize: "18px", fontWeight: 700 }}>
+                  Common questions
                 </h2>
                 <div className="space-y-0">
                   {faqs.map((f, i) => (
-                    <div key={i} style={{ borderBottom: "1px solid var(--border-primary)" }}>
+                    <div key={i} style={{ borderBottom: "1px solid var(--color-border)" }}>
                       <button
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
                         className="w-full flex items-center justify-between py-4 text-left"
                       >
-                        <p className="text-[15px] font-semibold t-primary pr-4">
+                        <p style={{ fontSize: "15px", fontWeight: 600, color: "var(--color-text-primary)", paddingRight: "16px" }}>
                           {f.q}
                         </p>
                         <motion.svg
@@ -277,7 +277,7 @@ export default function ContactPage() {
                           animate={{ rotate: openFaq === i ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <path d="M4 6l4 4 4-4" stroke="var(--ink-40)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M4 6l4 4 4-4" stroke="var(--color-text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </motion.svg>
                       </button>
                       <AnimatePresence>
@@ -289,7 +289,7 @@ export default function ContactPage() {
                             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                             style={{ overflow: "hidden" }}
                           >
-                            <p className="text-[14px] leading-relaxed t-tertiary pb-4">
+                            <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--color-text-secondary)", paddingBottom: "16px" }}>
                               {f.a}
                             </p>
                           </motion.div>

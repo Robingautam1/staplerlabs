@@ -1,69 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import FadeIn from "@/components/FadeIn";
-import HeroIllustration from "@/components/HeroIllustration";
-import CaseStudyMockup from "@/components/CaseStudyMockup";
-import { TimelineMini } from "@/components/ServiceIllustrations";
 import TransformationSection from "@/components/transformation";
 
-/* ── Animated counter ── */
-function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v));
-  const [display, setDisplay] = useState("0");
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(count, target, {
-        duration: 1.8,
-        ease: [0.16, 1, 0.3, 1],
-      });
-      return controls.stop;
-    }
-  }, [isInView, count, target]);
-
-  useEffect(() => {
-    const unsub = rounded.on("change", (v) => setDisplay(String(v)));
-    return unsub;
-  }, [rounded]);
-
-  return (
-    <span ref={ref} style={{ fontFeatureSettings: '"tnum"' }}>
-      {display}{suffix}
-    </span>
-  );
-}
-
-/* ── Stagger wrapper variants (Fix 5) ── */
+/* ── Stagger wrapper variants ── */
 const sectionVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.07 } },
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 const childVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const } },
 };
-
-/* ── Industry marquee data (Fix 10) ── */
-const industries = [
-  "Chartered Accountants",
-  "Dental Clinics",
-  "Law Firms",
-  "Architecture Firms",
-  "Drycleaners",
-  "Physiotherapy Practices",
-  "Coaching Institutes",
-  "Optical Stores",
-  "Restaurants",
-  "Diagnostic Labs",
-  "Interior Designers",
-  "Auto Workshops",
-];
 
 /* ── JSON-LD ── */
 const jsonLd = {
@@ -83,11 +34,11 @@ const jsonLd = {
       "@type": "LocalBusiness",
       "@id": "https://staplerlabs.com/#localbusiness",
       name: "StaplerLabs",
-      description: "StaplerLabs takes established offline businesses and builds their entire digital presence from scratch in 30 days.",
+      description: "StaplerLabs is the strategic consulting and technology execution partner for established Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore.",
       url: "https://staplerlabs.com",
       telephone: "+91-82925-11007",
       email: "work@staplerlabs.com",
-      address: { "@type": "PostalAddress", addressCountry: "IN", addressRegion: "Delhi" },
+      address: { "@type": "PostalAddress", addressLocality: "Delhi NCR", addressCountry: "IN", addressRegion: "Delhi" },
       priceRange: "\u20b9\u20b9",
       openingHours: "Mo-Fr 10:00-19:00",
       image: "https://staplerlabs.com/og-image.png",
@@ -107,408 +58,220 @@ export default function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* ══════════════ HERO — Two Column ══════════════ */}
+      {/* ══════════════ HERO ══════════════ */}
       <section
         className="relative overflow-hidden"
-        style={{ paddingTop: "clamp(100px, 14vh, 160px)", paddingBottom: "clamp(56px, 7vh, 90px)" }}
+        style={{ paddingTop: "clamp(110px, 16vh, 180px)", paddingBottom: "clamp(60px, 8vh, 100px)", background: "#FFFFFF" }}
       >
-        <div className="absolute inset-0 graph-grid" />
+        <div className="absolute inset-0 graph-grid opacity-50" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          {/* Left — Copy */}
-          <div>
-            <motion.h1
-              className="font-display"
-              style={{ fontSize: "clamp(38px, 5.2vw, 60px)", lineHeight: 1.05, letterSpacing: "-0.02em" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            >
-              You&apos;ve built a great business.{" "}
-              <span className="lg:whitespace-nowrap" style={{ color: "var(--amber)" }}>
-                The internet just doesn&apos;t know it yet.
-              </span>
-            </motion.h1>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <motion.h1
+            className="font-display mx-auto"
+            style={{ fontSize: "clamp(36px, 5vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em", fontWeight: 800, maxWidth: "900px" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            The internet favours startups.{" "}
+            <span style={{ color: "var(--color-primary)" }}>
+              We level the field for businesses that actually built something.
+            </span>
+          </motion.h1>
 
-            <motion.p
-              className="mt-5"
-              style={{ fontSize: "16px", lineHeight: 1.72, color: "var(--ink-60)", maxWidth: "580px" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-            >
-              We take established businesses and build everything they need online
-              &mdash; website, Google presence, WhatsApp, ads &mdash; in 30 days.
-              Then we stick around.
-            </motion.p>
+          <motion.p
+            className="mt-6 mx-auto"
+            style={{ fontSize: "18px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "700px" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            StaplerLabs is the strategic consulting and technology partner for established
+            Indian businesses doing Rs. 50 Lakh to Rs. 50 Crore &mdash; competing in an era built against them.
+          </motion.p>
 
-            <motion.div
-              className="mt-7 flex flex-col sm:flex-row items-start gap-3"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-            >
-              <Link href="/contact" className="btn-primary">
-                Start a project
-                <span className="arrow-chip">
-                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </Link>
-              <Link href="/work" className="btn-secondary">
-                View our work
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.5 }}>
+          <motion.div
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <Link href="/contact" className="btn-primary" style={{ fontSize: "15px", padding: "14px 28px" }}>
+              Get Your Business Diagnostic &mdash; Rs. 999
+              <span className="arrow-chip">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </Link>
-            </motion.div>
-          </div>
+              </span>
+            </Link>
+            <Link href="#how-it-works" className="btn-secondary">
+              See How It Works
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.6 }}>
+                <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          </motion.div>
 
-          {/* Right — Illustration (visible on mobile too, smaller) */}
+          {/* ── Trust stats row ── */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-8 sm:gap-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <HeroIllustration />
+            {[
+              { val: "63M+", label: "SMBs in India" },
+              { val: "Rs. 50L\u201350Cr", label: "Our Revenue Band" },
+              { val: "Delhi NCR", label: "Launch 2026" },
+            ].map((s, i) => (
+              <div key={i} className="text-center">
+                <p style={{ fontSize: "20px", fontWeight: 800, color: "var(--color-primary)", letterSpacing: "-0.01em" }}>{s.val}</p>
+                <p style={{ fontSize: "13px", fontWeight: 500, color: "var(--color-text-muted)", marginTop: "2px" }}>{s.label}</p>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* ══════════════ INDUSTRY MARQUEE (Fix 10) ══════════════ */}
-      <section
-        className="overflow-hidden marquee-wrap"
-        style={{ borderTop: "1px solid var(--ink-06)", borderBottom: "1px solid var(--ink-06)", paddingTop: "14px", paddingBottom: "14px" }}
-      >
-        <div className="marquee-track flex items-center gap-8 whitespace-nowrap">
-          {[...industries, ...industries].map((name, i) => (
-            <span
-              key={i}
-              className="font-body"
-              style={{ fontSize: "13px", fontWeight: 500, color: "var(--tertiary)", flexShrink: 0 }}
-            >
-              {name}
-              <span className="mx-4" style={{ color: "var(--ink-12)" }}>&bull;</span>
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════════ COUNTER STATS ══════════════ */}
-      <section className="px-6" style={{ paddingTop: "56px", paddingBottom: "56px" }}>
-        <div className="max-w-5xl mx-auto">
+      {/* ══════════════ THE PROBLEM — 3-Column Cards ══════════════ */}
+      <section style={{ background: "var(--color-bg-subtle)", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="max-w-6xl mx-auto px-6">
           <motion.div
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
           >
-            <motion.p variants={childVariants} className="label-caps text-center mb-10">
-              Businesses we&apos;ve worked with have been running for an average of 9 years before calling us
-            </motion.p>
-            <motion.div variants={childVariants} className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-              {[
-                { target: 47, suffix: "+", label: "Businesses taken online" },
-                { target: 30, suffix: "", label: "Days average setup time" },
-                { target: 0, suffix: "", label: "Times a client chased us" },
-                { target: 24, suffix: "/7", label: "Automation uptime" },
-              ].map((s, i) => (
-                <div key={i}>
-                  <p className="font-display" style={{ fontSize: "clamp(36px, 5vw, 48px)", color: "var(--amber)", lineHeight: 1, fontFeatureSettings: '"tnum"' }}>
-                    <Counter target={s.target} suffix={s.suffix} />
-                  </p>
-                  <p style={{ fontSize: "13px", fontWeight: 400, color: "var(--ink-40)", marginTop: "8px" }}>{s.label}</p>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ══════════════ THE TRANSFORMATION — Bento Grid ══════════════ */}
-      <TransformationSection />
-
-      {/* ══════════════ WHY NOW — Amber Left Borders ══════════════ */}
-      <section className="px-6" style={{ paddingTop: "64px", paddingBottom: "64px" }}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3" style={{ color: "var(--amber)" }}>Why now</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-10 max-w-3xl mx-auto" style={{ fontSize: "clamp(30px, 3.8vw, 44px)", lineHeight: 1.12, letterSpacing: "-0.02em" }}>
-              Your customers are searching for you.{" "}
-              <span style={{ color: "var(--ink-60)" }}>They&apos;re finding someone else.</span>
+            <motion.p variants={childVariants} className="label-caps text-center mb-3">Why this matters</motion.p>
+            <motion.h2 variants={childVariants} className="font-display text-center mb-12 mx-auto" style={{ fontSize: "clamp(28px, 3.5vw, 38px)", maxWidth: "700px" }}>
+              You built something real.{" "}
+              <span style={{ color: "var(--color-text-secondary)" }}>The internet doesn&apos;t know it yet.</span>
             </motion.h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              "73% of people search online before visiting a local business. If you\u2019re not there, you don\u2019t exist to them.",
-              "Your competitors \u2014 many of whom are worse than you \u2014 are showing up on Google because someone set them up.",
-              "The businesses we work with have been running for years on referrals alone. After we set them up, they start getting customers they never would have met otherwise.",
-            ].map((text, i) => (
+              {
+                icon: "threat",
+                title: "The Threat",
+                stat: "40\u201360%",
+                desc: "of revenue is spent on digital by VC-funded startups. They&apos;re not better than you \u2014 they&apos;re just better at the internet.",
+              },
+              {
+                icon: "gap",
+                title: "The Gap",
+                stat: "92%",
+                desc: "of SMBs in the Rs. 50L\u201350Cr band have no integrated digital strategy. Your competitors aren&apos;t the problem \u2014 your invisibility is.",
+              },
+              {
+                icon: "cost",
+                title: "The Cost",
+                stat: "Every month",
+                desc: "without a digital strategy is market share lost permanently. Customers who can&apos;t find you online find someone else.",
+              },
+            ].map((card, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <WhyNowCard text={text} index={i} />
+                <div className="card-theme p-8 h-full" style={{ background: "#FFFFFF" }}>
+                  <p style={{ fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "var(--color-primary)", lineHeight: 1, marginBottom: "12px" }}>
+                    {card.stat}
+                  </p>
+                  <h3 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "8px" }}>
+                    {card.title}
+                  </h3>
+                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "none" }}>
+                    {card.desc}
+                  </p>
+                </div>
               </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════ BENTO GRID SERVICES (Fix 4: timeline in first card) ══════════════ */}
-      <section
-        id="services"
-        className="px-6"
-        style={{ paddingTop: "64px", paddingBottom: "64px", borderTop: "1px solid var(--ink-06)" }}
-      >
-        <div className="max-w-6xl mx-auto">
+      {/* ══════════════ HOW IT WORKS — The 3I Model ══════════════ */}
+      <section id="how-it-works" style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="max-w-5xl mx-auto px-6">
           <motion.div
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
           >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3" style={{ color: "var(--amber)" }}>Our toolkit</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-4" style={{ fontSize: "clamp(30px, 3.8vw, 44px)", lineHeight: 1.12, letterSpacing: "-0.02em" }}>
-              Six things. Done properly.
+            <motion.p variants={childVariants} className="label-caps text-center mb-3">How it works</motion.p>
+            <motion.h2 variants={childVariants} className="font-display text-center mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 38px)" }}>
+              Three steps. Thirty minutes to your first intelligence report.
             </motion.h2>
-            <motion.p variants={childVariants} className="text-center mb-12" style={{ fontSize: "16px", color: "var(--ink-60)", maxWidth: "580px", margin: "0 auto 48px" }}>
-              We don&apos;t do 47 services with varying levels of competence.
-              We do six, and we&apos;re unreasonably good at all of them.
+            <motion.p variants={childVariants} className="text-center mx-auto mb-14" style={{ fontSize: "16px", color: "var(--color-text-secondary)", maxWidth: "600px" }}>
+              Every engagement follows the same proven model. No sales pitch. No fluff. Just intelligence, then action.
             </motion.p>
           </motion.div>
 
-          {/* Row 1: Offline to Online (2/4) | Automation (1/4) | AI Bot (1/4) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <FadeIn delay={0} className="lg:col-span-2">
-              <Link href="/services">
-                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "32px" }}>
-                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Core offering</p>
-                  <h3 className="font-body mb-3" style={{ fontSize: "18px", fontWeight: 600, color: "var(--ink)" }}>
-                    Offline to Online Setup
-                  </h3>
-                  <p style={{ fontSize: "15px", lineHeight: 1.72, color: "var(--ink-60)", maxWidth: "520px" }}>
-                    We take a business that&apos;s never been online and build everything from scratch &mdash; website, Google Business Profile, WhatsApp Business, QR systems. Thirty days. Fixed price. Done.
-                  </p>
-                  <div className="mt-5">
-                    <TimelineMini />
-                  </div>
-                </div>
-              </Link>
-            </FadeIn>
-
-            <FadeIn delay={0.06}>
-              <Link href="/services">
-                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
-                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Automation</p>
-                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>Business Automation</h3>
-                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                    Invoice reminders, appointment confirmations, review requests &mdash; all running automatically so your staff can focus on actual work.
-                  </p>
-                  {/* Mini flow diagram */}
-                  <svg viewBox="0 0 120 60" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-60">
-                    {[0,1,2].map((i) => (<g key={i}><rect x={i*42} y={4} width="34" height="16" rx="4" stroke="var(--ink)" strokeWidth="0.8" opacity="0.15" fill="none" /><text x={i*42+17} y="15" textAnchor="middle" fontSize="5" fill="var(--ink)" opacity="0.3" fontFamily="var(--font-inter)">Step {i+1}</text>{i<2 && <line x1={i*42+36} y1={12} x2={i*42+40} y2={12} stroke="var(--amber)" strokeWidth="0.8" opacity="0.4" />}</g>))}
-                    <circle cx="17" cy="12" r="2.5" fill="var(--amber)" opacity="0.6"><animate attributeName="cx" values="17;59;101;17" dur="2s" repeatCount="indefinite" /></circle>
-                  </svg>
-                </div>
-              </Link>
-            </FadeIn>
-
-            <FadeIn delay={0.12}>
-              <Link href="/services">
-                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
-                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>AI</p>
-                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>AI Reception Bot</h3>
-                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                    Answers enquiries, qualifies leads, and books appointments on WhatsApp. Works at 2am. Never calls in sick.
-                  </p>
-                  {/* Mini chat bubbles */}
-                  <svg viewBox="0 0 100 50" fill="none" className="w-full max-w-[100px] h-auto mt-4 opacity-60">
-                    <rect x="2" y="4" width="48" height="14" rx="7" fill="#DCF8C6" opacity="0.4" />
-                    <rect x="50" y="22" width="48" height="14" rx="7" fill="var(--bg-card)" stroke="var(--ink)" strokeWidth="0.5" opacity="0.2" />
-                    <circle cx="56" cy="44" r="2" fill="#25D366" opacity="0.5"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.5s" repeatCount="indefinite" /></circle>
-                    <circle cx="62" cy="44" r="2" fill="#25D366" opacity="0.4"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.5s" begin="0.2s" repeatCount="indefinite" /></circle>
-                    <circle cx="68" cy="44" r="2" fill="#25D366" opacity="0.3"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.5s" begin="0.4s" repeatCount="indefinite" /></circle>
-                  </svg>
-                </div>
-              </Link>
-            </FadeIn>
-          </div>
-
-          {/* Row 2: Web Dev (1/3) | SEO (1/3) | Ads (1/3) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
-            <FadeIn delay={0.18}>
-              <Link href="/services">
-                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
-                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Development</p>
-                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>Web Development</h3>
-                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                    Clean, fast websites that load in under two seconds and convert visitors into customers. No templates. Built from scratch.
-                  </p>
-                  {/* Mini browser */}
-                  <svg viewBox="0 0 120 60" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-50">
-                    <rect x="2" y="2" width="116" height="56" rx="4" stroke="var(--ink)" strokeWidth="0.8" opacity="0.15" fill="none" />
-                    <rect x="2" y="2" width="116" height="12" rx="4" fill="var(--ink)" opacity="0.03" />
-                    <circle cx="10" cy="8" r="2" fill="#FF5F56" opacity="0.5" /><circle cx="17" cy="8" r="2" fill="#FFBD2E" opacity="0.5" /><circle cx="24" cy="8" r="2" fill="#27C93F" opacity="0.5" />
-                    <rect x="10" y="20" width="40" height="3" rx="1" fill="var(--ink)" opacity="0.08" />
-                    <rect x="10" y="27" width="60" height="2" rx="1" fill="var(--ink)" opacity="0.05" />
-                    <rect x="10" y="33" width="50" height="2" rx="1" fill="var(--ink)" opacity="0.04" />
-                    <rect x="10" y="42" width="24" height="8" rx="3" fill="var(--amber)" opacity="0.2" />
-                    <rect x="76" y="18" width="36" height="26" rx="3" fill="var(--ink)" opacity="0.03" />
-                  </svg>
-                </div>
-              </Link>
-            </FadeIn>
-
-            <FadeIn delay={0.24}>
-              <Link href="/services">
-                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
-                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Growth</p>
-                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>SEO &amp; Content</h3>
-                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                    The long game that actually pays off. Local SEO, technical audits, and content that real humans want to read.
-                  </p>
-                  {/* Mini line graph */}
-                  <svg viewBox="0 0 120 50" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-50">
-                    <line x1="10" y1="42" x2="110" y2="42" stroke="var(--ink)" strokeWidth="0.5" opacity="0.1" />
-                    <polyline points="10,38 30,35 50,30 70,22 90,16 110,8" stroke="var(--amber)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
-                    <circle cx="110" cy="8" r="2.5" fill="var(--amber)" opacity="0.5"><animate attributeName="r" values="2.5;4;2.5" dur="2s" repeatCount="indefinite" /></circle>
-                  </svg>
-                </div>
-              </Link>
-            </FadeIn>
-
-            <FadeIn delay={0.30}>
-              <Link href="/services">
-                <div className="group card-theme h-full" style={{ borderRadius: "14px", padding: "28px" }}>
-                  <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Advertising</p>
-                  <h3 className="font-body mb-3" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)" }}>Professional Ads</h3>
-                  <p style={{ fontSize: "14px", lineHeight: 1.7, color: "var(--ink-60)" }}>
-                    Meta and Google Ads without burning money learning how. Strategy, creative, copy, and monthly reports you&apos;ll actually understand.
-                  </p>
-                  {/* Mini A/B cards */}
-                  <svg viewBox="0 0 120 50" fill="none" className="w-full max-w-[120px] h-auto mt-4 opacity-50">
-                    <rect x="2" y="4" width="48" height="42" rx="4" stroke="var(--ink)" strokeWidth="0.8" opacity="0.12" fill="none" />
-                    <text x="26" y="28" textAnchor="middle" fontSize="10" fill="var(--ink)" opacity="0.15" fontWeight="600" fontFamily="var(--font-inter)">A</text>
-                    <rect x="70" y="4" width="48" height="42" rx="4" stroke="var(--amber)" strokeWidth="1" opacity="0.35" fill="none"><animate attributeName="stroke-opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite" /></rect>
-                    <text x="94" y="28" textAnchor="middle" fontSize="10" fill="var(--amber)" opacity="0.4" fontWeight="600" fontFamily="var(--font-inter)">B</text>
-                    <text x="60" y="28" textAnchor="middle" fontSize="7" fill="var(--ink)" opacity="0.15" fontFamily="var(--font-inter)">vs</text>
-                  </svg>
-                </div>
-              </Link>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════ CASE STUDY + PHONE MOCKUP ══════════════ */}
-      <section className="px-6" style={{ paddingTop: "64px", paddingBottom: "64px", borderTop: "1px solid var(--ink-06)" }}>
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="grid lg:grid-cols-[1fr_280px] gap-10 items-center">
-              <div>
-                <p className="label-caps mb-3" style={{ color: "var(--amber)" }}>Featured case study</p>
-                <h3 className="font-display mb-4" style={{ fontSize: "clamp(24px, 3vw, 36px)", lineHeight: 1.12, letterSpacing: "-0.02em" }}>
-                  A 15-year-old dental clinic.<br />Zero online presence.
-                </h3>
-                <p style={{ fontSize: "15px", lineHeight: 1.75, color: "var(--ink-60)", marginBottom: "16px", maxWidth: "540px" }}>
-                  Google Business Profile, a clean website, WhatsApp appointment booking,
-                  and a QR card for the reception desk.
-                  First online appointment booked within 72 hours of going live.
-                </p>
-                <p style={{ fontSize: "15px", lineHeight: 1.75, color: "var(--ink)", fontWeight: 500, marginBottom: "20px", maxWidth: "540px" }}>
-                  They now receive 3&ndash;5 online appointment requests every week they would never have had otherwise.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {["Onboarding", "Web", "Automation"].map((t) => (
-                    <span key={t} className="font-mono" style={{ fontSize: "12px", padding: "6px 12px", borderRadius: "9999px", border: "1px solid var(--yellow-subtle)", color: "var(--amber)" }}>{t}</span>
-                  ))}
-                </div>
-                <Link href="/work" className="inline-flex items-center gap-2 font-medium hover:gap-3 transition-all duration-150" style={{ fontSize: "14px", color: "var(--amber)" }}>
-                  See more work
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </Link>
-              </div>
-              <div className="hidden lg:block">
-                <CaseStudyMockup />
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ══════════════ HOW IT WORKS — Horizontal Stepper ══════════════ */}
-      <section id="how-it-works" className="px-6" style={{ paddingTop: "64px", paddingBottom: "64px", borderTop: "1px solid var(--ink-06)" }}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            <motion.p variants={childVariants} className="label-caps text-center mb-3" style={{ color: "var(--amber)" }}>How it works</motion.p>
-            <motion.h2 variants={childVariants} className="font-display text-center mb-10" style={{ fontSize: "clamp(30px, 3.8vw, 44px)", lineHeight: 1.12, letterSpacing: "-0.02em" }}>
-              Three steps. Then we handle the rest.
-            </motion.h2>
-          </motion.div>
-
           <div className="relative">
-            {/* Gradient connecting line with three dots */}
-            <div className="hidden md:block absolute left-[16.66%] right-[16.66%]" style={{ top: 36, height: 2, background: "linear-gradient(to right, transparent, var(--amber) 30%, var(--amber) 70%, transparent)", opacity: 0.18, borderRadius: 1 }} />
-            {/* Three dots on the line */}
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="hidden md:block absolute" style={{ top: 33, left: `${16.66 + i * 33.33}%`, width: 8, height: 8, borderRadius: "50%", backgroundColor: "var(--amber)", opacity: 0.3, transform: "translateX(-50%)" }} />
-            ))}
-            <div className="grid md:grid-cols-3 gap-8">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute left-[16.66%] right-[16.66%]" style={{ top: 44, height: 2, background: "linear-gradient(to right, transparent, var(--color-primary) 25%, var(--color-primary) 75%, transparent)", opacity: 0.15, borderRadius: 1 }} />
+
+            <div className="grid md:grid-cols-3 gap-10">
               {[
-                { step: "01", title: "You tell us about your business.", desc: "One WhatsApp conversation. We ask about your services, your customers, your goals. No forms. No briefs. No jargon." },
-                { step: "02", title: "We build everything in 30 days.", desc: "Website live, Google listing verified, WhatsApp Business configured, first ad campaign ready. You focus on running your business." },
-                { step: "03", title: "We stick around.", desc: "Monthly reporting, updates, optimization, new campaigns. You get a dedicated person, not a ticket system." },
+                {
+                  step: "01",
+                  name: "INTRODUCE",
+                  title: "Fill a 15-minute questionnaire",
+                  desc: "Sector-specific. Dynamically generated for your business type. Zero cost. No commitment.",
+                  tag: "Free",
+                },
+                {
+                  step: "02",
+                  name: "IMPRESS",
+                  title: "Get your AI Intelligence Dashboard",
+                  desc: "Business Index Score, competitor map, gap analysis, and visibility assessment \u2014 generated in 30 minutes.",
+                  tag: "Rs. 999",
+                },
+                {
+                  step: "03",
+                  name: "INITIATE",
+                  title: "Meet your assigned consultant",
+                  desc: "A StaplerLabs consultant walks you through findings and recommends exactly what to fix first.",
+                  tag: "24 hours",
+                },
               ].map((item, i) => (
                 <FadeIn key={i} delay={i * 0.12}>
                   <div className="text-center md:text-left">
-                    <div className="relative z-10 mx-auto md:mx-0 mb-4" style={{ width: 72, height: 72 }}>
-                      {/* Watermark numeral */}
-                      <span className="font-display absolute inset-0 flex items-center justify-center select-none" style={{ fontSize: 96, fontWeight: 700, color: "var(--ink)", opacity: 0.04, lineHeight: 1, letterSpacing: "-0.04em" }}>{item.step}</span>
+                    <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
+                      <div style={{
+                        width: 48, height: 48, borderRadius: "50%",
+                        background: "var(--color-primary-light)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: "16px", fontWeight: 800, color: "var(--color-primary)"
+                      }}>
+                        {item.step}
+                      </div>
+                      <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", color: "var(--color-primary)" }}>
+                        {item.name}
+                      </span>
                     </div>
-                    <h3 className="font-body mb-2" style={{ fontSize: "16px", fontWeight: 600, color: "var(--ink)", lineHeight: 1.4 }}>{item.title}</h3>
-                    <p style={{ fontSize: "15px", lineHeight: 1.72, color: "var(--ink-60)", maxWidth: "580px" }}>{item.desc}</p>
+                    <h3 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "8px", lineHeight: 1.3 }}>
+                      {item.title}
+                    </h3>
+                    <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", maxWidth: "340px" }}>
+                      {item.desc}
+                    </p>
+                    <span style={{
+                      display: "inline-block", marginTop: "12px",
+                      fontSize: "12px", fontWeight: 600, color: "var(--color-primary)",
+                      background: "var(--color-primary-light)", borderRadius: "9999px",
+                      padding: "4px 12px",
+                    }}>
+                      {item.tag}
+                    </span>
                   </div>
                 </FadeIn>
               ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ══════════════ DARK CTA SECTION ══════════════ */}
-      <section className="relative px-6 text-center overflow-hidden cta-dark" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(198, 144, 10, 0.08) 0%, transparent 70%)" }} />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <h2 className="font-display mb-4" style={{ fontSize: "clamp(30px, 3.8vw, 44px)", lineHeight: 1.12, letterSpacing: "-0.02em", color: "#FFFFFF" }}>
-              If your business has been running for years but you&apos;re not online &mdash;{" "}
-              <span style={{ color: "var(--yellow)" }}>this is the call to make.</span>
-            </h2>
-            <p className="mb-8" style={{ fontSize: "16px", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "580px", margin: "0 auto 32px" }}>
-              One conversation. We&apos;ll tell you exactly what you need and what it costs. No pitch deck. No pressure.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Let&apos;s talk
+          <div className="text-center mt-14">
+            <Link href="/contact" className="btn-primary" style={{ fontSize: "15px", padding: "14px 28px" }}>
+              Start Your Diagnostic &mdash; Rs. 999
               <span className="arrow-chip">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -516,29 +279,358 @@ export default function HomePage() {
               </span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ══════════════ DASHBOARD PREVIEW ══════════════ */}
+      <section style={{ background: "var(--color-bg-subtle)", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <motion.p variants={childVariants} className="label-caps text-center mb-3">What you get</motion.p>
+            <motion.h2 variants={childVariants} className="font-display text-center mb-12 mx-auto" style={{ fontSize: "clamp(28px, 3.5vw, 38px)", maxWidth: "700px" }}>
+              Intelligence that used to cost lakhs. Now available in 30 minutes.
+            </motion.h2>
+          </motion.div>
+
+          <FadeIn>
+            <BIDashboardPreview />
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ══════════════ WHO THIS IS FOR ══════════════ */}
+      <section style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <motion.p variants={childVariants} className="label-caps text-center mb-3">Who this is for</motion.p>
+            <motion.h2 variants={childVariants} className="font-display text-center mb-12 mx-auto" style={{ fontSize: "clamp(28px, 3.5vw, 38px)", maxWidth: "800px" }}>
+              Built for businesses that are too serious to ignore digital{" "}
+              <span style={{ color: "var(--color-text-secondary)" }}>and too smart to overpay for it.</span>
+            </motion.h2>
+          </motion.div>
+
+          {/* Revenue band visual */}
+          <FadeIn>
+            <div className="mx-auto mb-12" style={{ maxWidth: "600px" }}>
+              <div style={{ height: 8, borderRadius: 4, background: "var(--color-border)", position: "relative" }}>
+                <div style={{
+                  position: "absolute", left: "15%", right: "15%", top: 0, bottom: 0,
+                  borderRadius: 4, background: "var(--color-primary)",
+                }} />
+              </div>
+              <div className="flex justify-between mt-3" style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text-muted)" }}>
+                <span>Rs. 0</span>
+                <span style={{ color: "var(--color-primary)", fontWeight: 700 }}>Rs. 50L &mdash; Rs. 50Cr</span>
+                <span>Rs. 100Cr+</span>
+              </div>
+            </div>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Healthcare",
+                desc: "Multi-specialty clinics, dental practices, diagnostic labs losing patients to Practo and Google-visible competitors.",
+                sectors: ["Clinics", "Dental", "Diagnostics", "Physiotherapy"],
+              },
+              {
+                title: "Professional Services",
+                desc: "CAs, law firms, architects who built their practice on referrals but can\u2019t be found by anyone searching online.",
+                sectors: ["CA Firms", "Law Firms", "Architecture", "Interior Design"],
+              },
+              {
+                title: "Manufacturing & Retail",
+                desc: "Established businesses with 10\u201330 years of reputation, zero digital presence, and D2C brands eating their lunch.",
+                sectors: ["Textiles", "Jewellery", "Food & Beverage", "Education"],
+              },
+            ].map((card, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="card-theme p-7 h-full">
+                  <h3 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "8px" }}>
+                    {card.title}
+                  </h3>
+                  <p style={{ fontSize: "15px", lineHeight: 1.7, color: "var(--color-text-secondary)", marginBottom: "16px", maxWidth: "none" }}>
+                    {card.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {card.sectors.map((s) => (
+                      <span key={s} style={{
+                        fontSize: "12px", fontWeight: 500, color: "var(--color-primary)",
+                        background: "var(--color-primary-light)", borderRadius: "9999px",
+                        padding: "3px 10px",
+                      }}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════ THE TRANSFORMATION — Before/After Bento Grid ══════════════ */}
+      <TransformationSection />
+
+      {/* ══════════════ PRICING ══════════════ */}
+      <section style={{ background: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+          >
+            <motion.p variants={childVariants} className="label-caps text-center mb-3">Pricing</motion.p>
+            <motion.h2 variants={childVariants} className="font-display text-center mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 38px)" }}>
+              Transparent pricing. No hidden retainers.
+            </motion.h2>
+            <motion.p variants={childVariants} className="text-center mx-auto mb-14" style={{ fontSize: "16px", color: "var(--color-text-secondary)", maxWidth: "600px" }}>
+              Consulting and technology are always priced as separate, transparent line items. You see exactly what you&apos;re paying for.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                tier: "Diagnostic",
+                price: "Rs. 999",
+                period: "one-time",
+                highlight: false,
+                features: [
+                  "AI Business Intelligence Dashboard",
+                  "Business Index Score",
+                  "Competitor Intelligence Report",
+                  "Gap Analysis & Visibility Assessment",
+                  "1-hour guide session with consultant",
+                ],
+                cta: "Start Diagnostic",
+              },
+              {
+                tier: "Starter Bundle",
+                price: "Rs. 9,999",
+                period: "one-time + tech quoted separately",
+                highlight: true,
+                features: [
+                  "Everything in Diagnostic",
+                  "3-hour deep-dive strategic session",
+                  "Written Digital Positioning Report",
+                  "90-Day Strategic Roadmap",
+                  "Tech team access for scoping",
+                ],
+                cta: "Get Started",
+              },
+              {
+                tier: "Strategic Retainer",
+                price: "Rs. 30K\u201350K",
+                period: "per month + tech quoted separately",
+                highlight: false,
+                features: [
+                  "Everything in Starter Bundle",
+                  "Ongoing strategic consulting",
+                  "Monthly Competitor Intelligence",
+                  "Digital positioning management",
+                  "Tech team on-call for scoping",
+                ],
+                cta: "Talk to Us",
+              },
+            ].map((plan, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div
+                  className="relative rounded-xl p-8 h-full flex flex-col"
+                  style={{
+                    background: plan.highlight ? "var(--color-primary)" : "#FFFFFF",
+                    border: plan.highlight ? "none" : "1px solid var(--color-border)",
+                    color: plan.highlight ? "#FFFFFF" : "var(--color-text-primary)",
+                    transform: plan.highlight ? "scale(1.02)" : "none",
+                  }}
+                >
+                  {plan.highlight && (
+                    <span style={{
+                      position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
+                      fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase",
+                      background: "#FFFFFF", color: "var(--color-primary)", borderRadius: "9999px",
+                      padding: "4px 14px",
+                    }}>
+                      Most Popular
+                    </span>
+                  )}
+                  <p style={{ fontSize: "14px", fontWeight: 600, marginBottom: "4px", opacity: plan.highlight ? 0.8 : 1, color: plan.highlight ? "rgba(255,255,255,0.8)" : "var(--color-text-muted)" }}>
+                    {plan.tier}
+                  </p>
+                  <p style={{ fontSize: "32px", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "4px" }}>
+                    {plan.price}
+                  </p>
+                  <p style={{ fontSize: "13px", marginBottom: "24px", opacity: plan.highlight ? 0.7 : 1, color: plan.highlight ? "rgba(255,255,255,0.7)" : "var(--color-text-muted)" }}>
+                    {plan.period}
+                  </p>
+                  <div className="flex-1">
+                    <div className="space-y-3 mb-8">
+                      {plan.features.map((f, j) => (
+                        <div key={j} className="flex items-start gap-2.5">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5">
+                            <path d="M3 8.5l3 3 7-7" stroke={plan.highlight ? "rgba(255,255,255,0.8)" : "var(--color-primary)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span style={{ fontSize: "14px", lineHeight: 1.5, color: plan.highlight ? "rgba(255,255,255,0.9)" : "var(--color-text-secondary)" }}>
+                            {f}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="text-center font-semibold rounded-lg py-3 transition-all duration-150 block"
+                    style={{
+                      fontSize: "14px",
+                      background: plan.highlight ? "#FFFFFF" : "var(--color-primary)",
+                      color: plan.highlight ? "var(--color-primary)" : "#FFFFFF",
+                    }}
+                  >
+                    {plan.cta}
+                  </Link>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════ BLUE CTA SECTION ══════════════ */}
+      <section className="relative text-center overflow-hidden" style={{ background: "var(--color-primary)", paddingTop: "80px", paddingBottom: "80px" }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative z-10 max-w-3xl mx-auto px-6">
+            <h2 className="font-display mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", color: "#FFFFFF" }}>
+              Ready to find out exactly where your business stands?
+            </h2>
+            <p className="mb-8 mx-auto" style={{ fontSize: "16px", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, maxWidth: "560px" }}>
+              One questionnaire. Thirty minutes. Your complete Business Intelligence Dashboard.
+              No pitch deck. No pressure.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 font-semibold rounded-lg transition-all duration-150"
+              style={{ fontSize: "15px", padding: "14px 28px", background: "#FFFFFF", color: "var(--color-primary)" }}
+            >
+              Get Your Business Diagnostic &mdash; Rs. 999
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+            <div className="mt-6 flex items-center justify-center gap-6" style={{ fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+              <a href="mailto:work@staplerlabs.com" className="hover:underline">work@staplerlabs.com</a>
+              <a href="https://wa.me/918292511007" target="_blank" rel="noopener noreferrer" className="hover:underline">WhatsApp</a>
+            </div>
+          </div>
         </motion.div>
       </section>
     </>
   );
 }
 
-/* ── Why Now Card with animated amber left border ── */
-function WhyNowCard({ text, index }: { text: string; index: number }) {
+/* ── Business Intelligence Dashboard Preview (illustrated) ── */
+function BIDashboardPreview() {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <div ref={ref} className="relative pl-6 py-1">
+    <div ref={ref}>
       <motion.div
-        className="absolute left-0 top-0 w-[2px] rounded-full"
-        style={{ backgroundColor: "var(--amber)" }}
-        initial={{ height: 0 }}
-        animate={isInView ? { height: "100%" } : { height: 0 }}
-        transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      />
-      <p style={{ fontSize: "15px", lineHeight: 1.8, color: "var(--ink-60)", maxWidth: "580px" }}>
-        {text}
-      </p>
+        className="rounded-xl overflow-hidden mx-auto"
+        style={{
+          maxWidth: "800px",
+          border: "1px solid var(--color-border)",
+          background: "#FFFFFF",
+          boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {/* Dashboard header */}
+        <div style={{ padding: "20px 24px", borderBottom: "1px solid var(--color-border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <p style={{ fontSize: "14px", fontWeight: 700, color: "var(--color-text-primary)" }}>Business Intelligence Dashboard</p>
+            <p style={{ fontSize: "12px", color: "var(--color-text-muted)" }}>Generated in 30 minutes from your questionnaire</p>
+          </div>
+          <div style={{
+            width: 56, height: 56, borderRadius: "50%",
+            background: `conic-gradient(var(--color-primary) 0% 72%, var(--color-border) 72% 100%)`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: "50%", background: "#FFFFFF",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "14px", fontWeight: 800, color: "var(--color-primary)",
+            }}>
+              72
+            </div>
+          </div>
+        </div>
+
+        {/* Dashboard cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-0" style={{ borderBottom: "1px solid var(--color-border)" }}>
+          {[
+            { label: "Business Index Score", val: "72/100", color: "var(--color-primary)" },
+            { label: "Online Visibility", val: "Low", color: "#EF4444" },
+            { label: "Competitors Found", val: "8", color: "var(--color-primary)" },
+            { label: "Critical Gaps", val: "5", color: "var(--color-warning)" },
+            { label: "Recommendations", val: "3", color: "var(--color-success)" },
+          ].map((item, i) => (
+            <div key={i} style={{
+              padding: "16px 20px",
+              borderRight: i < 4 ? "1px solid var(--color-border)" : "none",
+            }}>
+              <p style={{ fontSize: "11px", fontWeight: 600, color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
+                {item.label}
+              </p>
+              <p style={{ fontSize: "20px", fontWeight: 800, color: item.color }}>
+                {item.val}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Simulated content rows */}
+        <div style={{ padding: "20px 24px" }}>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div style={{ padding: "16px", borderRadius: "8px", background: "var(--color-bg-subtle)" }}>
+              <p style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text-muted)", marginBottom: "8px" }}>GAP ANALYSIS</p>
+              {["No Google Business Profile", "Website not mobile-optimised", "Zero review presence", "No WhatsApp pipeline", "Competitor outranking on Maps"].map((g, i) => (
+                <div key={i} className="flex items-center gap-2" style={{ marginBottom: "6px" }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: i < 2 ? "#EF4444" : i < 4 ? "var(--color-warning)" : "var(--color-primary)" }} />
+                  <span style={{ fontSize: "13px", color: "var(--color-text-secondary)" }}>{g}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: "16px", borderRadius: "8px", background: "var(--color-bg-subtle)" }}>
+              <p style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-text-muted)", marginBottom: "8px" }}>STRATEGIC RECOMMENDATIONS</p>
+              {["Google Business Profile setup + local SEO", "Mobile-first website with booking", "WhatsApp automation pipeline"].map((r, i) => (
+                <div key={i} className="flex items-start gap-2" style={{ marginBottom: "8px" }}>
+                  <span style={{ fontSize: "12px", fontWeight: 700, color: "var(--color-primary)", flexShrink: 0, marginTop: "1px" }}>{i + 1}.</span>
+                  <span style={{ fontSize: "13px", color: "var(--color-text-secondary)", lineHeight: 1.5 }}>{r}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
