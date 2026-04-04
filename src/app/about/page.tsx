@@ -119,15 +119,17 @@ export default function AboutPage() {
 
       {/* Stapler Diagram — dark section */}
       <section className="anatomy-section">
-        <div className="max-w-md mx-auto px-6">
+        <div className="mx-auto px-6" style={{ maxWidth: "960px" }}>
           <FadeIn>
             <p className="label-caps text-center" style={{ color: "#6B7280", marginBottom: "16px" }}>The Anatomy</p>
-            <div className="mb-16 text-center">
+            <div className="mb-12 text-center">
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, color: "white", marginBottom: "16px" }}>The StaplerLabs Anatomy</h2>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#9CA3AF", maxWidth: "500px", margin: "0 auto" }}>Every part of the tool serves a distinct, critical purpose. Here is how our services map to the anatomy of our namesake.</p>
             </div>
-            <StaplerDiagram />
-            <p className="text-center" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "18px", color: "#6B7280", marginTop: "24px" }}>
+            <div style={{ width: "100%", maxWidth: "860px", margin: "48px auto 0", position: "relative" }}>
+              <StaplerDiagram />
+            </div>
+            <p className="text-center" style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: "18px", color: "#6B7280", marginTop: "32px" }}>
               Every part does its job. That is the only way a stapler works.
             </p>
           </FadeIn>
