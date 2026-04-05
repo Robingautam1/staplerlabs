@@ -140,7 +140,7 @@ export default function HomePage() {
       {/* ══════════════ THE PROBLEM ══════════════ */}
       <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px" }}>
         <motion.div
-          style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px", alignItems: "center" }}
+          style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}
           className="problem-grid"
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -148,9 +148,9 @@ export default function HomePage() {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
         >
           {/* LEFT — Blue-gray container with floating UI cards */}
-          <div style={{ background: "#E8EEF8", borderRadius: "24px", padding: "40px", width: "100%", height: "480px", position: "relative", overflow: "hidden" }}>
+          <div style={{ background: "#DCE8F8", borderRadius: "24px", padding: "40px", width: "100%", height: "480px", position: "relative", overflow: "hidden" }}>
             {/* Card A — Their Google Listing */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "240px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", position: "absolute", top: "32px", left: "24px" }}>
+            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "260px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.06)", position: "absolute", top: "36px", left: "28px" }}>
               <div className="flex items-center gap-2" style={{ marginBottom: "8px" }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E" }} />
                 <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#6B7280" }}>Competitor</span>
@@ -166,7 +166,7 @@ export default function HomePage() {
             </div>
 
             {/* Card B — Your listing (faded, rotated) */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "220px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", position: "absolute", top: "160px", left: "48px", opacity: 0.5, transform: "rotate(-2deg)" }}>
+            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "240px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", position: "absolute", top: "200px", left: "52px", opacity: 0.65, transform: "rotate(-1.5deg)" }}>
               <div className="flex items-center gap-2" style={{ marginBottom: "8px" }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#9CA3AF" }} />
                 <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#9CA3AF" }}>Your Business</span>
@@ -180,7 +180,7 @@ export default function HomePage() {
             </div>
 
             {/* Card C — WhatsApp response */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "200px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", position: "absolute", top: "24px", right: "24px" }}>
+            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "220px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.06)", position: "absolute", top: "36px", right: "28px" }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "8px" }}>WhatsApp</p>
               <div style={{ background: "#F3F4F6", borderRadius: "12px 12px 12px 0", padding: "8px 12px", maxWidth: "160px", marginBottom: "6px" }}>
                 <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#374151" }}>Hi, are you open tomorrow?</span>
@@ -193,8 +193,26 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textAlign: "right", marginTop: "6px" }}>Responded in 3 sec</p>
             </div>
 
+            {/* Card D — Search Results */}
+            <div style={{ background: "white", borderRadius: "12px", padding: "14px 16px", width: "200px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.06)", position: "absolute", bottom: "52px", right: "28px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "8px" }}>Search Results</p>
+              {[
+                { dot: "#22C55E", name: "City Dental Care", nameStyle: { fontWeight: 600, color: "#1A1A1A" } as const, rating: "4.8 \u2605", ratingColor: "#F59E0B" },
+                { dot: "#9CA3AF", name: "Smile Experts", nameStyle: { color: "#374151" } as const, rating: "4.2 \u2605", ratingColor: "#9CA3AF" },
+                { dot: "#EF4444", name: "Your Business", nameStyle: { color: "#9CA3AF", fontStyle: "italic" } as const, rating: "Not found", ratingColor: "#EF4444" },
+              ].map((row, i) => (
+                <div key={i} className="flex items-center gap-2" style={{ marginBottom: "6px" }}>
+                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: row.dot, flexShrink: 0 }} />
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", flex: 1, ...row.nameStyle }}>{row.name}</span>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: row.rating === "Not found" ? "10px" : "11px", color: row.ratingColor, flexShrink: 0 }}>{row.rating}</span>
+                </div>
+              ))}
+              <div style={{ height: 1, background: "#F3F4F6", margin: "8px 0" }} />
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF" }}>Searched: dental clinic near me</p>
+            </div>
+
             {/* Bottom caption */}
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#6B7280", fontStyle: "italic", position: "absolute", bottom: "20px", left: "24px" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#5B7BA8", fontStyle: "italic", position: "absolute", bottom: "20px", left: "28px", right: "28px", textAlign: "left" }}>
               Your competitor is responding. You are not.
             </p>
           </div>
@@ -202,24 +220,24 @@ export default function HomePage() {
           {/* RIGHT — Text content */}
           <div>
             <p className="label-caps" style={{ marginBottom: "12px" }}>Why this matters</p>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(32px, 3.5vw, 44px)", fontWeight: 400, lineHeight: 1.15, marginBottom: "40px" }}>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, lineHeight: 1.15, marginBottom: "40px" }}>
               You built something real.<br />
               <em>The internet just does not know it yet.</em>
             </h2>
 
             {/* Stat rows */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-              <div style={{ borderLeft: "3px solid #EF4444", paddingLeft: "16px" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "32px", color: "#1A1A1A" }}>40&ndash;60%</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B7280", lineHeight: 1.5 }}>of competitor revenue goes to digital</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+              <div style={{ borderLeft: "4px solid #EF4444", paddingLeft: "16px" }}>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 400, color: "#1A1A1A" }}>40&ndash;60%</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", marginTop: "4px", lineHeight: 1.5 }}>of competitor revenue goes to digital</p>
               </div>
-              <div style={{ borderLeft: "3px solid #F59E0B", paddingLeft: "16px" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "32px", color: "#1A1A1A" }}>92%</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B7280", lineHeight: 1.5 }}>of businesses in your band have no real digital strategy</p>
+              <div style={{ borderLeft: "4px solid #F59E0B", paddingLeft: "16px" }}>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 400, color: "#1A1A1A" }}>92%</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", marginTop: "4px", lineHeight: 1.5 }}>of businesses in your band have no real digital strategy</p>
               </div>
-              <div style={{ borderLeft: "3px solid #1A1A1A", paddingLeft: "16px" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "32px", color: "#1A1A1A" }}>Every month</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B7280", lineHeight: 1.5 }}>without visibility is market share lost permanently</p>
+              <div style={{ borderLeft: "4px solid #1A1A1A", paddingLeft: "16px" }}>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 400, color: "#1A1A1A" }}>Every month</p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", marginTop: "4px", lineHeight: 1.5 }}>without visibility is market share lost permanently</p>
               </div>
             </div>
           </div>
@@ -425,7 +443,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ SECTOR CAROUSEL ══════════════ */}
-      <section style={{ background: "var(--bg-base)", overflow: "hidden", padding: "0", height: "120px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "12px" }}>
+      <section style={{ background: "var(--bg-base)", overflow: "hidden", paddingTop: "48px", paddingBottom: "48px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "10px", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)", maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)" }}>
         {/* Row 1 — scrolls left */}
         <div style={{ overflow: "hidden", width: "100%" }}>
           <div className="carousel-row-left" style={{ display: "flex", gap: "12px", width: "max-content" }}>
@@ -443,9 +461,9 @@ export default function HomePage() {
               { label: "Jewellery Stores", color: "#F59E0B" },
               { label: "Logistics", color: "#6B7280" },
             ].map((tag, i) => (
-              <div key={`${dup}-${i}`} className="flex items-center gap-2" style={{ background: "white", border: "1px solid var(--border-default)", borderRadius: "100px", padding: "10px 20px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", flexShrink: 0 }}>
+              <div key={`${dup}-${i}`} className="flex items-center gap-2" style={{ background: "#FDFCF9", border: "1px solid rgba(0,0,0,0.09)", borderRadius: "100px", padding: "8px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", flexShrink: 0 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: tag.color }} />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 500, color: "#374151", whiteSpace: "nowrap" }}>{tag.label}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 500, color: "#374151", whiteSpace: "nowrap" }}>{tag.label}</span>
               </div>
             )))}
           </div>
@@ -467,9 +485,9 @@ export default function HomePage() {
               { label: "Financial Advisors", color: "#3B82F6" },
               { label: "Ayurveda Clinics", color: "#22C55E" },
             ].map((tag, i) => (
-              <div key={`${dup}-${i}`} className="flex items-center gap-2" style={{ background: "white", border: "1px solid var(--border-default)", borderRadius: "100px", padding: "10px 20px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", flexShrink: 0 }}>
+              <div key={`${dup}-${i}`} className="flex items-center gap-2" style={{ background: "#FDFCF9", border: "1px solid rgba(0,0,0,0.09)", borderRadius: "100px", padding: "8px 16px", boxShadow: "0 1px 4px rgba(0,0,0,0.06)", flexShrink: 0 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: tag.color }} />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 500, color: "#374151", whiteSpace: "nowrap" }}>{tag.label}</span>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", fontWeight: 500, color: "#374151", whiteSpace: "nowrap" }}>{tag.label}</span>
               </div>
             )))}
           </div>
@@ -565,28 +583,40 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ FINAL CTA ══════════════ */}
-      <section style={{ background: "var(--bg-dark)", padding: "100px 0" }}>
+      <section style={{ background: "#1A1A1A", padding: "80px 0" }}>
         <motion.div
-          className="max-w-3xl mx-auto px-6 text-center"
+          style={{ maxWidth: "680px", margin: "0 auto", padding: "0 24px", textAlign: "center" }}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
         >
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "#9CA3AF", lineHeight: 1.8, maxWidth: "600px", margin: "0 auto" }}>
-            If you want to understand exactly where your business stands today, start with the diagnostic. It takes one form and 30 minutes. No pressure after that. But you will finally have clarity.
-          </p>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B5563", marginBottom: "20px" }}>One last thing</p>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, color: "white", lineHeight: 1.15 }}>
+            Ready to find out exactly<br />
+            <em>where your business stands?</em>
+          </h2>
+          <div style={{ marginTop: "20px" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>One questionnaire.</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>Thirty minutes.</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>No pressure after that.</p>
+          </div>
           <div style={{ marginTop: "36px" }}>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2"
-              style={{ fontFamily: "var(--font-body)", fontSize: "16px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "16px 32px" }}
+              style={{ fontFamily: "var(--font-body)", fontSize: "16px", fontWeight: 500, background: "white", color: "#1A1A1A", borderRadius: "100px", padding: "16px 32px" }}
             >
               Get Your Business Diagnostic &mdash; Rs. 999 &rarr;
             </Link>
           </div>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#6B7280", marginTop: "20px" }}>
-            work@staplerlabs.com &nbsp;&middot;&nbsp; +91 8292511007 (WhatsApp)
+          <div style={{ marginTop: "16px" }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#4B5563" }}>work@staplerlabs.com</p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#4B5563" }}>+91 8292511007 (WhatsApp)</p>
+          </div>
+          <div style={{ width: "120px", height: "1px", background: "#2D2D2D", margin: "40px auto 0" }} />
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#374151", letterSpacing: "0.08em", marginTop: "24px" }}>
+            Diagnose. Advise. Execute. Staple.
           </p>
         </motion.div>
       </section>

@@ -137,15 +137,17 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "var(--bg-dark)", padding: "100px 0" }}>
+      <section style={{ background: "var(--bg-dark)", padding: "80px 0" }}>
         <div className="px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, color: "white", marginBottom: "16px" }}>
               Now that you know who we are.
             </h2>
-            <p className="mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "#9CA3AF", maxWidth: "480px" }}>
-              Find out exactly where your business stands.
-            </p>
+            <div style={{ marginTop: "20px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>One questionnaire.</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>Thirty minutes.</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>Finally, some clarity.</p>
+            </div>
             <div style={{ marginTop: "36px" }}>
               <Link href="/contact" className="inline-flex items-center gap-2" style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px" }}>
                 Get Your Business Diagnostic &mdash; Rs. 999 &rarr;

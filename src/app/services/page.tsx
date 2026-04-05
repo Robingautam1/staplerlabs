@@ -172,15 +172,17 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section style={{ background: "var(--bg-dark)", padding: "100px 0" }}>
+      <section style={{ background: "var(--bg-dark)", padding: "80px 0" }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, color: "white" }}>
               Ready to find out <em>where your business stands?</em>
             </h2>
-            <p className="mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "17px", color: "#9CA3AF", maxWidth: "500px", marginTop: "16px" }}>
-              Start with the Rs. 999 diagnostic. Get your AI Business Intelligence Dashboard in 30 minutes.
-            </p>
+            <div style={{ marginTop: "20px" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>Start with the Rs. 999 diagnostic.</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>Get your Business Intelligence Dashboard in 30 minutes.</p>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>No pitch deck. No pressure.</p>
+            </div>
             <div style={{ marginTop: "36px" }}>
               <Link href="/contact" className="inline-flex items-center gap-2" style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px" }}>
                 Get Your Business Diagnostic &mdash; Rs. 999 &rarr;

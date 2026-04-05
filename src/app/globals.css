@@ -432,6 +432,24 @@
    ══════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════ */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+.footer-link:hover {
+  color: #FFFFFF !important;
+}
+.footer-pill:hover {
+  background: #252525 !important;
+}
+
+/* ══════════════════════════════════════════
    SECTOR CAROUSEL
    ══════════════════════════════════════════ */
 
@@ -479,8 +497,21 @@
     padding: 28px !important;
   }
 
+  /* Footer: single column on mobile */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
   /* Prevent horizontal scroll from blobs */
   body {
     overflow-x: hidden;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
   }
 }
