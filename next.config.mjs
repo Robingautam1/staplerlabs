@@ -21,9 +21,9 @@ const securityHeaders = [
       // Framer Motion needs unsafe-eval; inline styles from Tailwind/Framer need unsafe-inline
       "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
       "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-      "font-src 'self' fonts.gstatic.com",
+      "font-src 'self' fonts.gstatic.com data:",
       "img-src 'self' data: blob:",
-      "connect-src 'self'",
+      "connect-src 'self' https://*.supabase.co",
       "frame-src 'none'",
       "object-src 'none'",
       "base-uri 'self'",
