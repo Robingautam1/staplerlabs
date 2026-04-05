@@ -89,7 +89,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            Your competitors are spending close to 40 percent of their revenue on digital. You are likely spending almost nothing. The gap is not about product quality. It is about visibility. StaplerLabs helps you close that gap with the right strategy first, and the right technology after.
+            Your competitors are not better than you. They are more visible. They are spending 40 percent of their revenue making sure customers find them first &mdash; on Google, on WhatsApp, on every search that should be sending people to you. StaplerLabs diagnoses exactly where you are losing and builds the systems to fix it.
           </motion.p>
 
           <motion.div
@@ -117,7 +117,7 @@ export default function HomePage() {
           >
             {[
               { val: "63M+", label: "SMBs in India" },
-              { val: "Rs. 50L\u201350Cr", label: "Our revenue band" },
+              { val: "Rs. 50L\u201350Cr", label: "Revenue band" },
               { val: "30 min", label: "To your first intelligence report" },
             ].map((s, i) => (
               <div key={i} className="flex items-center">
@@ -243,9 +243,9 @@ export default function HomePage() {
             {/* Stat rows */}
             <div style={{ display: "flex", flexDirection: "column", gap: "28px", marginTop: "40px" }}>
               {[
-                { color: "#EF4444", value: "40\u201360%", label: "of competitor revenue goes to digital" },
-                { color: "#F59E0B", value: "92%", label: "of businesses in your band have no real digital strategy" },
-                { color: "#1A1A1A", value: "Every month", label: "without visibility is market share lost permanently" },
+                { color: "#EF4444", value: "40\u201360%", label: "of their revenue into making sure your customers find them first" },
+                { color: "#F59E0B", value: "9 in 10", label: "businesses in your revenue band have no real digital strategy" },
+                { color: "#1A1A1A", value: "Every month", label: "a customer finds your competitor instead \u2014 and never comes back" },
               ].map((stat, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
                   <div style={{ width: 4, minHeight: 52, borderRadius: 2, background: stat.color, flexShrink: 0 }} />
@@ -270,7 +270,7 @@ export default function HomePage() {
               <em>Thirty minutes to clarity.</em>
             </motion.h2>
             <motion.p variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "var(--text-secondary)", maxWidth: "600px", marginBottom: "56px" }}>
-              No long sales calls. No unnecessary back and forth. You give us inputs, we show you exactly where you stand, then we decide next steps.
+              No discovery calls. No lengthy proposals. You fill a form, we run the analysis, and then we talk about what matters.
             </motion.p>
           </motion.div>
 
@@ -325,9 +325,9 @@ export default function HomePage() {
               {/* RIGHT — Step flow */}
               <div>
                 {[
-                  { num: "01", title: "Fill a 15-minute questionnaire", sub: "Tailored to your business type.", tag: "Free", tagDark: false },
-                  { num: "02", title: "Get your Business Intelligence Dashboard", sub: "Score, competitors, gaps. 30 minutes.", tag: "Rs. 999", tagDark: true },
-                  { num: "03", title: "Speak to your consultant", sub: "Plain language. No slides. No pressure.", tag: "24 hours", tagDark: false },
+                  { num: "01", title: "Fill a 15-minute questionnaire", sub: "The questions are specific to your business. No jargon, no preparation needed.", tag: "Free", tagDark: false },
+                  { num: "02", title: "Get your Business Intelligence Dashboard", sub: "Within 30 minutes you see your score, competitors, and where you are losing visibility.", tag: "Rs. 999", tagDark: true },
+                  { num: "03", title: "Speak to your consultant", sub: "A real person, assigned to your account. No slides. No pressure. Just honest advice.", tag: "Within 24 hours", tagDark: false },
                 ].map((step, i) => (
                   <div key={i}>
                     <div className="flex items-start gap-3">
@@ -349,7 +349,7 @@ export default function HomePage() {
                 {/* Callout strip */}
                 <div style={{ background: "rgba(0,0,0,0.06)", borderRadius: "10px", padding: "12px 16px", marginTop: "24px" }}>
                   <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#374151", fontStyle: "italic" }}>
-                    The Rs. 999 is not a consultation fee. It is intelligence that takes most firms days to produce.
+                    The Rs. 999 is not a consultation fee. Most firms take days and charge significantly more for the same clarity. Whether or not you continue with StaplerLabs, you will finally know where you stand.
                   </p>
                 </div>
               </div>
@@ -365,7 +365,7 @@ export default function HomePage() {
             <motion.p variants={childV} className="label-caps text-center" style={{ marginBottom: "12px" }}>Who this is for</motion.p>
             <motion.h2 variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, maxWidth: "800px", marginBottom: "48px" }}>
               If your business has been running for years<br />
-              <em>but online it feels invisible, read this carefully.</em>
+              <em>but the internet treats it like it does not exist, read this carefully.</em>
             </motion.h2>
           </motion.div>
 
@@ -407,7 +407,7 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#4F46E5", marginBottom: "12px" }}>You are a fit if</p>
               <h3 style={{ fontFamily: "var(--font-body)", fontSize: "20px", fontWeight: 700, color: "#1A1A1A", marginBottom: "20px" }}>You are probably a fit.</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {["Been in business 5 or more years", "Revenue Rs. 50 Lakh to Rs. 50 Crore", "Barely any presence online", "You make the key decisions", "Based in Delhi NCR"].map((t, i) => (
+                {["Been in business 5 or more years", "Doing Rs. 50 Lakh to Rs. 50 Crore annually", "Your digital presence is weak, broken, or non-existent", "You make the decisions in your business", "You are based in Delhi NCR"].map((t, i) => (
                   <div key={i} className="flex items-start gap-2.5">
                     <div style={{ width: 20, height: 20, borderRadius: "50%", background: "#1A1A1A", color: "white", fontFamily: "var(--font-body)", fontSize: "11px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>✓</div>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#374151", lineHeight: 1.5 }}>{t}</span>
@@ -426,7 +426,7 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: "12px" }}>Your situation</p>
               <h3 style={{ fontFamily: "var(--font-body)", fontSize: "20px", fontWeight: 700, color: "white", marginBottom: "20px" }}>We hear this a lot.</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {["Newer businesses taking your customers", "Agency didn\u2019t work out", "Never seen where you actually stand", "Good business, invisible online", "Been meaning to fix this for 2 years"].map((t, i) => (
+                {["Newer businesses with worse products showing up everywhere your customers look", "Tried an agency once \u2014 went nowhere, cost more than it should have", "Nobody has shown you where you actually stand against the competition", "Good business, but invisible to anyone searching online", "You know you need to fix this but never found the right place to start"].map((t, i) => (
                   <div key={i} className="flex items-start gap-2.5">
                     <span style={{ color: "#F59E0B", fontFamily: "var(--font-body)", fontSize: "14px", flexShrink: 0 }}>&rarr;</span>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#9CA3AF", lineHeight: 1.5 }}>{t}</span>
@@ -443,7 +443,7 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: "12px" }}>Not a fit if</p>
               <h3 style={{ fontFamily: "var(--font-body)", fontSize: "20px", fontWeight: 700, color: "#1A1A1A", marginBottom: "20px" }}>Be honest with yourself.</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {["Revenue below Rs. 50 Lakh", "Already digital-first", "Just want a website, no strategy", "New startup with no track record"].map((t, i) => (
+                {["Revenue below Rs. 50 Lakh \u2014 come back when you get there", "Already a digital-first business \u2014 you do not need us", "Looking only for a website with no strategy \u2014 cheaper options exist"].map((t, i) => (
                   <div key={i} className="flex items-start gap-2.5">
                     <span style={{ color: "#EF4444", fontFamily: "var(--font-body)", fontSize: "14px", fontWeight: 700, flexShrink: 0 }}>&times;</span>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#6B7280", lineHeight: 1.5 }}>{t}</span>
@@ -451,7 +451,7 @@ export default function HomePage() {
                 ))}
               </div>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#9CA3AF", fontStyle: "italic", marginTop: "16px" }}>
-                The Rs. 50 Lakh floor is not arbitrary. Below that level, this engagement won&rsquo;t pay off for either of us.
+                The Rs. 50 Lakh floor is not arbitrary. Below that level, the consulting and execution this engagement requires will not pay off for either of us. We would rather tell you that now.
               </p>
             </motion.div>
           </div>
@@ -527,8 +527,11 @@ export default function HomePage() {
           <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
             <motion.p variants={childV} className="label-caps text-center" style={{ marginBottom: "12px" }}>Pricing</motion.p>
             <motion.h2 variants={childV} className="text-center" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4.5vw, 52px)", fontWeight: 400, marginBottom: "56px" }}>
-              What it costs. <em>All of it.</em>
+              What it <em>actually</em> costs.
             </motion.h2>
+            <motion.p variants={childV} className="text-center mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "var(--text-secondary)", maxWidth: "600px", marginBottom: "0" }}>
+              You are paying for two things: the clarity to know what to do, and the execution to go do it. Consulting and technology are always priced separately. You see exactly what each piece costs before anything starts.
+            </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 items-start" style={{ position: "relative", zIndex: 1 }}>
@@ -539,7 +542,7 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)" }}>one-time</p>
               <div style={{ height: 1, background: "var(--border-subtle)", margin: "16px 0" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
-                {["Business Intelligence Dashboard", "Business Index Score", "Competitor Intelligence", "Gap Analysis", "One-hour session with your consultant"].map((f, j) => (
+                {["Business Intelligence Dashboard", "Business Index Score", "Competitor Intelligence Report", "Gap Analysis and Visibility Assessment", "One-hour session with your assigned consultant"].map((f, j) => (
                   <div key={j} className="flex items-start gap-2">
                     <span style={{ color: "var(--text-primary)", fontWeight: 600, flexShrink: 0 }}>✓</span>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{f}</span>
@@ -564,7 +567,7 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#6B7280" }}>Technology quoted separately</p>
               <div style={{ height: 1, background: "rgba(255,255,255,0.1)", margin: "16px 0" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
-                {["Everything in Diagnostic", "Deep-dive strategy session", "Digital Positioning Report", "90-day roadmap", "Tech scoping support"].map((f, j) => (
+                {["Everything in Diagnostic", "Three-hour deep-dive strategic session", "Digital Positioning Report", "90-day roadmap with clear priorities", "Tech team access for scoping"].map((f, j) => (
                   <div key={j} className="flex items-start gap-2">
                     <span style={{ color: "#6B7280", fontWeight: 600, flexShrink: 0 }}>✓</span>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#9CA3AF", lineHeight: 1.5 }}>{f}</span>
@@ -581,7 +584,7 @@ export default function HomePage() {
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)" }}>per month + tech quoted separately</p>
               <div style={{ height: 1, background: "var(--border-subtle)", margin: "16px 0" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
-                {["Everything in Starter Bundle", "Ongoing strategic support", "Monthly competitor tracking", "Continuous positioning guidance", "Tech team access"].map((f, j) => (
+                {["Everything in Starter Bundle", "Ongoing strategic advisory", "Monthly competitor intelligence", "Continuous positioning guidance", "Tech team on call"].map((f, j) => (
                   <div key={j} className="flex items-start gap-2">
                     <span style={{ color: "var(--text-primary)", fontWeight: 600, flexShrink: 0 }}>✓</span>
                     <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "var(--text-secondary)", lineHeight: 1.5 }}>{f}</span>
@@ -593,7 +596,7 @@ export default function HomePage() {
           </div>
 
           <p className="text-center mx-auto" style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)", maxWidth: "540px", marginTop: "24px" }}>
-            All technology builds are scoped separately. Website, automation, ads, chatbots. You see exactly what each piece costs before anything starts.
+            All technology builds &mdash; website, automation, WhatsApp pipelines, ads &mdash; are scoped separately. You see the number, you approve it, then we build it. No surprises.
           </p>
         </div>
       </section>
@@ -609,7 +612,7 @@ export default function HomePage() {
         >
           <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4B5563", marginBottom: "20px" }}>One last thing</p>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, color: "white", lineHeight: 1.15 }}>
-            Ready to find out exactly<br />
+            Want to know exactly<br />
             <em>where your business stands?</em>
           </h2>
           <div style={{ marginTop: "20px" }}>
@@ -617,6 +620,9 @@ export default function HomePage() {
             <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>Thirty minutes.</p>
             <p style={{ fontFamily: "var(--font-body)", fontSize: "16px", color: "#6B7280" }}>No pressure after that.</p>
           </div>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", maxWidth: "500px", margin: "24px auto 0", lineHeight: 1.7 }}>
+            Most business owners who go through the diagnostic say the same thing: they wish they had done it sooner. Not because the report tells them something they did not suspect, but because it shows them, clearly and specifically, how wide the gap actually is.
+          </p>
           <div style={{ marginTop: "36px" }}>
             <Link
               href="/contact"

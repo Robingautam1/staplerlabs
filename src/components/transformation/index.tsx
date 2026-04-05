@@ -108,7 +108,7 @@ export default function TransformationSection() {
               color: "var(--text-muted)",
             }}
           >
-            What actually changes
+            Before &amp; after
           </p>
           <h2
             className="font-display mb-4"
@@ -130,7 +130,7 @@ export default function TransformationSection() {
               margin: "0 auto",
             }}
           >
-            Every business we work with goes through the same transformation. Here&apos;s what it looks like.
+            Before working with us, most businesses were invisible online. After implementation, they start showing up. It is not magic. It is just the work that should have been done two years ago.
           </p>
         </motion.div>
 
