@@ -151,7 +151,7 @@ export default function HomePage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
           >
-            <div style={{ background: "#D6E4F7", borderRadius: "24px", padding: "32px", width: "100%", minHeight: "500px" }}>
+            <div style={{ background: "#D6E4F7", borderRadius: "24px", padding: "32px", width: "100%", minHeight: "500px", position: "relative", overflow: "hidden" }}>
               {/* Top row */}
               <div style={{ display: "flex", gap: "12px" }}>
                 {/* Card A — Competitor Google Listing */}
