@@ -79,7 +79,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <Link href="/contact" className="btn-nav">
+            <Link href="/auth/signup" className="btn-nav">
               Get Started &mdash; Rs. 999
               <span className="arrow-chip">
                 <svg width="10" height="10" viewBox="0 0 16 16" fill="none">

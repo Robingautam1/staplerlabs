@@ -99,7 +99,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Link href="/contact" className="btn-primary">
+            <Link href="/auth/signup" className="btn-primary">
               Get Your Business Diagnostic &mdash; Rs. 999 &rarr;
             </Link>
             <Link href="#how-it-works" className="btn-secondary">
