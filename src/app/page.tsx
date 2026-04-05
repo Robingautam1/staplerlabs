@@ -138,110 +138,126 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ THE PROBLEM ══════════════ */}
-      <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px" }}>
-        <motion.div
-          style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}
+      <section style={{ background: "var(--bg-base)" }}>
+        <div
           className="problem-grid"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as const }}
+          style={{ maxWidth: "1140px", margin: "0 auto", padding: "100px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}
         >
-          {/* LEFT — Blue-gray container with floating UI cards */}
-          <div style={{ background: "#DCE8F8", borderRadius: "24px", padding: "40px", width: "100%", height: "480px", position: "relative", overflow: "hidden" }}>
-            {/* Card A — Their Google Listing */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "260px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.06)", position: "absolute", top: "36px", left: "28px" }}>
-              <div className="flex items-center gap-2" style={{ marginBottom: "8px" }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E" }} />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#6B7280" }}>Competitor</span>
-              </div>
-              <div className="flex items-center gap-1" style={{ marginBottom: "4px" }}>
-                {[1,2,3,4,5].map(s => (
-                  <svg key={s} width="12" height="12" viewBox="0 0 12 12"><polygon points="6,0 7.9,3.8 12,4.4 9,7.3 9.7,11.4 6,9.5 2.3,11.4 3,7.3 0,4.4 4.1,3.8" fill={s <= 4 ? "#F59E0B" : "#E5E7EB"} /></svg>
-                ))}
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#374151", marginLeft: "4px" }}>4.8 (127 reviews)</span>
-              </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#9CA3AF", marginBottom: "8px" }}>Dental Clinic, Sector 15, Noida</p>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", background: "#1A1A1A", color: "white", borderRadius: "100px", padding: "6px 14px", display: "inline-block" }}>Book Appointment</span>
-            </div>
+          {/* LEFT — Blue container with 2x2 card grid */}
+          <motion.div
+            style={{ position: "relative", width: "100%" }}
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
+          >
+            <div style={{ background: "#D6E4F7", borderRadius: "24px", padding: "32px", width: "100%", minHeight: "500px" }}>
+              {/* Top row */}
+              <div style={{ display: "flex", gap: "12px" }}>
+                {/* Card A — Competitor Google Listing */}
+                <div style={{ flex: 1, background: "white", borderRadius: "14px", padding: "16px", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+                  <div className="flex items-center gap-2" style={{ marginBottom: "10px" }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22C55E" }} />
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#6B7280" }}>Competitor</span>
+                  </div>
+                  <div style={{ marginBottom: "2px" }}>
+                    <span style={{ color: "#F59E0B", fontSize: "12px" }}>{"\u2605\u2605\u2605\u2605"}</span><span style={{ color: "#E5E7EB", fontSize: "12px" }}>{"\u2605"}</span>
+                  </div>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#374151", marginTop: "2px" }}>4.8 (127 reviews)</p>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#9CA3AF", marginTop: "4px" }}>Dental Clinic, Sector 15, Noida</p>
+                  <span style={{ display: "inline-block", marginTop: "10px", fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 500, background: "#1A1A1A", color: "white", borderRadius: "100px", padding: "6px 14px" }}>Book Appointment</span>
+                </div>
 
-            {/* Card B — Your listing (faded, rotated) */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "240px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", position: "absolute", top: "200px", left: "52px", opacity: 0.65, transform: "rotate(-1.5deg)" }}>
-              <div className="flex items-center gap-2" style={{ marginBottom: "8px" }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#9CA3AF" }} />
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#9CA3AF" }}>Your Business</span>
-              </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#9CA3AF", marginBottom: "8px" }}>No reviews yet</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                <div style={{ height: 8, borderRadius: 4, background: "#E5E7EB", width: "140px" }} />
-                <div style={{ height: 8, borderRadius: 4, background: "#E5E7EB", width: "100px" }} />
-                <div style={{ height: 8, borderRadius: 4, background: "#E5E7EB", width: "80px" }} />
-              </div>
-            </div>
-
-            {/* Card C — WhatsApp response */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "16px", width: "220px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.06)", position: "absolute", top: "36px", right: "28px" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "8px" }}>WhatsApp</p>
-              <div style={{ background: "#F3F4F6", borderRadius: "12px 12px 12px 0", padding: "8px 12px", maxWidth: "160px", marginBottom: "6px" }}>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#374151" }}>Hi, are you open tomorrow?</span>
-              </div>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <div style={{ background: "#25D366", borderRadius: "12px 12px 0 12px", padding: "8px 12px", maxWidth: "160px" }}>
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "white" }}>Yes! Book your slot here:</span>
+                {/* Card C — WhatsApp Conversation */}
+                <div style={{ flex: 1, background: "white", borderRadius: "14px", padding: "16px", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "10px" }}>WhatsApp</p>
+                  <div style={{ background: "#F3F4F6", borderRadius: "10px 10px 10px 0", padding: "8px 12px", maxWidth: "85%", marginBottom: "6px" }}>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#374151" }}>Hi, are you open tomorrow?</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <div style={{ background: "#25D366", borderRadius: "10px 10px 0 10px", padding: "8px 12px", maxWidth: "85%" }}>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: 500, color: "white" }}>Yes! Book your slot here:</span>
+                    </div>
+                  </div>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textAlign: "right", marginTop: "6px" }}>Responded in 3 sec</p>
                 </div>
               </div>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textAlign: "right", marginTop: "6px" }}>Responded in 3 sec</p>
-            </div>
 
-            {/* Card D — Search Results */}
-            <div style={{ background: "white", borderRadius: "12px", padding: "14px 16px", width: "200px", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "1px solid rgba(0,0,0,0.06)", position: "absolute", bottom: "52px", right: "28px" }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "8px" }}>Search Results</p>
-              {[
-                { dot: "#22C55E", name: "City Dental Care", nameStyle: { fontWeight: 600, color: "#1A1A1A" } as const, rating: "4.8 \u2605", ratingColor: "#F59E0B" },
-                { dot: "#9CA3AF", name: "Smile Experts", nameStyle: { color: "#374151" } as const, rating: "4.2 \u2605", ratingColor: "#9CA3AF" },
-                { dot: "#EF4444", name: "Your Business", nameStyle: { color: "#9CA3AF", fontStyle: "italic" } as const, rating: "Not found", ratingColor: "#EF4444" },
-              ].map((row, i) => (
-                <div key={i} className="flex items-center gap-2" style={{ marginBottom: "6px" }}>
-                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: row.dot, flexShrink: 0 }} />
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", flex: 1, ...row.nameStyle }}>{row.name}</span>
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: row.rating === "Not found" ? "10px" : "11px", color: row.ratingColor, flexShrink: 0 }}>{row.rating}</span>
+              {/* Bottom row */}
+              <div style={{ display: "flex", gap: "12px", marginTop: "12px" }}>
+                {/* Card B — Your Business (faded) */}
+                <div style={{ flex: 1, background: "white", borderRadius: "14px", padding: "16px", border: "1px solid rgba(0,0,0,0.06)", opacity: 0.6 }}>
+                  <div className="flex items-center gap-2" style={{ marginBottom: "10px" }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#9CA3AF" }} />
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "11px", color: "#9CA3AF" }}>Your Business</span>
+                  </div>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "12px", color: "#9CA3AF", marginBottom: "8px" }}>No reviews yet</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                    <div style={{ height: 7, borderRadius: 4, background: "#E5E7EB", width: "100%" }} />
+                    <div style={{ height: 7, borderRadius: 4, background: "#E5E7EB", width: "75%" }} />
+                    <div style={{ height: 7, borderRadius: 4, background: "#E5E7EB", width: "55%" }} />
+                  </div>
                 </div>
-              ))}
-              <div style={{ height: 1, background: "#F3F4F6", margin: "8px 0" }} />
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF" }}>Searched: dental clinic near me</p>
-            </div>
 
-            {/* Bottom caption */}
-            <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#5B7BA8", fontStyle: "italic", position: "absolute", bottom: "20px", left: "28px", right: "28px", textAlign: "left" }}>
-              Your competitor is responding. You are not.
-            </p>
-          </div>
+                {/* Card D — Search Results */}
+                <div style={{ flex: 1, background: "white", borderRadius: "14px", padding: "16px", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "10px" }}>Search Results</p>
+                  {[
+                    { dot: "#22C55E", name: "City Dental Care", nameWeight: 600, nameColor: "#1A1A1A", nameItalic: false, rating: "4.8 \u2605", ratingSize: "11px", ratingColor: "#F59E0B" },
+                    { dot: "#9CA3AF", name: "Smile Experts", nameWeight: 400, nameColor: "#374151", nameItalic: false, rating: "4.2 \u2605", ratingSize: "11px", ratingColor: "#9CA3AF" },
+                    { dot: "#EF4444", name: "Your Business", nameWeight: 400, nameColor: "#9CA3AF", nameItalic: true, rating: "Not found", ratingSize: "10px", ratingColor: "#EF4444" },
+                  ].map((row, i) => (
+                    <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "7px" }}>
+                      <div className="flex items-center gap-2">
+                        <div style={{ width: 6, height: 6, borderRadius: "50%", background: row.dot, flexShrink: 0 }} />
+                        <span style={{ fontFamily: "var(--font-body)", fontSize: "12px", fontWeight: row.nameWeight, color: row.nameColor, fontStyle: row.nameItalic ? "italic" : "normal" }}>{row.name}</span>
+                      </div>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: row.ratingSize, color: row.ratingColor, fontWeight: row.rating === "Not found" ? 500 : 400, flexShrink: 0 }}>{row.rating}</span>
+                    </div>
+                  ))}
+                  <div style={{ height: 1, background: "#F3F4F6", margin: "8px 0" }} />
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", color: "#9CA3AF" }}>Searched: dental clinic near me</p>
+                </div>
+              </div>
+
+              {/* Caption below cards */}
+              <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#5B7BA8", fontStyle: "italic", marginTop: "16px" }}>
+                Your competitor is responding. You are not.
+              </p>
+            </div>
+          </motion.div>
 
           {/* RIGHT — Text content */}
-          <div>
-            <p className="label-caps" style={{ marginBottom: "12px" }}>Why this matters</p>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)", fontWeight: 400, lineHeight: 1.15, marginBottom: "40px" }}>
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] as const }}
+          >
+            <p style={{ fontFamily: "var(--font-body)", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: "20px" }}>Why this matters</p>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(40px, 4.5vw, 56px)", fontWeight: 400, color: "#1A1A1A", lineHeight: 1.15, marginBottom: "40px" }}>
               You built something real.<br />
               <em>The internet just does not know it yet.</em>
             </h2>
 
             {/* Stat rows */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-              <div style={{ borderLeft: "4px solid #EF4444", paddingLeft: "16px" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 400, color: "#1A1A1A" }}>40&ndash;60%</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", marginTop: "4px", lineHeight: 1.5 }}>of competitor revenue goes to digital</p>
-              </div>
-              <div style={{ borderLeft: "4px solid #F59E0B", paddingLeft: "16px" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 400, color: "#1A1A1A" }}>92%</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", marginTop: "4px", lineHeight: 1.5 }}>of businesses in your band have no real digital strategy</p>
-              </div>
-              <div style={{ borderLeft: "4px solid #1A1A1A", paddingLeft: "16px" }}>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "48px", fontWeight: 400, color: "#1A1A1A" }}>Every month</p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", marginTop: "4px", lineHeight: 1.5 }}>without visibility is market share lost permanently</p>
-              </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "28px", marginTop: "40px" }}>
+              {[
+                { color: "#EF4444", value: "40\u201360%", label: "of competitor revenue goes to digital" },
+                { color: "#F59E0B", value: "92%", label: "of businesses in your band have no real digital strategy" },
+                { color: "#1A1A1A", value: "Every month", label: "without visibility is market share lost permanently" },
+              ].map((stat, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                  <div style={{ width: 4, minHeight: 52, borderRadius: 2, background: stat.color, flexShrink: 0 }} />
+                  <div>
+                    <span style={{ fontFamily: "var(--font-display)", fontSize: "44px", fontWeight: 400, color: "#1A1A1A", lineHeight: 1, display: "block" }}>{stat.value}</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "15px", color: "#6B7280", lineHeight: 1.4, marginTop: "4px", display: "block" }}>{stat.label}</span>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* ══════════════ HOW IT WORKS ══════════════ */}

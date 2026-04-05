@@ -479,10 +479,7 @@
   /* Problem section: stack vertically */
   .problem-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-  .problem-grid > div:first-child {
-    height: 400px !important;
+    gap: 48px !important;
   }
 
   /* How It Works inner grid: stack */
