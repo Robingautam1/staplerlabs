@@ -431,7 +431,56 @@
    RESPONSIVE
    ══════════════════════════════════════════ */
 
+/* ══════════════════════════════════════════
+   SECTOR CAROUSEL
+   ══════════════════════════════════════════ */
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.carousel-row-left {
+  animation: scrollLeft 30s linear infinite;
+}
+.carousel-row-right {
+  animation: scrollRight 30s linear infinite;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+
 @media (max-width: 768px) {
   h1 { font-size: 36px; }
   h2 { font-size: 28px; }
+
+  /* Problem section: stack vertically */
+  .problem-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .problem-grid > div:first-child {
+    height: 400px !important;
+  }
+
+  /* How It Works inner grid: stack */
+  .hiw-inner-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .hiw-inner-grid > div:first-child {
+    max-width: 100% !important;
+  }
+  .hiw-container {
+    padding: 28px !important;
+  }
+
+  /* Prevent horizontal scroll from blobs */
+  body {
+    overflow-x: hidden;
+  }
 }
