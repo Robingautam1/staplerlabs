@@ -100,7 +100,7 @@ export default function HomePage() {
             transition={{ duration: 0.55, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link href="/auth/signup" className="btn-primary">
-              Get Your Business Diagnostic &mdash; Rs. 999 &rarr;
+              Get Your Business Diagnostic &rarr;
             </Link>
             <Link href="#how-it-works" className="btn-secondary">
               See How It Works
@@ -117,8 +117,8 @@ export default function HomePage() {
           >
             {[
               { val: "63M+", label: "SMBs in India" },
-              { val: "Rs. 50L\u201350Cr", label: "Revenue band" },
-              { val: "30 min", label: "To your first intelligence report" },
+              { val: "24 hrs", label: "To your consultant" },
+              { val: "30 min", label: "To your first report" },
             ].map((s, i) => (
               <div key={i} className="flex items-center">
                 {i > 0 && (
@@ -326,7 +326,7 @@ export default function HomePage() {
               <div>
                 {[
                   { num: "01", title: "Fill a 15-minute questionnaire", sub: "The questions are specific to your business. No jargon, no preparation needed.", tag: "Free", tagDark: false },
-                  { num: "02", title: "Get your Business Intelligence Dashboard", sub: "Within 30 minutes you see your score, competitors, and where you are losing visibility.", tag: "Rs. 999", tagDark: true },
+                  { num: "02", title: "Get your Business Intelligence Dashboard", sub: "Within 30 minutes you see your score, competitors, and where you are losing visibility.", tag: "One-time", tagDark: true },
                   { num: "03", title: "Speak to your consultant", sub: "A real person, assigned to your account. No slides. No pressure. Just honest advice.", tag: "Within 24 hours", tagDark: false },
                 ].map((step, i) => (
                   <div key={i}>
@@ -629,7 +629,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2"
               style={{ fontFamily: "var(--font-body)", fontSize: "16px", fontWeight: 500, background: "white", color: "#1A1A1A", borderRadius: "100px", padding: "16px 32px" }}
             >
-              Get Your Business Diagnostic &mdash; Rs. 999 &rarr;
+              Get Your Business Diagnostic &rarr;
             </Link>
           </div>
           <div style={{ marginTop: "16px" }}>

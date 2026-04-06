@@ -97,25 +97,66 @@ export default function Navbar() {
           </div>
 
           {/* CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
             {user ? (
-              <Link href="/dashboard" className="btn-nav">
-                Dashboard
-                <span className="arrow-chip">
-                  <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
+              <Link
+                href="/dashboard"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "white",
+                  background: "#1A1A1A",
+                  borderRadius: "100px",
+                  padding: "8px 20px",
+                  textDecoration: "none",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#374151")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "#1A1A1A")}
+              >
+                Dashboard &rarr;
               </Link>
             ) : (
-              <Link href="/auth/signup" className="btn-nav">
-                Get Started &mdash; Rs. 999
-                <span className="arrow-chip">
-                  <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </Link>
+              <>
+                <Link
+                  href="/auth/login"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "#1A1A1A",
+                    background: "transparent",
+                    border: "1px solid #E5E7EB",
+                    borderRadius: "100px",
+                    padding: "8px 20px",
+                    textDecoration: "none",
+                    transition: "background 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#F9FAFB")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/auth/signup"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "white",
+                    background: "#1A1A1A",
+                    borderRadius: "100px",
+                    padding: "8px 20px",
+                    textDecoration: "none",
+                    transition: "background 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#374151")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "#1A1A1A")}
+                >
+                  Get Started
+                </Link>
+              </>
             )}
           </div>
 
@@ -194,22 +235,17 @@ export default function Navbar() {
               >
                 {user ? (
                   <Link href="/dashboard" className="btn-primary" style={{ fontSize: "15px" }}>
-                    Dashboard
-                    <span className="arrow-chip">
-                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
+                    Dashboard &rarr;
                   </Link>
                 ) : (
-                  <Link href="/contact" className="btn-primary" style={{ fontSize: "15px" }}>
-                    Get Your Business Diagnostic
-                    <span className="arrow-chip">
-                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                  </Link>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                    <Link href="/auth/login" className="btn-primary" style={{ fontSize: "15px", background: "transparent", border: "1px solid #E5E7EB", color: "#1A1A1A" }}>
+                      Log in
+                    </Link>
+                    <Link href="/auth/signup" className="btn-primary" style={{ fontSize: "15px" }}>
+                      Get Started
+                    </Link>
+                  </div>
                 )}
               </motion.div>
             </motion.div>
