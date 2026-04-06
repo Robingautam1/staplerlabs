@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import StaplerLogo from "@/components/StaplerLogo";
+import { createClient } from "@/lib/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -15,12 +17,29 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -79,14 +98,25 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <Link href="/auth/signup" className="btn-nav">
-              Get Started &mdash; Rs. 999
-              <span className="arrow-chip">
-                <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </Link>
+            {user ? (
+              <Link href="/dashboard" className="btn-nav">
+                Dashboard
+                <span className="arrow-chip">
+                  <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </Link>
+            ) : (
+              <Link href="/auth/signup" className="btn-nav">
+                Get Started &mdash; Rs. 999
+                <span className="arrow-chip">
+                  <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </Link>
+            )}
           </div>
 
           {/* Mobile hamburger */}
@@ -162,14 +192,25 @@ export default function Navbar() {
                 transition={{ delay: 0.35 }}
                 className="mt-8"
               >
-                <Link href="/contact" className="btn-primary" style={{ fontSize: "15px" }}>
-                  Get Your Business Diagnostic
-                  <span className="arrow-chip">
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                </Link>
+                {user ? (
+                  <Link href="/dashboard" className="btn-primary" style={{ fontSize: "15px" }}>
+                    Dashboard
+                    <span className="arrow-chip">
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </Link>
+                ) : (
+                  <Link href="/contact" className="btn-primary" style={{ fontSize: "15px" }}>
+                    Get Your Business Diagnostic
+                    <span className="arrow-chip">
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  </Link>
+                )}
               </motion.div>
             </motion.div>
           </>
