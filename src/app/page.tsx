@@ -55,7 +55,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ══════════════ HERO ══════════════ */}
-      <section style={{ paddingTop: "100px", paddingBottom: "80px", background: "var(--bg-base)" }}>
+      <section style={{ paddingTop: "100px", paddingBottom: "80px", background: "var(--bg-base)", width: "100%", maxWidth: "100vw", overflow: "hidden" }}>
         <div className="relative z-10 mx-auto px-6 text-center" style={{ maxWidth: "720px" }}>
           <motion.h1
             style={{
@@ -459,7 +459,7 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════ SECTOR CAROUSEL ══════════════ */}
-      <section style={{ background: "var(--bg-base)", overflow: "hidden", paddingTop: "48px", paddingBottom: "48px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "10px", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)", maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)" }}>
+      <section style={{ background: "var(--bg-base)", overflow: "hidden", maxWidth: "100vw", paddingTop: "48px", paddingBottom: "48px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "10px", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)", maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)" }}>
         {/* Row 1 — scrolls left */}
         <div style={{ overflow: "hidden", width: "100%" }}>
           <div className="carousel-row-left" style={{ display: "flex", gap: "12px", width: "max-content" }}>
@@ -514,15 +514,18 @@ export default function HomePage() {
       <TransformationSection />
 
       {/* ══════════════ PRICING ══════════════ */}
-      <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px", position: "relative", overflow: "visible" }}>
-        {/* Left blob */}
-        <svg className="pricing-blob" style={{ position: "absolute", left: "-80px", top: "50%", transform: "translateY(-50%)", width: "200px", height: "400px", zIndex: 0, pointerEvents: "none" }} viewBox="0 0 300 400" fill="none">
-          <path d="M 60,80 C 120,-20 260,-10 280,80 C 300,170 260,300 180,320 C 100,340 -20,280 20,180 C 40,130 20,160 60,80 Z" fill="#B8D4F5" opacity="0.35" />
-        </svg>
-        {/* Right blob */}
-        <svg className="pricing-blob" style={{ position: "absolute", right: "-70px", top: "30%", width: "180px", height: "360px", zIndex: 0, pointerEvents: "none" }} viewBox="0 0 260 360" fill="none">
-          <path d="M 40,60 C 100,-20 220,0 240,80 C 260,160 220,280 140,300 C 60,320 -20,240 20,140 C 40,90 0,130 40,60 Z" fill="#F5C400" opacity="0.20" />
-        </svg>
+      <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px", position: "relative", overflow: "hidden" }}>
+        {/* Blob container — clipped to section bounds */}
+        <div className="pricing-blob" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
+          {/* Left blob */}
+          <svg style={{ position: "absolute", left: "-80px", top: "50%", transform: "translateY(-50%)", width: "200px", height: "400px" }} viewBox="0 0 300 400" fill="none">
+            <path d="M 60,80 C 120,-20 260,-10 280,80 C 300,170 260,300 180,320 C 100,340 -20,280 20,180 C 40,130 20,160 60,80 Z" fill="#B8D4F5" opacity="0.35" />
+          </svg>
+          {/* Right blob */}
+          <svg style={{ position: "absolute", right: "-70px", top: "30%", width: "180px", height: "360px" }} viewBox="0 0 260 360" fill="none">
+            <path d="M 40,60 C 100,-20 220,0 240,80 C 260,160 220,280 140,300 C 60,320 -20,240 20,140 C 40,90 0,130 40,60 Z" fill="#F5C400" opacity="0.20" />
+          </svg>
+        </div>
         <div className="max-w-6xl mx-auto px-6" style={{ position: "relative", zIndex: 1 }}>
           <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
             <motion.p variants={childV} className="label-caps text-center" style={{ marginBottom: "12px" }}>Pricing</motion.p>

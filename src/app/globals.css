@@ -3,6 +3,25 @@
 @tailwind utilities;
 
 /* ══════════════════════════════════════════
+   GLOBAL OVERFLOW FIX
+   ══════════════════════════════════════════ */
+
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════
    DESIGN TOKENS — Craft-inspired warm theme
    ══════════════════════════════════════════ */
 
@@ -514,9 +533,15 @@
     display: none !important;
   }
 
-  /* Prevent horizontal scroll from blobs */
-  body {
+  /* Mobile section overflow */
+  section {
+    max-width: 100vw;
     overflow-x: hidden;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    width: 100%;
   }
 }
 

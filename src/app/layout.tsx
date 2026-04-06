@@ -103,9 +103,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="overflow-x-hidden w-full max-w-[100vw]">
         <Navbar />
-        <main>{children}</main>
+        <main className="overflow-x-hidden">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>
