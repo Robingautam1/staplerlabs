@@ -500,6 +500,20 @@
     gap: 32px !important;
   }
 
+  /* Who This Is For: stack cards on mobile */
+  .who-fit-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .who-fit-grid > div {
+    height: auto !important;
+  }
+
+  /* Hide pricing blobs on mobile */
+  .pricing-blob {
+    display: none !important;
+  }
+
   /* Prevent horizontal scroll from blobs */
   body {
     overflow-x: hidden;

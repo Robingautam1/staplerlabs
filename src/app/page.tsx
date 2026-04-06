@@ -398,10 +398,10 @@ export default function HomePage() {
           </motion.div>
 
           {/* Three Craft-style colored containers */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px", alignItems: "stretch" }} className="who-fit-grid">
             {/* Container 1 — You Are A Fit If (soft indigo) */}
             <motion.div
-              style={{ background: "#EEF2FF", borderRadius: "20px", padding: "32px", height: "360px", position: "relative", overflow: "hidden" }}
+              style={{ background: "#EEF2FF", borderRadius: "20px", padding: "32px", height: "420px", position: "relative", overflow: "hidden" }}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0, ease: [0.22, 1, 0.36, 1] as const }}
             >
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#4F46E5", marginBottom: "12px" }}>You are a fit if</p>
@@ -415,21 +415,21 @@ export default function HomePage() {
                 ))}
               </div>
               {/* Decorative large checkmark */}
-              <span style={{ fontFamily: "var(--font-display)", fontSize: "120px", color: "rgba(0,0,0,0.04)", position: "absolute", bottom: "-20px", right: "-10px", lineHeight: 1, pointerEvents: "none" }}>✓</span>
+              <span style={{ fontFamily: "var(--font-display)", fontSize: "160px", color: "rgba(0,0,0,0.04)", position: "absolute", bottom: "-20px", right: "-10px", zIndex: 0, lineHeight: 1, pointerEvents: "none" }}>✓</span>
             </motion.div>
 
             {/* Container 2 — Your Situation (dark) */}
             <motion.div
-              style={{ background: "#1A1A1A", borderRadius: "20px", padding: "32px", height: "360px" }}
+              style={{ background: "#1A1A1A", borderRadius: "20px", padding: "32px", height: "420px", overflow: "hidden" }}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] as const }}
             >
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: "12px" }}>Your situation</p>
               <h3 style={{ fontFamily: "var(--font-body)", fontSize: "20px", fontWeight: 700, color: "white", marginBottom: "20px" }}>We hear this a lot.</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {["Newer businesses with worse products showing up everywhere your customers look", "Tried an agency once \u2014 went nowhere, cost more than it should have", "Nobody has shown you where you actually stand against the competition", "Good business, but invisible to anyone searching online", "You know you need to fix this but never found the right place to start"].map((t, i) => (
                   <div key={i} className="flex items-start gap-2.5">
                     <span style={{ color: "#F59E0B", fontFamily: "var(--font-body)", fontSize: "14px", flexShrink: 0 }}>&rarr;</span>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#9CA3AF", lineHeight: 1.5 }}>{t}</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: "14px", color: "#9CA3AF", lineHeight: 1.45 }}>{t}</span>
                   </div>
                 ))}
               </div>
@@ -437,7 +437,7 @@ export default function HomePage() {
 
             {/* Container 3 — Not A Fit If (light gray) */}
             <motion.div
-              style={{ background: "#F3F4F6", borderRadius: "20px", padding: "32px", height: "360px" }}
+              style={{ background: "#F3F4F6", borderRadius: "20px", padding: "32px", height: "420px", overflow: "hidden" }}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.16, ease: [0.22, 1, 0.36, 1] as const }}
             >
               <p style={{ fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: "12px" }}>Not a fit if</p>
@@ -516,12 +516,12 @@ export default function HomePage() {
       {/* ══════════════ PRICING ══════════════ */}
       <section style={{ background: "var(--bg-base)", paddingTop: "100px", paddingBottom: "100px", position: "relative", overflow: "visible" }}>
         {/* Left blob */}
-        <svg style={{ position: "absolute", left: "-100px", top: "50%", transform: "translateY(-50%)", width: "300px", height: "400px", zIndex: 0 }} viewBox="0 0 300 400" fill="none">
-          <path d="M 60,80 C 120,-20 260,-10 280,80 C 300,170 260,300 180,320 C 100,340 -20,280 20,180 C 40,130 20,160 60,80 Z" fill="#B8D4F5" opacity="0.5" />
+        <svg className="pricing-blob" style={{ position: "absolute", left: "-80px", top: "50%", transform: "translateY(-50%)", width: "200px", height: "400px", zIndex: 0, pointerEvents: "none" }} viewBox="0 0 300 400" fill="none">
+          <path d="M 60,80 C 120,-20 260,-10 280,80 C 300,170 260,300 180,320 C 100,340 -20,280 20,180 C 40,130 20,160 60,80 Z" fill="#B8D4F5" opacity="0.35" />
         </svg>
         {/* Right blob */}
-        <svg style={{ position: "absolute", right: "-80px", top: "30%", width: "260px", height: "360px", zIndex: 0 }} viewBox="0 0 260 360" fill="none">
-          <path d="M 40,60 C 100,-20 220,0 240,80 C 260,160 220,280 140,300 C 60,320 -20,240 20,140 C 40,90 0,130 40,60 Z" fill="#F5C400" opacity="0.25" />
+        <svg className="pricing-blob" style={{ position: "absolute", right: "-70px", top: "30%", width: "180px", height: "360px", zIndex: 0, pointerEvents: "none" }} viewBox="0 0 260 360" fill="none">
+          <path d="M 40,60 C 100,-20 220,0 240,80 C 260,160 220,280 140,300 C 60,320 -20,240 20,140 C 40,90 0,130 40,60 Z" fill="#F5C400" opacity="0.20" />
         </svg>
         <div className="max-w-6xl mx-auto px-6" style={{ position: "relative", zIndex: 1 }}>
           <motion.div variants={sectionV} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }}>
@@ -549,19 +549,19 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="btn-primary justify-center w-full" style={{ marginTop: "24px" }}>Start Diagnostic</Link>
+              <Link href="/contact" className="btn-primary justify-center w-full" style={{ marginTop: "auto" }}>Start Diagnostic</Link>
             </motion.div>
 
             {/* Starter Bundle — elevated dark */}
             <motion.div
-              className="relative flex flex-col"
-              style={{ background: "var(--bg-dark)", borderRadius: "16px", padding: "28px", boxShadow: "0 12px 40px rgba(0,0,0,0.20)", transform: "translateY(-8px)" }}
+              className="flex flex-col"
+              style={{ background: "var(--bg-dark)", borderRadius: "16px", padding: "28px", boxShadow: "0 12px 40px rgba(0,0,0,0.20)", transform: "translateY(-8px)", position: "relative", overflow: "visible" }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", background: "var(--accent-yellow)", color: "var(--bg-dark)", borderRadius: "100px", padding: "3px 10px" }}>Most Popular</span>
+              <span style={{ position: "absolute", top: "-14px", left: "50%", transform: "translateX(-50%)", zIndex: 10, whiteSpace: "nowrap", fontFamily: "var(--font-body)", fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", background: "var(--accent-yellow)", color: "var(--bg-dark)", borderRadius: "100px", padding: "3px 10px" }}>Most Popular</span>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#9CA3AF", fontWeight: 500 }}>Starter Bundle</p>
               <p style={{ fontFamily: "var(--font-display)", fontSize: "40px", color: "white", marginTop: "4px" }}>Rs. 9,999</p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "#6B7280" }}>Technology quoted separately</p>
@@ -574,13 +574,13 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="block text-center w-full" style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px", marginTop: "24px" }}>Get Started</Link>
+              <Link href="/contact" className="block text-center w-full" style={{ fontFamily: "var(--font-body)", fontSize: "15px", fontWeight: 500, background: "white", color: "var(--bg-dark)", borderRadius: "100px", padding: "14px 28px", marginTop: "auto" }}>Get Started</Link>
             </motion.div>
 
             {/* Strategic Retainer */}
             <motion.div className="card-theme p-7 flex flex-col" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-muted)", fontWeight: 500 }}>Strategic Retainer</p>
-              <p style={{ fontFamily: "var(--font-display)", fontSize: "36px", color: "var(--text-primary)", marginTop: "4px" }}>Rs. 30,000&ndash;50,000</p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3vw, 36px)", color: "var(--text-primary)", marginTop: "4px", whiteSpace: "nowrap" }}>Rs. 30,000&ndash;50,000</p>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-faint)" }}>per month + tech quoted separately</p>
               <div style={{ height: 1, background: "var(--border-subtle)", margin: "16px 0" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
@@ -591,7 +591,7 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="btn-primary justify-center w-full" style={{ marginTop: "24px" }}>Talk to Us</Link>
+              <Link href="/contact" className="btn-primary justify-center w-full" style={{ marginTop: "auto" }}>Talk to Us</Link>
             </motion.div>
           </div>
 
