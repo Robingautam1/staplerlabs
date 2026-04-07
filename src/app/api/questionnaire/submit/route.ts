@@ -5,22 +5,71 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+// Known business-table columns (so we can separate sector-specific answers)
+const KNOWN_FIELDS = [
+  'business_name', 'owner_name', 'city', 'sector',
+  'years_in_operation', 'employee_count', 'annual_revenue_range', 'locations_count',
+  'has_website', 'website_url', 'has_google_listing', 'has_whatsapp_business',
+  'social_media_platforms', 'whatsapp_number', 'best_time_to_call',
+  'success_definition', 'biggest_competitor',
+]
+
 export async function POST(request: Request) {
   try {
-    // 1. AUTHENTICATE
+    // ── 1. AUTHENTICATE ──
     const supabase = await createClient()
-    const {
-      data: { user },
-    } = await supabase.auth.getUser()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
 
-    if (!user) {
+    if (authError || !user) {
+      console.error('Auth error:', authError?.message || 'No user found')
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { formData } = await request.json()
+    const body = await request.json()
+    const { formData } = body
+
+    if (!formData || typeof formData !== 'object') {
+      console.error('Invalid formData received:', JSON.stringify(body).slice(0, 500))
+      return NextResponse.json({ error: 'Invalid form data' }, { status: 400 })
+    }
+
+    console.log('Processing questionnaire for user:', user.id, '| sector:', formData.sector)
+
     const admin = createAdminClient()
 
-    // 2. SAVE TO DATABASE — upsert business
+    // ── 2. CONVERT TYPES ──
+    // has_website: form sends strings like "Yes, and it works well" → convert to boolean
+    const hasWebsite = typeof formData.has_website === 'string'
+      ? !formData.has_website.toLowerCase().startsWith('no')
+      : !!formData.has_website
+
+    const hasGoogleListing = typeof formData.has_google_listing === 'string'
+      ? !formData.has_google_listing.toLowerCase().startsWith('no')
+      : !!formData.has_google_listing
+
+    const hasWhatsappBusiness = typeof formData.has_whatsapp_business === 'string'
+      ? !formData.has_whatsapp_business.toLowerCase().startsWith('no')
+      : !!formData.has_whatsapp_business
+
+    const socialMediaPlatforms = Array.isArray(formData.social_media_platforms)
+      ? formData.social_media_platforms
+      : []
+
+    const hasSocialMedia = socialMediaPlatforms.length > 0 &&
+      !(socialMediaPlatforms.length === 1 && socialMediaPlatforms[0] === 'None')
+
+    // Find the primary challenge from sector-specific answers
+    const challengeKey = Object.keys(formData).find((k) => k.startsWith('biggest_challenge'))
+    const primaryChallenge = challengeKey ? (formData[challengeKey] as string) : null
+
+    // Build sector_answers object from non-standard fields
+    const sectorAnswers = Object.fromEntries(
+      Object.entries(formData).filter(
+        ([key]) => !KNOWN_FIELDS.includes(key)
+      )
+    )
+
+    // ── 3. UPSERT BUSINESS ──
     const { data: business, error: bizError } = await admin
       .from('businesses')
       .upsert(
@@ -33,24 +82,24 @@ export async function POST(request: Request) {
           years_in_operation: formData.years_in_operation || null,
           employee_count: formData.employee_count || null,
           annual_revenue_range: formData.annual_revenue_range || null,
-          locations_count: formData.locations_count || null,
-          has_website: formData.has_website || null,
+          has_website: hasWebsite,
           website_url: formData.website_url || null,
-          has_google_listing: formData.has_google_listing || null,
-          has_whatsapp_business: formData.has_whatsapp_business || null,
-          social_media_platforms: formData.social_media_platforms || null,
-          whatsapp_number: formData.whatsapp_number || null,
-          best_time_to_call: formData.best_time_to_call || null,
-          success_definition: formData.success_definition || null,
+          has_google_listing: hasGoogleListing,
+          has_whatsapp_business: hasWhatsappBusiness,
+          has_social_media: hasSocialMedia,
+          social_media_platforms: hasSocialMedia ? socialMediaPlatforms.filter((p: string) => p !== 'None') : [],
+          primary_challenge: primaryChallenge,
           biggest_competitor: formData.biggest_competitor || null,
-          sector_answers: JSON.stringify(
-            Object.fromEntries(
-              Object.entries(formData).filter(
-                ([key]) =>
-                  !['business_name', 'owner_name', 'city', 'sector', 'years_in_operation', 'employee_count', 'annual_revenue_range', 'locations_count', 'has_website', 'website_url', 'has_google_listing', 'has_whatsapp_business', 'social_media_platforms', 'whatsapp_number', 'best_time_to_call', 'success_definition', 'biggest_competitor'].includes(key)
-              )
-            )
-          ),
+          goal: formData.success_definition || null,
+          additional_notes: JSON.stringify({
+            locations_count: formData.locations_count || null,
+            whatsapp_number: formData.whatsapp_number || null,
+            best_time_to_call: formData.best_time_to_call || null,
+            has_website_detail: formData.has_website || null,
+            has_google_listing_detail: formData.has_google_listing || null,
+            has_whatsapp_business_detail: formData.has_whatsapp_business || null,
+            sector_answers: sectorAnswers,
+          }),
           questionnaire_completed: true,
           questionnaire_completed_at: new Date().toISOString(),
         },
@@ -60,32 +109,39 @@ export async function POST(request: Request) {
       .single()
 
     if (bizError) {
-      console.error('Business upsert error:', bizError)
+      console.error('Business upsert error:', JSON.stringify(bizError))
       return NextResponse.json({ error: 'Failed to save business data' }, { status: 500 })
     }
 
-    // Insert diagnostic report
-    await admin.from('diagnostic_reports').insert({
+    console.log('Business upserted:', business.id)
+
+    // ── 4. INSERT DIAGNOSTIC REPORT ──
+    const { error: reportError } = await admin.from('diagnostic_reports').insert({
       business_id: business.id,
       profile_id: user.id,
       status: 'pending',
       requested_at: new Date().toISOString(),
     })
 
-    // 3. SEND ADMIN NOTIFICATION EMAIL
-    const socialMedia = Array.isArray(formData.social_media_platforms)
-      ? formData.social_media_platforms.join(', ')
-      : formData.social_media_platforms || 'None'
+    if (reportError) {
+      console.error('Diagnostic report insert error:', JSON.stringify(reportError))
+      // Non-blocking — business is already saved
+    }
 
-    // Find the primary challenge from sector-specific answers
-    const challengeKey = Object.keys(formData).find((k) => k.startsWith('biggest_challenge'))
-    const primaryChallenge = challengeKey ? formData[challengeKey] : 'Not specified'
+    // ── 5. SEND ADMIN NOTIFICATION EMAIL (non-blocking) ──
+    try {
+      if (!process.env.RESEND_API_KEY) {
+        console.warn('RESEND_API_KEY not set — skipping admin email')
+      } else {
+        const socialMedia = hasSocialMedia
+          ? socialMediaPlatforms.filter((p: string) => p !== 'None').join(', ')
+          : 'None'
 
-    await resend.emails.send({
-      from: 'StaplerLabs <hello@staplerlabs.com>',
-      to: 'work@staplerlabs.com',
-      subject: `New questionnaire — ${formData.business_name} | ${formData.sector} | ${formData.city}`,
-      html: `
+        await resend.emails.send({
+          from: 'StaplerLabs <hello@staplerlabs.com>',
+          to: 'work@staplerlabs.com',
+          subject: `New questionnaire — ${formData.business_name} | ${formData.sector} | ${formData.city}`,
+          html: `
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
@@ -106,6 +162,7 @@ export async function POST(request: Request) {
             <tr><td style="color:#9CA3AF;">Years</td><td>${formData.years_in_operation || 'N/A'}</td></tr>
             <tr><td style="color:#9CA3AF;">Employees</td><td>${formData.employee_count || 'N/A'}</td></tr>
             <tr><td style="color:#9CA3AF;">Revenue</td><td>${formData.annual_revenue_range || 'Not shared'}</td></tr>
+            <tr><td style="color:#9CA3AF;">Locations</td><td>${formData.locations_count || 'N/A'}</td></tr>
           </table>
           <div style="height:1px;background:#F3F4F6;margin:20px 0;"></div>
           <h3 style="margin:0 0 16px;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#9CA3AF;">Digital Presence</h3>
@@ -118,7 +175,7 @@ export async function POST(request: Request) {
           <div style="height:1px;background:#F3F4F6;margin:20px 0;"></div>
           <h3 style="margin:0 0 16px;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#9CA3AF;">Key Insights</h3>
           <table width="100%" cellpadding="4" cellspacing="0" style="font-size:14px;color:#374151;">
-            <tr><td style="color:#9CA3AF;width:140px;">Challenge</td><td>${primaryChallenge}</td></tr>
+            <tr><td style="color:#9CA3AF;width:140px;">Challenge</td><td>${primaryChallenge || 'Not specified'}</td></tr>
             <tr><td style="color:#9CA3AF;">Competitor</td><td>${formData.biggest_competitor || 'Not specified'}</td></tr>
             <tr><td style="color:#9CA3AF;">Success</td><td>${formData.success_definition || 'N/A'}</td></tr>
           </table>
@@ -141,21 +198,32 @@ export async function POST(request: Request) {
   </table>
 </body>
 </html>
-      `.trim(),
-    })
+          `.trim(),
+        })
+        console.log('Admin notification email sent')
+      }
+    } catch (emailError) {
+      // Email failure should NOT block the submission
+      console.error('Email send failed (non-blocking):', emailError instanceof Error ? emailError.message : emailError)
+    }
 
-    // 4. INSERT NOTIFICATION
-    await admin.from('notifications').insert({
-      profile_id: user.id,
-      type: 'general',
-      title: 'Your report is being prepared',
-      message:
-        'We have received your questionnaire. Our team is now preparing your Business Intelligence Report. You will be notified within 24 hours.',
-    })
+    // ── 6. INSERT USER NOTIFICATION ──
+    try {
+      await admin.from('notifications').insert({
+        profile_id: user.id,
+        type: 'general',
+        title: 'Your report is being prepared',
+        message:
+          'We have received your questionnaire. Our team is now preparing your Business Intelligence Report. You will be notified within 24 hours.',
+      })
+    } catch (notifError) {
+      console.error('Notification insert failed (non-blocking):', notifError instanceof Error ? notifError.message : notifError)
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Questionnaire submission error:', error)
+    console.error('Questionnaire submission error:', error instanceof Error ? error.message : JSON.stringify(error))
+    console.error('Full error:', error)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
