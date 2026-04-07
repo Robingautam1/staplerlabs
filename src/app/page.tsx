@@ -518,11 +518,11 @@ export default function HomePage() {
         {/* Blob container — clipped to section bounds */}
         <div className="pricing-blob" style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 }}>
           {/* Left blob */}
-          <svg style={{ position: "absolute", left: "-80px", top: "50%", transform: "translateY(-50%)", width: "200px", height: "400px" }} viewBox="0 0 300 400" fill="none">
+          <svg style={{ position: "absolute", left: "0px", top: "50%", transform: "translateX(-40%) translateY(-50%)", width: "200px", height: "400px" }} viewBox="0 0 300 400" fill="none">
             <path d="M 60,80 C 120,-20 260,-10 280,80 C 300,170 260,300 180,320 C 100,340 -20,280 20,180 C 40,130 20,160 60,80 Z" fill="#B8D4F5" opacity="0.35" />
           </svg>
           {/* Right blob */}
-          <svg style={{ position: "absolute", right: "-70px", top: "30%", width: "180px", height: "360px" }} viewBox="0 0 260 360" fill="none">
+          <svg style={{ position: "absolute", right: "0px", top: "30%", transform: "translateX(40%)", width: "180px", height: "360px" }} viewBox="0 0 260 360" fill="none">
             <path d="M 40,60 C 100,-20 220,0 240,80 C 260,160 220,280 140,300 C 60,320 -20,240 20,140 C 40,90 0,130 40,60 Z" fill="#F5C400" opacity="0.20" />
           </svg>
         </div>
@@ -537,7 +537,7 @@ export default function HomePage() {
             </motion.p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 items-start" style={{ position: "relative", zIndex: 1 }}>
+          <div className="grid md:grid-cols-3 gap-6 items-start" style={{ position: "relative", zIndex: 1, marginTop: "48px" }}>
             {/* Diagnostic */}
             <motion.div className="card-theme p-7 flex flex-col" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
               <p style={{ fontFamily: "var(--font-body)", fontSize: "13px", color: "var(--text-muted)", fontWeight: 500 }}>Diagnostic</p>
