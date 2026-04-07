@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import SignOutButton from '@/components/dashboard/SignOutButton'
 
 export default async function AdminLayout({
@@ -7,21 +8,23 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
+  // Check if user is logged in
   const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser()
 
   if (!user) {
     redirect('/auth/login')
   }
 
-  // Check admin status
-  const { data: profile } = await supabase
+  // Use admin client to check is_admin (bypasses RLS)
+  const adminClient = createAdminClient()
+  const { data: profile } = await adminClient
     .from('profiles')
-    .select('is_admin')
+    .select('is_admin, email, full_name')
     .eq('id', user.id)
     .single()
+
+  console.log('Admin check:', { userId: user.id, email: user.email, isAdmin: profile?.is_admin })
 
   if (!profile?.is_admin) {
     redirect('/dashboard')
