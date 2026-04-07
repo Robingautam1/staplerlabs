@@ -21,13 +21,13 @@ export default async function DashboardPage() {
     .eq('id', user.id)
     .single()
 
-  // Fetch business (first one for this user)
+  // Fetch business — maybeSingle returns null if no row
   const { data: business } = await supabase
     .from('businesses')
     .select('*')
     .eq('profile_id', user.id)
     .limit(1)
-    .single()
+    .maybeSingle()
 
   // Fetch latest diagnostic report if business exists
   let report: DiagnosticReport | null = null
@@ -38,36 +38,32 @@ export default async function DashboardPage() {
       .eq('business_id', business.id)
       .order('created_at', { ascending: false })
       .limit(1)
-      .single()
+      .maybeSingle()
     report = reportData
   }
 
   // Fetch latest completed payment
   let payment: Payment | null = null
-  if (business) {
-    const { data: paymentData } = await supabase
-      .from('payments')
-      .select('*')
-      .eq('profile_id', user.id)
-      .eq('status', 'completed')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .single()
-    payment = paymentData
-  }
+  const { data: paymentData } = await supabase
+    .from('payments')
+    .select('*')
+    .eq('profile_id', user.id)
+    .eq('status', 'completed')
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle()
+  payment = paymentData
 
   // Fetch consultant assignment
   let assignment: ConsultantAssignment | null = null
-  if (business) {
-    const { data: assignmentData } = await supabase
-      .from('consultant_assignments')
-      .select('*')
-      .eq('profile_id', user.id)
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .single()
-    assignment = assignmentData
-  }
+  const { data: assignmentData } = await supabase
+    .from('consultant_assignments')
+    .select('*')
+    .eq('profile_id', user.id)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle()
+  assignment = assignmentData
 
   // Fetch notifications
   const { data: notifications } = await supabase
