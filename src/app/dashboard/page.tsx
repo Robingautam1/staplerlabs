@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import type { Profile, Business, DiagnosticReport } from '@/lib/types/database'
+import type { Profile, Business, DiagnosticReport, Payment, ConsultantAssignment } from '@/lib/types/database'
 import DashboardClient from './DashboardClient'
 
 export default async function DashboardPage() {
@@ -42,6 +42,33 @@ export default async function DashboardPage() {
     report = reportData
   }
 
+  // Fetch latest completed payment
+  let payment: Payment | null = null
+  if (business) {
+    const { data: paymentData } = await supabase
+      .from('payments')
+      .select('*')
+      .eq('profile_id', user.id)
+      .eq('status', 'completed')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single()
+    payment = paymentData
+  }
+
+  // Fetch consultant assignment
+  let assignment: ConsultantAssignment | null = null
+  if (business) {
+    const { data: assignmentData } = await supabase
+      .from('consultant_assignments')
+      .select('*')
+      .eq('profile_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single()
+    assignment = assignmentData
+  }
+
   // Fetch notifications
   const { data: notifications } = await supabase
     .from('notifications')
@@ -56,6 +83,8 @@ export default async function DashboardPage() {
       business={business as Business | null}
       report={report}
       notifications={notifications ?? []}
+      payment={payment}
+      assignment={assignment}
     />
   )
 }

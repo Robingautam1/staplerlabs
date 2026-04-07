@@ -3,6 +3,7 @@ export type Profile = {
   email: string
   full_name: string | null
   phone: string | null
+  is_admin: boolean
   created_at: string
   updated_at: string
 }
@@ -45,7 +46,7 @@ export type DiagnosticReport = {
   business_index_score: number | null
   visibility_score: number | null
   digital_presence_score: number | null
-  competitor_analysis_score: number | null
+  competitive_position_score: number | null
   customer_acquisition_score: number | null
   online_visibility_rating: 'Critical' | 'Low' | 'Medium' | 'Good' | 'Excellent' | null
   competitors_found: number
@@ -53,7 +54,9 @@ export type DiagnosticReport = {
   gap_analysis: GapItem[]
   recommendations: RecommendationItem[]
   competitor_details: CompetitorItem[]
+  roadmap: RoadmapData | null
   report_pdf_url: string | null
+  report_pdf_path: string | null
   admin_notes: string | null
   prepared_by: string | null
   requested_at: string
@@ -74,13 +77,21 @@ export type RecommendationItem = {
   title: string
   description: string
   estimated_impact: string
+  execution_month?: number
 }
 
 export type CompetitorItem = {
   name: string
   digital_strength: 'strong' | 'moderate' | 'weak'
   platforms: string[]
+  activity_level?: 'Very Active' | 'Active' | 'Moderate' | 'Low'
   estimated_ad_spend: string | null
+}
+
+export type RoadmapData = {
+  month1: string[]
+  month2: string[]
+  month3: string[]
 }
 
 export type Payment = {
