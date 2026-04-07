@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import type { Profile, Business, DiagnosticReport, Payment, ConsultantAssignment } from '@/lib/types/database'
 import DashboardClient from './DashboardClient'
 
@@ -14,37 +15,34 @@ export default async function DashboardPage() {
     redirect('/auth/login')
   }
 
+  // Use admin client to bypass RLS conflicts
+  const adminClient = createAdminClient()
+
   // Fetch profile
-  const { data: profile } = await supabase
+  const { data: profile } = await adminClient
     .from('profiles')
     .select('*')
     .eq('id', user.id)
     .single()
 
-  // Fetch business — maybeSingle returns null if no row
-  const { data: business } = await supabase
+  // Fetch business
+  const { data: business } = await adminClient
     .from('businesses')
     .select('*')
     .eq('profile_id', user.id)
+    .maybeSingle()
+
+  // Fetch latest diagnostic report
+  const { data: report } = await adminClient
+    .from('diagnostic_reports')
+    .select('*')
+    .eq('profile_id', user.id)
+    .order('created_at', { ascending: false })
     .limit(1)
     .maybeSingle()
 
-  // Fetch latest diagnostic report if business exists
-  let report: DiagnosticReport | null = null
-  if (business) {
-    const { data: reportData } = await supabase
-      .from('diagnostic_reports')
-      .select('*')
-      .eq('business_id', business.id)
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .maybeSingle()
-    report = reportData
-  }
-
   // Fetch latest completed payment
-  let payment: Payment | null = null
-  const { data: paymentData } = await supabase
+  const { data: payment } = await adminClient
     .from('payments')
     .select('*')
     .eq('profile_id', user.id)
@@ -52,21 +50,16 @@ export default async function DashboardPage() {
     .order('created_at', { ascending: false })
     .limit(1)
     .maybeSingle()
-  payment = paymentData
 
   // Fetch consultant assignment
-  let assignment: ConsultantAssignment | null = null
-  const { data: assignmentData } = await supabase
+  const { data: assignment } = await adminClient
     .from('consultant_assignments')
     .select('*')
     .eq('profile_id', user.id)
-    .order('created_at', { ascending: false })
-    .limit(1)
     .maybeSingle()
-  assignment = assignmentData
 
   // Fetch notifications
-  const { data: notifications } = await supabase
+  const { data: notifications } = await adminClient
     .from('notifications')
     .select('*')
     .eq('profile_id', user.id)
@@ -77,10 +70,10 @@ export default async function DashboardPage() {
     <DashboardClient
       profile={profile as Profile}
       business={business as Business | null}
-      report={report}
+      report={report as DiagnosticReport | null}
       notifications={notifications ?? []}
-      payment={payment}
-      assignment={assignment}
+      payment={payment as Payment | null}
+      assignment={assignment as ConsultantAssignment | null}
     />
   )
 }

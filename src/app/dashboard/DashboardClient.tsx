@@ -21,9 +21,10 @@ function getGreeting(): string {
   return 'Good evening'
 }
 
-function getFirstName(profile: Profile): string {
-  if (profile.full_name) return profile.full_name.split(' ')[0]
-  return profile.email.split('@')[0]
+function getFirstName(profile: Profile | null): string {
+  if (profile?.full_name) return profile.full_name.split(' ')[0]
+  if (profile?.email) return profile.email.split('@')[0]
+  return 'there'
 }
 
 function getScoreColor(score: number, max: number): string {
@@ -148,6 +149,15 @@ function SeverityBadge({ severity }: { severity: string }) {
 
 export default function DashboardClient({ profile, business, report, payment, assignment }: DashboardClientProps) {
   const [copied, setCopied] = useState(false)
+
+  if (!profile) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', fontFamily: 'DM Sans, sans-serif', color: '#6B7280' }}>
+        Loading your dashboard...
+      </div>
+    )
+  }
+
   const firstName = getFirstName(profile)
   const greeting = getGreeting()
   const questionnaireCompleted = business?.questionnaire_completed ?? false
